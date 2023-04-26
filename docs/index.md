@@ -11,3 +11,34 @@
 <font size="+12"><center>
 
 </center></font>
+
+# Entendimento de negócios
+## Matriz de oceano azul
+## Matriz de risco
+## Canvas de proposta de valor
+## Análise financeira
+
+# Entendimento de metadesign
+## Fatores mercadológicos
+### Orientação ao mercado e precificação
+
+### Cenário do mercado
+
+### Visão do projeto proposto
+
+## Sistema produto-design
+## Sustentabilidade ambiental
+
+# Arquitetura do sistema
+## Requisitos funcionais e não funcionais
+### Funcionais
+
+### Não funcionais
+
+## Viabilidade técnica
+
+
+## Proposta geral
+
+
+# Referências
