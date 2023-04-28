@@ -8,29 +8,30 @@
 </tr>
 </table>
 
-# Nome do Projeto
+# Concepção de robô para inspeção de espaços confinados na área industrial
 
-## Nome do Grupo
+## TurtleBee
 
-## Integrantes: <a href="https://www.linkedin.com/in/victorbarq/">Goku Sayajin</a>, <a href="https://www.linkedin.com/in/victorbarq/">Saitama One</a>, <a href="https://www.linkedin.com/in/victorbarq/">Ikki de Fenix</a>, <a href="https://www.linkedin.com/in/victorbarq/">Yusuke Urameshi</a>, <a href="https://www.linkedin.com/in/victorbarq/">Roronoa Zoro</a>
+## Integrantes: 
+- <a href="https://www.linkedin.com/in/felipe-pereira-campos-250aa2231/">Felipe Campos</a>
+- <a href="https://www.linkedin.com/in/giovanna-rodrigues-araujo/">Giovanna Rodrigues</a>
+- <a href="https://www.linkedin.com/in/gustavo-ferreira-oliveira/">Gustavo Oliveira</a>
+- <a href="https://www.linkedin.com/in/henriquelfmatias/">Henrique Lemos</a>
+- <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-gon%C3%A7alves-carazzato-147120231/">João Pedro Carazzato</a>
+- <a href="https://www.linkedin.com/in/sbluizfernando/">Luiz Borges</a>
+- <a href="https://www.linkedin.com/in/patriciahonorato/">Patricia Honorato</a>
 
 ## Descrição
 
 📜 Descrição curta sobre o que seu projeto faz.
 <br><br>
-Meu projeto é um exemplo de como utilizar o github.
+Nosso projeto busca criar uma maneira mais viável e segura de realizar a manutenção e inspeção de espaços confinados através de um robô equipado com sensores e com contato a uma interface web, disponibilizando imagens de vídeo e dados captados dos sensores.
 <br><br>
-<p align="center">
-<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="NOME DO JOGO" border="0">
-  Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
-</p>
 
-
+## Como Funciona?
 💡 De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
 <br><br>
-Meu projeto ajuda estudantes inteli a configurarem seus githubs.
-<br><br>
-May the force be with you!
+Através do robô Turtlebot Burguer, adicionamos uma interface web a seu Raspberry, que através de seu microcontrolador realizará as comunicações necessárias com o mesmo para que consigamos transportar os dados dos sensores a essa mesma interface, além disso possuímos uma câmera que permitirá uma visualização mais clara, a distância, do local. Todo o manuseio do usuário será realizado pela aplicação, permitindo todo o acompanhamento e criação de relatórios importantes.
 <br><br>
 
 ## 🛠 Estrutura de pastas

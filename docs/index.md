@@ -16,7 +16,25 @@
 
 ## Matriz de oceano azul
 
-## Matriz de risco
+![Matriz Oceano Azul](./images/matriz_oceano_azul.png)
+
+- Reduzir
+  - Perigo para os técnicos
+  - Manutenções de emergência
+- Eliminar
+  - Acidentes causados aos operadores
+  - Erro humano causado nas medidas
+- Criar
+  - Monitoramento remoto
+  - Possibilidade de visualização de imagens dos locais
+- Aumentar
+  - Segurança
+  - Praticidade para os técnicos
+  - Agilidade do processo
+
+## Matriz de riscos
+
+![Matriz de Riscos](./images/matriz_de_risco.png)
 
 ## Canvas de proposta de valor
 
@@ -32,6 +50,8 @@ Principais observações:
 
   ![Analise Financeira](./images/analise_financeira.jpeg)
 
+  [Link da planilha](https://docs.google.com/spreadsheets/d/1r8g5DCsZJI9akuSPPXa-gyhqJ1ZzOMrjQ_6VsDGgP98/edit?usp=sharing)
+
 # Entendimento de metadesign
 
 ## Fatores mercadológicos
@@ -46,10 +66,16 @@ Principais observações:
 
 ## Sustentabilidade ambiental
 
-Nosso produto consiste essencialmente no desenvolvimento de um software, o que por si só não gera impacto ambiental direto. No entanto, parte da nossa solução envolve o uso do robô TurtleBot, que pode gerar alguns riscos.
+O produto consiste essencialmente no desenvolvimento de um software, que não gera impacto ambiental direto. No entanto, parte da nossa solução envolve o uso do robô TurtleBot, que pode gerar alguns riscos. 
+
 O TurtleBot é composto por placas de plástico e alguns itens eletrônicos. Dentre eles há alguns que não seguem princípios sustentáveis. Principal são as baterias de LiPo, isto é, polímeros de Lítio. O problema com essa bateria é que ela é extremamente inflamável, consequentemente para o seu descarte é necessário tomar algumas medidas de segurança que evitem uma possível combustão. Em geral, é preciso desenergizar toda a bateria, de modo lento e por bastante tempo, para que não haja a possibilidade de gerar qualquer voltagem. Após isso, corta-se os fios e então pode ser descartada.
-Outro possível problema encontrado pode ser no descarte das placas eletrônicas, uma vez que é necessário direcioná-las para um específico tipo de reciclagem, e as de plástico, já que é um material não biodegradável e compõe maior parte do hardware.
-Em geral, a solução pode ter possíveis impactos ambientais contornados, por meio de precauções tomadas preventivamente e medidas de segurança.
+
+Nesse contexto, pode-se ser realizada a implementação de planejamentos de monitoramento com o uso das baterias, como o processo de medição de temperatura e tensão, e o aprimoramento do algoritmo do robô,  visando garantir o prolongamento da vida útil desses componentes. Procedimentos que visem descartar esses materiais em locais adequados também auxiliam em um plano estratégico. Ademais, é possível avaliar-se o uso de bateria sustentáveis, como baterias de lítio-ferro, que não contaminam o meio ambiente por não possuírem metais raros em sua composição.
+
+Em relação aos demais materiais do robô, o possível problema encontrado pode ser no descarte das placas eletrônicas, uma vez que é necessário direcioná-las para um específico tipo de reciclagem, e as de plástico, já que é um material não biodegradável e compõe maior parte do hardware. Considerando que esse aspecto se configura como um grande desafio do projeto, uma alternativa seria o uso de placas com materiais biodegradáveis, materiais feitos de recursos biodegradáveis que não poluem o meio ambiente se encontram à disposição no mercado.
+
+Em geral, a solução apresenta possíveis impactos ambientais que são contornáveis por meio da implementação de um conjunto de planejamentos que promovam a sustentabilidade do projeto reduzindo os impactos ambientais que referem-se ao sistema robótico. 
+
 
 # Arquitetura do sistema
 
