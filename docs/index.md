@@ -66,16 +66,15 @@ Principais observações:
 
 ## Sustentabilidade ambiental
 
-O produto consiste essencialmente no desenvolvimento de um software, que não gera impacto ambiental direto. No entanto, parte da nossa solução envolve o uso do robô TurtleBot, que pode gerar alguns riscos. 
+O produto consiste essencialmente no desenvolvimento de um software, que não gera impacto ambiental direto. No entanto, parte da nossa solução envolve o uso do robô TurtleBot, que pode gerar alguns riscos.
 
 O TurtleBot é composto por placas de plástico e alguns itens eletrônicos. Dentre eles há alguns que não seguem princípios sustentáveis. Principal são as baterias de LiPo, isto é, polímeros de Lítio. O problema com essa bateria é que ela é extremamente inflamável, consequentemente para o seu descarte é necessário tomar algumas medidas de segurança que evitem uma possível combustão. Em geral, é preciso desenergizar toda a bateria, de modo lento e por bastante tempo, para que não haja a possibilidade de gerar qualquer voltagem. Após isso, corta-se os fios e então pode ser descartada.
 
-Nesse contexto, pode-se ser realizada a implementação de planejamentos de monitoramento com o uso das baterias, como o processo de medição de temperatura e tensão, e o aprimoramento do algoritmo do robô,  visando garantir o prolongamento da vida útil desses componentes. Procedimentos que visem descartar esses materiais em locais adequados também auxiliam em um plano estratégico. Ademais, é possível avaliar-se o uso de bateria sustentáveis, como baterias de lítio-ferro, que não contaminam o meio ambiente por não possuírem metais raros em sua composição.
+Nesse contexto, pode-se ser realizada a implementação de planejamentos de monitoramento com o uso das baterias, como o processo de medição de temperatura e tensão, e o aprimoramento do algoritmo do robô, visando garantir o prolongamento da vida útil desses componentes. Procedimentos que visem descartar esses materiais em locais adequados também auxiliam em um plano estratégico. Ademais, é possível avaliar-se o uso de bateria sustentáveis, como baterias de lítio-ferro, que não contaminam o meio ambiente por não possuírem metais raros em sua composição.
 
 Em relação aos demais materiais do robô, o possível problema encontrado pode ser no descarte das placas eletrônicas, uma vez que é necessário direcioná-las para um específico tipo de reciclagem, e as de plástico, já que é um material não biodegradável e compõe maior parte do hardware. Considerando que esse aspecto se configura como um grande desafio do projeto, uma alternativa seria o uso de placas com materiais biodegradáveis, materiais feitos de recursos biodegradáveis que não poluem o meio ambiente se encontram à disposição no mercado.
 
-Em geral, a solução apresenta possíveis impactos ambientais que são contornáveis por meio da implementação de um conjunto de planejamentos que promovam a sustentabilidade do projeto reduzindo os impactos ambientais que referem-se ao sistema robótico. 
-
+Em geral, a solução apresenta possíveis impactos ambientais que são contornáveis por meio da implementação de um conjunto de planejamentos que promovam a sustentabilidade do projeto reduzindo os impactos ambientais que referem-se ao sistema robótico.
 
 # Arquitetura do sistema
 
@@ -89,40 +88,42 @@ Em geral, a solução apresenta possíveis impactos ambientais que são contorn�
 
 ## Proposta geral
 
-Nosso projeto consiste em um sistema integrado que envolve um TurtleBot, um backend e um frontend para permitir a comunicação e controle do TurtleBot por meio de uma interface web. O TurtleBot é um robô de duas rodas equipado com diversos sensores e componentes que auxiliam na realização de suas tarefas.
+Nosso projeto consiste em um sistema integrado que envolve um TurtleBot, um backend e um frontend para permitir a comunicação e controle do TurtleBot por meio de uma interface web. O TurtleBot é um robô de duas rodas equipado com diversos sensores e componentes cruciais para a realização de suas tarefas.
 
 ### Componentes do TurtleBot
 
-O TurtleBot possui os seguintes componentes:
+O TurtleBot será equipado com os seguintes componentes:
 
-- Microcontrolador OpenCR: usado para ler informações do sensor de gás MQ2.
-- Sensor de gás MQ2: detecta gases e envia informações para o OpenCR.
-- Raspberry Pi 3: processa informações de todos os componentes e se comunica com o backend.
-- Webcam: fornece imagens ao vivo para o Raspberry Pi 3.
-- Sensor Lidar 360º: fornece imagens do escaneamento para o Raspberry Pi 3.
+- Microcontrolador OpenCR: responsável por ler as informações do sensor de gás MQ2.
+- Sensor de gás MQ2: responsável por detectar os gases.
+- Raspberry Pi 3: responsável por processar as informações de todos os componentes e se comunica com o backend.
+- Webcam: responsável por fornecer imagens ao vivo para o Raspberry Pi 3.
+- Sensor Lidar 360º: responsável por fornecer as imagens do escaneamento para o Raspberry Pi 3.
 
 ### Backend
 
-O backend é construído usando as seguintes tecnologias:
+O backend será construído usando as seguintes tecnologias:
 
-- Docker: permite criar e gerenciar contêineres para facilitar a implantação e escalabilidade.
-- Python (Flask): framework web usado para criar a API e gerenciar a lógica do servidor.
+- Docker: permitirá criar e gerenciar contêineres que facilitará o deploy em um serviço cloud.
+- Python (Flask): framework web usado para criar a API e gerenciar a lógica do servidor responsável por estabelecer a comunicação entre o usuário e as atividade do TurtelBot.
 - Banco de dados SQL: armazena informações e dados relevantes para o projeto.
 
-O backend é hospedado em um serviço cloud e utiliza a rede ROS2 para comunicação bidirecional com o TurtleBot.
+O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comunicação bidirecional com o TurtleBot.
 
 ### Frontend
 
-O frontend é desenvolvido com Next.js e React.js, e é hospedado em um serviço cloud. A interface permite que os usuários interajam com o TurtleBot e solicitem ações específicas. O frontend se comunica com o backend, que por sua vez, gerencia a comunicação com o TurtleBot por meio da rede ROS2.
-
+O frontend será desenvolvido com Next.js e React.js, e será hospedado em um serviço cloud. A interface permitirá que os usuários interajam com o TurtleBot e solicitem ações específicas. O frontend se comunicará com o backend, que por sua vez, gerencia a comunicação com o TurtleBot por meio de uma rede ROS2.
+<!-- TODO! -->
+  <!-- Colocar aqui quais são as ações que o usuário pode solicitar ao TurtleBot. -->
+  <!-- Colocar aqui o que o usuário poderá ver do TurtleBot -->
+<!--  -->
 ### Comunicação
 
 A comunicação entre os componentes é feita através da rede ROS2. O Raspberry Pi 3 envia informações do TurtleBot para o backend, e o backend pode enviar comandos para o TurtleBot. O frontend se comunica diretamente com o backend para solicitar ações e receber atualizações sobre o estado do TurtleBot.
 
-Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:  
+Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 
 ![Diagrama em blocos](./images/DiagramaGERDAU.jpg)
 ![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
-
 
 # Referências
