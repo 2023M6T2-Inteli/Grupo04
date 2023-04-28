@@ -29,7 +29,7 @@ Principais observações:
 - Engenharia estima-se que seria 4 semanas de uma equipe de 3 engenheiros de dados pleno(R$ 10000.00) e um sênior(R$ 13000.00);
 - O ICMS se baseia na taxa de veículos automotores do estado de São Paulo, que é 12%;
   Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a solução pode oferecer maior segurança aos empregados da Gerdau, que por sua vez reduz a quantidade de acidentes. Além disso, otimiza o tempo de manutenção em cada vistoria, o que permite aumentar a produtividade.
-  ![Analise Financeira](images\analise_financeira.jpeg)
+  ![Analise Financeira](./images\analise_financeira.jpeg)
 
 # Entendimento de metadesign
 
