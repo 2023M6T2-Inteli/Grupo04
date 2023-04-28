@@ -63,4 +63,40 @@ Em geral, a solução pode ter possíveis impactos ambientais contornados, por m
 
 ## Proposta geral
 
+Nosso projeto consiste em um sistema integrado que envolve um TurtleBot, um backend e um frontend para permitir a comunicação e controle do TurtleBot por meio de uma interface web. O TurtleBot é um robô de duas rodas equipado com diversos sensores e componentes que auxiliam na realização de suas tarefas.
+
+### Componentes do TurtleBot
+
+O TurtleBot possui os seguintes componentes:
+
+- Microcontrolador OpenCR: usado para ler informações do sensor de gás MQ2.
+- Sensor de gás MQ2: detecta gases e envia informações para o OpenCR.
+- Raspberry Pi 3: processa informações de todos os componentes e se comunica com o backend.
+- Webcam: fornece imagens ao vivo para o Raspberry Pi 3.
+- Sensor Lidar 360º: fornece imagens do escaneamento para o Raspberry Pi 3.
+
+### Backend
+
+O backend é construído usando as seguintes tecnologias:
+
+- Docker: permite criar e gerenciar contêineres para facilitar a implantação e escalabilidade.
+- Python (Flask): framework web usado para criar a API e gerenciar a lógica do servidor.
+- Banco de dados SQL: armazena informações e dados relevantes para o projeto.
+
+O backend é hospedado em um serviço cloud e utiliza a rede ROS2 para comunicação bidirecional com o TurtleBot.
+
+### Frontend
+
+O frontend é desenvolvido com Next.js e React.js, e é hospedado em um serviço cloud. A interface permite que os usuários interajam com o TurtleBot e solicitem ações específicas. O frontend se comunica com o backend, que por sua vez, gerencia a comunicação com o TurtleBot por meio da rede ROS2.
+
+### Comunicação
+
+A comunicação entre os componentes é feita através da rede ROS2. O Raspberry Pi 3 envia informações do TurtleBot para o backend, e o backend pode enviar comandos para o TurtleBot. O frontend se comunica diretamente com o backend para solicitar ações e receber atualizações sobre o estado do TurtleBot.
+
+Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:  
+
+![Diagrama em blocos](./images/DiagramaGERDAU.jpg)
+![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
+
+
 # Referências
