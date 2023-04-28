@@ -16,7 +16,25 @@
 
 ## Matriz de oceano azul
 
-## Matriz de risco
+![Matriz Oceano Azul](./images/matriz_oceano_azul.png)
+
+- Reduzir
+  - Perigo para os técnicos
+  - Manutenções de emergência
+- Eliminar
+  - Acidentes causados aos operadores
+  - Erro humano causado nas medidas
+- Criar
+  - Monitoramento remoto
+  - Possibilidade de visualização de imagens dos locais
+- Aumentar
+  - Segurança
+  - Praticidade para os técnicos
+  - Agilidade do processo
+
+## Matriz de riscos
+
+![Matriz de Riscos](./images/matriz_de_risco.png)
 
 ## Canvas de proposta de valor
 
