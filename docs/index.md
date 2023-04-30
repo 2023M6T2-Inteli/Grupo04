@@ -442,8 +442,10 @@ O frontend será desenvolvido com Next.js e React.js, e será hospedado em um se
 A comunicação entre os componentes é feita através da rede ROS2. O Raspberry Pi 3 envia informações do TurtleBot para o backend, e o backend pode enviar comandos para o TurtleBot. O frontend se comunica diretamente com o backend para solicitar ações e receber atualizações sobre o estado do TurtleBot.
 
 Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
+#### Diagrama de arquitetura
+![Diagrama em blocos](./images/DiagramaGERDAU.jpg) 
 
-![Diagrama em blocos](./images/DiagramaGERDAU.jpg)  
+#### Diagrama de blocos
 ![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
 
 # Referências
