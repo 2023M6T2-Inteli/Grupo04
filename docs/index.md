@@ -122,26 +122,63 @@ A utilização de personas se dá pela representação fictícia do cliente idea
 
 ## User Stories
 
-### Gestora de riscos
-
-### Épico
-
-Como gestora de riscos da Gerdau, desejo ter acesso a um mecanismo de coleta de dados em ambientes confinados para inspeção e análise desses ambientes. 
-
-### User Story
-1. Eu, como gestora de riscos, quero ter acesso a um mecanismo automatizado com câmeras e sensores para coleta de dados em ambientes confinados, para assegurar a confiabilidade no planejamento de gerenciamento de riscos. 
-2. Eu, como gestora de riscos, quero  ter acesso a um sistema para monitorar e analisar em tempo real os dados coletados em ambientes confinados, para tomar decisões sobre a segurança dos trabalhadores.
-3. Eu, como gestora de riscos, quero ter acesso a análises e relatórios detalhados dos dados coletados em ambientes confinados, para identificar riscos e melhorias nos ambientes.
-4. Eu, como gestora de riscos, quero visualizar as pré-avaliações e após as avaliações realizadas em ambientes confinados, para garantir que os ambientes não sofreram alterações nesse processo. 
-5. Eu, como gestora de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja projetado com as normas de segurança vigentes, para garantir a segurança dos funcionários e precisão nas análises.
-
-### Técnico de riscos
-
-### Épico
-
-### User Story
+<table>
+  <thead>
+    <tr>
+      <th>Épico</th>
+      <th>User story</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="5">Como gestora de riscos da Gerdau, desejo ter acesso a um mecanismo de coleta de dados em ambientes confinados para inspeção e análise desses ambientes.</td>
+      <td>Eu, como gestora de riscos, quero ter acesso a um mecanismo automatizado com câmeras e sensores para coleta de dados em ambientes confinados, para assegurar a confiabilidade no planejamento de gerenciamento de riscos.</td>
+    </tr>
+    <tr>
+      <td>Eu, como gestora de riscos, quero ter acesso a um sistema para monitorar e analisar em tempo real os dados coletados em ambientes confinados, para tomar decisões sobre a segurança dos trabalhadores.</td>
+    </tr>
+    <tr>
+      <td>Eu, como gestora de riscos, quero ter acesso a análises e relatórios detalhados dos dados coletados em ambientes confinados, para identificar riscos e melhorias nos ambientes.</td>
+    </tr>
+    <tr>
+      <td>Eu, como gestora de riscos, quero visualizar as pré-avaliações e após as avaliações realizadas em ambientes confinados, para garantir que os ambientes não sofreram alterações nesse processo.</td>
+    </tr>
+    <tr>
+      <td>Eu, como gestora de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja projetado com as normas de segurança vigentes, para garantir a segurança dos funcionários e precisão nas análises.</td>
+    </tr>
+    <tr>
+      <td rowspan="4">Como técnico de riscos da Gerdau, desejo ter acesso a um mecanismo que me permita realizar procedimentos de inspeção em ambientes confinados da empresa com maior segurança.</td>
+      <td>Eu, como técnico de riscos, desejo ter acesso a um mecanismo de pré avaliação em ambientes confinados, para que eu possa realizar inspeções sem me expor a possíveis riscos e garantir a minha segurança.</td>
+    </tr>
+    <tr>
+      <td>Eu, como técnico de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja de fácil uso, para que eu possa realizar inspeções com eficiência e sem dificuldade.</td>
+    </tr>
+    <tr>
+      <td>Eu, como técnico de riscos, desejo ter acesso a um sistema com alertas em tempo real para possíveis riscos, para que eu possa agir rapidamente em caso de situações de emergência.</td>
+    </tr>
+    <tr>
+     <td>Eu, como técnico de riscos, desejo visualizar os dados coletados durante a pré avaliação, para que eu possa analisar e avaliar possíveis riscos e tomar decisões para ações necessárias na inspeção.</td>
+     </tr>
+  </tbody>
+</table>
 
 ## Fatores mercadológicos
+
+#### A) Qual é o seu produto e como ele se orienta ao mercado?
+
+#### B) Qual é o cenário do mercado no qual o projeto se insere? 
+
+#### C) Qual a visão do projeto proposto?
+
+O projeto tem como principal objetivo reduzir acidentes em ambientes confinados e promover melhorias na segurança dos trabalhadores. Para isso, é necessário seguir os critérios de gerenciamento de riscos de espaços ocupacionais estabelecidos na norma regulamentadora NR-33. Esses locais apresentam riscos para os trabalhadores que precisam adentrar esses espaços, por isso, antes da entrada do funcionário, o sistema proposto deve realizar um levantamento avaliativo da situação atual do espaço confinado, identificando possíveis alterações na atmosfera, construção do ambiente ou perigos anteriormente mapeados.
+
+Logo, a construção do sistema robótico almeja obter os parâmetros necessários para a pré-avaliação da condição atmosférica dos espaços confinados. Por meio do sistema, será possível coletar dados em tempo real e visualizá-los de forma dinâmica em um dashboard projetado com as principais informações. É importante ressaltar que sua aplicação na indústria não se limita apenas às condições atmosféricas de tubulações, mas para quaisquer outros espaços confinados que tenham parâmetros avaliativos similares.
+
+Além de considerar as normas e regulamentações aplicáveis para estruturação do projeto, o projeto preocupa-se com fatores demográficos, uma vez que no Brasil não há uma cultura de prevenção de acidentes em ambientes de trabalho. No Brasil, é necessário a instalação de um ambiente de cultura que promova a prevenção de acidentes em ambientes de trabalho. Segundo o Observatório Digital de Saúde e Segurança do Trabalho, entre os anos de 2012 a 2018, foram registradas cerca de 17 mil mortes e 4 milhões de acidentes de trabalho no país. E nesse mesmo período, os gastos da Previdência com Benefícios Acidentários foram de aproximadamente R$79 bilhões, e somaram-se 351.7 milhões de dias de trabalho com afastamentos previdenciários e acidentários.
+
+#### D) Qual a inovação do sistema proposto?
+
+Infere-se que com a criação e implementação desse sistema, não será entregue apenas uma solução técnica, mas também cultural. A incorporação do projeto na empresa e resultados serão fundamentais para prevenção de acidentes, contribuindo diretamente para a redução de acidentes e gastos com afastamentos. Ademais, o sistema também apresenta potencial para a fomentação do desenvolvimento de outras tecnologias, como inteligência artificial para predição de diferentes cenários de acidentes, além de auxiliar na manutenção preditiva dos ambientes. 
 
 ### Orientação ao mercado e precificação
 
@@ -407,3 +444,5 @@ Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 ![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
 
 # Referências
+
+https://www.gov.br/fundacentro/pt-br/comunicacao/noticias/noticias/2019/4/acoes-regressivas-gestao-de-riscos-e-impacto-dos-acidentes-de-trabalho-foram-temas-de-debate acesso em 27/04/2023 
