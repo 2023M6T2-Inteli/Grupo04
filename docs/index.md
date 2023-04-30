@@ -435,7 +435,13 @@ O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comuni
 
 ### Frontend
 
-O frontend será desenvolvido com Next.js e React.js, e será hospedado em um serviço cloud. A interface permitirá que os usuários interajam com o TurtleBot e solicitem ações específicas. O frontend se comunicará com o backend, que por sua vez, gerencia a comunicação com o TurtleBot por meio de uma rede ROS2.
+O frontend será desenvolvido com Next.js e React.js, e será hospedado em um serviço cloud. A interface permitirá que os usuários interajam com o TurtleBot e solicitem ações específicas. O frontend se comunicará com o backend, que por sua vez, gerencia a comunicação com o TurtleBot por meio de uma rede ROS2. Além de realizar ações como:
+- Emissão de relatorio;
+- Gerencias analises (Vizualizar, Editar, Deletar e Cadastrar);
+- Teste dos sensores antes de cada analise ou quando solicitado;
+- Acompanhamento em tempo real do TurtleBot realizando a analise;
+- Acompnanhamento da analise em tempo real;
+- Entre outras operações.	
 
 ### Comunicação
 
