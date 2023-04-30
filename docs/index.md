@@ -115,13 +115,10 @@ O [Link da planilha](https://docs.google.com/spreadsheets/d/1r8g5DCsZJI9akuSPPXa
 
 A utilização de personas se dá pela representação fictícia do cliente ideal de um negócio. É baseada em dados reais sobre comportamento e características demográficas dos clientes, assim como histórias pessoais, motivações, objetivos, desafios e preocupações. Nos dando uma visão geral do cliente, e nos ajudando a entender melhor o cliente e suas necessidades e seus problemas enfrentados, assim como suas expectativas em relação ao produto. É válido ressaltar que foram utilizadas informações fornecidas pela Gerdau, e que as personas foram criadas com base nesses dados.
 
-![Alt text](../media/Persona-1.png)
-
-![Alt text](../media/Persona-info-1.png)
-
-![Alt text](../media/Persona-2.png)
-
-![Alt text](../media/Persona-info-2.png)
+![Alt text](images/Persona-1.png)
+![Alt text](images/Persona-info-1.png)
+![Alt text](images/Persona-2.png)
+![Alt text](images/Persona-info-2.png)
 
 ## Fatores mercadológicos
 
