@@ -1,22 +1,22 @@
-<table>
-<tr>
-<td>
-<a href= "https://www2.gerdau.com.br/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Gerdau_logo_%282011%29.svg/1200px-Gerdau_logo_%282011%29.svg.png" alt="Gerdau" border="0" width="70%"></a>
-</td>
-<td><a href= "https://www.inteli.edu.br/"><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0" width="30%"></a>
-</td>
-</tr>
-</table>
-
-<font size="+12"><center>
-
-</center></font>
+<table><tbody><tr><td><a href="https://www2.gerdau.com.br/"><strong><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Gerdau_logo_%282011%29.svg/1200px-Gerdau_logo_%282011%29.svg.png" alt="Gerdau"></strong></a></td><td><a href="https://www.inteli.edu.br/"><strong><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança"></strong></a></td></tr></tbody></table>
 
 # Entendimento de negócios
 
 ## Matriz de oceano azul
 
-![Matriz Oceano Azul](./images/matriz_oceano_azul.png)
+É um termo utilizado na estratégia de negócios para descrever um espaço de mercado não explorado ou inexistente.  Em outras palavras, uma matriz de oceano azul representa um mercado novo e desconhecido, onde a concorrência é irrelevante ou inexistente. 
+
+### Tabela
+
+<table><tbody><tr><td><strong>Atributos</strong></td><td><strong>TurtleBee</strong></td><td><a href="https://csrrobotics.com/"><strong><u>CSR Robotics</u></strong></a></td><td><a href="https://nexxis.com/robotic-inspection-inside-confined-spaces/"><strong><u>Nexxis</u></strong></a></td><td><strong>Gerdau</strong></td></tr><tr><td><strong>Preço</strong></td><td>6</td><td>1</td><td>3</td><td>4</td></tr><tr><td><strong>Qualidade</strong></td><td>7</td><td>10</td><td>9</td><td>6</td></tr><tr><td><strong>Tecnologia</strong></td><td>6</td><td>9</td><td>7</td><td>4</td></tr><tr><td><strong>Conforto</strong></td><td>7</td><td>5</td><td>10</td><td>4</td></tr><tr><td><strong>Comodidade</strong></td><td>9</td><td>4</td><td>9</td><td>7</td></tr><tr><td><strong>Praticidade</strong></td><td>10</td><td>5</td><td>8</td><td>7</td></tr></tbody></table>
+
+
+### Gráfico
+
+<p align="center">
+<img src="./images/matriz_oceano_azul.png">
+</p>
+
 
 - Reduzir
   - Perigo para os técnicos
@@ -40,17 +40,19 @@
 
 ## Análise financeira
 
-A análise financeira objetivou principalmente estimar o valor que seria gasto pela Gerdau, caso ela optasse por desenvolver uma outra empresa para desenvolver um MVP. Os itens foram estimados com base em análise de mercado.
+A análise financeira objetivou principalmente estimar o valor que seria gasto pela Gerdau, caso ela optasse por desenvolver uma outra empresa para desenvolver um MVP. Os itens foram estimados com base em análise de mercado.  
 Principais observações:
 
-- Para o Seguro foi considerado o valor de 10% da somatória dos outros custos;
-- Engenharia estima-se que seria 4 semanas de uma equipe de 3 engenheiros de dados pleno(R$ 10000.00) e um sênior(R$ 13000.00);
-- O ICMS se baseia na taxa de veículos automotores do estado de São Paulo, que é 12%;
-  Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a solução pode oferecer maior segurança aos empregados da Gerdau, que por sua vez reduz a quantidade de acidentes. Além disso, otimiza o tempo de manutenção em cada vistoria, o que permite aumentar a produtividade.
+Para o Seguro foi considerado o valor de 10% da somatória dos outros custos;
 
-  ![Analise Financeira](./images/analise_financeira.jpeg)
+Engenharia estima-se que seria 4 semanas de uma equipe de 3 engenheiros de dados pleno(R$ 10000.00) e um sênior(R$ 13000.00);
 
-  [Link da planilha](https://docs.google.com/spreadsheets/d/1r8g5DCsZJI9akuSPPXa-gyhqJ1ZzOMrjQ_6VsDGgP98/edit?usp=sharing)
+O ICMS se baseia na taxa de veículos automotores do estado de São Paulo, que é 12%;  
+Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a solução pode oferecer maior segurança aos empregados da Gerdau, que por sua vez reduz a quantidade de acidentes. Além disso, otimiza o tempo de manutenção em cada vistoria, o que permite aumentar a produtividade.
+
+![Analise Financeira](./images/analise_financeira.jpeg)
+
+[Link da planilha](https://docs.google.com/spreadsheets/d/1r8g5DCsZJI9akuSPPXa-gyhqJ1ZzOMrjQ_6VsDGgP98/edit?usp=sharing)
 
 # Entendimento de metadesign
 
@@ -65,6 +67,7 @@ As utilização de personas se dá pela representação fictícia do cliente ide
 ![Alt text](../media/Persona-2.png)
 
 ![Alt text](../media/Persona-info-2.png)
+
 ## Fatores mercadológicos
 
 ### Orientação ao mercado e precificação
@@ -97,11 +100,10 @@ Em geral, a solução apresenta possíveis impactos ambientais que são contorn�
 
 ## Viabilidade técnica
 
-  O TurtleBee é um projeto focado em gerar uma solução para os problemas presentes no dia a dia dos técnicos envolvidos com espaços confinados, seja tanto na parte de segurança quanto de inspeção, buscando facilitar seu dia a dia através de seu sistema.
-  Diante da sua proposta, escolhemos utilizar o TurtleBot Burger, um robô que possui potencial de processamento para os sistemas que vamos utilizar, porém possui certas limitações em relação à sua locomoção. O robô tem dificuldades de se movimentar em locais desnivelados, impossibilitando sua utilização em certas situações, em compensação, o robô é compacto o suficiente para entrar nos locais confinados. 
-  Além disso, o robô terá sensores acoplados que são responsáveis por identificar níveis de gases tóxicos no ambiente, suas capacidades serão testadas através de sensores mais simples, semelhantes aos usados na indústria. Apesar de serem mais básicos, eles conseguem captar o que é preciso, em contrapartida, não é possível captar todos os gases tóxicos, sendo limitados a apenas 5 gases. Dizendo um pouco sobre onde esses dados serão armazenados, o robô terá um sistema que realizará comunicações através do protocolo MQTT, utilizando o servidor do HiveMQ, que funciona como um broker remoto, por ele possuir dependências da rede, caso a rede caia, será armazenado informações no próprio robô até a conexão ser restabelecida.
-	Diante do exposto, pode-se dizer que o TurtleBee é uma solução viável para análise de espaços confinados que facilita o serviço de técnicos dessa área e que promove sua segurança através das informações transmitidas pelo mesmo.
-
+O TurtleBee é um projeto focado em gerar uma solução para os problemas presentes no dia a dia dos técnicos envolvidos com espaços confinados, seja tanto na parte de segurança quanto de inspeção, buscando facilitar seu dia a dia através de seu sistema.  
+Diante da sua proposta, escolhemos utilizar o TurtleBot Burger, um robô que possui potencial de processamento para os sistemas que vamos utilizar, porém possui certas limitações em relação à sua locomoção. O robô tem dificuldades de se movimentar em locais desnivelados, impossibilitando sua utilização em certas situações, em compensação, o robô é compacto o suficiente para entrar nos locais confinados.  
+Além disso, o robô terá sensores acoplados que são responsáveis por identificar níveis de gases tóxicos no ambiente, suas capacidades serão testadas através de sensores mais simples, semelhantes aos usados na indústria. Apesar de serem mais básicos, eles conseguem captar o que é preciso, em contrapartida, não é possível captar todos os gases tóxicos, sendo limitados a apenas 5 gases. Dizendo um pouco sobre onde esses dados serão armazenados, o robô terá um sistema que realizará comunicações através do protocolo MQTT, utilizando o servidor do HiveMQ, que funciona como um broker remoto, por ele possuir dependências da rede, caso a rede caia, será armazenado informações no próprio robô até a conexão ser restabelecida.  
+Diante do exposto, pode-se dizer que o TurtleBee é uma solução viável para análise de espaços confinados que facilita o serviço de técnicos dessa área e que promove sua segurança através das informações transmitidas pelo mesmo.
 
 ## Proposta geral
 
@@ -130,17 +132,14 @@ O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comuni
 ### Frontend
 
 O frontend será desenvolvido com Next.js e React.js, e será hospedado em um serviço cloud. A interface permitirá que os usuários interajam com o TurtleBot e solicitem ações específicas. O frontend se comunicará com o backend, que por sua vez, gerencia a comunicação com o TurtleBot por meio de uma rede ROS2.
-<!-- TODO! -->
-  <!-- Colocar aqui quais são as ações que o usuário pode solicitar ao TurtleBot. -->
-  <!-- Colocar aqui o que o usuário poderá ver do TurtleBot -->
-<!--  -->
+
 ### Comunicação
 
 A comunicação entre os componentes é feita através da rede ROS2. O Raspberry Pi 3 envia informações do TurtleBot para o backend, e o backend pode enviar comandos para o TurtleBot. O frontend se comunica diretamente com o backend para solicitar ações e receber atualizações sobre o estado do TurtleBot.
 
 Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 
-![Diagrama em blocos](./images/DiagramaGERDAU.jpg)
+![Diagrama em blocos](./images/DiagramaGERDAU.jpg)  
 ![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
 
 # Referências
