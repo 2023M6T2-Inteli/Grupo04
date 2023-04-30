@@ -121,6 +121,7 @@ A utilização de personas se dá pela representação fictícia do cliente idea
 ![Alt text](images/Persona-info-2.png)
 
 ## User Stories
+Com o intuito de definir os principais objetivos dos usuários e o que se é esperado do produto desenvolvido, foram-se delimitados os principais épicos, as grandes histórias do usuários, que necessitam ser subdivididos em users stories (histórias do usuário menores. Foram definidos dois principais épicos para as personas e delimitados user stories específicos para atender cada caso. 
 
 <table>
   <thead>
