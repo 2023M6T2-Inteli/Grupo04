@@ -165,11 +165,202 @@ Em geral, a solução apresenta possíveis impactos ambientais que são contorn�
 
 # Arquitetura do sistema
 
-## Requisitos funcionais e não funcionais
+## Análise de Requisitos 
 
-### Funcionais
+### Requisitos funcionais 
+Os Requisitos Funcionais foram inicialmente pensados com base em entrevista com o cliente Luis Gustavo e Rose. Suas colocações foram norteadoras especialmente para os requisitos funcionais pertinentes para as funcionalidades que tanto da aplicação web, quanto o Turtle Bee (modelo AGV) devem realizar respectivamente. 
 
-### Não funcionais
+Os demais Requisitos Funcionais - relacionados à estruturação do projeto foram idealizados em discussão entre os participantes do grupo, após análise do documento disponibilizado pelo orientador, denominado TAPI e o onboarding e apresentação do orientador sobre a problemática. 
+
+Em suma, a elaboração dos Requisitos Funcionais presentes abaixo deu-se a partir de discussão entre o grupo em encontros de desenvolvimento do projeto presenciais, baseando-se em nosso conhecimento acumulado na modelagem de sistemas e experiências de usuário. 
+
+<div align="center">
+  <table>
+    <tbody>
+    <tr>
+      <td><strong>Código</strong></td>
+      <td><strong>Requisito Funcional do Modelo AGV</strong></td>
+    </tr>
+    <tr>
+      <td>RF-AGV-01</td>
+      <td>O modelo AGV deve possuir um sensor capaz de detectar e quantificar a presença de gases voláteis no ambiente em que foi inserido. Os principais gases a serem detectados são o oxigênio, os gases tóxicos e outros.</td>
+    </tr>
+    <tr>
+      <td>RF-AGV-02</td>
+      <td>O modelo AGV deve possuir uma câmera embutida a fim de realizar o registro e a transmissão de imagens para inspeção visual do ambiente, posteriormente, por um funcionário ou pelo próprio sistema.</td>
+    </tr>
+    <tr>
+      <td>RF-AGV-03</td>
+      <td>O modelo AGV deve possuir iluminação embutida para garantir maior visibilidade durante a captura de imagens nos ambientes confinados nos quais foi inserido.</td>
+    </tr>
+    <tr>
+      <td>RF-AGV-04</td>
+      <td>O modelo AGV deve conseguir navegar pelos ambientes confinados de forma guiada, sendo possível configurar previamente uma rota a ser seguida, com base nos seguintes dados: distância (metros), tempo de deslocamento e pontos de inspeção.
+      </td>
+    </tr>
+    <tr>
+      <td>RF-AGV-05</td>
+      <td>O modelo AGV deve possuir um sensor capaz de detectar obstáculos ou objeto em sua frente, evitando possíveis colisões que venham causar algum tipo de dano estrutural ou de funcionamento.</td>
+    </tr>
+    <tr>
+      <td>RF-AGV-06</td>
+      <td>O modelo AGV deve fazer medições atmosférica dos gases pelo menos três vezes durante uma análise, sendo elas: no início da análise, no meio da análise e no final da análise.</td>
+    </tr>
+    <tr>
+      <td>RF-AGV-07</td>
+      <td>O modelo AGV deve conseguir examinar as condições do oxigênio na atmosfera do ambiente confinado ao qual foi inserido. Diagnosticando se há a existência de deficiência (< 19.5%) ou enriquecimento de oxigênio (> 23%).</td>
+    </tr>
+    <tr>
+      <td>RF-AGV-08</td>
+      <td>O modelo AGV deve emitir sinais sonoros para possibilitar a sinalização direta com os funcionários que o utilizam.</td>
+    </tr>
+     <tr>
+      <td>RF-AGV-09</td>
+      <td>O modelo AGV deverá ser capaz de voltar sozinho para o ponto de partida em caso de algum tipo de falha em seu funcionamento ou de encontrar um obstáculo que bloqueie o caminho.</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div align="center">
+  <table>
+    <tbody>
+    <tr>
+      <td><strong>Código</strong></td>
+      <td><strong>Requisito Funcional do Sistema</strong></td>
+    </tr>
+    <tr>
+      <td>RF-SI-01</td>
+      <td>O sistema deve ser capaz de se conectar com o modelo AGV para iniciar uma inspeção, sinalizando erros ou sucesso na tentativa de conexão. Deve exibir a mensagem "Conexão realizada com sucesso" em caso de sucesso e "Conexão mal sucedida" em caso de erro.</td>
+    </tr>
+    <tr>
+      <td>RF-SI-02</td>
+      <td>O sistema deve possuir um formulário de cadastro da análise a ser realizada, coletando as seguintes informações: nome, código e distância a ser percorrida pelo modelo AGV, e armazenando-as.</td>
+    </tr>
+    <tr>
+      <td>RF-SI-03</td>
+      <td>O sistema deve ser capaz de emitir um relatório final após a inspeção, demonstrando informações como a quantidade de medições das condições realizadas e detalhando em cada ponto a quantidade de oxigênio, a quantidade de gases e a distância percorrida.</td>
+    </tr>
+    <tr>
+      <td>RF-SI-04</td>
+      <td>O sistema deve ser capaz de realizar os testes dos sensores e dos atuadores do modelo AGV, informando o status de funcionamento de cada um.</td>
+    </tr>
+    <tr>
+      <td>RF-SI-05</td>
+      <td>O sistema deve possuir uma página para exibir a imagem transmitida em tempo real pelo modelo AGV, permitindo que o funcionário acompanhe a inspeção em tempo real.</td>
+    </tr>
+    <tr>
+      <td>RF-SI-06</td>
+      <td>O sistema deve permitir que os funcionários gerenciem as análises cadastradas, como a atualização, listagem, exclusão e visualização das análises.</td>
+    </tr>
+    <tr>
+      <td>RF-SI-07</td>
+      <td>O sistema deve ser capaz de realizar a comparação das imagens coletadas e dos gases detectados durante a primeira e segunda análises realizadas no ambiente confinado.</td>
+    </tr>
+    <tr>
+      <td>RF-SI-08</td>
+      <td>O sistema deve permitir a visualização dos resultados do escaneamento realizado durante a inspeção do LIDAR, sendo exibidos posteriormente em uma página no formato de Modelo Digital de Terreno (MDT) ou Modelo Digital de Superfície (MDS).</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+### Requisitos Não Funcionais
+
+Os Requisitos Não Funcionais foram idealizados em discussão entre os participantes do grupo, após análise do documento disponibilizado pelo orientador, denominado TAPI e o onboarding e apresentação do orientador sobre a problemática.
+
+
+<div align="center">
+  <table>
+    <tbody>
+    <tr>
+      <td><strong>Código</strong></td>
+      <td><strong>Requisitos Não Funcional</strong></td>
+    </tr>
+    <tr>
+      <td>RNF-01</td>
+      <td>O modelo AGV deve possuir um sistema de bateria que não cause faíscas elétricas durante a inspeção realizada pelo robô em ambientes confinados onde possam existir gases inflamáveis.</td>
+    </tr>
+    <tr>
+      <td>RNF-02</td>
+      <td>O sistema deve seguir e respeitar o formato pré-estabelecido pela Gerdau para a geração do relatório final da inspeção realizada.</td>
+    </tr>
+    <tr>
+      <td>RNF-03</td>
+      <td>O sistema deve possuir uma interface amigável e de fácil utilização para os funcionários que irão utilizá-lo, seguindo as heurísticas estabelecidas por Nielsen.</td>
+    </tr>
+    <tr>
+      <td>RNF-04</td>
+      <td>O sistema deve tentar exibir as imagens na melhor forma possível, dadas as condições de interferência, buscando manter a melhor qualidade da imagem e o tempo de atraso na transmissão baixo.</td>
+    </tr>
+    <tr>
+      <td>RNF-05</td>
+      <td>O modelo AGV deve possuir um sensor capaz de reconhecer gases voláteis de alta confiabilidade.</td>
+    </tr>
+    <tr>
+      <td>RNF-06</td>
+      <td>O modelo AGV deve realizar uma verificação do funcionamento de cada um de seus sensores antes de cada ensaio, fornecendo um feedback compreensível para o sistema.</td>
+    </tr>
+    <tr>
+      <td>RNF-07</td>
+      <td>O modelo AGV deve possuir uma comunicação clara e direta de seus erros, sucessos e processos de execução para o sistema.</td>
+    </tr>
+    <tr>
+      <td>RNF-08</td>
+      <td>O sistema deve funcionar sem erros durante todo o seu processo de utilização.</td>
+    </tr>
+    <tr>
+      <td>RNF-09</td>
+      <td>O sistema deve fornecer um feedback constante das etapas para o funcionário que está utilizando, a fim de mantê-lo informado sobre o progresso e eventuais problemas que possam surgir.</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+### Requisitos Não Funcionais Tecnologicos
+
+<div align="center">
+  <table>
+    <tbody>
+    <tr>
+      <td><strong>Código</strong></td>
+      <td><strong>Requisitos Não Funcional</strong></td>
+    </tr>
+    <tr>
+      <td>RNFT-01</td>
+      <td>O sistema deve usar o Prisma para fins de construção do Banco de Dados em SQLite3.</td>
+    </tr>
+    <tr>
+      <td>RNFT-02</td>
+      <td>O sistema deve usar o framework React e a linguagem de estilo CSS para o desenvolvimento Front-End do sistema.</td>
+    </tr>
+    <tr>
+      <td>RNFT-03</td>
+      <td>O sistema deve usar a linguagem de programação NEXT.js para desenvolvimento Back-End do sistema.</td>
+    </tr>
+    <tr>
+      <td>RNFT-04</td>
+      <td>Durante o desenvolvimento do projeto, a equipe deverá usar o Git e o GitHub para fins de versionamento de código.</td>
+    </tr>
+    <tr>
+      <td>RNFT-05</td>
+      <td>Durante o desenvolvimento do projeto, a equipe deverá usar o Monday para fins de organização de tarefas.</td>
+    </tr>
+    <tr>
+      <td>RNFT-06</td>
+      <td>O efetuador robótico a ser utilizado no projeto deverá ser o Turtle Bot 3 Burguer.</td>
+    </tr>
+    <tr>
+      <td>RNFT-07</td>
+      <td>Durante o projeto, a equipe deverá usar como microprocesador embarcado o Raspberry Pi 3.</td>
+    </tr>
+    <tr>
+      <td>RNFT-08</td>
+      <td>O Turtle Bot 3 Burguer deverá utilizar o ROS2 para transmissão de dados para o sistema.</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 
 ## Viabilidade técnica
 
