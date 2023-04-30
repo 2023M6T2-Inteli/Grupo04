@@ -39,6 +39,11 @@
 O [Link da planilha](https://docs.google.com/spreadsheets/d/1fdBVmryYQmFQlxbJAGag4HvFJhshYAbrzP_8vkfu81g/edit?usp=sharing) para vizualição completa pode ser encontada aqui.
 
 ## Canvas de proposta de valor
+O Canvas Proposta de Valor é uma ferramenta que surgiu para auxiliar na criação e posicionamento de produtos ou serviços em torno do que o cliente deseja e precisa. Ou seja, ele é uma ferramenta de organização que ajuda empreendedores a criarem soluções, levando em consideração a demanda de seus clientes. Para a construção do Canvas Proposta de Valor, é necessário que você conheça bem o seu cliente e o mercado em que está inserido. Afinal, é a partir dessas informações que você conseguirá criar uma proposta de valor que seja realmente relevante para o seu público-alvo. Em nosso caso, procuramos olhar para o usuario a partir de uma visão de empatia, ou seja, procuramos entender quais são as dores e necessidades do usuario, para que assim possamos criar uma solução que seja realmente relevante para o mesmo.
+
+![Alt text](images/canvas.png)
+
+O [Link do canvas](https://www.figma.com/file/dxrWcidu3c7Y0AH7lE5h8g/Value-Proposition-Canvas?node-id=0%3A1&t=U8SVz4ZV1kEaxYHE-1) para vizualição completa pode ser encontada aqui.
 
 ## Análise financeira
 
