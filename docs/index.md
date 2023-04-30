@@ -120,6 +120,27 @@ A utilização de personas se dá pela representação fictícia do cliente idea
 ![Alt text](images/Persona-2.png)
 ![Alt text](images/Persona-info-2.png)
 
+## User Stories
+
+### Gestora de riscos
+
+### Épico
+
+Como gestora de riscos da Gerdau, desejo ter acesso a um mecanismo de coleta de dados em ambientes confinados para inspeção e análise desses ambientes. 
+
+### User Story
+1. Eu, como gestora de riscos, quero ter acesso a um mecanismo automatizado com câmeras e sensores para coleta de dados em ambientes confinados, para assegurar a confiabilidade no planejamento de gerenciamento de riscos. 
+2. Eu, como gestora de riscos, quero  ter acesso a um sistema para monitorar e analisar em tempo real os dados coletados em ambientes confinados, para tomar decisões sobre a segurança dos trabalhadores.
+3. Eu, como gestora de riscos, quero ter acesso a análises e relatórios detalhados dos dados coletados em ambientes confinados, para identificar riscos e melhorias nos ambientes.
+4. Eu, como gestora de riscos, quero visualizar as pré-avaliações e após as avaliações realizadas em ambientes confinados, para garantir que os ambientes não sofreram alterações nesse processo. 
+5. Eu, como gestora de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja projetado com as normas de segurança vigentes, para garantir a segurança dos funcionários e precisão nas análises.
+
+### Técnico de riscos
+
+### Épico
+
+### User Story
+
 ## Fatores mercadológicos
 
 ### Orientação ao mercado e precificação
