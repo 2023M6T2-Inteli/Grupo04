@@ -165,11 +165,36 @@ Com o intuito de definir os principais objetivos dos usuários e o que se é esp
 
 ## Fatores mercadológicos
 
-#### A) Qual é o seu produto e como ele se orienta ao mercado?
+### Orientação ao mercado e precificação
 
-#### B) Qual é o cenário do mercado no qual o projeto se insere? 
+O modelo de negócio desse projeto é baseado na venda de uma solução de monitoramento de ambientes industriais por meio de um robô, modelo TurtleBot 3 Burger, equipado com sensor de gases voláteis e câmera. Por meio desse sistema, é possível realizar o monitoramento do ambiente sem a necessidade de um operador pelas proximidades, prezando pela sua segurança, mas ainda, tendo dados acurados e visão detalhada da área.
 
-#### C) Qual a visão do projeto proposto?
+Quanto a sua orientação no mercado, a solução tem como meta a otimização de um processo realizado pela Gerdau, logo, pode ser definida como B2B, uma vez que há a “venda” de um produto ou serviço para outro negócio.
+
+Para a precificação deste produto é preciso calcular os valores da construção da solução e da sua implementação na Gerdau. No que diz respeito o desenvolvimento, os custos que estão envolvidos são os dos componentes de hardware:
+
+- TurtleBot;
+- Sensor de gases;
+- Câmera;
+- Medidor de bateria.
+
+Como também, o frete de cada compra e o imposto de 60% sob o valor em produtos importados, que seria o caso do TurtleBot, e a hospedagem do sistema online.
+
+No que tange a inserção do produto na Gerdau, há o valor gasto no treinamento de funcionários, contratação de uma equipe para manutenção, instalação da forma de movimentação do robô e integração com o sistema existente. Contudo, considerando-se um cenário de comercialização do produto, é necessário avaliar-se a demanda do mercado e a concorrência com o produto. Para isso, a empresa deve realizar uma pesquisa de mercado que avaliará parâmetros que se referem ao valor que os consumidores pagariam nesse produto e também como esse fator pode influenciar diretamente no orçamento do produto e o lucro que a empresa poderá obter. 
+
+### Cenário do mercado
+
+A tecnologia AGV consta em veículos autoguiados de transporte, podendo ser utilizada em armazéns, no transporte de pacotes ou paletes, como empilhadeira ou reboque. Eles são capazes de se locomover de forma automatizada por meio de uma trajetória traçada anteriormente.
+
+Mundialmente, ela vem crescendo substancialmente, podendo chegar num aumento de 16,6% até 2027 e, mesmo estando mais concentrada da região asiática, tem sido cada vez mais presente na América Latina, devido a quantidade de economias emergentes, a concentração de indústria automotiva, que demanda a utilização de AGV, e o crescimento do setor de varejo, principalmente na área de eletrônicos, que planeja a organização e a automação de seus armazéns. 
+
+Em relação ao comportamento dos consumidores, há a busca por prazos de entrega menores, favorecendo a automatização, uma vez que ela permite uma carga horária de trabalho muito maior do que um humano, trabalhando até 24 horas ao dia, encurtando o tempo do processo de venda das empresas.
+
+Mas também, a indústria procura manter a integridade de seus funcionários, a automação pode ser utilizada na substituição de mão de obra humana em processos repetitivos, evitando a ocorrência de lesões, ademais, há a possibilidade de acesso a locais que apresentam riscos aos operadores. No Brasil, a mineradora Vale citou a segurança ao investir R$210 milhões em caminhões e perfuratrizes automatizadas.
+
+Em suma, o mercado de AGV latino consegue suprir as necessidades de seus clientes com um portfólio de produtos aprofundada como também permite a customização de projetos.
+
+### Visão do projeto proposto
 
 O projeto tem como principal objetivo reduzir acidentes em ambientes confinados e promover melhorias na segurança dos trabalhadores. Para isso, é necessário seguir os critérios de gerenciamento de riscos de espaços ocupacionais estabelecidos na norma regulamentadora NR-33. Esses locais apresentam riscos para os trabalhadores que precisam adentrar esses espaços, por isso, antes da entrada do funcionário, o sistema proposto deve realizar um levantamento avaliativo da situação atual do espaço confinado, identificando possíveis alterações na atmosfera, construção do ambiente ou perigos anteriormente mapeados.
 
@@ -177,17 +202,23 @@ Logo, a construção do sistema robótico almeja obter os parâmetros necessári
 
 Além de considerar as normas e regulamentações aplicáveis para estruturação do projeto, o projeto preocupa-se com fatores demográficos, uma vez que no Brasil não há uma cultura de prevenção de acidentes em ambientes de trabalho. No Brasil, é necessário a instalação de um ambiente de cultura que promova a prevenção de acidentes em ambientes de trabalho. Segundo o Observatório Digital de Saúde e Segurança do Trabalho, entre os anos de 2012 a 2018, foram registradas cerca de 17 mil mortes e 4 milhões de acidentes de trabalho no país. E nesse mesmo período, os gastos da Previdência com Benefícios Acidentários foram de aproximadamente R$79 bilhões, e somaram-se 351.7 milhões de dias de trabalho com afastamentos previdenciários e acidentários.
 
-#### D) Qual a inovação do sistema proposto?
+### Proposta de Inovação
 
-Infere-se que com a criação e implementação desse sistema, não será entregue apenas uma solução técnica, mas também cultural. A incorporação do projeto na empresa e resultados serão fundamentais para prevenção de acidentes, contribuindo diretamente para a redução de acidentes e gastos com afastamentos. Ademais, o sistema também apresenta potencial para a fomentação do desenvolvimento de outras tecnologias, como inteligência artificial para predição de diferentes cenários de acidentes, além de auxiliar na manutenção preditiva dos ambientes. 
-
-### Orientação ao mercado e precificação
-
-### Cenário do mercado
-
-### Visão do projeto proposto
+Infere-se que com a criação e implementação desse sistema, não será entregue apenas uma solução técnica, mas também cultural. A incorporação do projeto na empresa e resultados serão fundamentais para prevenção de acidentes, contribuindo diretamente para a redução de acidentes e gastos com afastamentos. Ademais, o sistema também apresenta potencial para a fomentação do desenvolvimento de outras tecnologias, como inteligência artificial para predição de diferentes cenários de acidentes, além de auxiliar na manutenção preditiva dos ambientes.
 
 ## Sistema produto-design
+
+### Missão do projeto
+
+A missão do projeto é a criação de uma ferramenta que possa tornar inspeções pré e pós intervenção humana em ambientes confinados mais segura e assertiva. Esta missão se relaciona com a visão institucional de um trabalho feito com excelência, valorizando em primeiro lugar a vida do colaborador. 
+
+Acredita-se que o dispositivo tem como diferencial e principal mensagem a característica de ser uma ferramenta munida de capacidades de sensoriamento e navegação autônoma pouco frequentes no mercado, capaz de aumentar a segurança e eficiência de processos de inspeção em ambientes confinados. O dispositivo possui capacidades de sensoriamento químico, no caso da detecção de gases voláteis, e espacial, usando o sensor LIDAR para a verificação da consistência espacial do ambiente, antes e depois da inspeção. Tais capacidades de sensoriamento são combinadas com rotinas de processamento de dados capazes de gerar estatísticas e representações gráficas úteis para a tomada de decisão por parte de um avaliador. Acrescenta-se a estas características, a capacidade de planejamento de rotas otimizadas do dispositivo. Este planejamento é feito de forma intuitiva, por meio da submissão de uma imagem da planta baixa do ambiente confinado a ser analisado na interface de utilização do dispositivo. De forma automática, o programa calcula a sequência de movimentos para a navegação do dispositivo já com uma rota otimizada para a realização da varredura em menor tempo. Tendo em vista as características técnicas da solução proposta, pretende-se posicionar este dispositivo como uma ferramenta arrojada do ponto de vista de coleta e processamento de dados para a geração de relatórios utilizados para tomada de decisão, e ao mesmo tempo, de fácil utilização mediante treinamento.
+
+### Formas de divulgação
+
+Tendo como objetivo divulgar as características técnicas da ferramenta proposta, para que esta possa atender às necessidades de mais ambientes onde se faz necessário a inspeção química e espacial de um ambientes confinado, uma série de ações do ponto de vista de divulgação e marketing para equipamentos industriais podem ser empregadas. Uma dessas estratégias é a participação, na modalidade de exposição em estandes com demonstração, de feiras e eventos do segmento de indústria que podem se beneficiar com a solução. Uma outra estratégia seria por meio de programas de referral onde uma empresa que adquire a solução proposta pode ganhar benefícios se indicar outras empresas parceiras que também adotem a tecnologia. Também é cogitado o uso de redes sociais profissionais, como o LinkedIn, para a divulgação de vídeos, infográficos e demais conteúdos que discutam sobre os impactos dos problemas que a solução proposta nesse projeto resolve, bem como suas capacidades técnicas e vantagens de negócio. 
+
+Por fim, mas não limitada a apenas estas estratégias, é proposto o uso da estratégia de marketing de conteúdo, onde o site da empresa divulga uma série de artigos discutindo sobre a importância de normas de segurança em ambientes confinados, tipos de acidentes que podem acontecer em ambientes de alto risco, consequências legais para empresas que não zelam pelas políticas de segurança de seus colaboradores, etc. Estes conteúdos servirão como a porta de entrada de pessoas interessadas nesses assuntos no site da empresa, porém, no próprio artigo pode haver um convite para conhecer a solução que o projeto propõe, atraindo assim, possíveis clientes.
 
 ## Sustentabilidade ambiental
 
@@ -457,3 +488,9 @@ Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 # Referências
 
 https://www.gov.br/fundacentro/pt-br/comunicacao/noticias/noticias/2019/4/acoes-regressivas-gestao-de-riscos-e-impacto-dos-acidentes-de-trabalho-foram-temas-de-debate acesso em 27/04/2023 
+
+https://www.sinova.com.br/2022/01/25/agv-veiculos-guiados-automatizados-tendencias-de-mercado-que-voce-precisa-saber/ acesso em 26/04/2023
+
+https://www.mordorintelligence.com/pt/industry-reports/latin-america-automated-guided-vehicles-market acesso em 25/04/2023
+
+https://vivomeunegocio.com.br/conteudos-gerais/inovar/robos-autonomos/ acesso em 27/04/2023
