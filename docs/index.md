@@ -35,8 +35,24 @@
   
 ![Matriz de Riscos](./images/matriz_de_risco.png)
 
-
 O [Link da planilha](https://docs.google.com/spreadsheets/d/1fdBVmryYQmFQlxbJAGag4HvFJhshYAbrzP_8vkfu81g/edit?usp=sharing) para vizualição completa pode ser encontrado aqui.
+
+## Proposta de Mitigação de Risco
+
+Mediante os riscos que levantamos, iremos buscar para evitá-los:
+ - Adicionar uma câmera para fazer uma primeira vistoria do local, a fim de localizar potenciais obstáculos;
+
+ - Usar os mesmos indicadores atmosféricos e de segurança que a Gerdau usa, o que irá garantir que estamos usando as medidas certas para avaliar a possibilidade uma pessoa entrar no ambiente, além de concentrar os esforços apenas nas variáveis necessárias;
+
+ - Fazer um manual de erros objetivo, que será acompanhado de uma documentação, de modo que juntos informem qual o erro, qula sua possível origem e como corrigí-lo;  
+
+ - Gerar informações sobre o ambiente no frontend e também em um formulário, de modo que se houver problema em um, o outro pode complementar ou substituir;
+
+ - Realizar testes nos sensores atuadores multiplas vezes antes de levar e campo e de colocá-lo no espaço confinado;
+
+ - Criar um código imbuído no robô para, caso ele perca conexão ou dê erro, que ele volte automaticamente, repetindo a rota que ele fez para ir;
+
+ - Adicionar um controlador de tensão para monitorar a quantidade de bateria; 
 
 ## Canvas de proposta de valor
 O Canvas Proposta de Valor é uma ferramenta que surgiu para auxiliar na criação e posicionamento de produtos ou serviços em torno do que o cliente deseja e precisa. Ou seja, ele é uma ferramenta de organização que ajuda empreendedores a criarem soluções, levando em consideração a demanda de seus clientes. 
@@ -49,14 +65,16 @@ O [Link do canvas](https://www.figma.com/file/dxrWcidu3c7Y0AH7lE5h8g/Value-Propo
 
 ## Análise financeira
 
-A análise financeira objetivou principalmente estimar o valor que seria gasto pela Gerdau, caso ela optasse por desenvolver uma outra empresa para desenvolver um MVP. Os itens foram estimados com base em análise de mercado.  
+A análise financeira objetivou principalmente estimar o valor que seria gasto pela Gerdau, caso ela optasse por desenvolver uma outra empresa para desenvolver um MVP. Seria um projeto desenvolvido ao longo de 2 meses, caso os desenvolvedores dedicassem toda suas horas ao projeto. Os itens foram estimados com base em análise de mercado.  
 Principais observações:
 
 - Para o Seguro foi considerado o valor de 10% da somatória dos outros custos;
 
-- Engenharia estima-se que seria 4 semanas de uma equipe de 3 engenheiros de dados pleno(R$ 10000.00) e um sênior(R$ 13000.00);
+- Engenharia estima-se que seria 8 semanas de uma equipe de 3 engenheiros de dados pleno(R$ 10000.00) e um sênior(R$ 13000.00);
 
 - O ICMS se baseia na taxa de veículos automotores do estado de São Paulo, que é 12%;  
+
+- A margem de lucro representa 20% dos custos da empresa para produzir o projeto  
   
 Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a solução pode oferecer maior segurança aos empregados da Gerdau, que por sua vez reduz a quantidade de acidentes. Além disso, otimiza o tempo de manutenção em cada vistoria, o que permite aumentar a produtividade.
 
@@ -76,7 +94,7 @@ Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a soluç�
     <tr>
       <td>Engenharia</td>
       <td>Serviço</td>
-      <td>R$ 43.000,00</td>
+      <td>R$ 86.000,00</td>
     </tr>
     <tr>
       <td>Sensor de gás - MQ - 2</td>
@@ -91,17 +109,22 @@ Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a soluç�
     <tr>
       <td>Seguro</td>
       <td>Manutenção</td>
-      <td>R$ 2.461,64</td>
+      <td>R$ 4.611,64</td>
     </tr>
     <tr>
       <td>ICMS</td>
       <td>Taxa</td>
       <td>R$ 652,80</td>
     </tr>
+    <tr>
+      <td>Margem de lucro da terceirizada (20%)</td>
+      <td>Margem de lucro</td>
+      <td>R$ 19.368,89</td>
+    </tr>
      <tr>
       <td></td>
       <td><strong>Total:</strong></td>
-      <td>R$ 51.694,44</td>
+      <td>R$ 116.213,33</td>
     </tr>
     </tbody>
   </table>
@@ -494,3 +517,8 @@ https://www.sinova.com.br/2022/01/25/agv-veiculos-guiados-automatizados-tendenci
 https://www.mordorintelligence.com/pt/industry-reports/latin-america-automated-guided-vehicles-market acesso em 25/04/2023
 
 https://vivomeunegocio.com.br/conteudos-gerais/inovar/robos-autonomos/ acesso em 27/04/2023
+
+
+# Sprint 2
+
+## Entendimento do Negócio
