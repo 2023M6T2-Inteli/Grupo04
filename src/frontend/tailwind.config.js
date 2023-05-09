@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'mont': ['Montserrat', 'sans-serif'],
-      'inter' : ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+      'inter' : ['Inter', 'sans-serif'],
     },
     screens: {
       'sm': '480px',
