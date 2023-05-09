@@ -233,9 +233,9 @@ Infere-se que com a criação e implementação desse sistema, não será entreg
 
 ### Entendimento do problema
 
-Na atualidade, a Gerdau possui, em suas fábricas, espaços conhecidos como confinados, aqueles que trazem algum risco para os funcionários em situações de exposição, logo, na necessidade de manutenção desses ambientes, uma inspeção é realizada, medindo os níveis de gases voláteis externamente, para definir se é segura a entrada de um operador.
+Na atualidade, a Gerdau possui, em suas fábricas, espaços conhecidos como confinados, aqueles que trazem algum risco para os funcionários em situações de exposição, logo, na necessidade de manutenção desses ambientes, uma inspeção é realizada, medindo os níveis de gases voláteis externamente, para definir se é segura a entrada de um operador nas tubulações.
 
-Contudo, devido ao fator da medição ser feita externamente, os valores captados não possuem uma alta acurácia, estando propenso a ocorrência de acidentes e não garantindo a completa segurança do colaborador, ferindo um dos mais importantes princípios da empresa.
+Contudo, devido ao fator da medição ser feita externamente, os valores captados não possuem uma alta acurácia, estando propenso a ocorrência de acidentes e não garantindo a completa segurança do colaborador, nosso objetivo é aprimorar essa atividade para proporcionar um trabalho mais seguro.
 
 ### Missão do projeto
 
