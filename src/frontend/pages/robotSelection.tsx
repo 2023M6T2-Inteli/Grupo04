@@ -1,6 +1,6 @@
 import Welcome from "@/components/Welcome";
 import GerdauBanner from "@/components/GerdauBanner.tsx";
-import {WelcomeType} from "@/components/Welcome";
+import { WelcomeType } from "@/components/WelcomeBody";
 
 const robotSelection = () => {
   return (

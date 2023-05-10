@@ -1,6 +1,6 @@
 import GerdauBanner from "@/components/GerdauBanner.tsx";
 import Welcome from "@/components/Welcome";
-import {WelcomeType} from "@/components/Welcome";
+import { WelcomeType } from "@/components/WelcomeBody";
 
 export default function Home() {
   return (
