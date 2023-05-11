@@ -6,7 +6,7 @@ const robotSelection = () => {
   return (
     <div className="w-screen h-screen lg:grid lg:grid-cols-5 overflow-hidden">
       <GerdauBanner />
-      <Welcome section={WelcomeType.Selection} link="/" />
+      <Welcome section={WelcomeType.Selection} link="/dashBoard" />
     </div>
   );
 };
