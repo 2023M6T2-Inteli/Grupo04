@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "typeface-inter": "^3.18.1",
+    "typeface-montserrat": "^1.1.13"
+  },
+  "dependencies": {
+    "framer-motion": "^10.12.10"
+  }
+}
