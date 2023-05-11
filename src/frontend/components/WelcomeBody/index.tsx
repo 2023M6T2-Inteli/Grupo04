@@ -3,25 +3,24 @@ import Image from "next/image";
 import confetti from "../../assets/confetti.svg";
 import Button, { ButtonType } from "../Button";
 import RobotChoice from "../RobotChoice";
-import Modal from "../Modal";
-import { Field } from "../Modal";
+import ModalHome from "../ModalHome";
+import { Field } from "../ModalHome";
 import { useState } from "react";
-
+import { useDisclosure } from "@chakra-ui/react";
 
 export enum WelcomeType {
-   Home,
-   Selection,
- }
-
+  Home,
+  Selection,
+}
 
 interface Props {
   section: WelcomeType;
 }
 
 interface Robot {
-   id: number;
-   name: string;
- }
+  id: number;
+  name: string;
+}
 
 const WelcomeBody: React.FC<Props> = ({ section }) => {
   const [robotChoice, setRobotChoice] = useState<Robot[]>([
@@ -36,11 +35,7 @@ const WelcomeBody: React.FC<Props> = ({ section }) => {
   ]);
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
 
-  const [createNewRobot, setCreateNewRobot] = useState<boolean>(false);
-
-  const handleClick = () => {
-    setCreateNewRobot((prev) => !prev);
-  };
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const fields: Field = {
     header: "Add new robot",
@@ -85,9 +80,9 @@ const WelcomeBody: React.FC<Props> = ({ section }) => {
             text="Add new robot"
             type={ButtonType.AddRobot}
             link=""
-            onClick={handleClick}
+            onClick={onOpen}
           />
-          {createNewRobot && <Modal onClick={handleClick} fields={fields} />}
+          <ModalHome isOpen={isOpen} onClose={onClose} fields={fields} />
           {robotChoice.map((robot) => (
             <RobotChoice
               onClick={() => setSelectedChoice(robot.id)}
