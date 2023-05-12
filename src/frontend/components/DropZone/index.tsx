@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Field } from "../ModalHome";
+import { Icon } from "@chakra-ui/react";
+import { AiFillFileAdd } from "react-icons/ai";
 
 interface Props {
   setFile: React.Dispatch<React.SetStateAction<File | null>>;
@@ -39,8 +41,9 @@ const DropZone: React.FC<Props> = ({ setFile, setStepsCompleted }) => {
   };
 
   return (
-    <div
-      className={`grow w-full border-dashed border-2 ${
+    <label
+      htmlFor="File"
+      className={`flex flex-col items-center hover:cursor-pointer justify-center grow w-full border-dashed border-2 ${
         isDraggingOver ? "border-green-500" : "border-gray-500"
       }`}
       style={{ borderRadius: "8px" }}
@@ -49,8 +52,10 @@ const DropZone: React.FC<Props> = ({ setFile, setStepsCompleted }) => {
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-      <input type="file" onChange={handleFile} className="h-full w-full" />
-    </div>
+      <AiFillFileAdd size={50} />
+      <p className="font-mont text-xl" >Drag or choose a file </p>
+      <input id="File" type="file" onChange={handleFile} className="hidden" />
+    </label>
   );
 };
 

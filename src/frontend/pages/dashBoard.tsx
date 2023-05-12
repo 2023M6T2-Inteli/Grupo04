@@ -11,7 +11,7 @@ export enum DisplayType {
 }
 
 const DashBoard = () => {
-  const [display, setDisplay] = useState<DisplayType>(DisplayType.AddAnalyze);
+  const [display, setDisplay] = useState<DisplayType>(DisplayType.Dashboard);
 
   return (
     <div className="h-screen w-screen overflow-hidden flex">

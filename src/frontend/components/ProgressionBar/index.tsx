@@ -9,6 +9,7 @@ interface StepInterface {
   name: string;
   next: boolean;
   completed: boolean;
+  pathChange?: boolean;
 }
 
 const ProgressionBar: React.FC<Props> = ({ stepsCompleted }) => {
@@ -17,11 +18,13 @@ const ProgressionBar: React.FC<Props> = ({ stepsCompleted }) => {
       name: "Set route",
       next: true,
       completed: stepsCompleted[0],
+      pathChange: stepsCompleted[1],
     },
     {
       name: "Route points",
       next: true,
       completed: stepsCompleted[1],
+      pathChange: stepsCompleted[2],
     },
     {
       name: "Information",
@@ -30,12 +33,13 @@ const ProgressionBar: React.FC<Props> = ({ stepsCompleted }) => {
     },
   ];
   return (
-    <div className="flex justify-center h-auto w-auto">
+    <div className="flex justify-center pt-5 h-auto w-auto">
       {steps.map((step) => (
         <StepAnalyze
           step={step.name}
           next={step.next}
           completed={step.completed}
+          pathChange={step.pathChange}
         />
       ))}
     </div>

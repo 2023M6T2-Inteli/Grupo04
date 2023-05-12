@@ -45,10 +45,22 @@ const SetRoute: React.FC<Props> = (props) => {
 
   return (
     <div className="flex flex-grow pb-3 justify-center">
-      <div className="flex flex-col items-center h-[65vh] w-[65vw] rounded-2xl shadow-2xl">
+      <div className="flex flex-col relative items-center h-[65vh] w-[65vw] rounded-2xl shadow-2xl">
         <ProgressionBar stepsCompleted={stepsCompleted} />
-        {!file && <FixedRoutes routes={routes} setStepsCompleted={setStepsCompleted} setFile={setFile} />}
-        {file && <ShowMap file={file} />}
+        {!file && (
+          <FixedRoutes
+            routes={routes}
+            setStepsCompleted={setStepsCompleted}
+            setFile={setFile}
+          />
+        )}
+        {file && (
+          <ShowMap
+            setFile={setFile}
+            setStepsCompleted={setStepsCompleted}
+            file={file}
+          />
+        )}
       </div>
     </div>
   );
