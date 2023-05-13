@@ -1,5 +1,47 @@
 <table><tbody><tr><td><a href="https://www2.gerdau.com.br/"><strong><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Gerdau_logo_%282011%29.svg/1200px-Gerdau_logo_%282011%29.svg.png" alt="Gerdau"></strong></a></td><td><a href="https://www.inteli.edu.br/"><strong><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança"></strong></a></td></tr></tbody></table>
 
+**Conteúdo**
+
+- [Entendimento de negócios](#entendimento-de-negócios)
+  - [Matriz de oceano azul](#matriz-de-oceano-azul)
+    - [Tabela](#tabela)
+    - [Gráfico](#gráfico)
+  - [Matriz de riscos](#matriz-de-riscos)
+  - [Proposta de Mitigação de Risco](#proposta-de-mitigação-de-risco)
+  - [Canvas de proposta de valor](#canvas-de-proposta-de-valor)
+  - [Análise financeira](#análise-financeira)
+- [Entendimento de metadesign](#entendimento-de-metadesign)
+  - [Personas](#personas)
+  - [User Stories](#user-stories)
+  - [Fatores mercadológicos](#fatores-mercadológicos)
+    - [Orientação ao mercado e precificação](#orientação-ao-mercado-e-precificação)
+    - [Cenário do mercado](#cenário-do-mercado)
+    - [Visão do projeto proposto](#visão-do-projeto-proposto)
+    - [Proposta de Inovação](#proposta-de-inovação)
+  - [Sistema produto-design](#sistema-produto-design)
+    - [Entendimento do problema](#entendimento-do-problema)
+    - [Missão do projeto](#missão-do-projeto)
+    - [Formas de divulgação](#formas-de-divulgação)
+  - [Sustentabilidade ambiental](#sustentabilidade-ambiental)
+- [Arquitetura do sistema](#arquitetura-do-sistema)
+  - [Análise de Requisitos](#análise-de-requisitos)
+    - [Requisitos funcionais](#requisitos-funcionais)
+    - [Requisitos Não Funcionais](#requisitos-não-funcionais)
+    - [Requisitos Não Funcionais Tecnologicos](#requisitos-não-funcionais-tecnologicos)
+  - [Viabilidade técnica](#viabilidade-técnica)
+  - [Proposta geral](#proposta-geral)
+    - [Componentes do TurtleBot](#componentes-do-turtlebot)
+    - [Backend](#backend)
+    - [Frontend](#frontend)
+    - [Comunicação](#comunicação)
+      - [Diagrama de arquitetura](#diagrama-de-arquitetura)
+      - [Diagrama de blocos](#diagrama-de-blocos)
+  - [Ideação e implementação da interface de usuário](#ideação-e-implementação-da-interface-de-usuário)
+    - [Mockup](#mockup)
+    - [Protótipo navegável](#protótipo-navegável)
+    - [Definição das entradas e saídas](#definição-das-entradas-e-saídas)
+    - [Implementação da interface de usuário](#implementação-da-interface-de-usuário)
+- [Referências](#referências)
 # Entendimento de negócios
 
 ## Matriz de oceano azul
@@ -514,6 +556,49 @@ Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 #### Diagrama de blocos
 ![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
 
+## Ideação e implementação da interface de usuário
+
+O grupo, como um todo, decidiu não desenvolver um wireframe devido ao tempo e às mudanças ocorridas durante a Sprint. Portanto, decidiu-se apenas pelo desenvolvimento do Mockup, do protótipo e pelo início da implementação do Frontend em React.js.
+
+### Mockup
+
+Para o desenvolvimento do mockup, foram utilizados a logo e as cores atuais do cliente, a fim de criar uma interface mais realista e adequada ao ambiente em que o cliente está inserido. Além disso, o Figma foi utilizado como ferramenta para o desenvolvimento do mockup, pois é uma ferramenta fácil de usar que permite a criação de protótipos de alta fidelidade. Também foi utilizado o recurso Autolayout, disponível no Figma, para a criação de uma interface que se adapta a diferentes tamanhos de tela e permite a prototipagem mais rápida. 
+
+Vale ressaltar que durante a apresentação da interface desenvolvida para o cliente, o mesmo elogiou a facilidade de uso da interface e o design.
+
+<p align="center">
+<img src="./images/mockup.png">
+</p>
+
+
+O [Link do mockup](https://www.figma.com/file/tat7O3wJpg7LOm2fb6D5Zh/Design?type=design&node-id=0%3A1&t=l8OtdM1wFwrC0ulu-1) para vizualição completa pode ser encontrado aqui.
+
+### Protótipo navegável
+O protótipo navegável desenvolvido é uma variação do mockup, com a adição da funcionalidade de navegação entre as telas. O protótipo também foi desenvolvido por meio da ferramenta de design Figma, que é fácil de usar e permite a criação de protótipos de alta fidelidade, com animações nas transições, o que auxilia no processo de validação com o cliente. Foram criados componentes personalizados com animações e estados (hover, selected, etc.), o que ajudou a ter uma visualização mais precisa antes de iniciar o desenvolvimento real.
+
+<p align="center">
+<img src="./images/prototipo.png">
+</p>
+
+O [Link do protótipo navegável](https://www.figma.com/proto/tat7O3wJpg7LOm2fb6D5Zh/Design?page-id=0%3A1&type=design&node-id=22-11&viewport=297%2C628%2C0.2&scaling=min-zoom&starting-point-node-id=57%3A17) para vizualição completa pode ser encontrado aqui.
+
+### Definição das entradas e saídas
+
+### Implementação da interface de usuário
+Visando uma aceleração e adiantamento do projeto, o grupo decidiu iniciar a implementação do Frontend em React.js. Para isso, foi utilizado o Next.js, que é um framework que permite a criação de aplicações React.js. Algumas telas inicias já estão 100% implementadas e funcionando de acorodo com o planejado e protipado no Figma. Para vizualização completa do que já foi emplementado basta navegar pela pastas
+
+  ``src/frontend/``
+
+Posterioemente rodar o comando:
+
+  ``npm run dev``
+
+E acessar o link:
+
+  ``http://localhost:3000/``
+
+Posteriormente a paginas de boas vindas será carregada, sendo possível vizualizar o que já foi implementado.
+
 # Referências
 
 https://www.gov.br/fundacentro/pt-br/comunicacao/noticias/noticias/2019/4/acoes-regressivas-gestao-de-riscos-e-impacto-dos-acidentes-de-trabalho-foram-temas-de-debate acesso em 27/04/2023 
@@ -524,7 +609,3 @@ https://www.mordorintelligence.com/pt/industry-reports/latin-america-automated-g
 
 https://vivomeunegocio.com.br/conteudos-gerais/inovar/robos-autonomos/ acesso em 27/04/2023
 
-
-# Sprint 2
-
-## Entendimento do Negócio
