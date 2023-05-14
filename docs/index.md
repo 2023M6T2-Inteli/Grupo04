@@ -324,6 +324,46 @@ O backend será construído usando as seguintes tecnologias:
 
 O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comunicação bidirecional com o TurtleBot.
 
+### Sistema de locomoção e otimização de rota
+
+#### Arquitetura do sistema de simulação e integração com o sistema operacional robótico
+#### Escolha e implementação do algoritmo de otimização de rota
+#### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
+
+O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, serão utilizados ROS2 (Robot Operating System 2), Gazebo, e um algoritmo personalizado escrito em JavaScript e Python, com o framework Sanic. Por meio dessa implementação, almeja-se que o robô se locomova no ambiente simulado no Gazebo de forma eficiente, considerando a melhor rota e evitando obstáculos.
+
+**Descrição da arquitetura do sistema**
+
+O sistema é organizado em três componentes principais que se comunicam: ROS2, Gazebo e script.js, executado em um servidor Sanic. 
+
+**ROS2 e Gazebo**
+
+O ROS2 permite a comunicação entre os diferentes nós do sistema, enquanto o Gazebo é utilizado para a simulação do ambiente e do robô. O robô é controlado através de mensagens publicadas em tópicos específicos do ROS2, que são lidos pelo Gazebo para executar os comandos de movimento.
+
+**Script.js, Python e Servidor Sanic**
+
+O algoritmo de otimização de rota é implementado em um script.js e main.py, que é executado em um servidor Sanic. O servidor Sanic permite que o script.js e main.py se comunique com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e main.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Sanic.
+
+
+**Planejamento da comunicação entre os Componentes**
+
+A comunicação entre os sistemas será executada na sprint três de desenvolvimento desse projeto. Para tal, pretende-se seguir as seguintes etapas considerando cada um dos componentes:
+
+1) **ROS2 (Robot Operating System 2):** Responsável pela comunicação com a simulação do Gazebo e o controle do robô. Ele receberá as instruções de rota do script.js através do Sanic e encaminhará no formato de comandos de movimentação para o robô na simulação.
+
+2) **Gazebo:** O Gazebo receberá comandos do ROS2 para controlar o robô e fornecerá feedback sobre a posição e o status do robô. E reiniciará o ciclo à medida que receber atualizações. 
+
+3) **Script.js e main.py:** O algoritmo escrito em JavaScript e Python irá calcular a rota otimizada para o robô, por meio de dados recebidos via interface web imputados pelo usuário, e em seguida, encaminhará para o ROS2 através do Sanic.
+
+4) **Sanic:** O servidor receberá a rota otimizada do script.js e a encaminhará para o ROS2.
+
+A arquitetura do sistema pode ser visualizada abaixo:
+
+
+**Pacote para o Algoritmo**
+
+Para a implementação de integração no sistema, o script.js, main.py e o servidor Sanic serão encapsulados em um pacote de software que será instalado no ROS2. Este pacote incluirá todas as dependências necessárias para a execução do algoritmo posteriormente lidos no Gazebo. 
+
 ### Frontend
 
 O frontend será desenvolvido com Next.js e React.js, e será hospedado em um serviço cloud. A interface permitirá que os usuários interajam com o TurtleBot e solicitem ações específicas. O frontend se comunicará com o backend, que por sua vez, gerencia a comunicação com o TurtleBot por meio de uma rede ROS2. Além de realizar ações como:
