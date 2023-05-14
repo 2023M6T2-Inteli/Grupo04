@@ -38,7 +38,7 @@
     - [Mockup](#mockup)
     - [Protótipo navegável](#protótipo-navegável)
     - [Definição das entradas e saídas](#definição-das-entradas-e-saídas)
-      - [Interface de usuário](#interface-de-usuário)
+      - [Interações](#interações)
     - [Implementação da interface de usuário](#implementação-da-interface-de-usuário)
 - [Referências](#referências)
 
@@ -335,7 +335,7 @@ O [Link do protótipo navegável](https://www.figma.com/proto/tat7O3wJpg7LOm2fb6
 
 ### Definição das entradas e saídas
 
-#### Interface de usuário
+#### Interações
 
 <table><tbody><tr><td><strong>#</strong></td><td><strong>Configuração do ambiente&nbsp;</strong></td><td><strong>Ação do usuário</strong></td></tr><tr><td>1</td><td>O Turtlebot deve estar conectado a rede Wi-Fi.</td><td>Tendo o IP do robô, o usuário poderá cadastrar ao sistema preenchendo o formulário.</td></tr><tr><td>2</td><td>Usuário pode cadastrar um novo robô ao sistema.&nbsp;</td><td>O robô estando ligado a rede e com bateria, o usuário poderá fazer a tentativa de conectividade, “selecionando o robô” na lista de robôs cadastrados no sistema.</td></tr><tr><td>3</td><td>Um usuário deseja cadastra uma rota ou imagem da planta em formato PNG, JPEG ou JPG.</td><td>Já na tela de cadastro de análise, o usuário deverá clicar no botão de “carregar arquivo” e escolher o arquivo no sistema.</td></tr><tr><td>4</td><td>O usuário deseja selecionar uma rota já cadastrada.</td><td>Na tela de cadastro de análise, o usuário deve clicar em uma “rota exibida” na listagem no início do formulário.</td></tr><tr><td>5</td><td>O usuário deseja acompanhar a análise em tempo real.</td><td>O usuário deverá ter preenchido o formulário de cadastro de uma análise corretamente e clicado no botão “finalizar”.&nbsp;</td></tr><tr><td>6</td><td>Usuário cogita deletar uma análise cadastrada.</td><td>O usuário deverá clicar no botão “Delete” sinalizado com um ícone de lixeira e na cor vermelha.</td></tr><tr><td>7</td><td>O usuário deseja encontra uma análise cadastrada.</td><td>Na página de “histórico de análises” o usuário poderá buscar pelo nome ou id da análise</td></tr><tr><td>8</td><td>Usuário deseja testar os sensores do TurtleBot.</td><td>O usuário deverá navegar até a pagina de testes e escolher dentre os sensores que deseja testar, posteriormente clicando no botão de “iniciar”.</td></tr></tbody></table>
 
