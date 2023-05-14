@@ -1,62 +1,60 @@
-<table><tbody><tr><td><a href="https://www2.gerdau.com.br/"><strong><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Gerdau_logo_%282011%29.svg/1200px-Gerdau_logo_%282011%29.svg.png" alt="Gerdau"></strong></a></td><td><a href="https://www.inteli.edu.br/"><strong><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança"></strong></a></td></tr></tbody></table>
-
 **Conteúdo**
 
-- [Entendimento de negócios](#entendimento-de-negócios)
+- [Entendimento de negócios](#entendimento-de-neg%C3%B3cios)
   - [Matriz de oceano azul](#matriz-de-oceano-azul)
     - [Tabela](#tabela)
-    - [Gráfico](#gráfico)
+    - [Gráfico](#gr%C3%A1fico)
   - [Matriz de riscos](#matriz-de-riscos)
-  - [Proposta de Mitigação de Risco](#proposta-de-mitigação-de-risco)
+  - [Proposta de Mitigação de Risco](#proposta-de-mitiga%C3%A7%C3%A3o-de-risco)
   - [Canvas de proposta de valor](#canvas-de-proposta-de-valor)
-  - [Análise financeira](#análise-financeira)
+  - [Análise financeira](#an%C3%A1lise-financeira)
 - [Entendimento de metadesign](#entendimento-de-metadesign)
   - [Personas](#personas)
   - [User Stories](#user-stories)
-  - [Fatores mercadológicos](#fatores-mercadológicos)
-    - [Orientação ao mercado e precificação](#orientação-ao-mercado-e-precificação)
-    - [Cenário do mercado](#cenário-do-mercado)
-    - [Visão do projeto proposto](#visão-do-projeto-proposto)
-    - [Proposta de Inovação](#proposta-de-inovação)
+  - [Fatores mercadológicos](#fatores-mercadol%C3%B3gicos)
+    - [Orientação ao mercado e precificação](#orienta%C3%A7%C3%A3o-ao-mercado-e-precifica%C3%A7%C3%A3o)
+    - [Cenário do mercado](#cen%C3%A1rio-do-mercado)
+    - [Visão do projeto proposto](#vis%C3%A3o-do-projeto-proposto)
+    - [Proposta de Inovação](#proposta-de-inova%C3%A7%C3%A3o)
   - [Sistema produto-design](#sistema-produto-design)
     - [Entendimento do problema](#entendimento-do-problema)
-    - [Missão do projeto](#missão-do-projeto)
-    - [Formas de divulgação](#formas-de-divulgação)
+    - [Missão do projeto](#miss%C3%A3o-do-projeto)
+    - [Formas de divulgação](#formas-de-divulga%C3%A7%C3%A3o)
   - [Sustentabilidade ambiental](#sustentabilidade-ambiental)
 - [Arquitetura do sistema](#arquitetura-do-sistema)
-  - [Análise de Requisitos](#análise-de-requisitos)
+  - [Análise de Requisitos](#an%C3%A1lise-de-requisitos)
     - [Requisitos funcionais](#requisitos-funcionais)
-    - [Requisitos Não Funcionais](#requisitos-não-funcionais)
-    - [Requisitos Não Funcionais Tecnologicos](#requisitos-não-funcionais-tecnologicos)
-  - [Viabilidade técnica](#viabilidade-técnica)
+    - [Requisitos Não Funcionais](#requisitos-n%C3%A3o-funcionais)
+    - [Requisitos Não Funcionais Tecnologicos](#requisitos-n%C3%A3o-funcionais-tecnologicos)
+  - [Viabilidade técnica](#viabilidade-t%C3%A9cnica)
   - [Proposta geral](#proposta-geral)
     - [Componentes do TurtleBot](#componentes-do-turtlebot)
     - [Backend](#backend)
     - [Frontend](#frontend)
-    - [Comunicação](#comunicação)
+    - [Comunicação](#comunica%C3%A7%C3%A3o)
       - [Diagrama de arquitetura](#diagrama-de-arquitetura)
       - [Diagrama de blocos](#diagrama-de-blocos)
-  - [Ideação e implementação da interface de usuário](#ideação-e-implementação-da-interface-de-usuário)
+  - [Ideação e implementação da interface de usuário](#idea%C3%A7%C3%A3o-e-implementa%C3%A7%C3%A3o-da-interface-de-usu%C3%A1rio)
     - [Mockup](#mockup)
-    - [Protótipo navegável](#protótipo-navegável)
-    - [Definição das entradas e saídas](#definição-das-entradas-e-saídas)
-    - [Implementação da interface de usuário](#implementação-da-interface-de-usuário)
-- [Referências](#referências)
+    - [Protótipo navegável](#prot%C3%B3tipo-naveg%C3%A1vel)
+    - [Definição das entradas e saídas](#defini%C3%A7%C3%A3o-das-entradas-e-sa%C3%ADdas)
+      - [Interface de usuário](#interface-de-usu%C3%A1rio)
+    - [Implementação da interface de usuário](#implementa%C3%A7%C3%A3o-da-interface-de-usu%C3%A1rio)
+- [Referências](#refer%C3%AAncias)
+
 # Entendimento de negócios
 
 ## Matriz de oceano azul
 
-- É um termo utilizado na estratégia de negócios para descrever um espaço de mercado não explorado ou inexistente.  Em outras palavras, uma matriz de oceano azul representa um mercado novo e desconhecido, onde a concorrência é irrelevante ou inexistente. 
+- É um termo utilizado na estratégia de negócios para descrever um espaço de mercado não explorado ou inexistente. Em outras palavras, uma matriz de oceano azul representa um mercado novo e desconhecido, onde a concorrência é irrelevante ou inexistente.
 
 ### Tabela
-<div align="center"><table><tbody><tr><td><strong>Atributos</strong></td><td><strong>TurtleBee</strong></td><td><a href="https://csrrobotics.com/"><strong><u>CSR Robotics</u></strong></a></td><td><a href="https://nexxis.com/robotic-inspection-inside-confined-spaces/"><strong><u>Nexxis</u></strong></a></td><td><strong>Gerdau</strong></td></tr><tr><td><strong>Preço</strong></td><td>6</td><td>1</td><td>3</td><td>4</td></tr><tr><td><strong>Qualidade</strong></td><td>7</td><td>10</td><td>9</td><td>6</td></tr><tr><td><strong>Tecnologia</strong></td><td>6</td><td>9</td><td>7</td><td>4</td></tr><tr><td><strong>Conforto</strong></td><td>7</td><td>5</td><td>10</td><td>4</td></tr><tr><td><strong>Comodidade</strong></td><td>9</td><td>4</td><td>9</td><td>7</td></tr><tr><td><strong>Praticidade</strong></td><td>10</td><td>5</td><td>8</td><td>7</td></tr></tbody></table></div>
+
+<table><tbody><tr><td><strong>Atributos</strong></td><td><strong>TurtleBee</strong></td><td><a href="https://csrrobotics.com/"><strong><u>CSR Robotics</u></strong></a></td><td><a href="https://nexxis.com/robotic-inspection-inside-confined-spaces/"><strong><u>Nexxis</u></strong></a></td><td><strong>Gerdau</strong></td></tr><tr><td><strong>Preço</strong></td><td>6</td><td>1</td><td>3</td><td>4</td></tr><tr><td><strong>Qualidade</strong></td><td>7</td><td>10</td><td>9</td><td>6</td></tr><tr><td><strong>Tecnologia</strong></td><td>6</td><td>9</td><td>7</td><td>4</td></tr><tr><td><strong>Conforto</strong></td><td>7</td><td>5</td><td>10</td><td>4</td></tr><tr><td><strong>Comodidade</strong></td><td>9</td><td>4</td><td>9</td><td>7</td></tr><tr><td><strong>Praticidade</strong></td><td>10</td><td>5</td><td>8</td><td>7</td></tr></tbody></table>
 
 ### Gráfico
 
-<p align="center">
-<img src="./images/matriz_oceano_azul.png">
-</p>
-
+![](./images/matriz_oceano_azul.png)
 
 - Reduzir
   - Perigo para os técnicos
@@ -73,8 +71,9 @@
   - Agilidade do processo
 
 ## Matriz de riscos
+
 - A Matriz de Riscos é uma ferramenta de gerenciamento de riscos que permite de forma visual identificar quais são os riscos que devem receber mais atenção. Por se tratar de uma ferramenta para priorização de riscos, ela pode ser aplicada na etapa de avaliação de riscos.
-  
+
 ![Matriz de Riscos](./images/matriz_de_risco.png)
 
 O [Link da planilha](https://docs.google.com/spreadsheets/d/1fdBVmryYQmFQlxbJAGag4HvFJhshYAbrzP_8vkfu81g/edit?usp=sharing) para vizualição completa pode ser encontrado aqui.
@@ -82,22 +81,24 @@ O [Link da planilha](https://docs.google.com/spreadsheets/d/1fdBVmryYQmFQlxbJAGa
 ## Proposta de Mitigação de Risco
 
 Mediante os riscos que levantamos, iremos buscar para evitá-los:
- - Adicionar uma câmera para fazer uma primeira vistoria do local, a fim de localizar potenciais obstáculos;
 
- - Usar os mesmos indicadores atmosféricos e de segurança que a Gerdau usa, o que irá garantir que estamos usando as medidas certas para avaliar a possibilidade uma pessoa entrar no ambiente, além de concentrar os esforços apenas nas variáveis necessárias;
+Adicionar uma câmera para fazer uma primeira vistoria do local, a fim de localizar potenciais obstáculos;
 
- - Fazer um manual de erros objetivo, que será acompanhado de uma documentação, de modo que juntos informem qual o erro, qula sua possível origem e como corrigí-lo;  
+Usar os mesmos indicadores atmosféricos e de segurança que a Gerdau usa, o que irá garantir que estamos usando as medidas certas para avaliar a possibilidade uma pessoa entrar no ambiente, além de concentrar os esforços apenas nas variáveis necessárias;
 
- - Gerar informações sobre o ambiente no frontend e também em um formulário, de modo que se houver problema em um, o outro pode complementar ou substituir;
+Fazer um manual de erros objetivo, que será acompanhado de uma documentação, de modo que juntos informem qual o erro, qula sua possível origem e como corrigí-lo;
 
- - Realizar testes nos sensores atuadores multiplas vezes antes de levar e campo e de colocá-lo no espaço confinado;
+Gerar informações sobre o ambiente no frontend e também em um formulário, de modo que se houver problema em um, o outro pode complementar ou substituir;
 
- - Criar um código imbuído no robô para, caso ele perca conexão ou dê erro, que ele volte automaticamente, repetindo a rota que ele fez para ir;
+Realizar testes nos sensores atuadores multiplas vezes antes de levar e campo e de colocá-lo no espaço confinado;
 
- - Adicionar um controlador de tensão para monitorar a quantidade de bateria; 
+Criar um código imbuído no robô para, caso ele perca conexão ou dê erro, que ele volte automaticamente, repetindo a rota que ele fez para ir;
+
+Adicionar um controlador de tensão para monitorar a quantidade de bateria;
 
 ## Canvas de proposta de valor
-O Canvas Proposta de Valor é uma ferramenta que surgiu para auxiliar na criação e posicionamento de produtos ou serviços em torno do que o cliente deseja e precisa. Ou seja, ele é uma ferramenta de organização que ajuda empreendedores a criarem soluções, levando em consideração a demanda de seus clientes. 
+
+O Canvas Proposta de Valor é uma ferramenta que surgiu para auxiliar na criação e posicionamento de produtos ou serviços em torno do que o cliente deseja e precisa. Ou seja, ele é uma ferramenta de organização que ajuda empreendedores a criarem soluções, levando em consideração a demanda de seus clientes.
 
 Para a construção do Canvas Proposta de Valor, é necessário que você conheça bem o seu cliente e o mercado em que está inserido. Afinal, é a partir dessas informações que você conseguirá criar uma proposta de valor que seja realmente relevante para o seu público-alvo. Em nosso caso, procuramos olhar para o usuario a partir de uma visão de empatia, ou seja, procuramos entender quais são as dores e necessidades do usuario, para que assim possamos criar uma solução que seja realmente relevante para o mesmo.
 
@@ -110,67 +111,17 @@ O [Link do canvas](https://www.figma.com/file/dxrWcidu3c7Y0AH7lE5h8g/Value-Propo
 A análise financeira objetivou principalmente estimar o valor que seria gasto pela Gerdau, caso ela optasse por desenvolver uma outra empresa para desenvolver um MVP. Seria um projeto desenvolvido ao longo de 2 meses, caso os desenvolvedores dedicassem toda suas horas ao projeto. Os itens foram estimados com base em análise de mercado.  
 Principais observações:
 
-- Para o Seguro foi considerado o valor de 10% da somatória dos outros custos;
+Para o Seguro foi considerado o valor de 10% da somatória dos outros custos;
 
-- Engenharia estima-se que seria 8 semanas de uma equipe de 3 engenheiros de dados pleno(R$ 10000.00) e um sênior(R$ 13000.00);
+Engenharia estima-se que seria 8 semanas de uma equipe de 3 engenheiros de dados pleno(R$ 10000.00) e um sênior(R$ 13000.00);
 
-- O ICMS se baseia na taxa de veículos automotores do estado de São Paulo, que é 12%;  
+O ICMS se baseia na taxa de veículos automotores do estado de São Paulo, que é 12%;
 
-- A margem de lucro representa 20% dos custos da empresa para produzir o projeto  
-  
+A margem de lucro representa 20% dos custos da empresa para produzir o projeto
+
 Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a solução pode oferecer maior segurança aos empregados da Gerdau, que por sua vez reduz a quantidade de acidentes. Além disso, otimiza o tempo de manutenção em cada vistoria, o que permite aumentar a produtividade.
 
-<div align="center">
-  <table>
-    <tbody>
-    <tr>
-      <td><strong>Itens</strong></td>
-      <td><strong>Categoria</strong></td>
-      <td><strong>Preço Estimado</strong></td>
-    </tr>
-    <tr>
-      <td>TurtleBot3 - Burger +  60% Importação</td>
-      <td>Hardware</td>
-      <td>R$ 5.440,00 </td>
-    </tr>
-    <tr>
-      <td>Engenharia</td>
-      <td>Serviço</td>
-      <td>R$ 86.000,00</td>
-    </tr>
-    <tr>
-      <td>Sensor de gás - MQ - 2</td>
-      <td>Hardware</td>
-      <td>R$ 40,00</td>
-    </tr>
-    <tr>
-      <td>Câmera</td>
-      <td>Hardware</td>
-      <td>R$ 100,00</td>
-    </tr>
-    <tr>
-      <td>Seguro</td>
-      <td>Manutenção</td>
-      <td>R$ 4.611,64</td>
-    </tr>
-    <tr>
-      <td>ICMS</td>
-      <td>Taxa</td>
-      <td>R$ 652,80</td>
-    </tr>
-    <tr>
-      <td>Margem de lucro da terceirizada (20%)</td>
-      <td>Margem de lucro</td>
-      <td>R$ 19.368,89</td>
-    </tr>
-     <tr>
-      <td></td>
-      <td><strong>Total:</strong></td>
-      <td>R$ 116.213,33</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<table><tbody><tr><td><strong>Itens</strong></td><td><strong>Categoria</strong></td><td><strong>Preço Estimado</strong></td></tr><tr><td>TurtleBot3 - Burger + 60% Importação</td><td>Hardware</td><td>R$ 5.440,00</td></tr><tr><td>Engenharia</td><td>Serviço</td><td>R$ 86.000,00</td></tr><tr><td>Sensor de gás - MQ - 2</td><td>Hardware</td><td>R$ 40,00</td></tr><tr><td>Câmera</td><td>Hardware</td><td>R$ 100,00</td></tr><tr><td>Seguro</td><td>Manutenção</td><td>R$ 4.611,64</td></tr><tr><td>ICMS</td><td>Taxa</td><td>R$ 652,80</td></tr><tr><td>Margem de lucro da terceirizada (20%)</td><td>Margem de lucro</td><td>R$ 19.368,89</td></tr><tr><td>&nbsp;</td><td><strong>Total:</strong></td><td>R$ 116.213,33</td></tr></tbody></table>
 
 O [Link da planilha](https://docs.google.com/spreadsheets/d/1r8g5DCsZJI9akuSPPXa-gyhqJ1ZzOMrjQ_6VsDGgP98/edit?usp=sharing) para vizualição completa pode ser encontrado aqui.
 
@@ -180,53 +131,26 @@ O [Link da planilha](https://docs.google.com/spreadsheets/d/1r8g5DCsZJI9akuSPPXa
 
 A utilização de personas se dá pela representação fictícia do cliente ideal de um negócio. É baseada em dados reais sobre comportamento e características demográficas dos clientes, assim como histórias pessoais, motivações, objetivos, desafios e preocupações. Nos dando uma visão geral do cliente, e nos ajudando a entender melhor o cliente e suas necessidades e seus problemas enfrentados, assim como suas expectativas em relação ao produto. É válido ressaltar que foram utilizadas informações fornecidas pela Gerdau, e que as personas foram criadas com base nesses dados.
 
-![Alt text](images/Persona-1.png)
-![Alt text](images/Persona-info-1.png)
-![Alt text](images/Persona-2.png)
+![Alt text](images/Persona-1.png)  
+![Alt text](images/Persona-info-1.png)  
+![Alt text](images/Persona-2.png)  
 ![Alt text](images/Persona-info-2.png)
 
 ## User Stories
-Com o intuito de definir os principais objetivos dos usuários e o que se é esperado do produto desenvolvido, foram-se delimitados os principais épicos, as grandes histórias do usuários, que necessitam ser subdivididos em users stories (histórias do usuário menores. Foram definidos dois principais épicos para as personas e delimitados user stories específicos para atender cada caso. 
 
-<table>
-  <thead>
-    <tr>
-      <th>Épico</th>
-      <th>User story</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="5">Como gestora de riscos da Gerdau, desejo ter acesso a um mecanismo de coleta de dados em ambientes confinados para inspeção e análise desses ambientes.</td>
-      <td>Eu, como gestora de riscos, quero ter acesso a um mecanismo automatizado com câmeras e sensores para coleta de dados em ambientes confinados, para assegurar a confiabilidade no planejamento de gerenciamento de riscos.</td>
-    </tr>
-    <tr>
-      <td>Eu, como gestora de riscos, quero ter acesso a um sistema para monitorar e analisar em tempo real os dados coletados em ambientes confinados, para tomar decisões sobre a segurança dos trabalhadores.</td>
-    </tr>
-    <tr>
-      <td>Eu, como gestora de riscos, quero ter acesso a análises e relatórios detalhados dos dados coletados em ambientes confinados, para identificar riscos e melhorias nos ambientes.</td>
-    </tr>
-    <tr>
-      <td>Eu, como gestora de riscos, quero visualizar as pré-avaliações e após as avaliações realizadas em ambientes confinados, para garantir que os ambientes não sofreram alterações nesse processo.</td>
-    </tr>
-    <tr>
-      <td>Eu, como gestora de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja projetado com as normas de segurança vigentes, para garantir a segurança dos funcionários e precisão nas análises.</td>
-    </tr>
-    <tr>
-      <td rowspan="4">Como técnico de riscos da Gerdau, desejo ter acesso a um mecanismo que me permita realizar procedimentos de inspeção em ambientes confinados da empresa com maior segurança.</td>
-      <td>Eu, como técnico de riscos, desejo ter acesso a um mecanismo de pré avaliação em ambientes confinados, para que eu possa realizar inspeções sem me expor a possíveis riscos e garantir a minha segurança.</td>
-    </tr>
-    <tr>
-      <td>Eu, como técnico de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja de fácil uso, para que eu possa realizar inspeções com eficiência e sem dificuldade.</td>
-    </tr>
-    <tr>
-      <td>Eu, como técnico de riscos, desejo ter acesso a um sistema com alertas em tempo real para possíveis riscos, para que eu possa agir rapidamente em caso de situações de emergência.</td>
-    </tr>
-    <tr>
-     <td>Eu, como técnico de riscos, desejo visualizar os dados coletados durante a pré avaliação, para que eu possa analisar e avaliar possíveis riscos e tomar decisões para ações necessárias na inspeção.</td>
-     </tr>
-  </tbody>
-</table>
+Com o intuito de definir os principais objetivos dos usuários e o que se é esperado do produto desenvolvido, foram-se delimitados os principais épicos, as grandes histórias do usuários, que necessitam ser subdivididos em users stories (histórias do usuário menores. Foram definidos dois principais épicos para as personas e delimitados user stories específicos para atender cada caso.
+
+| Épico                                                                                                                                                                                                          | User story                                                                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Como gestora de riscos da Gerdau, desejo ter acesso a um mecanismo de coleta de dados em ambientes confinados para inspeção e análise desses ambientes.                                                        | Eu, como gestora de riscos, quero ter acesso a um mecanismo automatizado com câmeras e sensores para coleta de dados em ambientes confinados, para assegurar a confiabilidade no planejamento de gerenciamento de riscos. |
+| Eu, como gestora de riscos, quero ter acesso a um sistema para monitorar e analisar em tempo real os dados coletados em ambientes confinados, para tomar decisões sobre a segurança dos trabalhadores.         |                                                                                                                                                                                                                           |
+| Eu, como gestora de riscos, quero ter acesso a análises e relatórios detalhados dos dados coletados em ambientes confinados, para identificar riscos e melhorias nos ambientes.                                |                                                                                                                                                                                                                           |
+| Eu, como gestora de riscos, quero visualizar as pré-avaliações e após as avaliações realizadas em ambientes confinados, para garantir que os ambientes não sofreram alterações nesse processo.                 |                                                                                                                                                                                                                           |
+| Eu, como gestora de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja projetado com as normas de segurança vigentes, para garantir a segurança dos funcionários e precisão nas análises. |                                                                                                                                                                                                                           |
+| Como técnico de riscos da Gerdau, desejo ter acesso a um mecanismo que me permita realizar procedimentos de inspeção em ambientes confinados da empresa com maior segurança.                                   | Eu, como técnico de riscos, desejo ter acesso a um mecanismo de pré avaliação em ambientes confinados, para que eu possa realizar inspeções sem me expor a possíveis riscos e garantir a minha segurança.                 |
+| Eu, como técnico de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja de fácil uso, para que eu possa realizar inspeções com eficiência e sem dificuldade.                               |                                                                                                                                                                                                                           |
+| Eu, como técnico de riscos, desejo ter acesso a um sistema com alertas em tempo real para possíveis riscos, para que eu possa agir rapidamente em caso de situações de emergência.                             |                                                                                                                                                                                                                           |
+| Eu, como técnico de riscos, desejo visualizar os dados coletados durante a pré avaliação, para que eu possa analisar e avaliar possíveis riscos e tomar decisões para ações necessárias na inspeção.           |                                                                                                                                                                                                                           |
 
 ## Fatores mercadológicos
 
@@ -245,13 +169,13 @@ Para a precificação deste produto é preciso calcular os valores da construç�
 
 Como também, o frete de cada compra e o imposto de 60% sob o valor em produtos importados, que seria o caso do TurtleBot, e a hospedagem do sistema online.
 
-No que tange a inserção do produto na Gerdau, há o valor gasto no treinamento de funcionários, contratação de uma equipe para manutenção, instalação da forma de movimentação do robô e integração com o sistema existente. Contudo, considerando-se um cenário de comercialização do produto, é necessário avaliar-se a demanda do mercado e a concorrência com o produto. Para isso, a empresa deve realizar uma pesquisa de mercado que avaliará parâmetros que se referem ao valor que os consumidores pagariam nesse produto e também como esse fator pode influenciar diretamente no orçamento do produto e o lucro que a empresa poderá obter. 
+No que tange a inserção do produto na Gerdau, há o valor gasto no treinamento de funcionários, contratação de uma equipe para manutenção, instalação da forma de movimentação do robô e integração com o sistema existente. Contudo, considerando-se um cenário de comercialização do produto, é necessário avaliar-se a demanda do mercado e a concorrência com o produto. Para isso, a empresa deve realizar uma pesquisa de mercado que avaliará parâmetros que se referem ao valor que os consumidores pagariam nesse produto e também como esse fator pode influenciar diretamente no orçamento do produto e o lucro que a empresa poderá obter.
 
 ### Cenário do mercado
 
 A tecnologia AGV consta em veículos autoguiados de transporte, podendo ser utilizada em armazéns, no transporte de pacotes ou paletes, como empilhadeira ou reboque. Eles são capazes de se locomover de forma automatizada por meio de uma trajetória traçada anteriormente.
 
-Mundialmente, ela vem crescendo substancialmente, podendo chegar num aumento de 16,6% até 2027 e, mesmo estando mais concentrada da região asiática, tem sido cada vez mais presente na América Latina, devido a quantidade de economias emergentes, a concentração de indústria automotiva, que demanda a utilização de AGV, e o crescimento do setor de varejo, principalmente na área de eletrônicos, que planeja a organização e a automação de seus armazéns. 
+Mundialmente, ela vem crescendo substancialmente, podendo chegar num aumento de 16,6% até 2027 e, mesmo estando mais concentrada da região asiática, tem sido cada vez mais presente na América Latina, devido a quantidade de economias emergentes, a concentração de indústria automotiva, que demanda a utilização de AGV, e o crescimento do setor de varejo, principalmente na área de eletrônicos, que planeja a organização e a automação de seus armazéns.
 
 Em relação ao comportamento dos consumidores, há a busca por prazos de entrega menores, favorecendo a automatização, uma vez que ela permite uma carga horária de trabalho muito maior do que um humano, trabalhando até 24 horas ao dia, encurtando o tempo do processo de venda das empresas.
 
@@ -281,13 +205,13 @@ Contudo, devido ao fator da medição ser feita externamente, os valores captado
 
 ### Missão do projeto
 
-A missão do projeto é a criação de uma ferramenta que possa tornar inspeções pré e pós intervenção humana em ambientes confinados mais segura e assertiva. Esta missão se relaciona com a visão institucional de um trabalho feito com excelência, valorizando em primeiro lugar a vida do colaborador. 
+A missão do projeto é a criação de uma ferramenta que possa tornar inspeções pré e pós intervenção humana em ambientes confinados mais segura e assertiva. Esta missão se relaciona com a visão institucional de um trabalho feito com excelência, valorizando em primeiro lugar a vida do colaborador.
 
 Acredita-se que o dispositivo tem como diferencial e principal mensagem a característica de ser uma ferramenta munida de capacidades de sensoriamento e navegação autônoma pouco frequentes no mercado, capaz de aumentar a segurança e eficiência de processos de inspeção em ambientes confinados. O dispositivo possui capacidades de sensoriamento químico, no caso da detecção de gases voláteis, e espacial, usando o sensor LIDAR para a verificação da consistência espacial do ambiente, antes e depois da inspeção. Tais capacidades de sensoriamento são combinadas com rotinas de processamento de dados capazes de gerar estatísticas e representações gráficas úteis para a tomada de decisão por parte de um avaliador. Acrescenta-se a estas características, a capacidade de planejamento de rotas otimizadas do dispositivo. Este planejamento é feito de forma intuitiva, por meio da submissão de uma imagem da planta baixa do ambiente confinado a ser analisado na interface de utilização do dispositivo. De forma automática, o programa calcula a sequência de movimentos para a navegação do dispositivo já com uma rota otimizada para a realização da varredura em menor tempo. Tendo em vista as características técnicas da solução proposta, pretende-se posicionar este dispositivo como uma ferramenta arrojada do ponto de vista de coleta e processamento de dados para a geração de relatórios utilizados para tomada de decisão, e ao mesmo tempo, de fácil utilização mediante treinamento.
 
 ### Formas de divulgação
 
-Tendo como objetivo divulgar as características técnicas da ferramenta proposta, para que esta possa atender às necessidades de mais ambientes onde se faz necessário a inspeção química e espacial de um ambientes confinado, uma série de ações do ponto de vista de divulgação e marketing para equipamentos industriais podem ser empregadas. Uma dessas estratégias é a participação, na modalidade de exposição em estandes com demonstração, de feiras e eventos do segmento de indústria que podem se beneficiar com a solução. Uma outra estratégia seria por meio de programas de referral onde uma empresa que adquire a solução proposta pode ganhar benefícios se indicar outras empresas parceiras que também adotem a tecnologia. Também é cogitado o uso de redes sociais profissionais, como o LinkedIn, para a divulgação de vídeos, infográficos e demais conteúdos que discutam sobre os impactos dos problemas que a solução proposta nesse projeto resolve, bem como suas capacidades técnicas e vantagens de negócio. 
+Tendo como objetivo divulgar as características técnicas da ferramenta proposta, para que esta possa atender às necessidades de mais ambientes onde se faz necessário a inspeção química e espacial de um ambientes confinado, uma série de ações do ponto de vista de divulgação e marketing para equipamentos industriais podem ser empregadas. Uma dessas estratégias é a participação, na modalidade de exposição em estandes com demonstração, de feiras e eventos do segmento de indústria que podem se beneficiar com a solução. Uma outra estratégia seria por meio de programas de referral onde uma empresa que adquire a solução proposta pode ganhar benefícios se indicar outras empresas parceiras que também adotem a tecnologia. Também é cogitado o uso de redes sociais profissionais, como o LinkedIn, para a divulgação de vídeos, infográficos e demais conteúdos que discutam sobre os impactos dos problemas que a solução proposta nesse projeto resolve, bem como suas capacidades técnicas e vantagens de negócio.
 
 Por fim, mas não limitada a apenas estas estratégias, é proposto o uso da estratégia de marketing de conteúdo, onde o site da empresa divulga uma série de artigos discutindo sobre a importância de normas de segurança em ambientes confinados, tipos de acidentes que podem acontecer em ambientes de alto risco, consequências legais para empresas que não zelam pelas políticas de segurança de seus colaboradores, etc. Estes conteúdos servirão como a porta de entrada de pessoas interessadas nesses assuntos no site da empresa, porém, no próprio artigo pode haver um convite para conhecer a solução que o projeto propõe, atraindo assim, possíveis clientes.
 
@@ -305,209 +229,36 @@ Em geral, a solução apresenta possíveis impactos ambientais que são contorn�
 
 # Arquitetura do sistema
 
-## Análise de Requisitos 
+## Análise de Requisitos
 
-### Requisitos funcionais 
-Os Requisitos Funcionais foram inicialmente pensados com base em entrevista com o cliente Luis Gustavo e Rose. Suas colocações foram norteadoras especialmente para os requisitos funcionais pertinentes para as funcionalidades que tanto da aplicação web, quanto o Turtle Bee (modelo AGV) devem realizar respectivamente. 
+### Requisitos funcionais
 
-Os demais Requisitos Funcionais - relacionados à estruturação do projeto foram idealizados em discussão entre os participantes do grupo, após análise do documento disponibilizado pelo orientador, denominado TAPI e o onboarding e apresentação do orientador sobre a problemática. 
+Os Requisitos Funcionais foram inicialmente pensados com base em entrevista com o cliente Luis Gustavo e Rose. Suas colocações foram norteadoras especialmente para os requisitos funcionais pertinentes para as funcionalidades que tanto da aplicação web, quanto o Turtle Bee (modelo AGV) devem realizar respectivamente.
 
-Em suma, a elaboração dos Requisitos Funcionais presentes abaixo deu-se a partir de discussão entre o grupo em encontros de desenvolvimento do projeto presenciais, baseando-se em nosso conhecimento acumulado na modelagem de sistemas e experiências de usuário. 
+Os demais Requisitos Funcionais - relacionados à estruturação do projeto foram idealizados em discussão entre os participantes do grupo, após análise do documento disponibilizado pelo orientador, denominado TAPI e o onboarding e apresentação do orientador sobre a problemática.
 
-<div align="center">
-  <table>
-    <tbody>
-    <tr>
-      <td><strong>Código</strong></td>
-      <td><strong>Requisito Funcional do Modelo AGV</strong></td>
-    </tr>
-    <tr>
-      <td>RF-AGV-01</td>
-      <td>O modelo AGV deve possuir um sensor capaz de detectar e quantificar a presença de gases voláteis no ambiente em que foi inserido. Os principais gases a serem detectados são o oxigênio, os gases tóxicos e outros.</td>
-    </tr>
-    <tr>
-      <td>RF-AGV-02</td>
-      <td>O modelo AGV deve possuir uma câmera embutida a fim de realizar o registro e a transmissão de imagens para inspeção visual do ambiente, posteriormente, por um funcionário ou pelo próprio sistema.</td>
-    </tr>
-    <tr>
-      <td>RF-AGV-03</td>
-      <td>O modelo AGV deve possuir iluminação embutida para garantir maior visibilidade durante a captura de imagens nos ambientes confinados nos quais foi inserido.</td>
-    </tr>
-    <tr>
-      <td>RF-AGV-04</td>
-      <td>O modelo AGV deve conseguir navegar pelos ambientes confinados de forma guiada, sendo possível configurar previamente uma rota a ser seguida, com base nos seguintes dados: distância (metros), tempo de deslocamento e pontos de inspeção.
-      </td>
-    </tr>
-    <tr>
-      <td>RF-AGV-05</td>
-      <td>O modelo AGV deve possuir um sensor capaz de detectar obstáculos ou objeto em sua frente, evitando possíveis colisões que venham causar algum tipo de dano estrutural ou de funcionamento.</td>
-    </tr>
-    <tr>
-      <td>RF-AGV-06</td>
-      <td>O modelo AGV deve fazer medições atmosférica dos gases pelo menos três vezes durante uma análise, sendo elas: no início da análise, no meio da análise e no final da análise.</td>
-    </tr>
-    <tr>
-      <td>RF-AGV-07</td>
-      <td>O modelo AGV deve conseguir examinar as condições do oxigênio na atmosfera do ambiente confinado ao qual foi inserido. Diagnosticando se há a existência de deficiência (< 19.5%) ou enriquecimento de oxigênio (> 23%).</td>
-    </tr>
-    <tr>
-      <td>RF-AGV-08</td>
-      <td>O modelo AGV deve emitir sinais sonoros para possibilitar a sinalização direta com os funcionários que o utilizam.</td>
-    </tr>
-     <tr>
-      <td>RF-AGV-09</td>
-      <td>O modelo AGV deverá ser capaz de voltar sozinho para o ponto de partida em caso de algum tipo de falha em seu funcionamento ou de encontrar um obstáculo que bloqueie o caminho.</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+Em suma, a elaboração dos Requisitos Funcionais presentes abaixo deu-se a partir de discussão entre o grupo em encontros de desenvolvimento do projeto presenciais, baseando-se em nosso conhecimento acumulado na modelagem de sistemas e experiências de usuário.
 
-<div align="center">
-  <table>
-    <tbody>
-    <tr>
-      <td><strong>Código</strong></td>
-      <td><strong>Requisito Funcional do Sistema</strong></td>
-    </tr>
-    <tr>
-      <td>RF-SI-01</td>
-      <td>O sistema deve ser capaz de se conectar com o modelo AGV para iniciar uma inspeção, sinalizando erros ou sucesso na tentativa de conexão. Deve exibir a mensagem "Conexão realizada com sucesso" em caso de sucesso e "Conexão mal sucedida" em caso de erro.</td>
-    </tr>
-    <tr>
-      <td>RF-SI-02</td>
-      <td>O sistema deve possuir um formulário de cadastro da análise a ser realizada, coletando as seguintes informações: nome, código e distância a ser percorrida pelo modelo AGV, e armazenando-as.</td>
-    </tr>
-    <tr>
-      <td>RF-SI-03</td>
-      <td>O sistema deve ser capaz de emitir um relatório final após a inspeção, demonstrando informações como a quantidade de medições das condições realizadas e detalhando em cada ponto a quantidade de oxigênio, a quantidade de gases e a distância percorrida.</td>
-    </tr>
-    <tr>
-      <td>RF-SI-04</td>
-      <td>O sistema deve ser capaz de realizar os testes dos sensores e dos atuadores do modelo AGV, informando o status de funcionamento de cada um.</td>
-    </tr>
-    <tr>
-      <td>RF-SI-05</td>
-      <td>O sistema deve possuir uma página para exibir a imagem transmitida em tempo real pelo modelo AGV, permitindo que o funcionário acompanhe a inspeção em tempo real.</td>
-    </tr>
-    <tr>
-      <td>RF-SI-06</td>
-      <td>O sistema deve permitir que os funcionários gerenciem as análises cadastradas, como a atualização, listagem, exclusão e visualização das análises.</td>
-    </tr>
-    <tr>
-      <td>RF-SI-07</td>
-      <td>O sistema deve ser capaz de realizar a comparação das imagens coletadas e dos gases detectados durante a primeira e segunda análises realizadas no ambiente confinado.</td>
-    </tr>
-    <tr>
-      <td>RF-SI-08</td>
-      <td>O sistema deve permitir a visualização dos resultados do escaneamento realizado durante a inspeção do LIDAR, sendo exibidos posteriormente em uma página no formato de Modelo Digital de Terreno (MDT) ou Modelo Digital de Superfície (MDS).</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<table><tbody><tr><td><strong>Código</strong></td><td><strong>Requisito Funcional do Modelo AGV</strong></td></tr><tr><td>RF-AGV-01</td><td>O modelo AGV deve possuir um sensor capaz de detectar e quantificar a presença de gases voláteis no ambiente em que foi inserido. Os principais gases a serem detectados são o oxigênio, os gases tóxicos e outros.</td></tr><tr><td>RF-AGV-02</td><td>O modelo AGV deve possuir uma câmera embutida a fim de realizar o registro e a transmissão de imagens para inspeção visual do ambiente, posteriormente, por um funcionário ou pelo próprio sistema.</td></tr><tr><td>RF-AGV-03</td><td>O modelo AGV deve possuir iluminação embutida para garantir maior visibilidade durante a captura de imagens nos ambientes confinados nos quais foi inserido.</td></tr><tr><td>RF-AGV-04</td><td>O modelo AGV deve conseguir navegar pelos ambientes confinados de forma guiada, sendo possível configurar previamente uma rota a ser seguida, com base nos seguintes dados: distância (metros), tempo de deslocamento e pontos de inspeção.</td></tr><tr><td>RF-AGV-05</td><td>O modelo AGV deve possuir um sensor capaz de detectar obstáculos ou objeto em sua frente, evitando possíveis colisões que venham causar algum tipo de dano estrutural ou de funcionamento.</td></tr><tr><td>RF-AGV-06</td><td>O modelo AGV deve fazer medições atmosférica dos gases pelo menos três vezes durante uma análise, sendo elas: no início da análise, no meio da análise e no final da análise.</td></tr><tr><td>RF-AGV-07</td><td>O modelo AGV deve conseguir examinar as condições do oxigênio na atmosfera do ambiente confinado ao qual foi inserido. Diagnosticando se há a existência de deficiência (&lt; 19.5%) ou enriquecimento de oxigênio (&gt; 23%).</td></tr><tr><td>RF-AGV-08</td><td>O modelo AGV deve emitir sinais sonoros para possibilitar a sinalização direta com os funcionários que o utilizam.</td></tr><tr><td>RF-AGV-09</td><td>O modelo AGV deverá ser capaz de voltar sozinho para o ponto de partida em caso de algum tipo de falha em seu funcionamento ou de encontrar um obstáculo que bloqueie o caminho.</td></tr></tbody></table>
+
+<table><tbody><tr><td><strong>Código</strong></td><td><strong>Requisito Funcional do Sistema</strong></td></tr><tr><td>RF-SI-01</td><td>O sistema deve ser capaz de se conectar com o modelo AGV para iniciar uma inspeção, sinalizando erros ou sucesso na tentativa de conexão. Deve exibir a mensagem "Conexão realizada com sucesso" em caso de sucesso e "Conexão mal sucedida" em caso de erro.</td></tr><tr><td>RF-SI-02</td><td>O sistema deve possuir um formulário de cadastro da análise a ser realizada, coletando as seguintes informações: nome, código e distância a ser percorrida pelo modelo AGV, e armazenando-as.</td></tr><tr><td>RF-SI-03</td><td>O sistema deve ser capaz de emitir um relatório final após a inspeção, demonstrando informações como a quantidade de medições das condições realizadas e detalhando em cada ponto a quantidade de oxigênio, a quantidade de gases e a distância percorrida.</td></tr><tr><td>RF-SI-04</td><td>O sistema deve ser capaz de realizar os testes dos sensores e dos atuadores do modelo AGV, informando o status de funcionamento de cada um.</td></tr><tr><td>RF-SI-05</td><td>O sistema deve possuir uma página para exibir a imagem transmitida em tempo real pelo modelo AGV, permitindo que o funcionário acompanhe a inspeção em tempo real.</td></tr><tr><td>RF-SI-06</td><td>O sistema deve permitir que os funcionários gerenciem as análises cadastradas, como a atualização, listagem, exclusão e visualização das análises.</td></tr><tr><td>RF-SI-07</td><td>O sistema deve ser capaz de realizar a comparação das imagens coletadas e dos gases detectados durante a primeira e segunda análises realizadas no ambiente confinado.</td></tr><tr><td>RF-SI-08</td><td>O sistema deve permitir a visualização dos resultados do escaneamento realizado durante a inspeção do LIDAR, sendo exibidos posteriormente em uma página no formato de Modelo Digital de Terreno (MDT) ou Modelo Digital de Superfície (MDS).</td></tr></tbody></table>
 
 ### Requisitos Não Funcionais
 
 Os Requisitos Não Funcionais foram idealizados em discussão entre os participantes do grupo, após análise do documento disponibilizado pelo orientador, denominado TAPI e o onboarding e apresentação do orientador sobre a problemática.
 
-
-<div align="center">
-  <table>
-    <tbody>
-    <tr>
-      <td><strong>Código</strong></td>
-      <td><strong>Requisitos Não Funcional</strong></td>
-    </tr>
-    <tr>
-      <td>RNF-01</td>
-      <td>O modelo AGV deve possuir um sistema de bateria que não cause faíscas elétricas durante a inspeção realizada pelo robô em ambientes confinados onde possam existir gases inflamáveis.</td>
-    </tr>
-    <tr>
-      <td>RNF-02</td>
-      <td>O sistema deve seguir e respeitar o formato pré-estabelecido pela Gerdau para a geração do relatório final da inspeção realizada.</td>
-    </tr>
-    <tr>
-      <td>RNF-03</td>
-      <td>O sistema deve possuir uma interface amigável e de fácil utilização para os funcionários que irão utilizá-lo, seguindo as heurísticas estabelecidas por Nielsen.</td>
-    </tr>
-    <tr>
-      <td>RNF-04</td>
-      <td>O sistema deve tentar exibir as imagens na melhor forma possível, dadas as condições de interferência, buscando manter a melhor qualidade da imagem e o tempo de atraso na transmissão baixo.</td>
-    </tr>
-    <tr>
-      <td>RNF-05</td>
-      <td>O modelo AGV deve possuir um sensor capaz de reconhecer gases voláteis de alta confiabilidade.</td>
-    </tr>
-    <tr>
-      <td>RNF-06</td>
-      <td>O modelo AGV deve realizar uma verificação do funcionamento de cada um de seus sensores antes de cada ensaio, fornecendo um feedback compreensível para o sistema.</td>
-    </tr>
-    <tr>
-      <td>RNF-07</td>
-      <td>O modelo AGV deve possuir uma comunicação clara e direta de seus erros, sucessos e processos de execução para o sistema.</td>
-    </tr>
-    <tr>
-      <td>RNF-08</td>
-      <td>O sistema deve funcionar sem erros durante todo o seu processo de utilização.</td>
-    </tr>
-    <tr>
-      <td>RNF-09</td>
-      <td>O sistema deve fornecer um feedback constante das etapas para o funcionário que está utilizando, a fim de mantê-lo informado sobre o progresso e eventuais problemas que possam surgir.</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<table><tbody><tr><td><strong>Código</strong></td><td><strong>Requisitos Não Funcional</strong></td></tr><tr><td>RNF-01</td><td>O modelo AGV deve possuir um sistema de bateria que não cause faíscas elétricas durante a inspeção realizada pelo robô em ambientes confinados onde possam existir gases inflamáveis.</td></tr><tr><td>RNF-02</td><td>O sistema deve seguir e respeitar o formato pré-estabelecido pela Gerdau para a geração do relatório final da inspeção realizada.</td></tr><tr><td>RNF-03</td><td>O sistema deve possuir uma interface amigável e de fácil utilização para os funcionários que irão utilizá-lo, seguindo as heurísticas estabelecidas por Nielsen.</td></tr><tr><td>RNF-04</td><td>O sistema deve tentar exibir as imagens na melhor forma possível, dadas as condições de interferência, buscando manter a melhor qualidade da imagem e o tempo de atraso na transmissão baixo.</td></tr><tr><td>RNF-05</td><td>O modelo AGV deve possuir um sensor capaz de reconhecer gases voláteis de alta confiabilidade.</td></tr><tr><td>RNF-06</td><td>O modelo AGV deve realizar uma verificação do funcionamento de cada um de seus sensores antes de cada ensaio, fornecendo um feedback compreensível para o sistema.</td></tr><tr><td>RNF-07</td><td>O modelo AGV deve possuir uma comunicação clara e direta de seus erros, sucessos e processos de execução para o sistema.</td></tr><tr><td>RNF-08</td><td>O sistema deve funcionar sem erros durante todo o seu processo de utilização.</td></tr><tr><td>RNF-09</td><td>O sistema deve fornecer um feedback constante das etapas para o funcionário que está utilizando, a fim de mantê-lo informado sobre o progresso e eventuais problemas que possam surgir.</td></tr></tbody></table>
 
 ### Requisitos Não Funcionais Tecnologicos
 
-<div align="center">
-  <table>
-    <tbody>
-    <tr>
-      <td><strong>Código</strong></td>
-      <td><strong>Requisitos Não Funcional</strong></td>
-    </tr>
-    <tr>
-      <td>RNFT-01</td>
-      <td>O sistema deve usar o Prisma para fins de construção do Banco de Dados em SQLite3.</td>
-    </tr>
-    <tr>
-      <td>RNFT-02</td>
-      <td>O sistema deve usar o framework React e a linguagem de estilo CSS para o desenvolvimento Front-End do sistema.</td>
-    </tr>
-    <tr>
-      <td>RNFT-03</td>
-      <td>O sistema deve usar a linguagem de programação NEXT.js para desenvolvimento Back-End do sistema.</td>
-    </tr>
-    <tr>
-      <td>RNFT-04</td>
-      <td>Durante o desenvolvimento do projeto, a equipe deverá usar o Git e o GitHub para fins de versionamento de código.</td>
-    </tr>
-    <tr>
-      <td>RNFT-05</td>
-      <td>Durante o desenvolvimento do projeto, a equipe deverá usar o Monday para fins de organização de tarefas.</td>
-    </tr>
-    <tr>
-      <td>RNFT-06</td>
-      <td>O efetuador robótico a ser utilizado no projeto deverá ser o Turtle Bot 3 Burguer.</td>
-    </tr>
-    <tr>
-      <td>RNFT-07</td>
-      <td>Durante o projeto, a equipe deverá usar como microprocesador embarcado o Raspberry Pi 3.</td>
-    </tr>
-    <tr>
-      <td>RNFT-08</td>
-      <td>O Turtle Bot 3 Burguer deverá utilizar o ROS2 para transmissão de dados para o sistema.</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<table><tbody><tr><td><strong>Código</strong></td><td><strong>Requisitos Não Funcional</strong></td></tr><tr><td>RNFT-01</td><td>O sistema deve usar o Prisma para fins de construção do Banco de Dados em SQLite3.</td></tr><tr><td>RNFT-02</td><td>O sistema deve usar o framework React e a linguagem de estilo CSS para o desenvolvimento Front-End do sistema.</td></tr><tr><td>RNFT-03</td><td>O sistema deve usar a linguagem de programação NEXT.js para desenvolvimento Back-End do sistema.</td></tr><tr><td>RNFT-04</td><td>Durante o desenvolvimento do projeto, a equipe deverá usar o Git e o GitHub para fins de versionamento de código.</td></tr><tr><td>RNFT-05</td><td>Durante o desenvolvimento do projeto, a equipe deverá usar o Monday para fins de organização de tarefas.</td></tr><tr><td>RNFT-06</td><td>O efetuador robótico a ser utilizado no projeto deverá ser o Turtle Bot 3 Burguer.</td></tr><tr><td>RNFT-07</td><td>Durante o projeto, a equipe deverá usar como microprocesador embarcado o Raspberry Pi 3.</td></tr><tr><td>RNFT-08</td><td>O Turtle Bot 3 Burguer deverá utilizar o ROS2 para transmissão de dados para o sistema.</td></tr></tbody></table>
 
 ## Viabilidade técnica
 
 O TurtleBee é um projeto focado em gerar uma solução para os problemas presentes no dia a dia dos técnicos envolvidos com espaços confinados, seja tanto na parte de segurança quanto de inspeção, buscando facilitar seu dia a dia através de seu sistema.  
-Diante da sua proposta, escolhemos utilizar o TurtleBot Burger, um robô que possui potencial de processamento para os sistemas que vamos utilizar, porém possui certas limitações em relação à sua locomoção. O robô tem dificuldades de se movimentar em locais desnivelados, impossibilitando sua utilização em certas situações, em compensação, o robô é compacto o suficiente para entrar nos locais confinados.  
+Diante da sua proposta, escolhemos utilizar o TurtleBot Burger, um robô que possui potencial de processamento para os sistemas que vamos utilizar, porém possui certas limitações em relação à sua locomoção. O robô tem dificuldades de se movimentar em locais desnivelados, impossibilitando sua utilização em certas situações, em compensação, o robô é compacto o suficiente para entrar nos locais confinados.
 
-Além disso, o robô terá sensores acoplados que são responsáveis por identificar níveis de gases tóxicos no ambiente, suas capacidades serão testadas através de sensores mais simples, semelhantes aos usados na indústria. Apesar de serem mais básicos, eles conseguem captar o que é preciso, em contrapartida, não é possível captar todos os gases tóxicos, sendo limitados a apenas 5 gases. Dizendo um pouco sobre onde esses dados serão armazenados, o robô terá um sistema que realizará comunicações através do protocolo MQTT, utilizando o servidor do HiveMQ, que funciona como um broker remoto, por ele possuir dependências da rede, caso a rede caia, será armazenado informações no próprio robô até a conexão ser restabelecida.  
+Além disso, o robô terá sensores acoplados que são responsáveis por identificar níveis de gases tóxicos no ambiente, suas capacidades serão testadas através de sensores mais simples, semelhantes aos usados na indústria. Apesar de serem mais básicos, eles conseguem captar o que é preciso, em contrapartida, não é possível captar todos os gases tóxicos, sendo limitados a apenas 5 gases. Dizendo um pouco sobre onde esses dados serão armazenados, o robô terá um sistema que realizará comunicações através do protocolo MQTT, utilizando o servidor do HiveMQ, que funciona como um broker remoto, por ele possuir dependências da rede, caso a rede caia, será armazenado informações no próprio robô até a conexão ser restabelecida.
 
 Diante do exposto, pode-se dizer que o TurtleBee é uma solução viável para análise de espaços confinados que facilita o serviço de técnicos dessa área e que promove sua segurança através das informações transmitidas pelo mesmo.
 
@@ -538,22 +289,26 @@ O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comuni
 ### Frontend
 
 O frontend será desenvolvido com Next.js e React.js, e será hospedado em um serviço cloud. A interface permitirá que os usuários interajam com o TurtleBot e solicitem ações específicas. O frontend se comunicará com o backend, que por sua vez, gerencia a comunicação com o TurtleBot por meio de uma rede ROS2. Além de realizar ações como:
+
 - Emissão de relatorio;
 - Gerencias analises (Vizualizar, Editar, Deletar e Cadastrar);
 - Teste dos sensores antes de cada analise ou quando solicitado;
 - Acompanhamento em tempo real do TurtleBot realizando a analise;
 - Acompnanhamento da analise em tempo real;
-- Entre outras operações.	
+- Entre outras operações.
 
 ### Comunicação
 
 A comunicação entre os componentes é feita através da rede ROS2. O Raspberry Pi 3 envia informações do TurtleBot para o backend, e o backend pode enviar comandos para o TurtleBot. O frontend se comunica diretamente com o backend para solicitar ações e receber atualizações sobre o estado do TurtleBot.
 
 Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
+
 #### Diagrama de arquitetura
-![Diagrama em blocos](./images/DiagramaGERDAU.jpg) 
+
+![Diagrama em blocos](./images/DiagramaGERDAU.jpg)
 
 #### Diagrama de blocos
+
 ![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
 
 ## Ideação e implementação da interface de usuário
@@ -562,50 +317,50 @@ O grupo, como um todo, decidiu não desenvolver um wireframe devido ao tempo e �
 
 ### Mockup
 
-Para o desenvolvimento do mockup, foram utilizados a logo e as cores atuais do cliente, a fim de criar uma interface mais realista e adequada ao ambiente em que o cliente está inserido. Além disso, o Figma foi utilizado como ferramenta para o desenvolvimento do mockup, pois é uma ferramenta fácil de usar que permite a criação de protótipos de alta fidelidade. Também foi utilizado o recurso Autolayout, disponível no Figma, para a criação de uma interface que se adapta a diferentes tamanhos de tela e permite a prototipagem mais rápida. 
+Para o desenvolvimento do mockup, foram utilizados a logo e as cores atuais do cliente, a fim de criar uma interface mais realista e adequada ao ambiente em que o cliente está inserido. Além disso, o Figma foi utilizado como ferramenta para o desenvolvimento do mockup, pois é uma ferramenta fácil de usar que permite a criação de protótipos de alta fidelidade. Também foi utilizado o recurso Autolayout, disponível no Figma, para a criação de uma interface que se adapta a diferentes tamanhos de tela e permite a prototipagem mais rápida.
 
 Vale ressaltar que durante a apresentação da interface desenvolvida para o cliente, o mesmo elogiou a facilidade de uso da interface e o design.
 
-<p align="center">
-<img src="./images/mockup.png">
-</p>
-
+![](./images/mockup.png)
 
 O [Link do mockup](https://www.figma.com/file/tat7O3wJpg7LOm2fb6D5Zh/Design?type=design&node-id=0%3A1&t=l8OtdM1wFwrC0ulu-1) para vizualição completa pode ser encontrado aqui.
 
 ### Protótipo navegável
+
 O protótipo navegável desenvolvido é uma variação do mockup, com a adição da funcionalidade de navegação entre as telas. O protótipo também foi desenvolvido por meio da ferramenta de design Figma, que é fácil de usar e permite a criação de protótipos de alta fidelidade, com animações nas transições, o que auxilia no processo de validação com o cliente. Foram criados componentes personalizados com animações e estados (hover, selected, etc.), o que ajudou a ter uma visualização mais precisa antes de iniciar o desenvolvimento real.
 
-<p align="center">
-<img src="./images/prototipo.png">
-</p>
+![](./images/prototipo.png)
 
 O [Link do protótipo navegável](https://www.figma.com/proto/tat7O3wJpg7LOm2fb6D5Zh/Design?page-id=0%3A1&type=design&node-id=22-11&viewport=297%2C628%2C0.2&scaling=min-zoom&starting-point-node-id=57%3A17) para vizualição completa pode ser encontrado aqui.
 
 ### Definição das entradas e saídas
 
+#### Interface de usuário
+
+<table><tbody><tr><td><strong>#</strong></td><td><strong>Configuração do ambiente&nbsp;</strong></td><td><strong>Ação do usuário</strong></td></tr><tr><td>1</td><td>O Turtlebot deve estar conectado a rede Wi-Fi.</td><td>Tendo o IP do robô, o usuário poderá cadastrar ao sistema preenchendo o formulário.</td></tr><tr><td>2</td><td>Usuário pode cadastrar um novo robô ao sistema.&nbsp;</td><td>O robô estando ligado a rede e com bateria, o usuário poderá fazer a tentativa de conectividade, “selecionando o robô” na lista de robôs cadastrados no sistema.</td></tr><tr><td>3</td><td>Um usuário deseja cadastra uma rota ou imagem da planta em formato PNG, JPEG ou JPG.</td><td>Já na tela de cadastro de análise, o usuário deverá clicar no botão de “carregar arquivo” e escolher o arquivo no sistema.</td></tr><tr><td>4</td><td>O usuário deseja selecionar uma rota já cadastrada.</td><td>Na tela de cadastro de análise, o usuário deve clicar em uma “rota exibida” na listagem no início do formulário.</td></tr><tr><td>5</td><td>O usuário deseja acompanhar a análise em tempo real.</td><td>O usuário deverá ter preenchido o formulário de cadastro de uma análise corretamente e clicado no botão “finalizar”.&nbsp;</td></tr><tr><td>6</td><td>Usuário cogita deletar uma análise cadastrada.</td><td>O usuário deverá clicar no botão “Delete” sinalizado com um ícone de lixeira e na cor vermelha.</td></tr><tr><td>7</td><td>O usuário deseja encontra uma análise cadastrada.</td><td>Na página de “histórico de análises” o usuário poderá buscar pelo nome ou id da análise</td></tr><tr><td>8</td><td>Usuário deseja testar os sensores do TurtleBot.</td><td>O usuário deverá navegar até a pagina de testes e escolher dentre os sensores que deseja testar, posteriormente clicando no botão de “iniciar”.</td></tr></tbody></table>
+
 ### Implementação da interface de usuário
+
 Visando uma aceleração e adiantamento do projeto, o grupo decidiu iniciar a implementação do Frontend em React.js. Para isso, foi utilizado o Next.js, que é um framework que permite a criação de aplicações React.js. Algumas telas inicias já estão 100% implementadas e funcionando de acorodo com o planejado e protipado no Figma. Para vizualização completa do que já foi emplementado basta navegar pela pastas
 
-  ``src/frontend/``
+`src/frontend/`
 
 Posterioemente rodar o comando:
 
-  ``npm run dev``
+`npm run dev`
 
 E acessar o link:
 
-  ``http://localhost:3000/``
+`http://localhost:3000/`
 
 Posteriormente a paginas de boas vindas será carregada, sendo possível vizualizar o que já foi implementado.
 
 # Referências
 
-https://www.gov.br/fundacentro/pt-br/comunicacao/noticias/noticias/2019/4/acoes-regressivas-gestao-de-riscos-e-impacto-dos-acidentes-de-trabalho-foram-temas-de-debate acesso em 27/04/2023 
+https://www.gov.br/fundacentro/pt-br/comunicacao/noticias/noticias/2019/4/acoes-regressivas-gestao-de-riscos-e-impacto-dos-acidentes-de-trabalho-foram-temas-de-debate acesso em 27/04/2023
 
 https://www.sinova.com.br/2022/01/25/agv-veiculos-guiados-automatizados-tendencias-de-mercado-que-voce-precisa-saber/ acesso em 26/04/2023
 
 https://www.mordorintelligence.com/pt/industry-reports/latin-america-automated-guided-vehicles-market acesso em 25/04/2023
 
 https://vivomeunegocio.com.br/conteudos-gerais/inovar/robos-autonomos/ acesso em 27/04/2023
-
