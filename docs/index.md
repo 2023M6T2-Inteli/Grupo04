@@ -1,52 +1,52 @@
 **Conteúdo**
 
-- [Entendimento de negócios](#entendimento-de-neg%C3%B3cios)
+- [Entendimento de negócios](#entendimento-de-negócios)
   - [Matriz de oceano azul](#matriz-de-oceano-azul)
     - [Tabela](#tabela)
-    - [Gráfico](#gr%C3%A1fico)
+    - [Gráfico](#gráfico)
   - [Matriz de riscos](#matriz-de-riscos)
-  - [Proposta de Mitigação de Risco](#proposta-de-mitiga%C3%A7%C3%A3o-de-risco)
+  - [Proposta de Mitigação de Risco](#proposta-de-mitigação-de-risco)
   - [Canvas de proposta de valor](#canvas-de-proposta-de-valor)
-  - [Análise financeira](#an%C3%A1lise-financeira)
+  - [Análise financeira](#análise-financeira)
 - [Entendimento de metadesign](#entendimento-de-metadesign)
   - [Personas](#personas)
   - [User Stories](#user-stories)
-  - [Fatores mercadológicos](#fatores-mercadol%C3%B3gicos)
-    - [Orientação ao mercado e precificação](#orienta%C3%A7%C3%A3o-ao-mercado-e-precifica%C3%A7%C3%A3o)
-    - [Cenário do mercado](#cen%C3%A1rio-do-mercado)
-    - [Visão do projeto proposto](#vis%C3%A3o-do-projeto-proposto)
-    - [Proposta de Inovação](#proposta-de-inova%C3%A7%C3%A3o)
+  - [Fatores mercadológicos](#fatores-mercadológicos)
+    - [Orientação ao mercado e precificação](#orientação-ao-mercado-e-precificação)
+    - [Cenário do mercado](#cenário-do-mercado)
+    - [Visão do projeto proposto](#visão-do-projeto-proposto)
+    - [Proposta de Inovação](#proposta-de-inovação)
   - [Sistema produto-design](#sistema-produto-design)
     - [Entendimento do problema](#entendimento-do-problema)
-    - [Missão do projeto](#miss%C3%A3o-do-projeto)
-    - [Formas de divulgação](#formas-de-divulga%C3%A7%C3%A3o)
+    - [Missão do projeto](#missão-do-projeto)
+    - [Formas de divulgação](#formas-de-divulgação)
   - [Sustentabilidade ambiental](#sustentabilidade-ambiental)
 - [Arquitetura do sistema](#arquitetura-do-sistema)
-  - [Análise de Requisitos](#an%C3%A1lise-de-requisitos)
+  - [Análise de Requisitos](#análise-de-requisitos)
     - [Requisitos funcionais](#requisitos-funcionais)
-    - [Requisitos Não Funcionais](#requisitos-n%C3%A3o-funcionais)
-    - [Requisitos Não Funcionais Tecnologicos](#requisitos-n%C3%A3o-funcionais-tecnologicos)
-  - [Viabilidade técnica](#viabilidade-t%C3%A9cnica)
+    - [Requisitos Não Funcionais](#requisitos-não-funcionais)
+    - [Requisitos Não Funcionais Tecnologicos](#requisitos-não-funcionais-tecnologicos)
+  - [Viabilidade técnica](#viabilidade-técnica)
   - [Proposta geral](#proposta-geral)
     - [Componentes do TurtleBot](#componentes-do-turtlebot)
     - [Backend](#backend)
     - [Frontend](#frontend)
-    - [Comunicação](#comunica%C3%A7%C3%A3o)
+    - [Comunicação](#comunicação)
       - [Diagrama de arquitetura](#diagrama-de-arquitetura)
       - [Diagrama de blocos](#diagrama-de-blocos)
-  - [Ideação e implementação da interface de usuário](#idea%C3%A7%C3%A3o-e-implementa%C3%A7%C3%A3o-da-interface-de-usu%C3%A1rio)
+  - [Ideação e implementação da interface de usuário](#ideação-e-implementação-da-interface-de-usuário)
     - [Mockup](#mockup)
-    - [Protótipo navegável](#prot%C3%B3tipo-naveg%C3%A1vel)
-    - [Definição das entradas e saídas](#defini%C3%A7%C3%A3o-das-entradas-e-sa%C3%ADdas)
-      - [Interface de usuário](#interface-de-usu%C3%A1rio)
-    - [Implementação da interface de usuário](#implementa%C3%A7%C3%A3o-da-interface-de-usu%C3%A1rio)
-- [Referências](#refer%C3%AAncias)
+    - [Protótipo navegável](#protótipo-navegável)
+    - [Definição das entradas e saídas](#definição-das-entradas-e-saídas)
+      - [Interface de usuário](#interface-de-usuário)
+    - [Implementação da interface de usuário](#implementação-da-interface-de-usuário)
+- [Referências](#referências)
 
 # Entendimento de negócios
 
 ## Matriz de oceano azul
 
-- É um termo utilizado na estratégia de negócios para descrever um espaço de mercado não explorado ou inexistente. Em outras palavras, uma matriz de oceano azul representa um mercado novo e desconhecido, onde a concorrência é irrelevante ou inexistente.
+É um termo utilizado na estratégia de negócios para descrever um espaço de mercado não explorado ou inexistente. Em outras palavras, uma matriz de oceano azul representa um mercado novo e desconhecido, onde a concorrência é irrelevante ou inexistente.
 
 ### Tabela
 
@@ -74,7 +74,10 @@
 
 - A Matriz de Riscos é uma ferramenta de gerenciamento de riscos que permite de forma visual identificar quais são os riscos que devem receber mais atenção. Por se tratar de uma ferramenta para priorização de riscos, ela pode ser aplicada na etapa de avaliação de riscos.
 
-![Matriz de Riscos](./images/matriz_de_risco.png)
+<p align="center">
+<img src="./images/matriz_de_risco.png">
+</p>
+
 
 O [Link da planilha](https://docs.google.com/spreadsheets/d/1fdBVmryYQmFQlxbJAGag4HvFJhshYAbrzP_8vkfu81g/edit?usp=sharing) para vizualição completa pode ser encontrado aqui.
 
@@ -120,8 +123,11 @@ O ICMS se baseia na taxa de veículos automotores do estado de São Paulo, que �
 A margem de lucro representa 20% dos custos da empresa para produzir o projeto
 
 Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a solução pode oferecer maior segurança aos empregados da Gerdau, que por sua vez reduz a quantidade de acidentes. Além disso, otimiza o tempo de manutenção em cada vistoria, o que permite aumentar a produtividade.
+<p align="center">
 
 <table><tbody><tr><td><strong>Itens</strong></td><td><strong>Categoria</strong></td><td><strong>Preço Estimado</strong></td></tr><tr><td>TurtleBot3 - Burger + 60% Importação</td><td>Hardware</td><td>R$ 5.440,00</td></tr><tr><td>Engenharia</td><td>Serviço</td><td>R$ 86.000,00</td></tr><tr><td>Sensor de gás - MQ - 2</td><td>Hardware</td><td>R$ 40,00</td></tr><tr><td>Câmera</td><td>Hardware</td><td>R$ 100,00</td></tr><tr><td>Seguro</td><td>Manutenção</td><td>R$ 4.611,64</td></tr><tr><td>ICMS</td><td>Taxa</td><td>R$ 652,80</td></tr><tr><td>Margem de lucro da terceirizada (20%)</td><td>Margem de lucro</td><td>R$ 19.368,89</td></tr><tr><td>&nbsp;</td><td><strong>Total:</strong></td><td>R$ 116.213,33</td></tr></tbody></table>
+
+</p>
 
 O [Link da planilha](https://docs.google.com/spreadsheets/d/1r8g5DCsZJI9akuSPPXa-gyhqJ1ZzOMrjQ_6VsDGgP98/edit?usp=sharing) para vizualição completa pode ser encontrado aqui.
 
@@ -140,17 +146,7 @@ A utilização de personas se dá pela representação fictícia do cliente idea
 
 Com o intuito de definir os principais objetivos dos usuários e o que se é esperado do produto desenvolvido, foram-se delimitados os principais épicos, as grandes histórias do usuários, que necessitam ser subdivididos em users stories (histórias do usuário menores. Foram definidos dois principais épicos para as personas e delimitados user stories específicos para atender cada caso.
 
-| Épico                                                                                                                                                                                                          | User story                                                                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Como gestora de riscos da Gerdau, desejo ter acesso a um mecanismo de coleta de dados em ambientes confinados para inspeção e análise desses ambientes.                                                        | Eu, como gestora de riscos, quero ter acesso a um mecanismo automatizado com câmeras e sensores para coleta de dados em ambientes confinados, para assegurar a confiabilidade no planejamento de gerenciamento de riscos. |
-| Eu, como gestora de riscos, quero ter acesso a um sistema para monitorar e analisar em tempo real os dados coletados em ambientes confinados, para tomar decisões sobre a segurança dos trabalhadores.         |                                                                                                                                                                                                                           |
-| Eu, como gestora de riscos, quero ter acesso a análises e relatórios detalhados dos dados coletados em ambientes confinados, para identificar riscos e melhorias nos ambientes.                                |                                                                                                                                                                                                                           |
-| Eu, como gestora de riscos, quero visualizar as pré-avaliações e após as avaliações realizadas em ambientes confinados, para garantir que os ambientes não sofreram alterações nesse processo.                 |                                                                                                                                                                                                                           |
-| Eu, como gestora de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja projetado com as normas de segurança vigentes, para garantir a segurança dos funcionários e precisão nas análises. |                                                                                                                                                                                                                           |
-| Como técnico de riscos da Gerdau, desejo ter acesso a um mecanismo que me permita realizar procedimentos de inspeção em ambientes confinados da empresa com maior segurança.                                   | Eu, como técnico de riscos, desejo ter acesso a um mecanismo de pré avaliação em ambientes confinados, para que eu possa realizar inspeções sem me expor a possíveis riscos e garantir a minha segurança.                 |
-| Eu, como técnico de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja de fácil uso, para que eu possa realizar inspeções com eficiência e sem dificuldade.                               |                                                                                                                                                                                                                           |
-| Eu, como técnico de riscos, desejo ter acesso a um sistema com alertas em tempo real para possíveis riscos, para que eu possa agir rapidamente em caso de situações de emergência.                             |                                                                                                                                                                                                                           |
-| Eu, como técnico de riscos, desejo visualizar os dados coletados durante a pré avaliação, para que eu possa analisar e avaliar possíveis riscos e tomar decisões para ações necessárias na inspeção.           |                                                                                                                                                                                                                           |
+<table><tbody><tr><td>Épico</td><td>User story</td></tr><tr><td>Como gestora de riscos da Gerdau, desejo ter acesso a um mecanismo de coleta de dados em ambientes confinados para inspeção e análise desses ambientes.</td><td>Eu, como gestora de riscos, quero ter acesso a um mecanismo automatizado com câmeras e sensores para coleta de dados em ambientes confinados, para assegurar a confiabilidade no planejamento de gerenciamento de riscos.</td></tr><tr><td>Eu, como gestora de riscos, quero ter acesso a um sistema para monitorar e analisar em tempo real os dados coletados em ambientes confinados, para tomar decisões sobre a segurança dos trabalhadores.</td><td>&nbsp;</td></tr><tr><td>Eu, como gestora de riscos, quero ter acesso a análises e relatórios detalhados dos dados coletados em ambientes confinados, para identificar riscos e melhorias nos ambientes.</td><td>&nbsp;</td></tr><tr><td>Eu, como gestora de riscos, quero visualizar as pré-avaliações e após as avaliações realizadas em ambientes confinados, para garantir que os ambientes não sofreram alterações nesse processo.</td><td>&nbsp;</td></tr><tr><td>Eu, como gestora de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja projetado com as normas de segurança vigentes, para garantir a segurança dos funcionários e precisão nas análises.</td><td>&nbsp;</td></tr><tr><td>Como técnico de riscos da Gerdau, desejo ter acesso a um mecanismo que me permita realizar procedimentos de inspeção em ambientes confinados da empresa com maior segurança.</td><td>Eu, como técnico de riscos, desejo ter acesso a um mecanismo de pré avaliação em ambientes confinados, para que eu possa realizar inspeções sem me expor a possíveis riscos e garantir a minha segurança.</td></tr><tr><td>Eu, como técnico de riscos, desejo que o mecanismo de inspeção em ambientes confinados seja de fácil uso, para que eu possa realizar inspeções com eficiência e sem dificuldade.</td><td>&nbsp;</td></tr><tr><td>Eu, como técnico de riscos, desejo ter acesso a um sistema com alertas em tempo real para possíveis riscos, para que eu possa agir rapidamente em caso de situações de emergência.</td><td>&nbsp;</td></tr><tr><td>Eu, como técnico de riscos, desejo visualizar os dados coletados durante a pré avaliação, para que eu possa analisar e avaliar possíveis riscos e tomar decisões para ações necessárias na inspeção.</td><td>&nbsp;</td></tr></tbody></table>
 
 ## Fatores mercadológicos
 
