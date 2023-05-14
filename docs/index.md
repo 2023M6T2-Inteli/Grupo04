@@ -326,9 +326,9 @@ O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comuni
 
 ### Sistema de locomoção e otimização de rota
 
-#### Arquitetura do sistema de simulação e integração com o sistema operacional robótico
-#### Escolha e implementação do algoritmo de otimização de rota
-#### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
+### Arquitetura do sistema de simulação e integração com o sistema operacional robótico
+### Escolha e implementação do algoritmo de otimização de rota
+### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
 
 O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, serão utilizados ROS2 (Robot Operating System 2), Gazebo, e um algoritmo personalizado escrito em JavaScript e Python, com o framework Sanic. Por meio dessa implementação, almeja-se que o robô se locomova no ambiente simulado no Gazebo de forma eficiente, considerando a melhor rota e evitando obstáculos.
 
@@ -362,7 +362,8 @@ A arquitetura do sistema pode ser visualizada abaixo:
 
 **Pacote para o Algoritmo**
 
-Para a implementação de integração no sistema, o script.js, main.py e o servidor Sanic serão encapsulados em um pacote de software que será instalado no ROS2. Este pacote incluirá todas as dependências necessárias para a execução do algoritmo posteriormente lidos no Gazebo. 
+Para a implementação de integração no sistema, o script.js, main.py e o servidor Sanic serão encapsulados em um pacote de software que será instalado no ROS2. Este pacote incluirá todas as dependências necessárias para a execução do algoritmo, que posteriormente serão incorporados ao Gazebo, permitindo a otimização da rota do robô. 
+
 
 ### Frontend
 
