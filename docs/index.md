@@ -349,6 +349,10 @@ Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 
 ![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
 
+### Diagrama de arquitetura da simulação
+
+![Diagrama da arquitetura da simulação](images/arquitetura_da_simulacao.png)
+
 ## Ideação e implementação da interface de usuário
 
 O grupo, como um todo, decidiu não desenvolver um wireframe devido ao tempo e às mudanças ocorridas durante a Sprint. Portanto, decidiu-se apenas pelo desenvolvimento do Mockup, do protótipo e pelo início da implementação do Frontend em React.js.
