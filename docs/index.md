@@ -343,9 +343,18 @@ No processo de escolha do método de otimização da trajetória de inspeção p
 
 Levando essas premissas em consideração, a topologia das tubulações será representada por grafos. Nessa representação, cada interseção entre duas ou mais tubulações, bem como o final de tubulações sem saída serão representadas por nós. As informações sobre quais pontos da tubulação estão conectados entre si, ou seja, quais são os segmentos de tubulação, interseções e tubulações principais que podem ser acessados diretamente entre si também serão representadas em um dicionário. O peso atribuído a cada ligação será a distância entre os pontos, calculada a partir de cada uma de suas coordenadas.
 
+<p align="center">
+<img src="./images/vents_1.png">
+</p>
+
 Para satisfazer os requisitos de planejamento de trajetória, o método de otimização de busca em grafos pelo Algoritmo de Busca em Profundidade foi escolhido. Apesar dos requisitos apresentados para o planejamento de trajetória poderem indicar para algoritmos de planejamento de rota, grafos gerados como representação de sistemas de ventilações não possuem muitas conexões entre seus nós, sendo classificados como esparsos. Para tais tipos de grafos, com conexões esparsas e onde cada nó e seu respectivo vértice deve ser acessado, um algoritmo de busca demonstra-se uma solução mais adequada.
 
 O Algoritmo de Busca em Profundidade explora cada nó de um grafo percorrendo cada uma de suas arestas, passando por eventuais outros nós, até chegar em um nó que não se conecta a mais nenhum outro. Quando ele chega a um nó sem conexões, ele retorna até um nó que contenha arestas e outros nós ligados a essas que ainda não tenham sido percorridos. Começando de um nó específico, representando a via de acesso à tubulação, o algoritmo visita os nós adjacentes que ainda não foram visitados de forma recursiva. A busca continuará até que não haja mais nós adjacentes ainda não visitados. Tal processo continua até que todos os nós tenham sido visitados.
+
+<p align="center">
+<img src="./images/dfs.gif"> <br>
+Fonte: https://boot.dev/course/7bbb53ed-2106-4f6b-b885-e7645c2ff9d8/35d2354e-1601-42a4-b583-c38a3577e891/0deb238d-8b3c-48b0-a367-caf08d65eed4
+</p>
 
 O Algoritmo de Busca em Profundidade tem baixo custo computacional, é capaz de percorrer várias ramificações rapidamente, sendo utilizado para tarefas análogas como resolução de labirintos, análise de conectividade de grafos e a identificação de caminhos em sistemas de pontos interconectados.
 
