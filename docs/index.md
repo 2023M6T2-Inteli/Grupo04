@@ -327,7 +327,38 @@ O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comuni
 ### Sistema de locomoção e otimização de rota
 
 ### Arquitetura do sistema de simulação e integração com o sistema operacional robótico
+
 ### Escolha e implementação do algoritmo de otimização de rota
+
+No processo de escolha do método de otimização da trajetória de inspeção por gases, as seguintes premissas foram assumidas:
+&nbsp;
+
+- O principal ambiente confinado de inspeção são sistemas de ventilação em ambiente industrial;
+
+- O caminho planejado deve contemplar percorrer todas as tubulações que estiverem interconectadas no sistema de ventilação.
+
+- Grande parte das topologias de tubulação contém um tubo principal com algumas ramificações. Algumas destas ramificações são caminhos sem saída, ou seja, não possuem outras conexões em suas extremidades que levem de volta ao tubo principal.
+
+- O método de planejamento do trajeto deve levar em consideração a recuperação do dispositivo em seu ponto de partida e o eventual encontro com obstáculos.
+
+Levando essas premissas em consideração, a topologia das tubulações será representada por grafos. Nessa representação, cada interseção entre duas ou mais tubulações, bem como o final de tubulações sem saída serão representadas por nós. As informações sobre quais pontos da tubulação estão conectados entre si, ou seja, quais são os segmentos de tubulação, interseções e tubulações principais que podem ser acessados diretamente entre si também serão representadas em um dicionário. O peso atribuído a cada ligação será a distância entre os pontos, calculada a partir de cada uma de suas coordenadas.
+
+Para satisfazer os requisitos de planejamento de trajetória, o método de otimização de busca em grafos pelo Algoritmo de Busca em Profundidade foi escolhido. Apesar dos requisitos apresentados para o planejamento de trajetória poderem indicar para algoritmos de planejamento de rota, grafos gerados como representação de sistemas de ventilações não possuem muitas conexões entre seus nós, sendo classificados como esparsos. Para tais tipos de grafos, com conexões esparsas e onde cada nó e seu respectivo vértice deve ser acessado, um algoritmo de busca demonstra-se uma solução mais adequada.
+
+O Algoritmo de Busca em Profundidade explora cada nó de um grafo percorrendo cada uma de suas arestas, passando por eventuais outros nós, até chegar em um nó que não se conecta a mais nenhum outro. Quando ele chega a um nó sem conexões, ele retorna até um nó que contenha arestas e outros nós ligados a essas que ainda não tenham sido percorridos. Começando de um nó específico, representando a via de acesso à tubulação, o algoritmo visita os nós adjacentes que ainda não foram visitados de forma recursiva. A busca continuará até que não haja mais nós adjacentes ainda não visitados. Tal processo continua até que todos os nós tenham sido visitados.
+
+O Algoritmo de Busca em Profundidade tem baixo custo computacional, é capaz de percorrer várias ramificações rapidamente, sendo utilizado para tarefas análogas como resolução de labirintos, análise de conectividade de grafos e a identificação de caminhos em sistemas de pontos interconectados.
+
+Dada a relação do algoritmo com a tarefa mencionada, sua escolha como método de planejamento de rota para o dispositivo de inspeção se justifica pelos seguintes pontos:
+&nbsp;
+- No contexto de navegação por caminhos interconectados, será capaz de encontrar todas as rotas possíveis, realizando o sensoriamento de gás em todos os pontos onde este pode se fazer presente.
+
+- É eficiente no quesito de evitar rotas que já foram percorridas e de explorar todos os nós que estão conectados a dada aresta antes de retornar e percorrer outro nó. Esta abordagem reduz o tempo de processamento quando há múltiplos caminhos sem interconexões a serem percorridos, característicos da arquitetura de ventilações;
+
+- Caso alguma alteração ocorra nos dutos de ventilação como reformas, mudanças de topologia ou inserção de dispositivos que possam se tornar obstáculos a navegação do dispositivo, o método escolhido pode se adaptar. A obstrução pode ser considerada como um nó ou uma série de nós pode ser traçada ao redor dela, fazendo com que o dispositivo a contorne.
+
+- Possui baixo custo computacional, tornando-se adequado para uma aplicação embarcada
+
 ### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
 
 O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, serão utilizados ROS2 (Robot Operating System 2), Gazebo, e um algoritmo personalizado escrito em JavaScript e Python, com o framework Sanic. Por meio dessa implementação, almeja-se que o robô se locomova no ambiente simulado no Gazebo de forma eficiente, considerando a melhor rota e evitando obstáculos.
