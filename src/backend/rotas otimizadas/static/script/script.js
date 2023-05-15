@@ -1,3 +1,4 @@
+// Load the script when the DOM is loaded
 window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
@@ -22,6 +23,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 canvas.width = image.width;
                 canvas.height = image.height;
                 context.drawImage(image, 0, 0);
+
+                // Upload the image to the server
+                uploadImage();
             };
         };
 
@@ -193,15 +197,70 @@ window.addEventListener('DOMContentLoaded', () => {
     // Save button click event handler
     saveButton.addEventListener('click', () => {
         const content = generateFileContent();
-        const blob = new Blob([content], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
 
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'points.json';
-        link.click();
+        fetch('/save', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: content
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error("HTTP error " + response.status);
+            }
+            return response.json();
+        }).then(json => {
+            console.log(json.message);
+        }).catch(function () {
+            console.log("An error occurred while saving the file.");
+        });
 
-        URL.revokeObjectURL(url);
+        uploadImage();
+    });
+
+    // Upload the image to the server
+    function uploadImage() {
+        let dataURL = canvas.toDataURL('image/png');
+
+        fetch('/upload_image', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ image: dataURL })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            }).then(json => {
+                console.log(json.message);
+            }).catch(function () {
+                console.log("An error occurred while saving the image.");
+            });
+    }
+
+
+    // Load button click event handler
+    const loadButton = document.getElementById('load-button');
+
+    loadButton.addEventListener('click', () => {
+        // The URL of the image to load
+        const url = '/static/animation/interesting-megan.gif';
+
+        // Create a new image element
+        const img = new Image();
+
+        // Set the src attribute to the URL
+        img.src = url;
+
+        // Add an onload handler to draw the image onto the canvas once it's loaded
+        img.onload = () => {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            context.drawImage(img, 0, 0);
+        };
     });
 
 });

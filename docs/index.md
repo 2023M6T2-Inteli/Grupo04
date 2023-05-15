@@ -253,6 +253,10 @@ Tendo como objetivo divulgar as características técnicas da ferramenta propost
 
 Por fim, mas não limitada a apenas estas estratégias, é proposto o uso da estratégia de marketing de conteúdo, onde o site da empresa divulga uma série de artigos discutindo sobre a importância de normas de segurança em ambientes confinados, tipos de acidentes que podem acontecer em ambientes de alto risco, consequências legais para empresas que não zelam pelas políticas de segurança de seus colaboradores, etc. Estes conteúdos servirão como a porta de entrada de pessoas interessadas nesses assuntos no site da empresa, porém, no próprio artigo pode haver um convite para conhecer a solução que o projeto propõe, atraindo assim, possíveis clientes.
 
+## Possibilidades de reuso da solução
+
+O sistema desenvolvido pode ser interpretado como uma plataforma de sensoriamento e navegação autônoma capaz de executar navegações por ambientes confinados, mediante a planejamento prévio de rota. De acordo com os sensores que esta plataforma dispuser, ela pode adquirir diferentes funcionalidades com o mínimo de alterações. Atualmente, o sensor utilizado é o de gás, com o objetivo de detectar a presença de gases inflamáveis em tubulações de sistemas de ventilação. Se o dispositivo robótico de navegação for munido com sensores de vibração, este poderá executar análises de vibração vindo de equipamentos que podem revelar falhas apenas com a análise deste perfil de vibração. Uma vez que o dispositivo já é munido com uma câmera, capaz de transmitir imagens para o computador de seu operador, vários algoritmos de visão computacional que detectam anomalias estruturais podem ser implementados, facilitando a inspeção de elementos que não os químicos. Ainda na linha de visão computacional, uma aplicação útil que poderia ser desenvolvida aproveitado as capacidades de hardware e software já existentes no dispositivo é a de leitura de displays digitais e analógicos para a transmissão destas informações. Com certos algoritmos de visão computacional, é possível traduzir uma imagem de um mostrador do tipo relógio analógico para uma leitura numérica que pode ser registrada com certa periodicidade durante a navegação do dispositivo robótico em uma rota pré-estabelecida. Se além da imagem comum, o dispositivo pudesse ser munido com uma câmera térmica, este poderia se tornar uma poderosa ferramenta na análise de desempenho de maquinários no mesmo contexto industrial da aplicação original. Esta análise poderia ser importante para a identificação de equipamentos que poderiam estar apresentando falhas térmicas, possibilitando manutenções preventivas. No escopo do software desenvolvido, juntamente com o algoritmo de otimização de trajetória, este poderia ser aplicado no planejamento e otimização de trajetória em cenários onde as características físicas se assemelham a de tubulações. Estes planejamentos poderiam ser seguidos por veículos autônomos ou guiados a fim de usufruírem das mesmas vantagens de varredura que o algoritmo implementado para a solução existente proporciona. 
+
 ## Sustentabilidade ambiental
 
 O produto consiste essencialmente no desenvolvimento de um software, que não gera impacto ambiental direto. No entanto, parte da nossa solução envolve o uso do robô TurtleBot, que pode gerar alguns riscos.
@@ -323,6 +327,96 @@ O backend será construído usando as seguintes tecnologias:
 - Banco de dados SQL: armazena informações e dados relevantes para o projeto.
 
 O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comunicação bidirecional com o TurtleBot.
+
+### Sistema de locomoção e otimização de rota
+
+### Arquitetura do sistema de simulação e integração com o sistema operacional robótico
+
+### Escolha e implementação do algoritmo de otimização de rota
+
+No processo de escolha do método de otimização da trajetória de inspeção por gases, as seguintes premissas foram assumidas:
+&nbsp;
+
+- O principal ambiente confinado de inspeção são sistemas de ventilação em ambiente industrial;
+
+- O caminho planejado deve contemplar percorrer todas as tubulações que estiverem interconectadas no sistema de ventilação.
+
+- Grande parte das topologias de tubulação contém um tubo principal com algumas ramificações. Algumas destas ramificações são caminhos sem saída, ou seja, não possuem outras conexões em suas extremidades que levem de volta ao tubo principal.
+
+- O método de planejamento do trajeto deve levar em consideração a recuperação do dispositivo em seu ponto de partida e o eventual encontro com obstáculos.
+
+Levando essas premissas em consideração, a topologia das tubulações será representada por grafos. Nessa representação, cada interseção entre duas ou mais tubulações, bem como o final de tubulações sem saída serão representadas por nós. As informações sobre quais pontos da tubulação estão conectados entre si, ou seja, quais são os segmentos de tubulação, interseções e tubulações principais que podem ser acessados diretamente entre si também serão representadas em um dicionário. O peso atribuído a cada ligação será a distância entre os pontos, calculada a partir de cada uma de suas coordenadas.
+
+<p align="center">
+<img src="./images/vents_1.png">
+</p>
+
+Para satisfazer os requisitos de planejamento de trajetória, o método de otimização de busca em grafos pelo Algoritmo de Busca em Profundidade foi escolhido. Apesar dos requisitos apresentados para o planejamento de trajetória poderem indicar para algoritmos de planejamento de rota, grafos gerados como representação de sistemas de ventilações não possuem muitas conexões entre seus nós, sendo classificados como esparsos. Para tais tipos de grafos, com conexões esparsas e onde cada nó e seu respectivo vértice deve ser acessado, um algoritmo de busca demonstra-se uma solução mais adequada.
+
+O Algoritmo de Busca em Profundidade explora cada nó de um grafo percorrendo cada uma de suas arestas, passando por eventuais outros nós, até chegar em um nó que não se conecta a mais nenhum outro. Quando ele chega a um nó sem conexões, ele retorna até um nó que contenha arestas e outros nós ligados a essas que ainda não tenham sido percorridos. Começando de um nó específico, representando a via de acesso à tubulação, o algoritmo visita os nós adjacentes que ainda não foram visitados de forma recursiva. A busca continuará até que não haja mais nós adjacentes ainda não visitados. Tal processo continua até que todos os nós tenham sido visitados.
+
+<p align="center">
+<img src="./images/dfs.gif"> <br>
+Fonte: https://boot.dev/course/7bbb53ed-2106-4f6b-b885-e7645c2ff9d8/35d2354e-1601-42a4-b583-c38a3577e891/0deb238d-8b3c-48b0-a367-caf08d65eed4
+</p>
+
+O Algoritmo de Busca em Profundidade tem baixo custo computacional, é capaz de percorrer várias ramificações rapidamente, sendo utilizado para tarefas análogas como resolução de labirintos, análise de conectividade de grafos e a identificação de caminhos em sistemas de pontos interconectados.
+
+Dada a relação do algoritmo com a tarefa mencionada, sua escolha como método de planejamento de rota para o dispositivo de inspeção se justifica pelos seguintes pontos:
+&nbsp;
+- No contexto de navegação por caminhos interconectados, será capaz de encontrar todas as rotas possíveis, realizando o sensoriamento de gás em todos os pontos onde este pode se fazer presente.
+
+- É eficiente no quesito de evitar rotas que já foram percorridas e de explorar todos os nós que estão conectados a dada aresta antes de retornar e percorrer outro nó. Esta abordagem reduz o tempo de processamento quando há múltiplos caminhos sem interconexões a serem percorridos, característicos da arquitetura de ventilações;
+
+- Caso alguma alteração ocorra nos dutos de ventilação como reformas, mudanças de topologia ou inserção de dispositivos que possam se tornar obstáculos a navegação do dispositivo, o método escolhido pode se adaptar. A obstrução pode ser considerada como um nó ou uma série de nós pode ser traçada ao redor dela, fazendo com que o dispositivo a contorne.
+
+- Possui baixo custo computacional, tornando-se adequado para uma aplicação embarcada
+
+### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
+
+O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, serão utilizados ROS2 (Robot Operating System 2), Gazebo, e um algoritmo personalizado escrito em JavaScript e Python, com o framework Sanic. Por meio dessa implementação, almeja-se que o robô se locomova no ambiente simulado no Gazebo de forma eficiente, considerando a melhor rota e evitando obstáculos.
+
+**Descrição da arquitetura do sistema**
+
+O sistema é organizado em três componentes principais que se comunicam: ROS2, Gazebo e script.js, executado em um servidor Sanic. 
+
+**ROS2 e Gazebo**
+
+O ROS2 permite a comunicação entre os diferentes nós do sistema, enquanto o Gazebo é utilizado para a simulação do ambiente e do robô. O robô é controlado através de mensagens publicadas em tópicos específicos do ROS2, que são lidos pelo Gazebo para executar os comandos de movimento.
+
+**Script.js, Python e Servidor Sanic**
+
+O algoritmo de otimização de rota é implementado em um script.js e main.py, que é executado em um servidor Sanic. O servidor Sanic permite que o script.js e main.py se comunique com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e main.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Sanic.
+
+**Planejamento da comunicação entre os Componentes**
+
+A arquitetura do sistema é dividida em quatro componentes principais: ROS2, Gazebo, Sanic e os scripts de algoritmo (script.js e main.py). A comunicação entre esses componentes é uma parte crucial do projeto e será implementada na sprint três do desenvolvimento. A seguir, é apresentado o papel de cada componente e como eles se comunicam entre si:
+
+**1. Script.js e main.py:** O algoritmo escrito em JavaScript e Python é o ponto de partida para a otimização da rota do robô. Ele processa os dados inseridos pelo usuário através de uma interface web e calcula a rota mais eficiente para o robô. Essas informações são então enviadas para o servidor Sanic.
+
+**2. Sanic:** O servidor Sanic atua como um intermediário entre o algoritmo e o ROS2. Ele recebe a rota otimizada do script.js e main.py e a encaminha para o ROS2. Esta comunicação é realizada através de um websocket, um protocolo que permite a troca de mensagens em tempo real.
+
+**3. ROS2 (Robot Operating System 2):** O ROS2 é o componente que se comunica diretamente com a simulação do Gazebo. Ele recebe as instruções de rota do servidor Sanic e as converte em comandos de movimento para o robô na simulação. Esta comunicação é feita através do pacote gazebo_ros_pkgs, que permite a troca de mensagens e serviços entre o ROS2 e o Gazebo utilizando o método de subscribers e publishers.
+
+**4. Gazebo:** Finalmente, o Gazebo é o ambiente de simulação onde o robô é controlado. Ele recebe os comandos de movimento do ROS2, executa-os e fornece feedback sobre a posição e o status do robô. Este feedback é então enviado de volta ao ROS2, reiniciando o ciclo de comunicação.
+
+Ao seguir estas etapas, a comunicação entre os componentes do sistema será realizada de forma eficiente, permitindo que o robô navegue de acordo com a rota otimizada calculada pelo algoritmo.
+
+A arquitetura do sistema pode ser visualizada abaixo:
+
+![Arquitetura da integração do sistema](https://github.com/2023M6T2-Inteli/Grupo04/blob/backend-implementation-of-route-optimization/docs/images/diagrama%20planejamento%20de%20rotas.png)
+
+**Pacote para o Algoritmo**
+
+Para a implementação da integração do algoritmo no sistema, o script.js, main.py e o servidor Sanic serão encapsulados em um pacote de software dedicado. Este pacote será instalado no ROS2 e atuará como o principal condutor das funcionalidades do algoritmo dentro do ambiente ROS2 para comunicação com o simulador Gazebo. Abaixo estão detalhadas as etapas para implementação desse sistema.
+
+**1. Componentes do Pacote:** O pacote será composto pelo script.js e main.py, responsáveis pela lógica do algoritmo de otimização de rota. Também incluirá o código do servidor Sanic, que serve como o intermediário entre o algoritmo e o ROS2, facilitando a troca de informações.
+
+**2. Dependências:** Além dos componentes principais, o pacote também conterá todas as dependências necessárias para a execução do algoritmo. Isso pode incluir bibliotecas JavaScript e Python, pacotes ROS2, módulos Sanic, entre outros. Ao incluir todas as dependências no pacote, garante-se que o algoritmo possa ser executado em qualquer ambiente que tenha o ROS2 instalado, sem a necessidade de instalações adicionais.
+
+**3. Integração com o Gazebo:** Uma vez instalado no ROS2, o pacote permitirá a integração do algoritmo com o Gazebo. A rota otimizada, calculada pelo script.js e main.py, será transmitida ao Gazebo através do ROS2, permitindo que o robô se mova de acordo com essa rota no ambiente de simulação.
+
+**4. Instalação e Configuração:** As instruções detalhadas para a instalação e configuração do pacote serão fornecidas na documentação do pacote.
 
 ### Frontend
 
