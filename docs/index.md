@@ -328,9 +328,11 @@ O backend será construído usando as seguintes tecnologias:
 
 O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comunicação bidirecional com o TurtleBot.
 
-### Sistema de locomoção e otimização de rota
+## Sistema de locomoção e otimização de rota
 
 ### Arquitetura do sistema de simulação e integração com o sistema operacional robótico
+
+![Diagrama da arquitetura da simulação](images/arquitetura_da_simulacao.png)
 
 ### Escolha e implementação do algoritmo de otimização de rota
 
@@ -442,10 +444,6 @@ Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 #### Diagrama de blocos
 
 ![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
-
-### Diagrama de arquitetura da simulação
-
-![Diagrama da arquitetura da simulação](images/arquitetura_da_simulacao.png)
 
 ## Ideação e implementação da interface de usuário
 
