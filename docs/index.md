@@ -20,6 +20,7 @@
     - [Entendimento do problema](#entendimento-do-problema)
     - [Missão do projeto](#missão-do-projeto)
     - [Formas de divulgação](#formas-de-divulgação)
+  - [Possibilidades de reuso da solução](#possibilidades-de-reuso-da-solução)
   - [Sustentabilidade ambiental](#sustentabilidade-ambiental)
 - [Arquitetura do sistema](#arquitetura-do-sistema)
   - [Análise de Requisitos](#análise-de-requisitos)
@@ -30,6 +31,10 @@
   - [Proposta geral](#proposta-geral)
     - [Componentes do TurtleBot](#componentes-do-turtlebot)
     - [Backend](#backend)
+  - [Sistema de locomoção e otimização de rota](#sistema-de-locomoção-e-otimização-de-rota)
+    - [Arquitetura do sistema de simulação e integração com o sistema operacional robótico](#arquitetura-do-sistema-de-simulação-e-integração-com-o-sistema-operacional-robótico)
+    - [Escolha e implementação do algoritmo de otimização de rota](#escolha-e-implementação-do-algoritmo-de-otimização-de-rota)
+    - [Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica](#integração-e-validação-do-sistema-de-otimização-de-rota-com-a-movimentação-da-plataforma-robótica)
     - [Frontend](#frontend)
     - [Comunicação](#comunicação)
       - [Diagrama de arquitetura](#diagrama-de-arquitetura)
@@ -306,7 +311,7 @@ Diante do exposto, pode-se dizer que o TurtleBee é uma solução viável para a
 
 ## Proposta geral
 
-Nosso projeto consiste em um sistema integrado que envolve um TurtleBot, um backend e um frontend para permitir a comunicação e controle do TurtleBot por meio de uma interface web. O TurtleBot é um robô de duas rodas equipado com diversos sensores e componentes cruciais para a realização de suas tarefas.
+Nosso projeto consiste em um sistema integrado que envolve o modelo de robô TurtleBot3, juntamente com um sistema de controle construído através de um backend e um frontend, resultando em uma interface web amigável. O TurtleBot3 é um robô de duas rodas equipado com diversos sensores e componentes essenciais para a execução de suas tarefas.
 
 ### Componentes do TurtleBot
 
