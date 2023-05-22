@@ -1,8 +1,4 @@
-import React from "react";
-
-interface Props {}
-
-const HeaderDisplay: React.FC<Props> = (props) => {
+const HeaderDisplay: React.FC = () => {
   return <div className="h-[10vh] shadow-md"></div>;
 };
 
