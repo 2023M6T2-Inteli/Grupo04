@@ -328,10 +328,19 @@ O TurtleBot será equipado com os seguintes componentes:
 O backend será construído usando as seguintes tecnologias:
 
 - Docker: permitirá criar e gerenciar contêineres que facilitará o deploy em um serviço cloud.
-- Python (Flask): framework web usado para criar a API e gerenciar a lógica do servidor responsável por estabelecer a comunicação entre o usuário e as atividade do TurtelBot.
+- Python ([Sanic](https://sanic.dev/en/)): framework web usado para criar a API e gerenciar a lógica do servidor responsável por estabelecer a comunicação entre o usuário e as atividade do TurtelBot.
 - Banco de dados SQL: armazena informações e dados relevantes para o projeto.
 
 O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comunicação bidirecional com o TurtleBot.
+
+#### **Sistema de análise de rachadura nas paredes**
+No backend será implementado um sistema de análise de rachadura nas paredes. O sistema será responsável por receber as imagens da webcam e processá-las para identificar rachaduras nas paredes. 
+A análise de rachaduras em paredes é realizada usando um modelo de detecção de objetos, o [YOLOv8](https://github.com/ultralytics/ultralytics). Os seguintes passos foram seguidos:
+- **Preparação do conjunto de dados**: selecionamos um conjunto de dados que contém 4029 imagens de rachaduras em paredes. Este conjunto de dados é dividido em treinamento, validação e teste, com 3700, 200 e 129 imagens respectivamente, advindos de [RoboFlow](https://universe.roboflow.com/university-bswxt/crack-bphdr/dataset/2). Nas imagens, as rachaduras são rotuladas com caixas delimitadoras (caso possuam rachaduras).
+- **Treinamento do modelo**: utilizamos o [Google Colab](https://colab.research.google.com) para treinarmos o modelo (o jupternotebook pode ser encontrado [aqui](../src/backend/utils/cracked-wall-analysis/model/)). Como estamos utilizando um modelo pré-treinado, o treinamento com os dados selecionados foi realizado em 10 épocas, com um tamanho de batch de 16, um learning rate de 0.001 e tomando como base o modelo padrão do YOLOv8. Ao final, o modelo é salvo em um arquivo `.pt`, o qual o importamos para esse projeto.
+- **Predição**: Após o treinamento, o modelo é capaz de prever a localização de rachaduras em novas imagens. Ele faz isso ao analisar a imagem e identificar áreas que se assemelham às rachaduras que aprendeu durante o treinamento. Para a análise do vídeo ao vivo, utilizamos a biblioteca OpenCV que efetua a captura de frames do vídeo e os envia para o modelo. O modelo, por sua vez, retorna as imagens com as rachaduras identificadas. Por fim, o vídeo é gerado com as imagens processadas.  
+  
+**_Observação_**: Em nenhum momento foi efetuado um trabalho de tratamento das imagens pelo grupo (as imagens coletadas no RoboFlow já estavam devidamente demarcadas como requisitado pelo modelo), nem para o treinamento nem para a predição. O modelo YOLOv8 já possuí uma pipeline inerente ao modelo, ou seja, quando informamos uma imagem para predição ou até mesmo um conjunto de dados para treinamento, uma série de operações de pré-processamento são realizadas, como redimensionamento, normalização e possivelmente outras transformações. Portanto, isso não significa que em nenhum momento as imagens foram tratadas, mas sim esse processo já foi definido pelos criadores do YOLOv8, tendo em vista melhorar a robustez e o desempenho do modelo.
 
 ## Sistema de locomoção e otimização de rota
 
