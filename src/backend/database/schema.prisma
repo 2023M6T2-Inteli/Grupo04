@@ -1,6 +1,6 @@
 datasource db {
-  provider = "sqlite"
-  url      = "file:database.db"
+  provider = "mysql"
+  url      = "mysql://janedoe:mypassword@127.0.0.1:3001/mydb"
 }
 
 generator db {
@@ -8,20 +8,49 @@ generator db {
   interface = "sync"
 }
 
-model Rotes {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  email     String   @unique
-  name      String?
-  posts     Post[]
+model Route {
+  id        Int       @id @default(autoincrement())
+  name      String
+  points    point[]
+  createdAt DateTime  @default(now())
+  Analyze   Analyze[]
 }
 
-model Post {
+model point {
   id        Int      @id @default(autoincrement())
+  name      String
+  pointX    Float
+  pointY    Float
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  published Boolean  @default(false)
-  title     String
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+  Route     Route    @relation(fields: [routeId], references: [id])
+  routeId   Int
+}
+
+model Analyze {
+  id         Int            @id @default(autoincrement())
+  route      Route          @relation(fields: [routeId], references: [id])
+  routeId    Int
+  name       String
+  startDate  DateTime
+  endDate    DateTime
+  supervisor String
+  operator   String
+  images     imageAnalyse[]
+  createdAt  DateTime       @default(now())
+}
+
+model robo {
+  id        Int      @id @default(autoincrement())
+  name      String
+  ip        String
+  createdAt DateTime @default(now())
+}
+
+model imageAnalyse {
+  id        Int      @id @default(autoincrement())
+  name      String
+  path      String
+  createdAt DateTime @default(now())
+  Analyze   Analyze  @relation(fields: [analyzeId], references: [id])
+  analyzeId Int
 }

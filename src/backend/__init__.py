@@ -1,10 +1,36 @@
-from flask import Flask
+from sanic import Sanic
+from sanic.response import json
+from textwrap import dedent
+from prisma import Prisma, register
+from sanic import Blueprint
+from robot.model import robot
 
-app = Flask(__name__)
 
-app.route('/')
-def index():
-    return "oi"
+def create_app():
+    app = Sanic(__name__)
+    db = Prisma()
+    # db.connect("mysql:/database/database.db")
+    # register(db)
 
-if __name__ == '__main__':
-      app.run(debug=True, port=3001)
+    return app, db
+
+app, db = create_app()
+
+app.ext.openapi.describe(
+    "Turtle Controller API",
+    version="1.0",
+    description=dedent(
+        """
+        # Info
+        This is a description. It is a good place to add some _extra_ doccumentation.
+
+        **MARKDOWN** is supported.
+        """
+    ),
+)
+
+
+app.blueprint(robot, url_prefix='/robot')
+
+if __name__ == "__main__":
+    app.run(debug=True, port=3001)
