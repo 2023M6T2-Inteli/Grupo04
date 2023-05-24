@@ -35,3 +35,8 @@
 *.app
 
 *node_modules
+
+# Python files 
+*__pycache__
+*.env
+*.venv
