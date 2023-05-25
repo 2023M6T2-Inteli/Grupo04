@@ -9,7 +9,19 @@ def register(email: str, password: str, name:str) -> tuple[dict[str, str], int]:
         return {'error': str(e)}, 500
 
 def login(email: str, password: str) -> tuple[dict[str, str], int]:
-    return {'message': 'Hello World'}, 200
+    try:
+        user = User(name=None, email=email, password=password)
+        message = user.login()
+        return {'message': message}, 200
+    except NameError as err:
+        return {'error': str(err)}, 404
+    except Exception as e:
+        return {'error': str(e)}, 500
 
 def get_user(id: str) -> tuple[dict[str, str], int]:
-    return {'message': 'Hello World'}, 200
+    try:
+        user = User(name=None, email=None, password=None)
+        user_data = user.get_user(id=id)
+        return user_data, 200
+    except Exception as err:
+        return {'error': str(err)}, 500

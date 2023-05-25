@@ -1,4 +1,8 @@
-from user.model import create_user
+from user.model import create_user, get_user_by_email, get_user_by_id
+import json
+import bcrypt
+import jwt
+from datetime import datetime, timedelta
 class User:
 
    def __init__(self, name: str, email: str, password: str):
@@ -7,8 +11,33 @@ class User:
       self.password = password
    
    def register(self) -> str:
-      create_user(name=self.name, email=self.email, password=self.password)
+      password = str(self.password)
+      password = password.encode('UTF_8')
+      password_crypt = bcrypt.hashpw(password, bcrypt.gensalt(10))
+      password_crypt = password_crypt.decode("utf-8")
+
+      create_user(name=self.name, email=self.email, password=password_crypt)
+
       return f"User: {self.name}, created successfully"
+   
+   def login(self) -> str:
+      try: 
+         user = get_user_by_email(email=self.email)
+      except:
+         raise NameError(f"User does not exists with the email: {self.email}")
+      print(user.password)
+      if bcrypt.checkpw(password=str(self.password).encode('UTF_8'), hashed_password=str(user.password).encode('UTF_8')):
+
+         payload_data = {'id': user.id, "exp": datetime.utcnow() + timedelta(hours=2)}
+         token = jwt.encode(payload=payload_data, key='secret')
+
+         return f"Thank you for login, your token: {token}"
+      
+      raise NameError("Incorrect password!")
+   
+   def get_user(self, id: str) -> dict:
+      user = get_user_by_id(id=id)
+      return user
 
    # def login(self) -> str:
    #    try:

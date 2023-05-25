@@ -1,24 +1,23 @@
-from prisma import Prisma
-
-def connect_db() -> Prisma:
-   print("connect_db")
-   # from app import db as prisma_config
-   db = Prisma()
-   db.connect()
-   print("prisma_config")
-   return db
+from __init__ import db
 
 def create_user(name: str, email: str, password: str) -> bool:
-   print("create_user")
-   db = connect_db()
    data = {
          'name': name,
          'email': email,
          'password': password
       }
    db.user.create(data=data)
-   db.disconnect()
    return True
+
+def get_user_by_email(email: str) -> dict:
+   user = db.user.find_unique(where={'email': email})
+   return user
+
+def get_user_by_id(id: str) -> dict:
+   user = db.user.find_unique(where={'id': id})
+   user.createdAt = user.createdAt.strftime("%d-%m-%Y %H:%M:%S")
+   user.updatedAt = user.updatedAt.strftime("%d-%m-%Y %H:%M:%S")
+   return user.__dict__
 
 # class User_models:
 #    from app import db as prisma_config

@@ -20,13 +20,13 @@ async def handler_register(request: Request) -> HTTPResponse:
 @validate_body(Schema.LOGIN.value)
 async def handler_login(request: Request) -> HTTPResponse:
       data = request.json
-      response, code = await login(email=data['email'], password=data['password'])
+      response, code = login(email=data['email'], password=data['password'])
       return json(response, code)
 
 @user.get("/")
 @auth
 async def handler_get(request: Request) -> HTTPResponse:
       id = request.ctx.id
-      response, code = await get_user(id=id)
+      response, code = get_user(id=id)
       return json(response, code)
       
