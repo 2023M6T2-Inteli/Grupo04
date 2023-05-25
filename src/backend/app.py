@@ -5,23 +5,22 @@ from prisma import Prisma, register
 import os
 
 # Routes imports
-# from robot.model import robot
 from user.routes import user
-# from robot.routes import robot as robot_routes
+from robot.routes import robot
 
-try: 
-   # Credentials defined in the docker-compose
-   host = os.environ['MYSQL_HOST'] 
-   user = os.environ['MYSQL_USER'] 
-   password = os.environ['MYSQL_PASSWORD'] 
-   database = os.environ['MYSQL_DATABASE']
-   port = os.environ['MYSQL_MIGRATIONS_PORT']
-   host_migrations = os.environ['MYSQL_MIGRATIONS_HOST']
-except:
-    # Credenciais definidas no arquivo .env
-    from dotenv import load_dotenv
-    load_dotenv()
-    url_db = os.getenv('DATABASE_URL') 
+# try: 
+#    # Credentials defined in the docker-compose
+#    host = os.environ['MYSQL_HOST'] 
+#    user = os.environ['MYSQL_USER'] 
+#    password = os.environ['MYSQL_PASSWORD'] 
+#    database = os.environ['MYSQL_DATABASE']
+#    port = os.environ['MYSQL_MIGRATIONS_PORT']
+#    host_migrations = os.environ['MYSQL_MIGRATIONS_HOST']
+# except:
+#     # Credenciais definidas no arquivo .env
+#     from dotenv import load_dotenv
+#     load_dotenv()
+#     url_db = os.getenv('DATABASE_URL') 
 
 
 def create_server() -> Sanic:
@@ -44,8 +43,7 @@ app.ext.openapi.describe(
 )
 
 app.blueprint(user, url_prefix='/user')
-# app.blueprint(robot_routes, url_prefix='/robot')
-# app.blueprint(robot, url_prefix='/robot')
+app.blueprint(robot, url_prefix='/robot')
 
 if __name__ == "__main__":
     app.run(debug=True, port=3001)

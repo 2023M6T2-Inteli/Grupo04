@@ -7,8 +7,6 @@ def register(email: str, password: str, name:str) -> tuple[dict[str, str], int]:
         return {'message': message}, 200
     except Exception as e:
         return {'error': str(e)}, 500
-    
-    return {'message': 'Hello World'}, 200
 
 def login(email: str, password: str) -> tuple[dict[str, str], int]:
     return {'message': 'Hello World'}, 200

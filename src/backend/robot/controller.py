@@ -1,12 +1,11 @@
-from robot.service import RobotService
+from robot.service import Robot
 
-def create_robot(name: str, ip: str) -> dict:
-    robot = RobotService(name, ip)
-    try: 
-        response = robot.create_robot()
-        return {'type': 'success', 'message': f'{response}'}, 200
-    except NameError as err:
-        return {'type': 'error', 'message': f'{err}'}, 403
-    except Exception as err:
-        return {'type': 'error', 'message': f'{err}'}, 500
+def register(name: str, ip: str) -> tuple[dict[str, str], int]:
+    try:
+        robot = Robot(name=name, ip=ip)
+        message = robot.register()
+        return {'message': message}, 200
+    except Exception as e:
+        return {'error': str(e)}, 500
+    
         

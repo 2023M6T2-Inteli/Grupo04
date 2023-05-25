@@ -36,8 +36,8 @@ model point {
 }
 
 model analyze {
-  id         Int            @id @default(autoincrement())
-  route      route          @relation(fields: [routeId], references: [id])
+  id         Int             @id @default(autoincrement())
+  route      route           @relation(fields: [routeId], references: [id])
   routeId    Int
   name       String
   startDate  DateTime
@@ -45,10 +45,10 @@ model analyze {
   supervisor String
   operator   String
   images     image_analyse[]
-  createdAt  DateTime       @default(now())
+  createdAt  DateTime        @default(now())
 }
 
-model robo {
+model robot {
   id        Int      @id @default(autoincrement())
   name      String
   ip        String

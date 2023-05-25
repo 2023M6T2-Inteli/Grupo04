@@ -1,16 +1,18 @@
 import jwt 
 from datetime import datetime, timedelta
 
-import robot.model as RobotModel
+from robot.model import Robot_models
 
-class RobotService:
+class Robot:
     def __init__(self, name: str="", ip:str="") -> None:
        self.name = name.upper()
        self.ip = ip.upper()
 
-    def create_robot(self) -> str:
+    def register(self) -> str:
         try:
-            RobotModel.check_ip(ip = self.ip, name = self.name)
-        except:
+            Robot_models.create_robot(ip = self.ip, name = self.name)
             return f"Robot {self.name} created with success!"
-        raise NameError(f'Robot already exists with this ip: {self.ip}')
+        except: 
+            raise NameError(f'Robot already exists with this ip: {self.ip}')
+    
+    

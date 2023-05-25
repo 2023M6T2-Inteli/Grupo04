@@ -1,12 +1,32 @@
 import bcrypt
-from app import db, app
 from datetime import datetime
 
-def check_ip(ip, name) -> bool:
-    robot = db.robot.find_first(where={'ip': ip})
-    if robot:
-        return True
-    else:
-        db.robot.create({'ip': ip, 'name': name, 'created_at': datetime.now()})
-        return False
+from prisma import Prisma
+
+def connect_db() -> Prisma:
+        # from app import db as prisma_config
+        db = Prisma()
+        db.connect()
+        return db
+
+class Robot_models:
+    
+    def create_robot(name: str, ip: str) -> bool:
+        db = connect_db()
+        robot = db.robot.find_first(where={'ip': ip})
+        print(robot)
+        if robot is not None:
+            raise NameError(f'Robot already exists with this ip: {robot}')
+        else:
+            data = {
+                    'name': name,
+                    'ip': ip,
+                    'created_at': datetime.now()
+                }
+            db.robot.create(data=data)
+            return True
+        
+
+    
+
     
