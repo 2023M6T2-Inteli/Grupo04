@@ -1,6 +1,6 @@
 datasource db {
   provider = "mysql"
-  url      = "mysql://janedoe:mypassword@127.0.0.1:3001/mydb"
+  url      = env("DATABASE_URL")
 }
 
 generator db {
@@ -8,12 +8,12 @@ generator db {
   interface = "sync"
 }
 
-model Route {
+model route {
   id        Int       @id @default(autoincrement())
   name      String
   points    point[]
   createdAt DateTime  @default(now())
-  Analyze   Analyze[]
+  Analyze   analyze[]
 }
 
 model point {
@@ -22,20 +22,20 @@ model point {
   pointX    Float
   pointY    Float
   createdAt DateTime @default(now())
-  Route     Route    @relation(fields: [routeId], references: [id])
+  Route     route    @relation(fields: [routeId], references: [id])
   routeId   Int
 }
 
-model Analyze {
+model analyze {
   id         Int            @id @default(autoincrement())
-  route      Route          @relation(fields: [routeId], references: [id])
+  route      route          @relation(fields: [routeId], references: [id])
   routeId    Int
   name       String
   startDate  DateTime
   endDate    DateTime
   supervisor String
   operator   String
-  images     imageAnalyse[]
+  images     image_analyse[]
   createdAt  DateTime       @default(now())
 }
 
@@ -46,11 +46,11 @@ model robo {
   createdAt DateTime @default(now())
 }
 
-model imageAnalyse {
+model image_analyse {
   id        Int      @id @default(autoincrement())
   name      String
   path      String
   createdAt DateTime @default(now())
-  Analyze   Analyze  @relation(fields: [analyzeId], references: [id])
+  Analyze   analyze  @relation(fields: [analyzeId], references: [id])
   analyzeId Int
 }
