@@ -1,13 +1,16 @@
+# Basic imports
 from sanic import Sanic
 from textwrap import dedent
-from prisma import Prisma, register, Client
+from prisma import Prisma, register
 import os
-import asyncio
 
-from robot.routes import robot as robot_routes
+# Routes imports
+# from robot.model import robot
+from user.routes import user
+# from robot.routes import robot as robot_routes
 
 try: 
-   # Credenciais definidas nas variáveis de ambiente no docker-compose
+   # Credentials defined in the docker-compose
    host = os.environ['MYSQL_HOST'] 
    user = os.environ['MYSQL_USER'] 
    password = os.environ['MYSQL_PASSWORD'] 
@@ -21,29 +24,15 @@ except:
     url_db = os.getenv('DATABASE_URL') 
 
 
-async def main() -> None:
+def create_server() -> Sanic:
     app = Sanic(__name__)
-    db = Prisma()
-    await db.connect()
+    return app
 
-    # write your queries here
-    user = await db.robo.create(
-        data={
-            'name': 'Robert',
-            'ip': 'robert@craigie.dev'
-        },
-    )
-
-    await db.disconnect()
-    return app, db
-
-
-
-app, db = asyncio.run(main())
+app = create_server()
 
 app.ext.openapi.describe(
     "Turtle Controller API",
-    version="1.0",
+    version="2.0",
     description=dedent(
         """
         # Info
@@ -54,8 +43,9 @@ app.ext.openapi.describe(
     ),
 )
 
-
-app.blueprint(robot_routes, url_prefix='/robot')
+app.blueprint(user, url_prefix='/user')
+# app.blueprint(robot_routes, url_prefix='/robot')
+# app.blueprint(robot, url_prefix='/robot')
 
 if __name__ == "__main__":
     app.run(debug=True, port=3001)
