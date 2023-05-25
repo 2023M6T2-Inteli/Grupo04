@@ -26,7 +26,24 @@ class Robot_models:
             db.robot.create(data=data)
             return True
         
-
+    def get_robots() -> list:
+        db = connect_db()
+        robots = db.robot.find_many()
+        return robots
+    
+    def get_robot(id: int) -> dict:
+        db = connect_db()
+        robot = db.robot.find_first(where={'id': id})
+        return robot
+    
+    def delete_robot(id: int) -> dict:
+        db = connect_db()
+        robot = db.robot.find_first(where={'id': id})
+        if robot is None:
+            raise NameError(f'Robot not exists with this id: {id}')
+        else:
+            db.robot.delete(where={'id': id})
+            return True
     
 
     

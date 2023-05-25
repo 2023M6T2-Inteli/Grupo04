@@ -9,4 +9,18 @@ class Schema(Enum):
          "ip": {"type": "string"},
       },
       "required": ["name", "ip"]
+   },
+   GET_ROBOT = {
+      "type": "object",
+      "properties": {
+         "id": {"type": "integer"}
+      },
+      "required": ["id"]
+   },
+   DELETE_ROBOT = {
+      "type": "object",
+      "properties": {
+         "id": {"type": "integer"}
+      },
+      "required": ["id"]
    }
