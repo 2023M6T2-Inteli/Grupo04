@@ -7,6 +7,7 @@ import os
 # Routes imports
 from user.routes import user
 from robot.routes import robot
+from analyze.routes import analyze
 
 # try: 
 #    # Credentials defined in the docker-compose
@@ -44,6 +45,7 @@ app.ext.openapi.describe(
 
 app.blueprint(user, url_prefix='/user')
 app.blueprint(robot, url_prefix='/robot')
+app.blueprint(analyze, url_prefix='/analyze')
 
 if __name__ == "__main__":
     app.run(debug=True, port=3001)
