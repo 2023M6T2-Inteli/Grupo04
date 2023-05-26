@@ -15,7 +15,7 @@ class Robot:
         except: 
             raise NameError(f'Robot already exists with this ip: {self.ip}')
     
-    def get_all(self) -> list:
+    def get_all(self) -> list[dict[str, str]]:
         try:
             robots = get_robots()
             response = []
@@ -27,7 +27,7 @@ class Robot:
         except:
             raise NameError(f'Error to get all robots')
         
-    def get_robot(self, id:int) -> dict:
+    def get_robot(self, id:int) -> dict[str, str]:
         try:
             robot = get_robot(id)
             robot.createdAt = robot.createdAt.strftime("%d-%m-%Y %H:%M:%S")

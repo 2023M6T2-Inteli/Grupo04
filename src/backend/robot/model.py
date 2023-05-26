@@ -1,5 +1,6 @@
 import bcrypt
 from __init__ import db
+from prisma import Prisma
 
 def create_robot(name: str, ip: str) -> bool:
     robot = db.robot.find_first(where={'ip': ip})
@@ -11,11 +12,11 @@ def create_robot(name: str, ip: str) -> bool:
     db.robot.create(data=data)
     return True
 
-def get_robots() -> list:
+def get_robots() -> list[Prisma.robot]:
     robots = db.robot.find_many()
     return robots
 
-def get_robot(id: int) -> dict:
+def get_robot(id: int) -> Prisma.robot:
     robot = db.robot.find_first(where={'id': id})
     return robot
 

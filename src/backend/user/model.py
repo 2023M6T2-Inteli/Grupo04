@@ -1,4 +1,5 @@
 from __init__ import db
+from prisma import Prisma
 
 def create_user(name: str, email: str, password: str) -> bool:
    data = {
@@ -9,11 +10,11 @@ def create_user(name: str, email: str, password: str) -> bool:
    db.user.create(data=data)
    return True
 
-def get_user_by_email(email: str) -> dict:
+def get_user_by_email(email: str) -> Prisma.user:
    user = db.user.find_unique(where={'email': email})
    return user
 
-def get_user_by_id(id: str) -> dict:
+def get_user_by_id(id: str) -> dict[str, str]:
    user = db.user.find_unique(where={'id': id})
    user.createdAt = user.createdAt.strftime("%d-%m-%Y %H:%M:%S")
    user.updatedAt = user.updatedAt.strftime("%d-%m-%Y %H:%M:%S")
