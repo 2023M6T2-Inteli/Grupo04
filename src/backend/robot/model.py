@@ -1,49 +1,31 @@
 import bcrypt
-from datetime import datetime
+from __init__ import db
 
-from prisma import Prisma
+def create_robot(name: str, ip: str) -> bool:
+    robot = db.robot.find_first(where={'ip': ip})
+    if robot:
+        raise NameError(f'Robot already exists with this ip: {robot}')
+    data = {
+            'name': name,
+            'ip': ip        }
+    db.robot.create(data=data)
+    return True
 
-def connect_db() -> Prisma:
-        # from app import db as prisma_config
-        db = Prisma()
-        db.connect()
-        return db
+def get_robots() -> list:
+    robots = db.robot.find_many()
+    return robots
 
-class Robot_models:
-    
-    def create_robot(name: str, ip: str) -> bool:
-        db = connect_db()
-        robot = db.robot.find_first(where={'ip': ip})
-        print(robot)
-        if robot is not None:
-            raise NameError(f'Robot already exists with this ip: {robot}')
-        else:
-            data = {
-                    'name': name,
-                    'ip': ip,
-                    'created_at': datetime.now()
-                }
-            db.robot.create(data=data)
-            return True
-        
-    def get_robots() -> list:
-        db = connect_db()
-        robots = db.robot.find_many()
-        return robots
-    
-    def get_robot(id: int) -> dict:
-        db = connect_db()
-        robot = db.robot.find_first(where={'id': id})
-        return robot
-    
-    def delete_robot(id: int) -> dict:
-        db = connect_db()
-        robot = db.robot.find_first(where={'id': id})
-        if robot is None:
-            raise NameError(f'Robot not exists with this id: {id}')
-        else:
-            db.robot.delete(where={'id': id})
-            return True
+def get_robot(id: int) -> dict:
+    robot = db.robot.find_first(where={'id': id})
+    return robot
+
+def delete_robot(id: int) -> bool:
+    robot = db.robot.find_first(where={'id': id})
+    if not robot:
+        raise NameError(f'Robot not exists with this id: {id}')
+    else:
+        db.robot.delete(where={'id': id})
+        return True
     
 
     

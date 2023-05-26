@@ -18,14 +18,12 @@ async def create(request):
 
 @analyze.post("/video_upload")
 async def video_upload(request: Request) -> json:
-    # print(request.files)
-    # print(request.body)
     print(len(request.files.get('image')))
     print(type(request.files.get('image')))
     image_bytes = request.files.get('image')[1]
     nparr = np.fromstring(image_bytes, np.uint8)
     img = cv.imdecode(nparr, cv.IMREAD_COLOR)
-    result = model.predict(img, conf=0.6)
+    result = model.predict(img, conf=0.55)
 
     await frame_queue.put(result[0].plot())
 
@@ -38,7 +36,7 @@ async def video_feed(request: Request, ws: Websocket):
         while True:
             frame = await frame_queue.get()
             if frame is not None:
-                _, buffer = cv.imencode('.jpg', cv.flip(frame, 1))
+                _, buffer = cv.imencode('.jpg', frame)
                 frame_bytes = buffer.tobytes()
 
                 tasks = []

@@ -21,15 +21,11 @@ async def handler_get_robots(request: Request) -> HTTPResponse:
       return json(response, code)
 
 @robot.get("/get_robot/<id:int>")
-@validate_body(Schema.GET_ROBOT.value)
-async def handler_get_robot(request: Request) -> HTTPResponse:
-      data = request.json
-      response, code = get_robot(data['id'])
+async def handler_get_robot(request: Request, id) -> HTTPResponse:
+      response, code = get_robot(id)
       return json(response, code)
 
 @robot.delete("/delete_robot/<id:int>")
-@validate_body(Schema.DELETE_ROBOT.value)
-async def handler_delete_robot(request: Request) -> HTTPResponse:
-      data = request.json
-      response, code = delete_robot(data['id'])
+async def handler_delete_robot(request: Request, id) -> HTTPResponse:
+      response, code = delete_robot(id)
       return json(response, code)

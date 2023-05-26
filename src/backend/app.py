@@ -1,8 +1,6 @@
 # Basic imports
 from sanic import Sanic
 from textwrap import dedent
-from prisma import Prisma, register
-import os
 
 # Routes imports
 from user.routes import user
@@ -50,3 +48,4 @@ app.blueprint(analyze, url_prefix='/analyze')
 if __name__ == "__main__":
     app.run(debug=True, port=3001)
     
+# host='10.128.65.181',
