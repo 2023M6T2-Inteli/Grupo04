@@ -10,19 +10,16 @@ import asyncio
 
 analyze = Blueprint('analyze', __name__)
 
+model = YOLO('analyze/best.pt')
+clients = []
+frame_queue = asyncio.Queue()
+
 @analyze.post("/create")
 @validate_body(Schema.REGISTER.value)
 async def handler_register(request: Request) -> HTTPResponse:
       data = request.json
       response, code = register(routeId=data['routeId'], name=data['name'], startDate=data['startDate'], endDate=data['endDate'], supervisor=data['supervisor'], operator=data['operator'])
       return json(response, code)
-
-
-analyze = Blueprint('analyze', __name__)
-
-model = YOLO('analyze/best.pt')
-clients = []
-frame_queue = asyncio.Queue()
 
 @analyze.get("/create")
 async def create(request):
