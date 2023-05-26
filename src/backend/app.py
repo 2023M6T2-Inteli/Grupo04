@@ -1,27 +1,11 @@
 # Basic imports
 from sanic import Sanic
 from textwrap import dedent
-from prisma import Prisma, register
-import os
 
 # Routes imports
 from user.routes import user
 from robot.routes import robot
-
-# try: 
-#    # Credentials defined in the docker-compose
-#    host = os.environ['MYSQL_HOST'] 
-#    user = os.environ['MYSQL_USER'] 
-#    password = os.environ['MYSQL_PASSWORD'] 
-#    database = os.environ['MYSQL_DATABASE']
-#    port = os.environ['MYSQL_MIGRATIONS_PORT']
-#    host_migrations = os.environ['MYSQL_MIGRATIONS_HOST']
-# except:
-#     # Credenciais definidas no arquivo .env
-#     from dotenv import load_dotenv
-#     load_dotenv()
-#     url_db = os.getenv('DATABASE_URL') 
-
+from analyze.routes import analyze
 
 def create_server() -> Sanic:
     app = Sanic(__name__)
@@ -44,7 +28,7 @@ app.ext.openapi.describe(
 
 app.blueprint(user, url_prefix='/user')
 app.blueprint(robot, url_prefix='/robot')
+app.blueprint(analyze, url_prefix='/analyze')
 
 if __name__ == "__main__":
     app.run(debug=True, port=3001)
-    

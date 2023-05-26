@@ -1,4 +1,4 @@
-from robot.model import Robot_models
+from robot.model import create_robot, get_robots, get_robot, delete_robot
 
 class Robot:
     def __init__(self, name: str="", ip:str="") -> None:
@@ -7,28 +7,34 @@ class Robot:
 
     def register(self) -> str:
         try:
-            Robot_models.create_robot(ip = self.ip, name = self.name)
+            create_robot(ip = self.ip, name = self.name)
             return f"Robot {self.name} created with success!"
         except: 
             raise NameError(f'Robot already exists with this ip: {self.ip}')
     
-    def get_all(self) -> list:
+    def get_all(self) -> list[dict[str, str]]:
         try:
-            robots = Robot_models.get_robots()
-            return robots
+            robots = get_robots()
+            response = []
+            for robot in robots:
+                robot.createdAt = robot.createdAt.strftime("%d-%m-%Y %H:%M:%S")
+                robot = robot.__dict__
+                response.append(robot)
+            return response
         except:
             raise NameError(f'Error to get all robots')
         
-    def get_robot(self, id:int) -> dict:
+    def get_robot(self, id:int) -> dict[str, str]:
         try:
-            robot = Robot_models.get_robot(id)
-            return robot
+            robot = get_robot(id)
+            robot.createdAt = robot.createdAt.strftime("%d-%m-%Y %H:%M:%S")
+            return robot.__dict__
         except:
             raise NameError(f'Error to get robot')
         
-    def delete_robot(self, id:int) -> dict:
+    def delete_robot(self, id:int) -> str:
         try:
-            robot = Robot_models.delete_robot(id)
-            return robot
+            delete_robot(id)
+            return f"Robot deleted with success!"
         except:
             raise NameError(f'Error to delete robot')

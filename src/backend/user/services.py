@@ -35,7 +35,7 @@ class User:
       
       raise NameError("Incorrect password!")
    
-   def get_user(self, id: str) -> dict:
+   def get_user(self, id: str) -> dict[str, str]:
       user = get_user_by_id(id=id)
       return user
 
