@@ -27,7 +27,6 @@ model route {
 
 model point {
   id        Int      @id @default(autoincrement())
-  name      String
   pointX    Float
   pointY    Float
   createdAt DateTime @default(now())
