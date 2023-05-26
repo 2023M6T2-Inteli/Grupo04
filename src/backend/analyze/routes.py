@@ -23,7 +23,7 @@ async def video_upload(request: Request) -> json:
     image_bytes = request.files.get('image')[1]
     nparr = np.fromstring(image_bytes, np.uint8)
     img = cv.imdecode(nparr, cv.IMREAD_COLOR)
-    result = model.predict(img, conf=0.55)
+    result = model.predict(img, conf=0.4)
 
     await frame_queue.put(result[0].plot())
 
