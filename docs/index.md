@@ -10,9 +10,9 @@
     - [Componentes do TurtleBot](#componentes-do-turtlebot)
     - [Backend](#backend)
       - [Sistema de locomoção e otimização de rota](#sistema-de-locomoção-e-otimização-de-rota)
-    - [Arquitetura do sistema de simulação e integração com o sistema operacional robótico](#arquitetura-do-sistema-de-simulação-e-integração-com-o-sistema-operacional-robótico)
-    - [Escolha e implementação do algoritmo de otimização de rota](#escolha-e-implementação-do-algoritmo-de-otimização-de-rota)
-    - [Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica](#integração-e-validação-do-sistema-de-otimização-de-rota-com-a-movimentação-da-plataforma-robótica)
+        - [Arquitetura do sistema de simulação e integração com o sistema operacional robótico](#arquitetura-do-sistema-de-simulação-e-integração-com-o-sistema-operacional-robótico)
+        - [Escolha e implementação do algoritmo de otimização de rota](#escolha-e-implementação-do-algoritmo-de-otimização-de-rota)
+        - [Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica](#integração-e-validação-do-sistema-de-otimização-de-rota-com-a-movimentação-da-plataforma-robótica)
     - [Frontend](#frontend)
     - [Comunicação](#comunicação)
       - [Diagrama de arquitetura](#diagrama-de-arquitetura)
@@ -116,11 +116,11 @@ O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comuni
 
 #### Sistema de locomoção e otimização de rota
 
-### Arquitetura do sistema de simulação e integração com o sistema operacional robótico
+##### Arquitetura do sistema de simulação e integração com o sistema operacional robótico
 
 ![Diagrama da arquitetura da simulação](images/arquitetura_da_simulacao.png)
 
-### Escolha e implementação do algoritmo de otimização de rota
+##### Escolha e implementação do algoritmo de otimização de rota
 
 No processo de escolha do método de otimização da trajetória de inspeção por gases, as seguintes premissas foram assumidas:
 &nbsp;
@@ -155,7 +155,7 @@ Dada a relação do algoritmo com a tarefa mencionada, sua escolha como método 
 - Caso alguma alteração ocorra nos dutos de ventilação como reformas, mudanças de topologia ou inserção de dispositivos que possam se tornar obstáculos a navegação do dispositivo, o método escolhido pode se adaptar. A obstrução pode ser considerada como um nó ou uma série de nós pode ser traçada ao redor dela, fazendo com que o dispositivo a contorne.
 - Possui baixo custo computacional, tornando-se adequado para uma aplicação embarcada
 
-### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
+##### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
 
 O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, serão utilizados ROS2 (Robot Operating System 2), Gazebo, e um algoritmo personalizado escrito em JavaScript e Python, com o framework Flask. Por meio dessa implementação, almeja-se que o robô se locomova no ambiente simulado no Gazebo de forma eficiente, considerando a melhor rota e evitando obstáculos.
 
