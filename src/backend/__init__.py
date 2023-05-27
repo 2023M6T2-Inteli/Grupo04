@@ -1,10 +1,6 @@
-from flask import Flask
+# This file have the purpose to set any configuration that is needed before running the app.
+# If any configuration is not needed, it should be empty.
+from prisma import Prisma
 
-app = Flask(__name__)
-
-app.route('/')
-def index():
-    return "oi"
-
-if __name__ == '__main__':
-      app.run(debug=True, port=3001)
+db = Prisma(auto_register=True)
+db.connect()

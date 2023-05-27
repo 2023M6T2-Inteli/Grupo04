@@ -36,7 +36,7 @@
 
 *node_modules
 
-*.DS_Store
+# Python files 
+*__pycache__
 *.env
 *.venv
-.venv/
