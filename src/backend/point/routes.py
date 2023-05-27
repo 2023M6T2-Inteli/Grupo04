@@ -15,16 +15,14 @@ async def handler_register(request: Request) -> HTTPResponse:
       response, code = register(pointX=data['pointX'], pointY=data['pointY'], routeId=data['routeId'])
       return json(response, code)
 
-@point.get("/get_points")
+@point.get("/get_points/<routeId:int>")
 @validate_body(Schema.GET_POINTS.value)
-async def handler_get_points(request: Request) -> HTTPResponse:
-        data = request.json
-        response, code = get_points(routeId=data['routeId'])
+async def handler_get_points(request: Request, routeId) -> HTTPResponse:
+        response, code = get_points(routeId)
         return json(response, code)
 
-@point.delete("/delete_points")
+@point.delete("/delete_points/<routeId:int>")
 @validate_body(Schema.DELETE_POINTS.value)
-async def handler_delete_points(request: Request) -> HTTPResponse:
-        data = request.json
-        response, code = delete_points(routeId=data['routeId'])
+async def handler_delete_points(request: Request,routeId) -> HTTPResponse:
+        response, code = delete_points(routeId)
         return json(response, code)

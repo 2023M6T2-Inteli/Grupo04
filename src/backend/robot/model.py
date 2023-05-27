@@ -1,4 +1,3 @@
-import bcrypt
 from __init__ import db
 from prisma import Prisma
 
@@ -14,11 +13,17 @@ def create_robot(name: str, ip: str) -> bool:
 
 def get_robots() -> list[Prisma.robot]:
     robots = db.robot.find_many()
-    return robots
+    if not robots:
+        raise NameError(f'No robots registered')
+    else:
+        return robots
 
 def get_robot(id: int) -> Prisma.robot:
     robot = db.robot.find_first(where={'id': id})
-    return robot
+    if not robot:
+        raise NameError(f'Robot not exists with this id: {id}')
+    else:
+        return robot
 
 def delete_robot(id: int) -> bool:
     robot = db.robot.find_first(where={'id': id})

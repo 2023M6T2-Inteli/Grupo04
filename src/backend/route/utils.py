@@ -5,12 +5,29 @@ class Schema(Enum):
    REGISTER = {
       "type": "object",
       "properties": {
-         "routeId": {"type": "integer"},
-         "name": {"type": "string"},
-         "startDate": {"type": "string"},
-         "endDate": {"type": "string"},
-         "supervisor": {"type": "string"},
-         "operator": {"type": "string"}
+         "name": {"type": "string"}      
       },
-      "required": ["routeId", "name", "startDate", "endDate", "supervisor", "operator"]
+      "required": ["name"]
+   }
+   UPDATE = {
+      "type": "object",
+      "properties": {
+         "id": {"type": "integer"},
+         "name": {"type": "string"}     
+      },
+      "required": ["id","name"]
+   }
+   DELETE = {
+      "type": "object",
+      "properties": {
+         "id": {"type": "integer"}
+      },
+      "required": ["id"]
+   }
+   GET = {
+      "type": "object",
+      "properties": {
+         "id": {"type": "integer"}
+      },
+      "required": ["id"]
    }

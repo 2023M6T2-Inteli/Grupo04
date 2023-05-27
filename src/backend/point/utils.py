@@ -12,7 +12,7 @@ class Schema(Enum):
          "routeId": {"type": "integer"}
       },
       "required": [ "name", "pointX", "pointY", "routeId"]
-   },
+   }
    
    GET_POINTS = {
         "type": "object",
@@ -21,7 +21,8 @@ class Schema(Enum):
             "routeId": {"type": "integer"}
         },
         "required": ["routeId"]
-    },
+    }
+   
    DELETE_POINTS = {
         "type": "object",
         "properties": {

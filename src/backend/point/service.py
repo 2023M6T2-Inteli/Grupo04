@@ -1,4 +1,4 @@
-from point.model import Point_models
+from point.model import create_point, get_points, delete_points
 
 class Point:
     def __init__(self, pointX: float="", pointY: float="", routeId: int="") -> None:
@@ -8,22 +8,27 @@ class Point:
 
     def register(self) -> str:
         try:
-            Point_models.create_point(pointX = self.pointX, pointY = self.pointY, routeId = self.routeId)
+            create_point(pointX = self.pointX, pointY = self.pointY, routeId = self.routeId)
             return f"Point {self.name} created with success!"
         except: 
             raise NameError(f'Error to create point')
     
-    def get_all(self) -> list:
+    def get_all(self, routeId:int) -> list[dict[str, str]]:
         try:
-            points = Point_models.get_points(routeId=self.routeId)
+            points = get_points(routeId)
+            response = []
+            for point in points:
+                point.created_at = point.created_at.strftime("%d/%m/%Y %H:%M:%S")
+                point = point.__dict__
+                response.append(point)
             return points
         except:
             raise NameError(f'Error to get all points')
         
-    def delete_points(self) -> dict:
+    def delete_points(self, id:int) -> dict:
         try:
-            points = Point_models.delete_points(routeId=self.routeId)
-            return points
+            points = delete_points(id)
+            return f"Points deleted with success!"
         except:
             raise NameError(f'Error to delete points')
     
