@@ -3,7 +3,7 @@ import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
 interface Props {
-  image: any;
+  image?: any;
   displayContent: DisplayContent;
 }
 

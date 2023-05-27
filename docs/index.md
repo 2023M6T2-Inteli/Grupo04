@@ -20,6 +20,7 @@
     - [Entendimento do problema](#entendimento-do-problema)
     - [Missão do projeto](#missão-do-projeto)
     - [Formas de divulgação](#formas-de-divulgação)
+  - [Possibilidades de reuso da solução](#possibilidades-de-reuso-da-solução)
   - [Sustentabilidade ambiental](#sustentabilidade-ambiental)
 - [Arquitetura do sistema](#arquitetura-do-sistema)
   - [Análise de Requisitos](#análise-de-requisitos)
@@ -30,6 +31,10 @@
   - [Proposta geral](#proposta-geral)
     - [Componentes do TurtleBot](#componentes-do-turtlebot)
     - [Backend](#backend)
+  - [Sistema de locomoção e otimização de rota](#sistema-de-locomoção-e-otimização-de-rota)
+    - [Arquitetura do sistema de simulação e integração com o sistema operacional robótico](#arquitetura-do-sistema-de-simulação-e-integração-com-o-sistema-operacional-robótico)
+    - [Escolha e implementação do algoritmo de otimização de rota](#escolha-e-implementação-do-algoritmo-de-otimização-de-rota)
+    - [Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica](#integração-e-validação-do-sistema-de-otimização-de-rota-com-a-movimentação-da-plataforma-robótica)
     - [Frontend](#frontend)
     - [Comunicação](#comunicação)
       - [Diagrama de arquitetura](#diagrama-de-arquitetura)
@@ -50,7 +55,7 @@
 
 ### Tabela
 <p align="center">
-<table><tbody><tr><td><strong>Atributos</strong></td><td><strong>TurtleBee</strong></td><td><a href="https://csrrobotics.com/"><strong><u>CSR Robotics</u></strong></a></td><td><a href="https://nexxis.com/robotic-inspection-inside-confined-spaces/"><strong><u>Nexxis</u></strong></a></td><td><strong>Gerdau</strong></td></tr><tr><td><strong>Preço</strong></td><td>6</td><td>1</td><td>3</td><td>4</td></tr><tr><td><strong>Qualidade</strong></td><td>7</td><td>10</td><td>9</td><td>6</td></tr><tr><td><strong>Tecnologia</strong></td><td>6</td><td>9</td><td>7</td><td>4</td></tr><tr><td><strong>Conforto</strong></td><td>7</td><td>5</td><td>10</td><td>4</td></tr><tr><td><strong>Comodidade</strong></td><td>9</td><td>4</td><td>9</td><td>7</td></tr><tr><td><strong>Praticidade</strong></td><td>10</td><td>5</td><td>8</td><td>7</td></tr></tbody></table>
+<table><tbody><tr><td><strong>Atributos</strong></td><td><strong>TurtleBee</strong></td><td><a href="https://csrrobotics.com/"><strong><u>CSR Robotics</u></strong></a></td><td><a href="https://nexxis.com/robotic-inspection-inside-confined-spaces/"><strong><u>Nexxis</u></strong></a></td><td><strong>Gerdau</strong></td></tr><tr><td><strong>Preço</strong></td><td>6</td><td>1</td><td>3</td><td>4</td></tr><tr><td><strong>Qualidade</strong></td><td>7</td><td>10</td><td>9</td><td>6</td></tr><tr><td><strong>Tecnologia</strong></td><td>6</td><td>9</td><td>7</td><td>4</td></tr><tr><td><strong>Conforto</strong></td><td>7</td><td>5</td><td>10</td><td>4</td></tr><tr><td><strong>Comodidade</strong></td><td>9</td><td>4</td><td>9</td><td>7</td></tr><tr><td><strong>Praticidade</strong></td><td>10</td><td>5</td><td>8</td><td>7</td></tr><tr><td><strong>Risco</strong></td><td>0</td><td>3</td><td>1</td><td>10</td></tr><tr><td><strong>Automação</strong></td><td>10</td><td>0</td><td>0</td><td>0</td></tr><tr><td><strong>Erros</strong></td><td>0</td><td>4</td><td>2</td><td>5</td></tr></tbody></table>
 </p>
 
 ### Gráfico
@@ -118,18 +123,16 @@ O [Link do canvas](https://www.figma.com/file/dxrWcidu3c7Y0AH7lE5h8g/Value-Propo
 A análise financeira objetivou principalmente estimar o valor que seria gasto pela Gerdau, caso ela optasse por desenvolver uma outra empresa para desenvolver um MVP. Seria um projeto desenvolvido ao longo de 2 meses, caso os desenvolvedores dedicassem toda suas horas ao projeto. Os itens foram estimados com base em análise de mercado.  
 Principais observações:
 
-Para o Seguro foi considerado o valor de 10% da somatória dos outros custos;
+- Para o Seguro foi considerado o valor de 10% da somatória dos outros custos;
 
-Engenharia estima-se que seria 8 semanas de uma equipe de 3 engenheiros de dados pleno(R$ 10000.00) e um sênior(R$ 13000.00);
+- Engenharia estima-se que seria 1 ano de um setor de tecnologia, composta por um diretor(R$ 45.000), 2 Gerentes(R$ 42.000 juntos), 2 Sêniors(R$ 28.800 juntos), Plênos(R$ 44.400 juntos) e 2 Jûniors(R$7.300 juntos)
 
-O ICMS se baseia na taxa de veículos automotores do estado de São Paulo, que é 12%;
-
-A margem de lucro representa 20% dos custos da empresa para produzir o projeto
+- A margem de lucro representa 20% dos custos da empresa para produzir o projeto
 
 Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a solução pode oferecer maior segurança aos empregados da Gerdau, que por sua vez reduz a quantidade de acidentes. Além disso, otimiza o tempo de manutenção em cada vistoria, o que permite aumentar a produtividade.
 <p align="center">
 
-<table><tbody><tr><td><strong>Itens</strong></td><td><strong>Categoria</strong></td><td><strong>Preço Estimado</strong></td></tr><tr><td>TurtleBot3 - Burger + 60% Importação</td><td>Hardware</td><td>R$ 5.440,00</td></tr><tr><td>Engenharia</td><td>Serviço</td><td>R$ 86.000,00</td></tr><tr><td>Sensor de gás - MQ - 2</td><td>Hardware</td><td>R$ 40,00</td></tr><tr><td>Câmera</td><td>Hardware</td><td>R$ 100,00</td></tr><tr><td>Seguro</td><td>Manutenção</td><td>R$ 4.611,64</td></tr><tr><td>ICMS</td><td>Taxa</td><td>R$ 652,80</td></tr><tr><td>Margem de lucro da terceirizada (20%)</td><td>Margem de lucro</td><td>R$ 19.368,89</td></tr><tr><td>&nbsp;</td><td><strong>Total:</strong></td><td>R$ 116.213,33</td></tr></tbody></table>
+<table><tbody><tr><td><strong>Itens</strong></td><td><strong>Categoria</strong></td><td><strong>Preço Estimado</strong></td></tr><tr><td>Desenvolvimento de um MVP</td><td>Hardware</td><td>R$ 2.000.000</td></tr><tr><td>Engenharia</td><td>Serviço</td><td>R$ 2.010.000</td></tr><tr><td>Seguro</td><td>Manutenção</td><td>R$ 200.500,00</td></tr><tr><td>Margem de lucro da terceirizada (20%)</td><td>Margem de lucro</td><td>R$ 818.664,00</td></tr><tr><td>&nbsp;</td><td><strong>Total:</strong></td><td>R$ 5.052.600,00</td></tr></tbody></table>
 
 </p>
 
@@ -243,15 +246,16 @@ Contudo, devido ao fator da medição ser feita externamente, os valores captado
 
 ### Missão do projeto
 
-A missão do projeto é a criação de uma ferramenta que possa tornar inspeções pré e pós intervenção humana em ambientes confinados mais segura e assertiva. Esta missão se relaciona com a visão institucional de um trabalho feito com excelência, valorizando em primeiro lugar a vida do colaborador.
+A missão do projeto trata-se da união do talento humano e das últimas ferramentas tecnológicas para a criação de soluções eficientes e criativas para problemas do contexto de segurança industrial. Esta missão se relaciona com a visão institucional de um trabalho feito com excelência, valorizando em primeiro lugar a vida do colaborador, se conectando com os valores da Gerdau presentes no site com “[...] segurança das pessoas acima de tudo; [...]”.
 
-Acredita-se que o dispositivo tem como diferencial e principal mensagem a característica de ser uma ferramenta munida de capacidades de sensoriamento e navegação autônoma pouco frequentes no mercado, capaz de aumentar a segurança e eficiência de processos de inspeção em ambientes confinados. O dispositivo possui capacidades de sensoriamento químico, no caso da detecção de gases voláteis, e espacial, usando o sensor LIDAR para a verificação da consistência espacial do ambiente, antes e depois da inspeção. Tais capacidades de sensoriamento são combinadas com rotinas de processamento de dados capazes de gerar estatísticas e representações gráficas úteis para a tomada de decisão por parte de um avaliador. Acrescenta-se a estas características, a capacidade de planejamento de rotas otimizadas do dispositivo. Este planejamento é feito de forma intuitiva, por meio da submissão de uma imagem da planta baixa do ambiente confinado a ser analisado na interface de utilização do dispositivo. De forma automática, o programa calcula a sequência de movimentos para a navegação do dispositivo já com uma rota otimizada para a realização da varredura em menor tempo. Tendo em vista as características técnicas da solução proposta, pretende-se posicionar este dispositivo como uma ferramenta arrojada do ponto de vista de coleta e processamento de dados para a geração de relatórios utilizados para tomada de decisão, e ao mesmo tempo, de fácil utilização mediante treinamento.
+Acredita-se que o dispositivo tem como diferencial e principal mensagem a característica de ser uma ferramenta munida de capacidades de sensoriamento e navegação autônoma pouco frequentes no mercado, capaz de aumentar a segurança e eficiência de processos de inspeção em ambientes confinados. O dispositivo possui capacidades de sensoriamento químico, no caso da detecção de gases voláteis, e espacial, usando o sensor LIDAR para a verificação da consistência espacial do ambiente, antes e depois da inspeção. Tais capacidades de sensoriamento são combinadas com rotinas de processamento de dados capazes de gerar estatísticas e representações gráficas úteis para a tomada de decisão por parte de um avaliador. Acrescenta-se a estas características, a capacidade de planejamento de rotas otimizadas do dispositivo. Este planejamento é feito de forma intuitiva, por meio da submissão de uma imagem da planta baixa do ambiente confinado a ser analisado na interface de utilização do dispositivo. De forma automática, o programa calcula a sequência de movimentos para a navegação do dispositivo já com uma rota otimizada para a realização da varredura em menor tempo. 
 
 ### Formas de divulgação
 
-Tendo como objetivo divulgar as características técnicas da ferramenta proposta, para que esta possa atender às necessidades de mais ambientes onde se faz necessário a inspeção química e espacial de um ambientes confinado, uma série de ações do ponto de vista de divulgação e marketing para equipamentos industriais podem ser empregadas. Uma dessas estratégias é a participação, na modalidade de exposição em estandes com demonstração, de feiras e eventos do segmento de indústria que podem se beneficiar com a solução. Uma outra estratégia seria por meio de programas de referral onde uma empresa que adquire a solução proposta pode ganhar benefícios se indicar outras empresas parceiras que também adotem a tecnologia. Também é cogitado o uso de redes sociais profissionais, como o LinkedIn, para a divulgação de vídeos, infográficos e demais conteúdos que discutam sobre os impactos dos problemas que a solução proposta nesse projeto resolve, bem como suas capacidades técnicas e vantagens de negócio.
+Tendo em vista as características técnicas da solução proposta, pretende-se posicionar este dispositivo como uma ferramenta que irá ampliar as capacidades da equipe técnica responsável pelos processos de inspeção antes completamente manuais. 
+A tecnologia desenvolvida tem o posicionamento de que possui objetivo de melhorar, mas não substituir, a mão de obra humana durante o processo de inspeção. Além de tornar o processo mais preciso e acurado, o dispositivo também o tornará mais seguro para os profissionais envolvidos em sua operação. As características que acabaram de ser descritas sobre o dispositivo também serão os principais pontos usados em sua divulgação na empresa que a implementar. 
 
-Por fim, mas não limitada a apenas estas estratégias, é proposto o uso da estratégia de marketing de conteúdo, onde o site da empresa divulga uma série de artigos discutindo sobre a importância de normas de segurança em ambientes confinados, tipos de acidentes que podem acontecer em ambientes de alto risco, consequências legais para empresas que não zelam pelas políticas de segurança de seus colaboradores, etc. Estes conteúdos servirão como a porta de entrada de pessoas interessadas nesses assuntos no site da empresa, porém, no próprio artigo pode haver um convite para conhecer a solução que o projeto propõe, atraindo assim, possíveis clientes.
+O objetivo na divulgação será deixar claro que dispositivo cumpre uma função de ampliação das capacidades do profissional que era responsável por realizar a tarefa de inspeção manualmente, e não o de sua substituição. Desta forma, o profissional que antes era responsável por se expor a maiores riscos durante a inspeção manual de ambientes confinados pode agora ser treinado para operar o artefato robótico, que contará com todas as vantagens conferidas pelas tecnologias que possui, e interpretar seus resultados levando em conta sua própria experiência na mesma tarefa. Para tanto, ferramentas internas da empresa poderão ser utilizadas. E-mails institucionais contendo demonstrações dos resultados do uso do dispositivo poderiam ser veiculados, destacando seus benefícios operacionais e como estes se relacionam com o cumprimento de normas técnicas. A divulgação de tais informações poderia ser reforçada para mais departamentos além do que originalmente adotou a tecnologia em possíveis reuniões gerais que a empresa possa fazer. Nessas reuniões, demonstrações do dispositivo e suas capacidades poderiam fomentar discussões sobre como os benefícios da tecnologia poderiam se estender a outros departamentos.   
 
 ## Possibilidades de reuso da solução
 
@@ -306,7 +310,7 @@ Diante do exposto, pode-se dizer que o TurtleBee é uma solução viável para a
 
 ## Proposta geral
 
-Nosso projeto consiste em um sistema integrado que envolve um TurtleBot, um backend e um frontend para permitir a comunicação e controle do TurtleBot por meio de uma interface web. O TurtleBot é um robô de duas rodas equipado com diversos sensores e componentes cruciais para a realização de suas tarefas.
+Nosso projeto consiste em um sistema integrado que envolve o modelo de robô TurtleBot3, juntamente com um sistema de controle construído através de um backend e um frontend, resultando em uma interface web amigável. O TurtleBot3 é um robô de duas rodas equipado com diversos sensores e componentes essenciais para a execução de suas tarefas.
 
 ### Componentes do TurtleBot
 
@@ -323,10 +327,20 @@ O TurtleBot será equipado com os seguintes componentes:
 O backend será construído usando as seguintes tecnologias:
 
 - Docker: permitirá criar e gerenciar contêineres que facilitará o deploy em um serviço cloud.
-- Python (Flask): framework web usado para criar a API e gerenciar a lógica do servidor responsável por estabelecer a comunicação entre o usuário e as atividade do TurtelBot.
+- Python ([Sanic](https://sanic.dev/en/)): framework web usado para criar a API e gerenciar a lógica do servidor responsável por estabelecer a comunicação entre o usuário e as atividade do TurtelBot.
 - Banco de dados SQL: armazena informações e dados relevantes para o projeto.
 
 O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comunicação bidirecional com o TurtleBot.
+
+#### **Sistema de análise de rachadura nas paredes**
+No backend será implementado um sistema de análise de rachadura nas paredes. O sistema será responsável por receber as imagens da webcam e processá-las para identificar rachaduras nas paredes. 
+A análise de rachaduras em paredes é realizada usando um modelo de detecção de objetos, o [YOLOv8](https://github.com/ultralytics/ultralytics). Os seguintes passos foram seguidos:
+- **Preparação do conjunto de dados**: selecionamos um conjunto de dados que contém 4029 imagens de rachaduras em paredes. Este conjunto de dados é dividido em treinamento, validação e teste, com 3700, 200 e 129 imagens respectivamente, advindos de [RoboFlow](https://universe.roboflow.com/university-bswxt/crack-bphdr/dataset/2). Nas imagens, as rachaduras são rotuladas com caixas delimitadoras (caso possuam rachaduras).
+- **Treinamento do modelo**: utilizamos o [Google Colab](https://colab.research.google.com) para treinarmos o modelo (o jupternotebook pode ser encontrado [aqui](../src/backend/utils/cracked-wall-analysis/model/)). Como estamos utilizando um modelo pré-treinado, o treinamento com os dados selecionados foi realizado em 10 épocas, com um tamanho de batch de 16, um learning rate de 0.001 e tomando como base o modelo padrão do YOLOv8. Ao final, o modelo é salvo em um arquivo `.pt`, o qual o importamos para esse projeto.
+- **Predição**: Após o treinamento, o modelo é capaz de prever a localização de rachaduras em novas imagens. Ele faz isso ao analisar a imagem e identificar áreas que se assemelham às rachaduras que aprendeu durante o treinamento. Para a análise do vídeo ao vivo, utilizamos a biblioteca OpenCV que efetua a captura de frames do vídeo e os envia para o modelo. O modelo, por sua vez, retorna as imagens com as rachaduras identificadas. Por fim, o vídeo é gerado com as imagens processadas.  
+  
+**_Observação_**:  
+- Não foi necessário realizar um pré-processamento personalizado das imagens, uma vez que as imagens coletadas do RoboFlow já estavam adequadamente anotadas conforme a necessidade do modelo. Além disso, o YOLOv8 possui uma pipeline de pré-processamento embutida, que pode incluir uma série de tarefas fundamentais para o processamento adequado das imagens. Quando uma imagem é submetida para predição ou um conjunto de dados para treinamento, o modelo YOLOv8 inicia uma sequência de operações de pré-processamento. Um desses processos é o redimensionamento da imagem para as dimensões esperadas pelo modelo, uma etapa que contribui para a eficiência e consistência do processamento de imagem pela rede neural. Outra operação realizada é a normalização dos pixels da imagem. Este é um passo importante para modelos de aprendizado de máquina em geral, uma vez que garante que todas as imagens tenham uma distribuição semelhante de valores de pixel, reduzindo a sensibilidade do modelo a variações na iluminação e no contraste. Adicionalmente, o modelo YOLOv8 pode incluir outras transformações de pré-processamento, como técnicas de aumento de dados. Estas podem envolver operações como rotações, translações, zoom e inversões da imagem, que ajudariam a aumentar a robustez do modelo, permitindo que ele reconheça objetos em uma variedade maior de condições e orientações. Portanto, mesmo que não tenhamos aplicado um tratamento específico às imagens, isso não significa que elas não foram processadas.
 
 ## Sistema de locomoção e otimização de rota
 
@@ -376,29 +390,29 @@ Dada a relação do algoritmo com a tarefa mencionada, sua escolha como método 
 
 ### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
 
-O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, serão utilizados ROS2 (Robot Operating System 2), Gazebo, e um algoritmo personalizado escrito em JavaScript e Python, com o framework Sanic. Por meio dessa implementação, almeja-se que o robô se locomova no ambiente simulado no Gazebo de forma eficiente, considerando a melhor rota e evitando obstáculos.
+O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, serão utilizados ROS2 (Robot Operating System 2), Gazebo, e um algoritmo personalizado escrito em JavaScript e Python, com o framework Flask. Por meio dessa implementação, almeja-se que o robô se locomova no ambiente simulado no Gazebo de forma eficiente, considerando a melhor rota e evitando obstáculos.
 
 **Descrição da arquitetura do sistema**
 
-O sistema é organizado em três componentes principais que se comunicam: ROS2, Gazebo e script.js, executado em um servidor Sanic. 
+O sistema é organizado em três componentes principais que se comunicam: ROS2, Gazebo e script.js, executado em um servidor Flask. 
 
 **ROS2 e Gazebo**
 
 O ROS2 permite a comunicação entre os diferentes nós do sistema, enquanto o Gazebo é utilizado para a simulação do ambiente e do robô. O robô é controlado através de mensagens publicadas em tópicos específicos do ROS2, que são lidos pelo Gazebo para executar os comandos de movimento.
 
-**Script.js, Python e Servidor Sanic**
+**Script.js, Python e Servidor Flask**
 
-O algoritmo de otimização de rota é implementado em um script.js e main.py, que é executado em um servidor Sanic. O servidor Sanic permite que o script.js e main.py se comunique com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e main.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Sanic.
+O algoritmo de otimização de rota é implementado em um script.js e main.py, que é executado em um servidor Flask. O servidor Flask permite que o script.js e main.py se comunique com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e main.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Flask.
 
 **Planejamento da comunicação entre os Componentes**
 
-A arquitetura do sistema é dividida em quatro componentes principais: ROS2, Gazebo, Sanic e os scripts de algoritmo (script.js e main.py). A comunicação entre esses componentes é uma parte crucial do projeto e será implementada na sprint três do desenvolvimento. A seguir, é apresentado o papel de cada componente e como eles se comunicam entre si:
+A arquitetura do sistema é dividida em quatro componentes principais: ROS2, Gazebo, Flask e os scripts de algoritmo (script.js e main.py). A comunicação entre esses componentes é uma parte crucial do projeto e será implementada na sprint três do desenvolvimento. A seguir, é apresentado o papel de cada componente e como eles se comunicam entre si:
 
-**1. Script.js e main.py:** O algoritmo escrito em JavaScript e Python é o ponto de partida para a otimização da rota do robô. Ele processa os dados inseridos pelo usuário através de uma interface web e calcula a rota mais eficiente para o robô. Essas informações são então enviadas para o servidor Sanic.
+**1. Script.js e main.py:** O algoritmo escrito em JavaScript e Python é o ponto de partida para a otimização da rota do robô. Ele processa os dados inseridos pelo usuário através de uma interface web e calcula a rota mais eficiente para o robô. Essas informações são então enviadas para o servidor Flask.
 
-**2. Sanic:** O servidor Sanic atua como um intermediário entre o algoritmo e o ROS2. Ele recebe a rota otimizada do script.js e main.py e a encaminha para o ROS2. Esta comunicação é realizada através de um websocket, um protocolo que permite a troca de mensagens em tempo real.
+**2. Flask:** O servidor Flask atua como um intermediário entre o algoritmo e o ROS2. Ele recebe a rota otimizada do script.js e main.py e a encaminha para o ROS2. Esta comunicação é realizada através de um websocket, um protocolo que permite a troca de mensagens em tempo real.
 
-**3. ROS2 (Robot Operating System 2):** O ROS2 é o componente que se comunica diretamente com a simulação do Gazebo. Ele recebe as instruções de rota do servidor Sanic e as converte em comandos de movimento para o robô na simulação. Esta comunicação é feita através do pacote gazebo_ros_pkgs, que permite a troca de mensagens e serviços entre o ROS2 e o Gazebo utilizando o método de subscribers e publishers.
+**3. ROS2 (Robot Operating System 2):** O ROS2 é o componente que se comunica diretamente com a simulação do Gazebo. Ele recebe as instruções de rota do servidor Flask e as converte em comandos de movimento para o robô na simulação. Esta comunicação é feita através do pacote gazebo_ros_pkgs, que permite a troca de mensagens e serviços entre o ROS2 e o Gazebo utilizando o método de subscribers e publishers.
 
 **4. Gazebo:** Finalmente, o Gazebo é o ambiente de simulação onde o robô é controlado. Ele recebe os comandos de movimento do ROS2, executa-os e fornece feedback sobre a posição e o status do robô. Este feedback é então enviado de volta ao ROS2, reiniciando o ciclo de comunicação.
 
@@ -410,11 +424,11 @@ A arquitetura do sistema pode ser visualizada abaixo:
 
 **Pacote para o Algoritmo**
 
-Para a implementação da integração do algoritmo no sistema, o script.js, main.py e o servidor Sanic serão encapsulados em um pacote de software dedicado. Este pacote será instalado no ROS2 e atuará como o principal condutor das funcionalidades do algoritmo dentro do ambiente ROS2 para comunicação com o simulador Gazebo. Abaixo estão detalhadas as etapas para implementação desse sistema.
+Para a implementação da integração do algoritmo no sistema, o script.js, main.py e o servidor Flask serão encapsulados em um pacote de software dedicado. Este pacote será instalado no ROS2 e atuará como o principal condutor das funcionalidades do algoritmo dentro do ambiente ROS2 para comunicação com o simulador Gazebo. Abaixo estão detalhadas as etapas para implementação desse sistema.
 
-**1. Componentes do Pacote:** O pacote será composto pelo script.js e main.py, responsáveis pela lógica do algoritmo de otimização de rota. Também incluirá o código do servidor Sanic, que serve como o intermediário entre o algoritmo e o ROS2, facilitando a troca de informações.
+**1. Componentes do Pacote:** O pacote será composto pelo script.js e main.py, responsáveis pela lógica do algoritmo de otimização de rota. Também incluirá o código do servidor Flask, que serve como o intermediário entre o algoritmo e o ROS2, facilitando a troca de informações.
 
-**2. Dependências:** Além dos componentes principais, o pacote também conterá todas as dependências necessárias para a execução do algoritmo. Isso pode incluir bibliotecas JavaScript e Python, pacotes ROS2, módulos Sanic, entre outros. Ao incluir todas as dependências no pacote, garante-se que o algoritmo possa ser executado em qualquer ambiente que tenha o ROS2 instalado, sem a necessidade de instalações adicionais.
+**2. Dependências:** Além dos componentes principais, o pacote também conterá todas as dependências necessárias para a execução do algoritmo. Isso pode incluir bibliotecas JavaScript e Python, pacotes ROS2, módulos Flask, entre outros. Ao incluir todas as dependências no pacote, garante-se que o algoritmo possa ser executado em qualquer ambiente que tenha o ROS2 instalado, sem a necessidade de instalações adicionais.
 
 **3. Integração com o Gazebo:** Uma vez instalado no ROS2, o pacote permitirá a integração do algoritmo com o Gazebo. A rota otimizada, calculada pelo script.js e main.py, será transmitida ao Gazebo através do ROS2, permitindo que o robô se mova de acordo com essa rota no ambiente de simulação.
 
