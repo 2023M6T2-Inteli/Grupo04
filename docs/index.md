@@ -55,7 +55,7 @@
 
 ### Tabela
 <p align="center">
-<table><tbody><tr><td><strong>Atributos</strong></td><td><strong>TurtleBee</strong></td><td><a href="https://csrrobotics.com/"><strong><u>CSR Robotics</u></strong></a></td><td><a href="https://nexxis.com/robotic-inspection-inside-confined-spaces/"><strong><u>Nexxis</u></strong></a></td><td><strong>Gerdau</strong></td></tr><tr><td><strong>Preço</strong></td><td>6</td><td>1</td><td>3</td><td>4</td></tr><tr><td><strong>Qualidade</strong></td><td>7</td><td>10</td><td>9</td><td>6</td></tr><tr><td><strong>Tecnologia</strong></td><td>6</td><td>9</td><td>7</td><td>4</td></tr><tr><td><strong>Conforto</strong></td><td>7</td><td>5</td><td>10</td><td>4</td></tr><tr><td><strong>Comodidade</strong></td><td>9</td><td>4</td><td>9</td><td>7</td></tr><tr><td><strong>Praticidade</strong></td><td>10</td><td>5</td><td>8</td><td>7</td></tr></tbody></table>
+<table><tbody><tr><td><strong>Atributos</strong></td><td><strong>TurtleBee</strong></td><td><a href="https://csrrobotics.com/"><strong><u>CSR Robotics</u></strong></a></td><td><a href="https://nexxis.com/robotic-inspection-inside-confined-spaces/"><strong><u>Nexxis</u></strong></a></td><td><strong>Gerdau</strong></td></tr><tr><td><strong>Preço</strong></td><td>6</td><td>1</td><td>3</td><td>4</td></tr><tr><td><strong>Qualidade</strong></td><td>7</td><td>10</td><td>9</td><td>6</td></tr><tr><td><strong>Tecnologia</strong></td><td>6</td><td>9</td><td>7</td><td>4</td></tr><tr><td><strong>Conforto</strong></td><td>7</td><td>5</td><td>10</td><td>4</td></tr><tr><td><strong>Comodidade</strong></td><td>9</td><td>4</td><td>9</td><td>7</td></tr><tr><td><strong>Praticidade</strong></td><td>10</td><td>5</td><td>8</td><td>7</td></tr><tr><td><strong>Risco</strong></td><td>0</td><td>3</td><td>1</td><td>10</td></tr><tr><td><strong>Automação</strong></td><td>10</td><td>0</td><td>0</td><td>0</td></tr><tr><td><strong>Erros</strong></td><td>0</td><td>4</td><td>2</td><td>5</td></tr></tbody></table>
 </p>
 
 ### Gráfico
@@ -123,18 +123,16 @@ O [Link do canvas](https://www.figma.com/file/dxrWcidu3c7Y0AH7lE5h8g/Value-Propo
 A análise financeira objetivou principalmente estimar o valor que seria gasto pela Gerdau, caso ela optasse por desenvolver uma outra empresa para desenvolver um MVP. Seria um projeto desenvolvido ao longo de 2 meses, caso os desenvolvedores dedicassem toda suas horas ao projeto. Os itens foram estimados com base em análise de mercado.  
 Principais observações:
 
-Para o Seguro foi considerado o valor de 10% da somatória dos outros custos;
+- Para o Seguro foi considerado o valor de 10% da somatória dos outros custos;
 
-Engenharia estima-se que seria 8 semanas de uma equipe de 3 engenheiros de dados pleno(R$ 10000.00) e um sênior(R$ 13000.00);
+- Engenharia estima-se que seria 1 ano de um setor de tecnologia, composta por um diretor(R$ 45.000), 2 Gerentes(R$ 42.000 juntos), 2 Sêniors(R$ 28.800 juntos), Plênos(R$ 44.400 juntos) e 2 Jûniors(R$7.300 juntos)
 
-O ICMS se baseia na taxa de veículos automotores do estado de São Paulo, que é 12%;
-
-A margem de lucro representa 20% dos custos da empresa para produzir o projeto
+- A margem de lucro representa 20% dos custos da empresa para produzir o projeto
 
 Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a solução pode oferecer maior segurança aos empregados da Gerdau, que por sua vez reduz a quantidade de acidentes. Além disso, otimiza o tempo de manutenção em cada vistoria, o que permite aumentar a produtividade.
 <p align="center">
 
-<table><tbody><tr><td><strong>Itens</strong></td><td><strong>Categoria</strong></td><td><strong>Preço Estimado</strong></td></tr><tr><td>TurtleBot3 - Burger + 60% Importação</td><td>Hardware</td><td>R$ 5.440,00</td></tr><tr><td>Engenharia</td><td>Serviço</td><td>R$ 86.000,00</td></tr><tr><td>Sensor de gás - MQ - 2</td><td>Hardware</td><td>R$ 40,00</td></tr><tr><td>Câmera</td><td>Hardware</td><td>R$ 100,00</td></tr><tr><td>Seguro</td><td>Manutenção</td><td>R$ 4.611,64</td></tr><tr><td>ICMS</td><td>Taxa</td><td>R$ 652,80</td></tr><tr><td>Margem de lucro da terceirizada (20%)</td><td>Margem de lucro</td><td>R$ 19.368,89</td></tr><tr><td>&nbsp;</td><td><strong>Total:</strong></td><td>R$ 116.213,33</td></tr></tbody></table>
+<table><tbody><tr><td><strong>Itens</strong></td><td><strong>Categoria</strong></td><td><strong>Preço Estimado</strong></td></tr><tr><td>Desenvolvimento de um MVP</td><td>Hardware</td><td>R$ 2.000.000</td></tr><tr><td>Engenharia</td><td>Serviço</td><td>R$ 2.010.000</td></tr><tr><td>Seguro</td><td>Manutenção</td><td>R$ 200.500,00</td></tr><tr><td>Margem de lucro da terceirizada (20%)</td><td>Margem de lucro</td><td>R$ 818.664,00</td></tr><tr><td>&nbsp;</td><td><strong>Total:</strong></td><td>R$ 5.052.600,00</td></tr></tbody></table>
 
 </p>
 
