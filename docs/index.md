@@ -30,7 +30,10 @@
   - [Viabilidade técnica](#viabilidade-técnica)
   - [Proposta geral](#proposta-geral)
     - [Componentes do TurtleBot](#componentes-do-turtlebot)
+    - [Banco de dados](#banco-de-dados)
+      - [Diagrama do banco de dados](#diagrama-do-banco-de-dados)
     - [Backend](#backend)
+      - [**Sistema de análise de rachadura nas paredes**](#sistema-de-análise-de-rachadura-nas-paredes)
   - [Sistema de locomoção e otimização de rota](#sistema-de-locomoção-e-otimização-de-rota)
     - [Arquitetura do sistema de simulação e integração com o sistema operacional robótico](#arquitetura-do-sistema-de-simulação-e-integração-com-o-sistema-operacional-robótico)
     - [Escolha e implementação do algoritmo de otimização de rota](#escolha-e-implementação-do-algoritmo-de-otimização-de-rota)
@@ -321,6 +324,15 @@ O TurtleBot será equipado com os seguintes componentes:
 - Raspberry Pi 3: responsável por processar as informações de todos os componentes e se comunica com o backend.
 - Webcam: responsável por fornecer imagens ao vivo para o Raspberry Pi 3.
 - Sensor Lidar 360º: responsável por fornecer as imagens do escaneamento para o Raspberry Pi 3.
+
+### Banco de dados
+A construção do banco de dados ocorreu totalmente durante a sprint 3, dando ênfase na geração de todas as tabelas necessárias atualmente e futuramente. O banco em si foi construído por meio do ORM (Object Relational Mapper), que é uma técnica de mapeamento objeto-relacional que permite fazer uma relação dos objetos com os dados que os mesmos representam, denominado Prisma. A escolha do Prisma se deu pelo fato da sua fácil utilização, documentação bem estruturada e facilidade de aprendizado, além de ter uma série de ferramentas que possibilitam várias outras utilizações ou em linguagens diferentes. Como linguagem para o banco de dados, foi escolhido o MySQL por ser um banco de dados relacional, que é o mais utilizado atualmente, além de ser um banco de dados que possui uma grande comunidade e uma documentação bem estruturada.
+
+Após a construção do banco de dados, foi feito o deploy por meio do próprio Prisma na AWS, mais especificamente no servidor RDS, dessa forma garantindo uma maior integridade do banco, acesso melhor da equipe e uma maior segurança dos dados. Também foram criados grupos de segurança para proteção do banco de dados, garantindo que apenas os membros da equipe tenham acesso a ele. A utilização da AWS surgiu para evitar possíveis conflitos gerados por arquivos de banco de dados que normalmente acabam sendo excluídos ou corrompidos, além de ser uma ferramenta que permite à equipe ter acesso ao banco de dados de qualquer lugar, facilitando a utilização do mesmo.
+
+Abaixo é possível ver o diagrama do banco de dados:
+#### Diagrama do banco de dados
+![Alt text](images/diagrama-banco-de-dados.svg)
 
 ### Backend
 
