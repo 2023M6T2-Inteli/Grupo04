@@ -1,8 +1,20 @@
-FROM python:3.11.2-alpine3.17
+FROM python:3.10.8-slim-buster
+
+ARG DATABASE_URL
 
 WORKDIR /backend
 
 COPY requirements.txt .
+
+# Instalando pacotes adicionais
+
+RUN apt-get update && apt-get install -y gcc python3-dev
+
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
+
+RUN apt-get update && apt-get install -y libglib2.0-0
+
+# Instalando dependências do projeto
 
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -10,13 +22,10 @@ EXPOSE 3001
 
 COPY . .
 
-# Definindo variáveis de ambiente para o banco de dados (apenas exemplo)
-ENV MYSQL_HOST='db:3306'
-ENV MYSQL_DATABASE='TURTLE_BEE'
-ENV MYSQL_USER='user'
-ENV MYSQL_PASSWORD='password'
+ENV DATABASE_URL=${DATABASE_URL}
 
+RUN chmod +x /backend/setup.sh
 
 COPY . .
 
-CMD [ "python", "__init__.py" ]
+CMD ["/bin/bash", "/backend/setup.sh"]
