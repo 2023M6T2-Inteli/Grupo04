@@ -1,7 +1,10 @@
 version: "3"
 services:
   backend:
-    build: .
+    build:
+      context: .
+      args:
+        DATABASE_URL: ${DATABASE_URL:-mysql://user:password@db/TURTLE_BEE}
     ports:
       - "3001:3001"
     volumes:
@@ -17,10 +20,10 @@ services:
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "password"
       MYSQL_ROOT_PASSWORD: "password12345"
-    ports:
-      - "3002:3306"
     expose:
       - "3306"
+    ports:
+      - "3002:3306"
     volumes:
       # So that our database's state is persisted locally
       # - ./mysql-dump:/docker-entrypoint-initdb.d
