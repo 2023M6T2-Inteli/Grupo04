@@ -527,6 +527,68 @@ A análise de rachaduras em paredes é realizada usando um modelo de detecção 
 
 ### Testes e Resultados
 
+## 1.2. Desenvolvimento de implementação de testes de eficácia de detecção
+
+Durante a o treinamento do modelo de reconhecimento de rachaduras empregado neste projeto, várias métricas de eficácia foram coletadas. Estas métricas tem o objetivo de mensurar a habilidade do modelo treinado em reconhecer padrões de rachaduras em imagens que não participaram de seu conjunto de treinamento, com o objetivo de não enviesar sua avaliação. Abaixo, a representação gráfica dessas métricas, bem como alguns exemplos de imagens de rachaduras que foram identificadas, com seus respectivos níveis de confiança de identificação, serão exibidas. 
+
+Abaixo, encontra-se um exemplo de imagens do conjunto de teste tendo suas rachaduras reconhecidas pelo modelo, e seus respectivos níveis de confiança de classificação representados na região de interesse traçada.
+
+<p align="center">
+<img src="./images/predicoes_yolov8_rachaduras.png">
+</p>
+
+Tais testes foram obtidos por meio da separação randômica de 80% das imagens do banco de imagens de rachaduras para o treinamento e 20% para o teste do modelo. Portanto, considerando as 4.100 imagens do banco de imagens de rachaduras, as avaliações discutidas abaixo são com base no uso do modelo treinado com 3.280 imagens de rachaduras aplicados para o reconhecimento de 820 imagens previamente categorizadas como contendo uma rachadura.
+
+### 1.2.1. Acurácia
+
+A matriz de confusão normalizada abaixo representa uma visão geral da acurácia do modelo treinado para a tarefa de detecção de rachaduras. Ela mostra a parcela de verdadeiros positivos (rachaduras que foram corretamente identificadas como tais), verdadeiros negativos (fotos onde não havia rachaduras e, portanto, nenhuma rachadura foi identificada), falsos positivos (imagens que não continham rachaduras mas que o modelo identificou como imagem que continha uma rachadura) e, por fim, falsos negativos (imagens que continham rachaduras que não foram identificadas como tal pelo modelo). A matriz de confusão normalizada foi escolhida pois permite analisar proporção de cada tipo de possibilidade de predição relativa ao número de predições possíveis. 
+
+<p align="center">
+<img src="./images/matriz_confusao_normalizada.png">
+</p>
+
+Com a análise da matriz de confusão gerada durante o treinamento do modelo apresentado, é possível notar que este foi capaz de identificar imagens com rachaduras com 80% de acurácia. Ou seja, das 820 imagens com categorização conhecida como contendo uma rachadura, 656 foram identificadas corretamente pelo modelo como contendo uma rachadura e 164 imagens contendo uma rachadura não foram identificadas pelo modelo.
+
+### 1.2.2. Curva precisão-confiabilidade
+
+Na curva de precisão-confiabilidade representada abaixo, temos a demonstração que um valor maior de precisão implica em uma taxa menor de falsos positivos, isto é, imagens que não contém rachaduras mas que são classificadas como tal. Desta forma, o modelo teria uma menor chance de identificar rachaduras em áreas que não as apresentam. 
+
+<p align="center">
+<img src="./images/precisao_confiabilidade.png">
+</p>
+
+No contexto deste projeto, o limitar entre a precisão e confiabilidade pode ser escolhido admitindo a premissa de que é mais maléfico deixar de identificar uma rachadura como tal do que não identificar uma rachadura. 
+
+### 1.2.3. Curva precisão-sensibilidade 
+
+Esta curva demonstra como o aumento do limiar de detecção afeta a precisão e a sensibilidade simultaneamente. Uma maior taxa de precisão indicaria uma taxa menor de alarmes falsos, enquanto uma maior sensibilidade, implica no aumento do sucesso do modelo na identificação de imagens que contenham rachaduras. 
+
+<p align="center">
+<img src="./images/precisao_sensibilidade.png">
+</p>
+
+Como discutido na curva de precisão e confiabilidade, o limitar entre a precisão e sensibilidade pode ser escolhido admitindo a premissa de que é mais maléfico deixar de identificar uma rachadura como tal do que não identificar uma rachadura. 
+
+### 1.2.3. Curva sensibilidade-confiança
+
+Também conhecida como curva de recall ou revocação, a curva abaixo estabelece uma relação entre o limiar para a detecção de rachaduras e a confiabilidade, ou assertividade, que o modelo tem ao dizer que uma determinada imagem contem uma rachadura. Desta forma, é possível observar a variação na confiabilidade do modelo na detecção das rachaduras de acordo com diferentes limiares. Um valor de confiabilidade maior implicará em uma taxa reduzida de falsos negativos. Nesta configuração, o modelo treinado dificilmente deixará de classificar uma imagem como contendo uma rachadura. Por outro lado, uma sensibilidade muito grande pode aumentar a presença de falsos positivos.
+
+<p align="center">
+<img src="./images/sensibilidade_confianca.png">
+</p>
+
+No caso da curva de sensibilidade para o modelo treinado, o limiar foi escolhido pelas próprias configurações do modelo. Este limitar se demostrou ser o do vértice presente na região entre 60 e 80% de sensibilidade e confiança.
+
+### 1.2.4. Curva F1-confiança
+ 
+Para a curva do Score F1, representa-se a variação do score F1 ao longo de vários limiares. O Score F1 é calculado levando em consideração a otimização entre a acurácia e a sensibilidade do modelo. A avaliação deste tipo de métrica é importante no cenário onde treinamos modelos que possuem classes desbalanceadas. Para oferecer uma métrica que considere a proporção das classes oferecidas, a Pontuação F1 combina a precisão e sensibilidade em uma média harmônica. Desta forma, a maximização desta métrica significa a maximização de ambas as métricas.
+
+<p align="center">
+<img src="./images/f1_confianca.png">
+</p>
+
+Acima, está a representação da relação entre a Pontuação F1 e confiabilidade do modelo treinado.
+
 ## Sistemas de segurança
 
 ### Fabricação e implementação dos dispositivos de segurança
