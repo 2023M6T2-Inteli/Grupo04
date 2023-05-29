@@ -527,6 +527,68 @@ A análise de rachaduras em paredes é realizada usando um modelo de detecção 
 
 ### Testes e Resultados
 
+## 1.2. Desenvolvimento de implementação de testes de eficácia de detecção
+
+Durante a o treinamento do modelo de reconhecimento de rachaduras empregado neste projeto, várias métricas de eficácia foram coletadas. Estas métricas tem o objetivo de mensurar a habilidade do modelo treinado em reconhecer padrões de rachaduras em imagens que não participaram de seu conjunto de treinamento, com o objetivo de não enviesar sua avaliação. Abaixo, a representação gráfica dessas métricas, bem como alguns exemplos de imagens de rachaduras que foram identificadas, com seus respectivos níveis de confiança de identificação, serão exibidas. 
+
+Abaixo, encontra-se um exemplo de imagens do conjunto de teste tendo suas rachaduras reconhecidas pelo modelo, e seus respectivos níveis de confiança de classificação representados na região de interesse traçada.
+
+<p align="center">
+<img src="./images/predicoes_yolov8_rachaduras.png">
+</p>
+
+Tais testes foram obtidos por meio da separação randômica de 80% das imagens do banco de imagens de rachaduras para o treinamento e 20% para o teste do modelo. Portanto, considerando as 4.100 imagens do banco de imagens de rachaduras, as avaliações discutidas abaixo são com base no uso do modelo treinado com 3.280 imagens de rachaduras aplicados para o reconhecimento de 820 imagens previamente categorizadas como contendo uma rachadura.
+
+### 1.2.1. Acurácia
+
+A matriz de confusão normalizada abaixo representa uma visão geral da acurácia do modelo treinado para a tarefa de detecção de rachaduras. Ela mostra a parcela de verdadeiros positivos (rachaduras que foram corretamente identificadas como tais), verdadeiros negativos (fotos onde não havia rachaduras e, portanto, nenhuma rachadura foi identificada), falsos positivos (imagens que não continham rachaduras mas que o modelo identificou como imagem que continha uma rachadura) e, por fim, falsos negativos (imagens que continham rachaduras que não foram identificadas como tal pelo modelo). A matriz de confusão normalizada foi escolhida pois permite analisar proporção de cada tipo de possibilidade de predição relativa ao número de predições possíveis. 
+
+<p align="center">
+<img src="./images/matriz_confusao_normalizada.png">
+</p>
+
+Com a análise da matriz de confusão gerada durante o treinamento do modelo apresentado, é possível notar que este foi capaz de identificar imagens com rachaduras com 80% de acurácia. Ou seja, das 820 imagens com categorização conhecida como contendo uma rachadura, 656 foram identificadas corretamente pelo modelo como contendo uma rachadura e 164 imagens contendo uma rachadura não foram identificadas pelo modelo.
+
+### 1.2.2. Curva precisão-confiabilidade
+
+Na curva de precisão-confiabilidade representada abaixo, temos a demonstração que um valor maior de precisão implica em uma taxa menor de falsos positivos, isto é, imagens que não contém rachaduras mas que são classificadas como tal. Desta forma, o modelo teria uma menor chance de identificar rachaduras em áreas que não as apresentam. 
+
+<p align="center">
+<img src="./images/precisao_confiabilidade.png">
+</p>
+
+No contexto deste projeto, o limitar entre a precisão e confiabilidade pode ser escolhido admitindo a premissa de que é mais maléfico deixar de identificar uma rachadura como tal do que não identificar uma rachadura. 
+
+### 1.2.3. Curva precisão-sensibilidade 
+
+Esta curva demonstra como o aumento do limiar de detecção afeta a precisão e a sensibilidade simultaneamente. Uma maior taxa de precisão indicaria uma taxa menor de alarmes falsos, enquanto uma maior sensibilidade, implica no aumento do sucesso do modelo na identificação de imagens que contenham rachaduras. 
+
+<p align="center">
+<img src="./images/precisao_sensibilidade.png">
+</p>
+
+Como discutido na curva de precisão e confiabilidade, o limitar entre a precisão e sensibilidade pode ser escolhido admitindo a premissa de que é mais maléfico deixar de identificar uma rachadura como tal do que não identificar uma rachadura. 
+
+### 1.2.3. Curva sensibilidade-confiança
+
+Também conhecida como curva de recall ou revocação, a curva abaixo estabelece uma relação entre o limiar para a detecção de rachaduras e a confiabilidade, ou assertividade, que o modelo tem ao dizer que uma determinada imagem contem uma rachadura. Desta forma, é possível observar a variação na confiabilidade do modelo na detecção das rachaduras de acordo com diferentes limiares. Um valor de confiabilidade maior implicará em uma taxa reduzida de falsos negativos. Nesta configuração, o modelo treinado dificilmente deixará de classificar uma imagem como contendo uma rachadura. Por outro lado, uma sensibilidade muito grande pode aumentar a presença de falsos positivos.
+
+<p align="center">
+<img src="./images/sensibilidade_confianca.png">
+</p>
+
+No caso da curva de sensibilidade para o modelo treinado, o limiar foi escolhido pelas próprias configurações do modelo. Este limitar se demostrou ser o do vértice presente na região entre 60 e 80% de sensibilidade e confiança.
+
+### 1.2.4. Curva F1-confiança
+ 
+Para a curva do Score F1, representa-se a variação do score F1 ao longo de vários limiares. O Score F1 é calculado levando em consideração a otimização entre a acurácia e a sensibilidade do modelo. A avaliação deste tipo de métrica é importante no cenário onde treinamos modelos que possuem classes desbalanceadas. Para oferecer uma métrica que considere a proporção das classes oferecidas, a Pontuação F1 combina a precisão e sensibilidade em uma média harmônica. Desta forma, a maximização desta métrica significa a maximização de ambas as métricas.
+
+<p align="center">
+<img src="./images/f1_confianca.png">
+</p>
+
+Acima, está a representação da relação entre a Pontuação F1 e confiabilidade do modelo treinado.
+
 ## Sistemas de segurança
 
 ### Fabricação e implementação dos dispositivos de segurança
@@ -553,6 +615,12 @@ Quando falamos de sistema de proteção contra comandos indesejados, vamos além
   - Definição de rota de emergency stop (voltar para o ponto de origem).
   - Algoritmo de prevenção contra eventuais colisões com obstáculos.
 
+### Sistema de segurança da bateria
+No modelo de robô utilizado, existe um potencial significativo de danos à sua bateria caso seu nível de energia seja excessivamente baixo. Quando tal nível crítico é alcançado, um alerta sonoro é emitido. Se esse alerta não for atendido, a célula de bateria se tornará inutilizável e não poderá ser recarregada. No entanto, embora exista um sistema de segurança já implementado, ele não se mostra suficiente, uma vez que, durante as operações do robô, ele pode estar localizado em uma área isolada, o que impossibilita que os colaboradores tomem conhecimento da situação. Portanto, para abordar essa questão de forma eficaz, é necessário exibir o nível de bateria na página web, para que antes da inicialização de uma inspeção, o colaborador saiba o nível de segurança ao mandar o robô para um espaço isolado naquele momento. Ademais, emitir alertas de bateria fraca na interface gráfica, não ficando dependente do aviso sonoro do robô ou da checagem constante do nível.
+
+### Sistema anticolisão
+O sistema implementado para prevenir a colisão do robô com obstáculos envolve a utilização do sensor Lidar, posicionado na parte superior do chassi. Esse sensor emite pulsos de luz ao seu redor e, quando esses pulsos encontram objetos, retornam ao sensor. Dessa forma, o sensor é capaz de calcular a distância dos objetos com base no tempo de ida e volta do pulso, criando assim um mapa denominado nuvem de pontos. Atualmente, quando o robô detecta a presença de um objeto em proximidade, interrompe seu movimento para evitar a colisão. No entanto, em uma fase futura, será implementada a funcionalidade de desvio do obstáculo sem a necessidade de intervenção de algum funcionário.
+
 ### Mapeamento de riscos dos sistemas eletromecânicos, mecânicos e eletrônicos.
 Durante o processo de mapeamento de riscos, o grupo buscou estimar as chances em porcentagem e o nível de impacto, utilizando como base a matriz de riscos para poder estruturar todo o mapeamento. É válido ressaltar que, para essa parte, foram considerados fatores como o ambiente de trabalho, o tipo de trabalho, a exposição do robô, a frequência de exposição, a duração da exposição e a probabilidade de ocorrência à qual o robô está exposto. Esses fatores podem afetar diretamente as eletromecânicos, mecânicos e eletrônicos do robô.
 
@@ -562,6 +630,23 @@ Durante o processo de mapeamento de riscos, o grupo buscou estimar as chances em
 
 Para acessar o [Mapeamento de riscos](https://www.figma.com/file/g6mIiYNG8k8kPIIBjerAsl/Mapeamento-de-Riscos?type=whiteboard&node-id=2%3A105&t=LA7EhRX7nE3AUjfu-1) acesse o link.
 
+### Validação da eficiência dos sistemas de segurança
+
+Ao considerar a eficácia dos sistemas de segurança implantados, destacamos a incorporação do sistema de rota e a função de monitoramento da tensão da bateria.
+
+**Implementação da Rota**
+
+Para assegurar a segurança e a eficiência do robô, foi desenvolvido um robusto sistema de rotas, que incorpora um algoritmo de otimização. Esse algoritmo permite que o robô siga um trajeto pré-definido com a maior precisão possível, minimizando a probabilidade de desvios inesperados ou colisões acidentais.
+
+Este algoritmo leva em conta uma variedade de variáveis para determinar a rota mais eficiente e este recurso resulta em uma operação mais eficiente e segura, reduzindo significativamente o risco de falhas.
+
+Em situações de emergência, o robô está programado para retornar ao seu ponto de origem seguindo a rota mais segura e eficiente disponível. Esta rota de retorno é calculada em tempo real pelo algoritmo de otimização de rotas, levando em consideração possíveis obstáculos e a condição da bateria do robô. A implementação deste sistema otimizado de rotas aumenta consideravelmente a segurança e a eficiência do robô.
+
+**Monitoramento da Tensão da Bateria**
+
+Um elemento crucial para a operação segura do robô é o sistema de monitoramento de tensão de bateria. Este é um recurso padrão de fábrica do robô, que emite um alarme sonoro quando a bateria está prestes a se esgotar.
+
+Essa funcionalidade é um importante mecanismo de segurança, pois fornece um aviso antecipado que permite que medidas preventivas sejam tomadas antes que a bateria se esgote completamente. Isso evita paradas abruptas do robô, que poderiam resultar em danos ao equipamento ou acidentes.
 
 # Referências
 
