@@ -553,6 +553,12 @@ Quando falamos de sistema de proteção contra comandos indesejados, vamos além
   - Definição de rota de emergency stop (voltar para o ponto de origem).
   - Algoritmo de prevenção contra eventuais colisões com obstáculos.
 
+### Sistema de segurança da bateria
+No modelo de robô utilizado, existe um potencial significativo de danos à sua bateria caso seu nível de energia seja excessivamente baixo. Quando tal nível crítico é alcançado, um alerta sonoro é emitido. Se esse alerta não for atendido, a célula de bateria se tornará inutilizável e não poderá ser recarregada. No entanto, embora exista um sistema de segurança já implementado, ele não se mostra suficiente, uma vez que, durante as operações do robô, ele pode estar localizado em uma área isolada, o que impossibilita que os colaboradores tomem conhecimento da situação. Portanto, para abordar essa questão de forma eficaz, é necessário exibir o nível de bateria na página web, para que antes da inicialização de uma inspeção, o colaborador saiba o nível de segurança ao mandar o robô para um espaço isolado naquele momento. Ademais, emitir alertas de bateria fraca na interface gráfica, não ficando dependente do aviso sonoro do robô ou da checagem constante do nível.
+
+### Sistema anticolisão
+O sistema implementado para prevenir a colisão do robô com obstáculos envolve a utilização do sensor Lidar, posicionado na parte superior do chassi. Esse sensor emite pulsos de luz ao seu redor e, quando esses pulsos encontram objetos, retornam ao sensor. Dessa forma, o sensor é capaz de calcular a distância dos objetos com base no tempo de ida e volta do pulso, criando assim um mapa denominado nuvem de pontos. Atualmente, quando o robô detecta a presença de um objeto em proximidade, interrompe seu movimento para evitar a colisão. No entanto, em uma fase futura, será implementada a funcionalidade de desvio do obstáculo sem a necessidade de intervenção de algum funcionário.
+
 ### Mapeamento de riscos dos sistemas eletromecânicos, mecânicos e eletrônicos.
 Durante o processo de mapeamento de riscos, o grupo buscou estimar as chances em porcentagem e o nível de impacto, utilizando como base a matriz de riscos para poder estruturar todo o mapeamento. É válido ressaltar que, para essa parte, foram considerados fatores como o ambiente de trabalho, o tipo de trabalho, a exposição do robô, a frequência de exposição, a duração da exposição e a probabilidade de ocorrência à qual o robô está exposto. Esses fatores podem afetar diretamente as eletromecânicos, mecânicos e eletrônicos do robô.
 
