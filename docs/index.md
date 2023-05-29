@@ -567,6 +567,7 @@ Para acessar o [Mapeamento de riscos](https://www.figma.com/file/g6mIiYNG8k8kPII
 Ao considerar a eficácia dos sistemas de segurança implantados, destacamos a incorporação do sistema de rota e a função de monitoramento da tensão da bateria.
 
 **Implementação da Rota**
+
 Para assegurar a segurança e a eficiência do robô, foi desenvolvido um robusto sistema de rotas, que incorpora um algoritmo de otimização. Esse algoritmo permite que o robô siga um trajeto pré-definido com a maior precisão possível, minimizando a probabilidade de desvios inesperados ou colisões acidentais.
 
 Este algoritmo leva em conta uma variedade de variáveis para determinar a rota mais eficiente e este recurso resulta em uma operação mais eficiente e segura, reduzindo significativamente o risco de falhas.
@@ -574,6 +575,7 @@ Este algoritmo leva em conta uma variedade de variáveis para determinar a rota 
 Em situações de emergência, o robô está programado para retornar ao seu ponto de origem seguindo a rota mais segura e eficiente disponível. Esta rota de retorno é calculada em tempo real pelo algoritmo de otimização de rotas, levando em consideração possíveis obstáculos e a condição da bateria do robô. A implementação deste sistema otimizado de rotas aumenta consideravelmente a segurança e a eficiência do robô.
 
 **Monitoramento da Tensão da Bateria**
+
 Um elemento crucial para a operação segura do robô é o sistema de monitoramento de tensão de bateria. Este é um recurso padrão de fábrica do robô, que emite um alarme sonoro quando a bateria está prestes a se esgotar.
 
 Essa funcionalidade é um importante mecanismo de segurança, pois fornece um aviso antecipado que permite que medidas preventivas sejam tomadas antes que a bateria se esgote completamente. Isso evita paradas abruptas do robô, que poderiam resultar em danos ao equipamento ou acidentes.
