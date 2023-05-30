@@ -1,4 +1,4 @@
-from route.model import create_route, get_routes, get_route, delete_route
+from route.model import create_route, get_routes, get_route, delete_route, update_route
 
 class Route:
     def __init__(self, name: str="") -> None:
