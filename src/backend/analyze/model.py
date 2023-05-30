@@ -6,8 +6,17 @@ def create_analyze(routeId:int ,name: str, startDate: datetime, endDate: datetim
     route = db.route.find_first(where={'id': routeId})
     if not route:
         raise NameError(f'Route not exists with this id: {routeId}')
-    else:    
-        db.analyze.create(id=2,routeId=routeId,name=name,startDate=startDate,endDate=endDate,supervisor=supervisor,openator=operator,created_at=datetime.now())
+    else:
+        data = {
+                'routeId': routeId,
+                'name': name,
+                'startDate': startDate,
+                'endDate': endDate,
+                'supervisor': supervisor,
+                'openator': operator
+            }
+        db.analyze.create(data=data)
+        print(data)
         analyze = db.analyze.find_first(order={'id': 'desc',})
         return analyze
 
@@ -36,8 +45,7 @@ def update_analyze(id: int, routeId:int ,name: str, startDate: str, endDate: str
                 'startDate': startDate,
                 'endDate': endDate,
                 'supervisor': supervisor,
-                'openator': operator,
-                'created_at': datetime.now()
+                'openator': operator
                 }
         db.analyze.update(where={'id': id}, data=data)
         return True

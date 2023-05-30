@@ -7,15 +7,18 @@ class Analyze:
         self.id = id
         self.routeId = routeId
         self.name = name.upper()
-        self.startDate = startDate
-        self.endDate = endDate
+        self.startDate = datetime.strptime(startDate, "%Y-%m-%d") if startDate else None
+        self.endDate = datetime.strptime(endDate,"%Y-%m-%d") if endDate else None
         self.supervisor = supervisor.upper()
         self.operator = operator.upper()
         self.createdAt = createdAt
 
     def register(self) -> dict[str, str]:
         try:
+            print(self)
             analyze = create_analyze(routeId = self.routeId, name = self.name, startDate = self.startDate, endDate = self.endDate, supervisor = self.supervisor, operator = self.operator)
+
+      
             analyze.createdAt = analyze.createdAt.strftime("%d/%m/%Y %H:%M:%S")
             analyze.startDate = analyze.startDate.strftime("%d/%m/%Y %H:%M:%S")
             analyze.endDate = analyze.endDate.strftime("%d/%m/%Y %H:%M:%S") 

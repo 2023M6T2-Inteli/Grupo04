@@ -1,9 +1,9 @@
 from analyze.service import Analyze
+from datetime import datetime
 
-from datetime import date
-def register(id:int, routeId: int, name: str, startDate: date, endDate: date, supervisor: str,operator: str, createdAt: str) -> tuple[dict[str, str], int]:
+def register(routeId: int, name: str, startDate: datetime, endDate: datetime, supervisor: str,operator: str) -> tuple[dict[str, str], int]:
     try:
-        analyze = Analyze(id=id,routeId=routeId, name=name, startDate=startDate, endDate=endDate, supervisor=supervisor,operator=operator, createdAt=createdAt)
+        analyze = Analyze(routeId=routeId, name=name, startDate=startDate, endDate=endDate, supervisor=supervisor,operator=operator)
         message = analyze.register()
         return {'message': message}, 200
     except Exception as e:

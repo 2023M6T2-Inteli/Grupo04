@@ -19,14 +19,13 @@ frame_queue = asyncio.Queue()
 @analyze.post("/create")
 @openapi.summary("Create a new analyze")
 @openapi.description("This endpoint allows you to create a new analyze.")
-@openapi.definition(
-    body={'application/json': AnalyzeTest.schema()},
-)
+@openapi.definition(body={'application/json': AnalyzeTest.schema()},)
 # @validate_body(Schema.REGISTER.value)
 async def handler_register(request: Request) -> HTTPResponse:
     data = request.json
-    response, code = register(id="", routeId=data['routeId'], name=data['name'], startDate=data['startDate'], endDate=data['endDate'], supervisor=data['supervisor'], operator=data['operator'], createdAt="")
+    response, code = register(routeId=data['routeId'], name=data['name'], startDate=data['startDate'], endDate=data['endDate'], supervisor=data['supervisor'], operator=data['operator'])
     return json(response, code)
+
 
 @analyze.get("/get_analyzes")
 @openapi.summary("Get all analyzes")
@@ -34,6 +33,7 @@ async def handler_register(request: Request) -> HTTPResponse:
 async def handler_get_all(request: Request) -> HTTPResponse:
     response, code = get_all()
     return json(response, code)
+
 
 @analyze.get("/get_analyze/<id:int>")
 @openapi.summary("Get a analyze")

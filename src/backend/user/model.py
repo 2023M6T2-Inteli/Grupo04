@@ -6,7 +6,7 @@ def create_user(name: str, email: str, password: str) -> bool:
          'name': name,
          'email': email,
          'password': password
-      }
+   }
    db.user.create(data=data)
    return True
 
