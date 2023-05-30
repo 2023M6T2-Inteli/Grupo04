@@ -644,7 +644,9 @@ Em situações de emergência, o robô está programado para retornar ao seu pon
 
 **Monitoramento da Tensão da Bateria**
 
-Um elemento crucial para a operação segura do robô é o sistema de monitoramento de tensão de bateria. Este é um recurso padrão de fábrica do robô, que emite um alarme sonoro quando a bateria está prestes a se esgotar.
+Um elemento crucial para a operação segura do robô é o sistema de monitoramento de tensão de bateria. Este é um recurso padrão de fábrica do robô, que emite um alarme sonoro quando a bateria está prestes a se esgotar. No vídeo abaixo é mostrado como ocorre a emissão desse alerta: 
+
+[Medida de proteção de alarme contra sobredescarga da bateria do TurtleBot](https://github.com/2023M6T2-Inteli/Grupo04/blob/docs-upload-video-alarme_da_bateria-e-add-to-the-topic-Monitoramente-da-tensao-da-bateria-/media/videos/alarme_bateria.mp4)
 
 Essa funcionalidade é um importante mecanismo de segurança, pois fornece um aviso antecipado que permite que medidas preventivas sejam tomadas antes que a bateria se esgote completamente. Isso evita paradas abruptas do robô, que poderiam resultar em danos ao equipamento ou acidentes.
 
