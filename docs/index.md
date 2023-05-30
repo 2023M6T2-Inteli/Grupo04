@@ -644,7 +644,7 @@ Em situações de emergência, o robô está programado para retornar ao seu pon
 
 **Monitoramento da Tensão da Bateria**
 
-O monitoramento da tensão da bateria é vital para a operação segura e eficiente de um robô, como o TurtleBot. Um sistema de gerenciamento de energia bem projetado pode prolongar a vida útil da bateria e evitar falhas prematuras que poderiam interromper o funcionamento do robô.
+O monitoramento da tensão da bateria é vital para a operação segura e eficiente do TurtleBot. Um sistema de gerenciamento de energia bem projetado pode prolongar a vida útil da bateria e evitar falhas prematuras que poderiam interromper o funcionamento do robô.
 
 Um exemplo desse sistema é o monitoramento de tensão de bateria padrão do TurtleBot. Esse recurso emite um alarme sonoro quando a bateria está prestes a se esgotar. Este sistema de alarme é um exemplo de uma medida de proteção contra sobredescarga da bateria. A sobredescarga pode danificar a bateria, reduzindo sua capacidade e vida útil.
 
