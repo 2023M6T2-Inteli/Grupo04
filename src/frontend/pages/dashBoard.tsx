@@ -19,7 +19,6 @@ const DashBoard = () => {
 
     const router = useRouter();
 
-    // Create a use effect for authentication?
     useEffect(() => {
             const token = localStorage.getItem("token");
             if (token) {
