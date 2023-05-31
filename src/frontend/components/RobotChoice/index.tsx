@@ -2,6 +2,7 @@ import Image from "next/image";
 import robotImage from "../../assets/TurtleBot.svg";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import getRobots from "../WelcomeBody";
 
 interface Props {
   name: string;

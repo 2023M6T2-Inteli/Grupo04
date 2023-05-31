@@ -12,11 +12,12 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-export interface Field {
-  header: string;
-  inputs: string[];
-  button: string;
-}
+import {Field} from '@/components/WelcomeBody'
+import { Dispatch, SetStateAction, useState } from 'react';
+import {ModalInputs} from '@/components/WelcomeBody'
+import axios from '@/utils/axios';
+
+
 
 interface Props {
   fields: Field;
@@ -25,6 +26,21 @@ interface Props {
 }
 
 const ModalHome: React.FC<Props> = ({ fields, onClose, isOpen }) => {
+
+  const addRobot = async () => {
+    
+    const name = fields.inputs[0].value
+    const ip = fields.inputs[1].value
+
+    console.log(fields.inputs[0].value, fields.inputs[1].value)
+
+    await axios.post('/register', {
+      name: name,
+      ip: ip
+    })
+  }
+
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -36,14 +52,17 @@ const ModalHome: React.FC<Props> = ({ fields, onClose, isOpen }) => {
         <ModalBody pb={6}>
           {fields.inputs.map((input) => (
             <FormControl mt={4}>
-              <FormLabel>{input}</FormLabel>
-              <Input placeholder={input} />
+              <FormLabel >{input.name}</FormLabel>
+              <Input 
+                onChange = {(e) => input.setValue(e.target.value)}
+                placeholder={input.name} 
+              />
             </FormControl>
           ))}
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="blue" mr={3}>
+          <Button colorScheme="blue" mr={3} onClick={() => addRobot()}>
             Save
           </Button>
           <Button onClick={onClose}>Cancel</Button>

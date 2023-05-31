@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import arrowBack from "../../assets/Arrow.svg";
 import plusButton from "../../assets/PlusButton.svg";
+import addRobot from "../ModalHome"
 
 export enum ButtonType {
   Home,
