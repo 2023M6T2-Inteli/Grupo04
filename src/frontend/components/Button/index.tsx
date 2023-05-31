@@ -7,16 +7,18 @@ export enum ButtonType {
   Home,
   RollBack,
   AddRobot,
+  Register
 }
 
 interface Props {
   type: ButtonType;
   text: string;
+  texttwo: string;
   link: string;
   onClick?: () => void;
 }
 
-const Button: React.FC<Props> = ({ link, text, type, onClick }) => {
+const Button: React.FC<Props> = ({ link, text, texttwo, type, onClick }) => {
   switch (type) {
     case ButtonType.Home:
       return (
@@ -54,6 +56,11 @@ const Button: React.FC<Props> = ({ link, text, type, onClick }) => {
           </p>
         </button>
       );
+
+    case ButtonType.Register:
+      return(
+        <p>{text} <Link href={link} className="mx-auto w-full select-none text-blue-500">{texttwo}</Link></p>
+      )
 
     default:
       return <></>;
