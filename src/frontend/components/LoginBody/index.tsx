@@ -1,5 +1,7 @@
 import React from "react";
 import { ReactElement } from "react";
+import { useState } from "react";
+import axios from "@/utils/axios"
 
 export enum AuthType{
     Home,
@@ -11,6 +13,16 @@ interface Props {
 }
 
 const AuthBody: React.FC<Props> = ({ section }) => {
+
+    const [name, setName] = useState()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+    const [confirmPassword, setConfirmPassword] = useState()
+
+    const register = async () => {
+        console.log(name, email, password, confirmPassword)
+    }
+    
     switch(section) {
         case AuthType.Home:
             return(
@@ -24,12 +36,12 @@ const AuthBody: React.FC<Props> = ({ section }) => {
                     <form>
                         <label>
                             <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
-                                <input className="w-full" type="text" placeholder="E-mail" name="e-mail" />
+                                <input className="w-full outline-none ring-0" type="text" placeholder="E-mail" name="e-mail" id="emaillogin" />
                             </p>
                         </label>
                         <label>
                             <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
-                                <input className="w-full" type="password" placeholder="Password" name="password" />
+                                <input className="w-full outline-none ring-0" type="password" placeholder="Password" name="password" id="passwordlogin" />
                             </p>
                         </label>
                     </form>
@@ -44,27 +56,28 @@ const AuthBody: React.FC<Props> = ({ section }) => {
                     </p>
                     <p className="font-inter text-xs text-center lg:text-lg">Let's get started</p>
                     </div>
-                    <form>
+                    <form  onSubmit={() => register()} >
                         <label>
                             <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
-                                <input className="w-full" type="text" placeholder="Name" name="name" />
+                                <input className="w-full outline-none ring-0" onChange={()=> setName} type="text" placeholder="Name" name="name" id="namereg" />
                             </p>
                         </label>
                         <label>
                             <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
-                                <input className="w-full" type="text" placeholder="E-mail" name="e-mail" />
+                                <input className="w-full outline-none ring-0" onChange={()=> setEmail} type="text" placeholder="E-mail" name="e-mail" id="emailreg" />
                             </p>
                         </label>
                         <label>
                             <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
-                                <input className="w-full" type="password" placeholder="Password" name="password" />
+                                <input className="w-full outline-none ring-0" onChange={()=> setPassword} type="password" placeholder="Password" name="password" id="passwordreg" />
                             </p>
                         </label>
                         <label>
                             <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
-                                <input className="w-full" type="password" placeholder="Confirm password" name="confirmpassword" />
+                                <input className="w-full outline-none ring-0" onChange={()=> setConfirmPassword} type="password" placeholder="Confirm password" name="confirmpassword" id="confirmpasswordreg" />
                             </p>
                         </label>
+                        <button type="submit" className="bg-blue-zero w-full py-2 text-white text-base lg:text-2xl font-mont font-bold rounded-full">Start</button>
                     </form>
                 </>
             );

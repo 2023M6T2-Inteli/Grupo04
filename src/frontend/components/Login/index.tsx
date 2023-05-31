@@ -2,14 +2,23 @@ import Image from "next/image";
 import gerdauLogoBlue from "../../assets/GerdauLogoBlue.svg";
 import Button from "../Button";
 import { ButtonType } from "../Button";
-import React from "react";
+import React, { useEffect } from "react";
 import LoginBody from "../LoginBody";
 import { AuthType } from "../LoginBody";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import axios from '@/utils/axios'
 interface Props {
   section: AuthType;
   link: string;
 }
+
+async function setRequest(){
+  return(axios.get('/todos').then((response) => {
+      console.log("teste")
+      console.log(response);
+      }));
+  }
 
 const Login: React.FC<Props> = ({ section, link }) => {
   const container = {
@@ -38,16 +47,16 @@ const Login: React.FC<Props> = ({ section, link }) => {
       />
       <LoginBody section={section} />
       {section === AuthType.Register && (
-        <Button text="Start"texttwo="" type={ButtonType.Home} link="/dashBoard" />
+        <Button text="Start" type={ButtonType.Request} onClick={() => setRequest()} link='/login' />
       )}
       {section === AuthType.Register && (
-        <Button text="Already have an account?" texttwo="Sign In." type={ButtonType.Register} link={link} />
+        <Button text="Sign In." type={ButtonType.Register} link={link} />
       )}
       {section === AuthType.Home && (
-        <Button text="Start"texttwo="" type={ButtonType.Home} link="/dashBoard" />
+        <Button text="Start" type={ButtonType.Request} link="/dashBoard" />
       )}
       {section === AuthType.Home && (
-        <Button text="Don't have an account?"texttwo="Sign Up." type={ButtonType.Register} link={link} />
+        <Button text="Sign Up." type={ButtonType.Register} link={link} />
       )}
     </motion.div>
   );
