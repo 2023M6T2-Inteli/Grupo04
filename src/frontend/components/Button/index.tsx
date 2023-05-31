@@ -2,11 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 import arrowBack from "../../assets/Arrow.svg";
 import plusButton from "../../assets/PlusButton.svg";
+import addRobot from "../ModalHome"
 
 export enum ButtonType {
   Home,
   RollBack,
   AddRobot,
+  Register,
+  Login,
+  Request
 }
 
 interface Props {
@@ -53,6 +57,23 @@ const Button: React.FC<Props> = ({ link, text, type, onClick }) => {
             Add new robot
           </p>
         </button>
+      );
+
+    case ButtonType.Register:
+      return(
+        <p>Don't have an account yet? <Link href={link} className="mx-auto w-full select-none text-blue-500">{text}</Link></p>
+      )
+
+    case ButtonType.Login:
+      return(
+        <p>Already have an account? <Link href={link} className="mx-auto w-full select-none text-blue-500">{text}</Link></p>
+      )
+
+    case ButtonType.Request:
+      return (
+          <button className="bg-blue-zero w-full py-2 text-white text-base lg:text-2xl font-mont font-bold rounded-full" onClick={onClick}>
+            {text}
+          </button>
       );
 
     default:

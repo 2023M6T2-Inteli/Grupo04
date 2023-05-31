@@ -8,7 +8,7 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - $PWD:/backend
+      - .:/backend
     restart: always
     depends_on:
       - db

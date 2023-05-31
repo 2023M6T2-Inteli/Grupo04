@@ -2,6 +2,7 @@
 from sanic.request import Request
 from sanic import Blueprint
 from sanic.response import HTTPResponse,json
+from sanic_ext import cors
 from middleware.body_check import validate_body
 from robot.utils import Schema
 from robot.controller import register, get_robots, get_robot, delete_robot
