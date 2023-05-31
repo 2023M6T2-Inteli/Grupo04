@@ -1,17 +1,19 @@
 # Basic imports
-from sanic import Sanic
 from textwrap import dedent
 
+from analyze.routes import analyze
+from point.routes import point
+from robot.routes import robot
+from route.routes import route
+from sanic import Sanic
 # Routes imports
 from user.routes import user
-from robot.routes import robot
-from analyze.routes import analyze
-from route.routes import route
-from point.routes import point
+
 
 def create_server() -> Sanic:
     app = Sanic(__name__)
     return app
+
 
 app = create_server()
 
