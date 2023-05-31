@@ -2,6 +2,7 @@
 from sanic.request import Request
 from sanic import Blueprint
 from sanic.response import HTTPResponse,json
+from sanic_ext import cors
 from middleware.body_check import validate_body
 from robot.utils import Schema
 from robot.controller import register, get_robots, get_robot, delete_robot
@@ -9,6 +10,7 @@ from robot.controller import register, get_robots, get_robot, delete_robot
 robot = Blueprint('robot', __name__)
 
 @robot.post("/register")
+@cors()
 @validate_body(Schema.REGISTER.value)
 async def handler_register(request: Request) -> HTTPResponse:
       data = request.json

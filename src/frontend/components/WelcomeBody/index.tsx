@@ -1,47 +1,93 @@
-import React from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import Image from "next/image";
 import confetti from "../../assets/confetti.svg";
 import Button, { ButtonType } from "../Button";
 import RobotChoice from "../RobotChoice";
 import ModalHome from "../ModalHome";
-import { Field } from "../ModalHome";
 import { useState } from "react";
 import { useDisclosure } from "@chakra-ui/react";
+import axios from '@/utils/axios';
 
 export enum WelcomeType {
   Home,
   Selection,
 }
 
+export interface Field {
+  header: string;
+  inputs: ModalInputs[];
+  button: string;
+  value?: string
+}
+
 interface Props {
   section: WelcomeType;
+}
+
+export interface ModalInputs {
+  name: string;
+  value: string | null;
+  setValue: Dispatch<SetStateAction<string | null>>;
 }
 
 interface Robot {
   id: number;
   name: string;
+  ip: string;
+  createdAt: string;
 }
 
 const WelcomeBody: React.FC<Props> = ({ section }) => {
-  const [robotChoice, setRobotChoice] = useState<Robot[]>([
-    {
-      id: 1,
-      name: "Turtle Bot 1",
-    },
-    {
-      id: 2,
-      name: "Turtle Bot 2",
-    },
-  ]);
+  // const [robotChoice, setRobotChoice] = useState<Robot[]>([
+  //   {
+  //     id: 1,
+  //     name: "Turtle Bot 1"
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Turtle Bot 2"
+  //   },
+  // ]);
+
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const [robotName, setRobotName] = useState<string | null>(null);
+
+  const [robotIp, setRobotIp] = useState<string | null>(null);
+
   const fields: Field = {
     header: "Add new robot",
-    inputs: ["Robot name", "Robot IP"],
+    inputs: [{
+      name: "Robot name",
+      value: robotName,
+      setValue: setRobotName
+    }, {
+      name: "Robot IP",
+      value: robotIp,
+      setValue: setRobotIp
+    }],
     button: "Add",
   };
+
+  const [robots, setRobots] = useState<Robot[]>([])
+
+  const getRobots = async() => {
+    try {
+      const response = await axios.get('/get_robots');
+      const data =response.data
+      console.log(data)
+      setRobots(data)
+    } catch (error){
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getRobots()
+  }, [])
+
 
   switch (section) {
     case WelcomeType.Home:
@@ -83,13 +129,14 @@ const WelcomeBody: React.FC<Props> = ({ section }) => {
             onClick={onOpen}
           />
           <ModalHome isOpen={isOpen} onClose={onClose} fields={fields} />
-          {robotChoice.map((robot) => (
-            <RobotChoice
-              onClick={() => setSelectedChoice(robot.id)}
-              isActive={selectedChoice === robot.id}
-              name={robot.name}
-            />
-          ))}
+          {robots.length === 0 ? <p className="block font-mont text-blue-gerdau-end select-none">Add a robot before</p>: (
+            robots.map((robot) => (
+              <RobotChoice
+                onClick={() => setSelectedChoice(robot.id)}
+                isActive={selectedChoice === robot.id}
+                name={robot.name}
+              />
+            )))}
         </>
       );
   }
