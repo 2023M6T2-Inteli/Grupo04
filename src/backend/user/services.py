@@ -1,51 +1,55 @@
-from user.model import create_user, get_user_by_email, get_user_by_id
-import json
+from datetime import datetime, timedelta
+
 import bcrypt
 import jwt
-from datetime import datetime, timedelta
+from user.model import create_user, get_user_by_email, get_user_by_id
+
+
 class User:
 
-   def __init__(self, name: str, email: str, password: str):
-      self.name = name
-      self.email = email
-      self.password = password
-   
-   def register(self) -> str:
-      password = str(self.password)
-      password = password.encode('UTF_8')
-      password_crypt = bcrypt.hashpw(password, bcrypt.gensalt(10))
-      password_crypt = password_crypt.decode("utf-8")
+    def __init__(self, name: str, email: str, password: str):
+        self.name = name
+        self.email = email
+        self.password = password
 
-      create_user(name=self.name, email=self.email, password=password_crypt)
+    def register(self) -> str:
+        # Encrypting the password
+        password = str(self.password)
+        password = password.encode('UTF_8')
+        password_crypt = bcrypt.hashpw(password, bcrypt.gensalt(10))
+        password_crypt = password_crypt.decode("utf-8")
 
-      return f"User: {self.name}, created successfully"
-   
-   def login(self) -> str:
-      try: 
-         user = get_user_by_email(email=self.email)
-      except:
-         raise NameError(f"User does not exists with the email: {self.email}")
-      print(user.password)
-      if bcrypt.checkpw(password=str(self.password).encode('UTF_8'), hashed_password=str(user.password).encode('UTF_8')):
+        # Creating the user
+        create_user(name=self.name, email=self.email, password=password_crypt)
 
-         payload_data = {'id': user.id, "exp": datetime.utcnow() + timedelta(hours=2)}
-         token = jwt.encode(payload=payload_data, key='secret')
+        return f"User: {self.name}, created successfully"
 
-         return f"Thank you for login, your token: {token}"
-      
-      raise NameError("Incorrect password!")
-   
-   def get_user(self, id: str) -> dict[str, str]:
-      user = get_user_by_id(id=id)
-      return user
+    def login(self) -> tuple[str, str]:
+        try:
+            user = get_user_by_email(email=self.email)
+        except:
+            raise NameError(f"User does not exists with the email: {self.email}")
+        print(user.password)
+        if bcrypt.checkpw(password=str(self.password).encode('UTF_8'),
+                          hashed_password=str(user.password).encode('UTF_8')):
+            payload_data = {'id': user.id, "exp": datetime.utcnow() + timedelta(hours=2)}
+            token = jwt.encode(payload=payload_data, key='secret')
 
-   # def login(self) -> str:
-   #    try:
-   #       models.already_exists_by_email(email=self.email)
-   #    except:
-   #       raise NameError(f"User does not exists with the email: {self.email}")
+            return f"Thank you for login!", token
 
-   #    user = models.get_user_by_email(email=self.email)
-   #    if bcrypt.checkpw(str(self.password).encode('UTF_8'), str(user.password).encode('UTF_8')):
-   #       payload_data = {'id': user.id, "exp": datetime.utcnow() + timedelta(hours=2)}
-   #       token = jwt.encode(payload=payload_data, key='secret')
+        raise NameError("Incorrect password!")
+
+    def get_user(self, id: str) -> dict[str, str]:
+        user = get_user_by_id(id=id)
+        return user
+
+    # def login(self) -> str:
+    #    try:
+    #       models.already_exists_by_email(email=self.email)
+    #    except:
+    #       raise NameError(f"User does not exists with the email: {self.email}")
+
+    #    user = models.get_user_by_email(email=self.email)
+    #    if bcrypt.checkpw(str(self.password).encode('UTF_8'), str(user.password).encode('UTF_8')):
+    #       payload_data = {'id': user.id, "exp": datetime.utcnow() + timedelta(hours=2)}
+    #       token = jwt.encode(payload=payload_data, key='secret')
