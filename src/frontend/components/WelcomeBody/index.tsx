@@ -38,16 +38,6 @@ interface Robot {
 }
 
 const WelcomeBody: React.FC<Props> = ({ section }) => {
-  // const [robotChoice, setRobotChoice] = useState<Robot[]>([
-  //   {
-  //     id: 1,
-  //     name: "Turtle Bot 1"
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Turtle Bot 2"
-  //   },
-  // ]);
 
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
 
