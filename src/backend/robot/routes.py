@@ -10,7 +10,6 @@ from robot.controller import register, get_robots, get_robot, delete_robot
 robot = Blueprint('robot', __name__)
 
 @robot.post("/register")
-@cors()
 @validate_body(Schema.REGISTER.value)
 async def handler_register(request: Request) -> HTTPResponse:
       data = request.json

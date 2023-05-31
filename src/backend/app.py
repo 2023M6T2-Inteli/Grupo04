@@ -11,7 +11,6 @@ from point.routes import point
 
 def create_server() -> Sanic:
     app = Sanic(__name__)
-    app.config.CORS_ORIGINS = "*"
     return app
 
 app = create_server()
