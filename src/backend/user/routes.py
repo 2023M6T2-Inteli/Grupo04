@@ -1,12 +1,12 @@
-from middleware.auth import auth
-from middleware.body_check import validate_body
-from user.controller import login, register, get_user
-from user.utils import Schema
-
 from sanic import Blueprint
 from sanic.request import Request
 from sanic.response import HTTPResponse
 from sanic.response import json
+
+from middleware.auth import auth
+from middleware.body_check import validate_body
+from user.controller import login, register, get_user
+from user.utils import Schema
 
 user = Blueprint('user', __name__)
 
@@ -23,12 +23,8 @@ async def handler_register(request: Request) -> HTTPResponse:
 @validate_body(Schema.LOGIN.value)
 async def handler_login(request: Request) -> HTTPResponse:
     data = request.json
-    response, token, code = login(email=data['email'], password=data['password'])
-    # Creating the response
-    response = json(response, code)
-    # Setting cookies
-    response.add_cookie('token', token, httponly=True, secure=False)
-    return response
+    response, code = login(email=data['email'], password=data['password'])
+    return json(response, code)
 
 
 @user.get("/")
