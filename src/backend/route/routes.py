@@ -6,10 +6,13 @@ from textwrap import dedent
 from middleware.body_check import validate_body
 from route.utils import Schema
 from route.controller import register, get_all, get_route, update_route, delete_route
+from sanic_ext import openapi
 
 route = Blueprint('route', __name__)
 
 @route.post("/create")
+@openapi.summary("This is a summary")
+@openapi.description("This is a description")
 @validate_body(Schema.REGISTER.value)
 async def handler_register(request: Request) -> HTTPResponse:
       data = request.json

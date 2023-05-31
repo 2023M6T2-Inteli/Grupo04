@@ -13,21 +13,24 @@ class Point:
         except: 
             raise NameError(f'Error to create point')
     
-    def get_all(self, routeId:int) -> list[dict[str, str]]:
+    def get_all(routeId:int) -> list[dict[str, str]]:
         try:
             points = get_points(routeId)
-            response = []
-            for point in points:
-                point.created_at = point.created_at.strftime("%d/%m/%Y %H:%M:%S")
-                point = point.__dict__
-                response.append(point)
-            return points
+            if not points:
+                return NameError(f'Table point is empty')
+            else:
+                response = []
+                for point in points:
+                    point.createdAt = point.createdAt.strftime("%d/%m/%Y %H:%M:%S")
+                    point = point.__dict__
+                    response.append(point)
+                return response
         except:
             raise NameError(f'Error to get all points')
         
-    def delete_points(self, id:int) -> dict:
+    def delete_points(routeId:int) -> dict:
         try:
-            points = delete_points(id)
+            delete_points(routeId)
             return f"Points deleted with success!"
         except:
             raise NameError(f'Error to delete points')

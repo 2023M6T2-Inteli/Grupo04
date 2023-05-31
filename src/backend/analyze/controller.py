@@ -1,17 +1,18 @@
 from analyze.service import Analyze
+from datetime import datetime
 
-def register(routeId: int, name: str, startDate: str, endDate: str, supervisor: str,operator: str, createdAt: str) -> tuple[dict[str, str], int]:
+def register(routeId: int, name: str, startDate: datetime, endDate: datetime, supervisor: str,operator: str) -> tuple[dict[str, str], int]:
     try:
-        analyze = Analyze(routeId=routeId, name=name, startDate=startDate, endDate=endDate, supervisor=supervisor,operator=operator, createdAt=createdAt)
+        analyze = Analyze(routeId=routeId, name=name, startDate=startDate, endDate=endDate, supervisor=supervisor,operator=operator)
         message = analyze.register()
         return {'message': message}, 200
     except Exception as e:
         return {'error': str(e)}, 500
     
-def get_all(routeId: int) -> tuple[list[dict[str, str]], int]:
+def get_all() -> tuple[list[dict[str, str]], int]:
     try:
         analyze = Analyze()
-        analyzes = analyze.get_all(routeId)
+        analyzes = analyze.get_all()
         return {'analyzes': analyzes}, 200
     except Exception as e:
         return {'error': str(e)}, 500
@@ -19,7 +20,7 @@ def get_all(routeId: int) -> tuple[list[dict[str, str]], int]:
 def get_analyze(id: int) -> tuple[list[dict[str, str]], int]:
     try:
         analyze = Analyze()
-        analyzes = analyze.get_analyze(id)
+        analyzes = analyze.get_analyze(id=id)
         return {'analyzes': analyzes}, 200
     except Exception as e:
         return {'error': str(e)}, 500
