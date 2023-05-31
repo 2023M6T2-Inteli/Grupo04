@@ -539,6 +539,8 @@ Abaixo, encontra-se um exemplo de imagens do conjunto de teste tendo suas rachad
 
 Tais testes foram obtidos por meio da separação randômica de 80% das imagens do banco de imagens de rachaduras para o treinamento e 20% para o teste do modelo. Portanto, considerando as 4.100 imagens do banco de imagens de rachaduras, as avaliações discutidas abaixo são com base no uso do modelo treinado com 3.280 imagens de rachaduras aplicados para o reconhecimento de 820 imagens previamente categorizadas como contendo uma rachadura.
 
+[Teste de reconhecimento de rachaduras por modelo YOLOv8 treinado e alimentado por stream de vídeo](https://github.com/2023M6T2-Inteli/Grupo04/assets/99269584/819aca70-a183-414b-a77d-eebddcd5cee0)
+
 ### 1.2.1. Acurácia
 
 A matriz de confusão normalizada abaixo representa uma visão geral da acurácia do modelo treinado para a tarefa de detecção de rachaduras. Ela mostra a parcela de verdadeiros positivos (rachaduras que foram corretamente identificadas como tais), verdadeiros negativos (fotos onde não havia rachaduras e, portanto, nenhuma rachadura foi identificada), falsos positivos (imagens que não continham rachaduras mas que o modelo identificou como imagem que continha uma rachadura) e, por fim, falsos negativos (imagens que continham rachaduras que não foram identificadas como tal pelo modelo). A matriz de confusão normalizada foi escolhida pois permite analisar proporção de cada tipo de possibilidade de predição relativa ao número de predições possíveis. 
