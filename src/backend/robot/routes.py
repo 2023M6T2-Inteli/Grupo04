@@ -7,10 +7,14 @@ from middleware.body_check import validate_body
 from robot.utils import Schema
 from robot.controller import register, get_robots, get_robot, delete_robot
 from sanic_ext import openapi
+from robot.service import RobotTestCreate
 
 robot = Blueprint('robot', __name__)
 
 @robot.post("/register")
+@openapi.summary("Create a new robot")
+@openapi.description("This endpoint allows you to create a new analyze.")
+@openapi.definition(body={'application/json': RobotTestCreate.schema()})
 @validate_body(Schema.REGISTER.value)
 async def handler_register(request: Request) -> HTTPResponse:
       data = request.json
