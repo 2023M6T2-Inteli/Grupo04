@@ -39,8 +39,8 @@ model analyze {
   route      route           @relation(fields: [routeId], references: [id])
   routeId    Int
   name       String
-  startDate  DateTime
-  endDate    DateTime
+  startDate  String
+  endDate    String
   supervisor String
   operator   String
   images     image_analyse[]

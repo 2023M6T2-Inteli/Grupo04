@@ -8,7 +8,7 @@ import numpy as np
 import cv2 as cv
 import asyncio
 from sanic_ext import openapi
-from analyze.service import AnalyzeTest
+from analyze.service import AnalyzeTestCreate, AnalyzeTestUpdate
 
 analyze = Blueprint('analyze', __name__)
 
@@ -19,7 +19,7 @@ frame_queue = asyncio.Queue()
 @analyze.post("/create")
 @openapi.summary("Create a new analyze")
 @openapi.description("This endpoint allows you to create a new analyze.")
-@openapi.definition(body={'application/json': AnalyzeTest.schema()},)
+@openapi.definition(body={'application/json': AnalyzeTestCreate.schema()},)
 # @validate_body(Schema.REGISTER.value)
 async def handler_register(request: Request) -> HTTPResponse:
     data = request.json
@@ -42,13 +42,14 @@ async def handler_get_analyze(request: Request, id: int) -> HTTPResponse:
     response, code = get_analyze(id=id)
     return json(response, code)
 
-@analyze.put("/update_analyze/<id:int>")
+@analyze.put("/update_analyze")
 @openapi.summary("Update a analyze")
 @openapi.description("This endpoint allows you to update a analyze. And you need to send all data.")
-@validate_body(Schema.UPDATE.value)
-async def handler_update_analyze(request: Request, id: int) -> HTTPResponse:
+@openapi.definition(body={'application/json': AnalyzeTestUpdate.schema()},)
+#@validate_body(Schema.UPDATE.value)
+async def handler_update_analyze(request: Request) -> HTTPResponse:
     data = request.json
-    response, code = update_analyze(id, routeId=data['routeId'], name=data['name'], startDate=data['startDate'], endDate=data['endDate'], supervisor=data['supervisor'], operator=data['operator'])
+    response, code = update_analyze(id=data['id'], routeId=data['routeId'], name=data['name'], startDate=data['startDate'], endDate=data['endDate'], supervisor=data['supervisor'], operator=data['operator'], createdAt=data['createdAt'])
     return json(response, code)
 
 @analyze.delete("/delete_analyze/<id:int>")
