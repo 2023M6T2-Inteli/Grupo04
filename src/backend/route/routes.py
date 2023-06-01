@@ -48,6 +48,8 @@ async def handler_update(request: Request) -> HTTPResponse:
       return json(response, code)
 
 @route.delete("/delete_route/<id:int>")
+@openapi.summary("Delete a route")
+@openapi.description("This is endpoint allows you to delete a route.")
 #@validate_body(Schema.DELETE.value)
 async def handler_delete(request: Request, id: int) -> HTTPResponse:
       response, code = delete_route(id)
