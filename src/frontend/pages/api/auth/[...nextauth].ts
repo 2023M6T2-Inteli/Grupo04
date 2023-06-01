@@ -7,9 +7,6 @@ interface Credentials {
 }
 
 export default NextAuth({
-    session: {
-        strategy: "jwt",
-    },
     providers: [
         CredentialsProvider({
             type: "credentials",
@@ -48,5 +45,6 @@ export default NextAuth({
             session.accessToken = token.accessToken;
             return session;
         }
-    }
+    },
+    secret: 'secret',
 });
