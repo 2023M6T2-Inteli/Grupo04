@@ -1,5 +1,5 @@
-from datetime import datetime, timedelta
-
+from datetime import datetime, timedelta, date
+from pydantic import BaseModel, Field
 import bcrypt
 import jwt
 from user.model import create_user, get_user_by_email, get_user_by_id
@@ -53,3 +53,13 @@ class User:
     #    if bcrypt.checkpw(str(self.password).encode('UTF_8'), str(user.password).encode('UTF_8')):
     #       payload_data = {'id': user.id, "exp": datetime.utcnow() + timedelta(hours=2)}
     #       token = jwt.encode(payload=payload_data, key='secret')
+
+
+class UserTestCreate(BaseModel):
+    name : str = "Test operator Update"
+    email: str = "teste@teste.com"
+    password: str = "teste123"
+
+class UserTestLogin(BaseModel):
+    email: str = "teste@teste.com"
+    password: str = "teste123"
