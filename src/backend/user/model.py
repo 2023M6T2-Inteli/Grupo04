@@ -20,7 +20,9 @@ def create_user(name: str, email: str, password: str) -> bool:
 def get_user_by_email(email: str) -> Prisma.user:
     try:
         user = db.user.find_unique(where={'email': email})
-        return user
+        if user:
+            return user
+        raise Exception(f"User does not exists with the email: {email}")
     except:
         raise NameError(f"User does not exists with the email: {email}")
 

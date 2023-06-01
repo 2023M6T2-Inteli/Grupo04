@@ -10,15 +10,15 @@ def register(email: str, password: str, name: str) -> tuple[dict[str, str], int]
         return {'error': str(e)}, 500
 
 
-def login(email: str, password: str) -> tuple[dict[str, str], str | None, int]:
+def login(email: str, password: str) -> tuple[dict[str, str], int]:
     try:
         user = User(name=None, email=email, password=password)
         message, token = user.login()
-        return {'message': message}, token, 200
+        return {'message': message, 'token': token}, 200
     except NameError as err:
-        return {'error': str(err)}, None, 404
+        return {'error': str(err)}, 404
     except Exception as e:
-        return {'error': str(e)}, None, 500
+        return {'error': str(e)}, 500
 
 
 def get_user(id: str) -> tuple[dict[str, str], int]:
