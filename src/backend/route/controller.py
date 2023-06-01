@@ -1,9 +1,10 @@
 from route.service import Route
+from datetime import datetime
 
-def register(email: str, password: str, name:str) -> tuple[dict[str, str], int]:
+def register(name:str) -> tuple[dict[str, str], int]:
     try:
-        user = Route(name=name, email=email, password=password)
-        message = user.register()
+        route = Route(name=name)
+        message = route.register()
         return {'message': message}, 200
     except Exception as e:
         return {'error': str(e)}, 500
@@ -24,10 +25,10 @@ def get_route(id: int) -> tuple[dict[str, str], int]:
     except Exception as e:
         return {'error': str(e)}, 500
     
-def update_route(id: int, name: str) -> tuple[dict[str, str], int]:
+def update_route(id: int, name: str, createdAt: datetime) -> tuple[dict[str, str], int]:
     try:
-        route = Route(name=name)
-        message = route.update_route(id)
+        route = Route(id=id, name=name, createdAt=createdAt)
+        message = route.update_route()
         return {'message': message}, 200
     except Exception as e:
         return {'error': str(e)}, 500
