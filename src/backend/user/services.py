@@ -29,7 +29,6 @@ class User:
             user = get_user_by_email(email=self.email)
         except:
             raise NameError(f"User does not exists with the email: {self.email}")
-        print(user.password)
         if bcrypt.checkpw(password=str(self.password).encode('UTF_8'),
                           hashed_password=str(user.password).encode('UTF_8')):
             payload_data = {'id': user.id, "exp": datetime.utcnow() + timedelta(hours=2)}
