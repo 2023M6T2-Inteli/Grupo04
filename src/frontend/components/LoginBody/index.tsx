@@ -19,8 +19,15 @@ const AuthBody: React.FC<Props> = ({ section }) => {
     const [password, setPassword] = useState()
     const [confirmPassword, setConfirmPassword] = useState()
 
-    const register = async () => {
+    const register = async (event) => {
+        event.preventDefault();
         console.log(name, email, password, confirmPassword)
+        await axios.post('/register',{
+            name:name,
+            email:email,
+            password:password,
+            confirmPassword:confirmPassword
+        })
     }
     
     switch(section) {
@@ -56,25 +63,25 @@ const AuthBody: React.FC<Props> = ({ section }) => {
                     </p>
                     <p className="font-inter text-xs text-center lg:text-lg">Let's get started</p>
                     </div>
-                    <form  onSubmit={() => register()} >
+                    <form onSubmit={register} >
                         <label>
                             <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
-                                <input className="w-full outline-none ring-0" onChange={()=> setName} type="text" placeholder="Name" name="name" id="namereg" />
+                                <input className="w-full outline-none ring-0" onChange={(event)=> setName(event.target.value)} type="text" placeholder="Name" name="name" id="namereg" />
                             </p>
                         </label>
                         <label>
                             <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
-                                <input className="w-full outline-none ring-0" onChange={()=> setEmail} type="text" placeholder="E-mail" name="e-mail" id="emailreg" />
+                                <input className="w-full outline-none ring-0" onChange={(event)=> setEmail(event.target.value)} type="text" placeholder="E-mail" name="e-mail" id="emailreg" />
                             </p>
                         </label>
                         <label>
                             <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
-                                <input className="w-full outline-none ring-0" onChange={()=> setPassword} type="password" placeholder="Password" name="password" id="passwordreg" />
+                                <input className="w-full outline-none ring-0" onChange={(event)=> setPassword(event.target.value)} type="password" placeholder="Password" name="password" id="passwordreg" />
                             </p>
                         </label>
                         <label>
                             <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
-                                <input className="w-full outline-none ring-0" onChange={()=> setConfirmPassword} type="password" placeholder="Confirm password" name="confirmpassword" id="confirmpasswordreg" />
+                                <input className="w-full outline-none ring-0" onChange={(e)=> setConfirmPassword(e.target.value)} type="password" placeholder="Confirm password" name="confirmpassword" id="confirmpasswordreg" />
                             </p>
                         </label>
                         <button type="submit" className="bg-blue-zero w-full py-2 text-white text-base lg:text-2xl font-mont font-bold rounded-full">Start</button>
