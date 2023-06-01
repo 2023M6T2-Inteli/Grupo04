@@ -1,15 +1,19 @@
 from point.model import create_point, get_points, delete_points
-
+from pydantic import BaseModel, Field
+from datetime import datetime
 class Point:
-    def __init__(self, pointX: float="", pointY: float="", routeId: int="") -> None:
+    def __init__(self, pointX: float="", pointY: float="", routeId: int="", createdAt: datetime="") -> None:
         self.pointX = pointX
         self.pointY = pointY
         self.routeId = routeId
+        self.createdAt = createdAt
 
-    def register(self) -> str:
+    def register(self) -> dict[str, str]:
         try:
-            create_point(pointX = self.pointX, pointY = self.pointY, routeId = self.routeId)
-            return f"Point {self.name} created with success!"
+            point = create_point(pointX = self.pointX, pointY = self.pointY, routeId = self.routeId)
+            point.createdAt = point.createdAt.strftime("%d/%m/%Y %H:%M:%S")
+            point = point.__dict__
+            return point
         except: 
             raise NameError(f'Error to create point')
     
@@ -17,7 +21,7 @@ class Point:
         try:
             points = get_points(routeId)
             if not points:
-                return NameError(f'Table point is empty')
+                return NameError(f'Points not found')
             else:
                 response = []
                 for point in points:
@@ -28,10 +32,20 @@ class Point:
         except:
             raise NameError(f'Error to get all points')
         
-    def delete_points(routeId:int) -> dict:
+    def delete_points(routeId:int) -> str:
         try:
-            delete_points(routeId)
-            return f"Points deleted with success!"
+            msg = delete_points(routeId)
+            print(msg)
+            if msg == False:
+                return 'Points not found'
+            else:
+                return (f'Points deleted with routeId: {routeId}')
         except:
             raise NameError(f'Error to delete points')
+        
+
+class PointTestCreate(BaseModel):
+    pointX: int = Field(example=1.52)
+    pointY: int = Field(example=1.52)
+    routeId: int = Field(example=1)
     
