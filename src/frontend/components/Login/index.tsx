@@ -1,17 +1,15 @@
 import Image from "next/image";
 import gerdauLogoBlue from "../../assets/GerdauLogoBlue.svg";
-import Button from "../Button";
-import {ButtonType} from "../Button";
-import React, {useEffect} from "react";
+import Button, {ButtonType} from "../Button";
+import React, {useState} from "react";
 import LoginBody from "../LoginBody";
-import {AuthType} from "../LoginBody";
+import {SignType} from "../SignForm";
 import {motion} from "framer-motion";
-import {useState} from "react";
 import {axios} from '@/utils/axios'
+import Link from "next/link";
 
 interface Props {
-    section: AuthType;
-    link: string;
+
 }
 
 async function setRequest() {
@@ -21,7 +19,7 @@ async function setRequest() {
     }));
 }
 
-const Login: React.FC<Props> = ({section, link}) => {
+const Login: React.FC<Props> = ({}) => {
     const container = {
         hidden: {opacity: 1, scale: 0},
         visible: {
@@ -33,6 +31,8 @@ const Login: React.FC<Props> = ({section, link}) => {
             },
         },
     };
+
+    const [sign, setSign] = useState<SignType>(SignType.Login);
 
     return (
         <motion.div
@@ -46,18 +46,18 @@ const Login: React.FC<Props> = ({section, link}) => {
                 className="mx-auto select-none"
                 alt="Gerdau Logo Blue"
             />
-            <LoginBody section={section}/>
-            {section === AuthType.Register && (
-                <Button text="Start" type={ButtonType.Request} onClick={() => setRequest()} link='/login'/>
-            )}
-            {section === AuthType.Register && (
-                <Button text="Sign In." type={ButtonType.Register} link={link}/>
-            )}
-            {section === AuthType.Home && (
-                <Button text="Start" type={ButtonType.Request} link="/dashBoard"/>
-            )}
-            {section === AuthType.Home && (
-                <Button text="Sign Up." type={ButtonType.Register} link={link}/>
+            {sign === SignType.Register ? (
+                <LoginBody signType={sign} text={'Let\'s get started'}
+                           header={'Sign Up'}/>) : (
+                <LoginBody signType={sign} text={"Welcome Back!"}
+                           header={"Sign In"}/>)}
+            {sign === SignType.Login && (
+                <p onClick={() => setSign(SignType.Register)}>{"Don't have" +
+                    " an account yet? "}
+                    <span className="mx-auto w-full select-none text-blue-500">
+                        {"Sign Up."}
+                    </span>
+                </p>
             )}
         </motion.div>
     );

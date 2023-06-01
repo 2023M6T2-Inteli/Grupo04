@@ -1,4 +1,4 @@
-import NextAuth from "next-auth/src";
+import NextAuth, {NextAuthOptions, Session} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 interface Credentials {
@@ -6,22 +6,25 @@ interface Credentials {
     password: string;
 }
 
-export default NextAuth({
+export const  authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
-            type: "credentials",
             credentials: {
                 email: {label: "Email", type: "text", placeholder: "email"},
                 password: {label: "Password", type: "password", placeholder: "password"},
             },
-            authorize: async (credentials, req) => {
-                const {email, password} = credentials as Credentials;
+            async authorize(credentials, req) {
+                console.log("oiee")
 
-                const response = await fetch("http://localhost:3000/api/auth/login", {
+                const {email, password} = credentials as Credentials;
+                console.log(email, password)
+
+                const response = await fetch("http://localhost:3001/user/login", {
                     method: "POST",
                     body: JSON.stringify(credentials),
                     headers: {"Content-Type": "application/json"}
                 });
+                console.log("oaioi", response)
 
                 if (response.status === 200) {
                     const jsonResponse = await response.json();
@@ -33,7 +36,7 @@ export default NextAuth({
         }),
     ],
     callbacks: {
-        jwt({token, user, account, profile, isNewUser}) {
+        jwt({token, user}) {
             if (user) {
                 // @ts-ignore
                 token.accessToken = user.token;
@@ -46,5 +49,10 @@ export default NextAuth({
             return session;
         }
     },
-    secret: 'secret',
-});
+    secret: process.env.NEXTAUTH_SECRET,
+    // pages: {
+    //     signIn: "/login",
+    // }
+};
+
+export default NextAuth(authOptions);
