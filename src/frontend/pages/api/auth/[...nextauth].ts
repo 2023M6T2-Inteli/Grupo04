@@ -1,5 +1,4 @@
-import NextAuth, { NextAuthOptions, Session } from "next-auth";
-import jwt from "jsonwebtoken";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 interface Credentials {
