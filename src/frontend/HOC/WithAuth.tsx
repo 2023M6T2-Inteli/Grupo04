@@ -1,35 +1,57 @@
-import {getSession} from "next-auth/react";
-import {GetServerSideProps, GetServerSidePropsContext, NextPageContext} from "next";
+import { getSession, signOut } from "next-auth/react";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
-export const WithAuth = async (ctx: GetServerSidePropsContext, getServerSidePropsFunc?: GetServerSideProps) => {
-    const session = await getSession(ctx);
+interface UserI {
+  name: string;
+  email: string;
+}
+interface SessionI {
+  user: UserI;
+  expires: string;
+  accessToken: string;
+}
 
-    if (!session) {
-        return {
-            redirect: {
-                destination: '/login',
-                permanent: false,
-            },
-        }
-    }
+export const WithAuth = async (
+  ctx: GetServerSidePropsContext,
+  getServerSidePropsFunc?: GetServerSideProps
+) => {
+  const session = (await getSession(ctx)) as SessionI | null;
 
-    // Se a sessão existir, então chame a função getServerSideProps da página.
-    if (getServerSidePropsFunc) {
-        const wrappedProps = await getServerSidePropsFunc(ctx);
-
-        // Retorne os props recebidos da função getServerSideProps da página.
-        return {
-            props: {
-                ...wrappedProps,
-                session,
-            },
-        }
-    }
-
-    // Se não existir uma função getServerSideProps para a página, apenas retorne a sessão.
+  if (!session) {
     return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  // Se a sessão existir, então chame a função getServerSideProps da página.
+  if (getServerSidePropsFunc) {
+    const wrappedProps = (await getServerSidePropsFunc(ctx)) as any;
+
+    if (wrappedProps.redirect) {
+      return {
+        ...wrappedProps,
         props: {
-            session,
+          session,
         },
+      };
     }
+
+    // Retorne os props recebidos da função getServerSideProps da página.
+    return {
+      props: {
+        ...wrappedProps,
+        session,
+      },
+    };
+  }
+
+  // Se não existir uma função getServerSideProps para a página, apenas retorne a sessão.
+  return {
+    props: {
+      session,
+    },
+  };
 };

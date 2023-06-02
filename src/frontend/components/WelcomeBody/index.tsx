@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect } from "react";
+import React, { Dispatch, SetStateAction, use, useEffect } from "react";
 import Image from "next/image";
 import confetti from "../../assets/confetti.svg";
 import Button, { ButtonType } from "../Button";
@@ -6,7 +6,7 @@ import RobotChoice from "../RobotChoice";
 import ModalHome from "../ModalHome";
 import { useState } from "react";
 import { useDisclosure } from "@chakra-ui/react";
-import axios from '@/utils/axios';
+import { axios } from "@/utils/axios";
 
 export enum WelcomeType {
   Home,
@@ -17,11 +17,13 @@ export interface Field {
   header: string;
   inputs: ModalInputs[];
   button: string;
-  value?: string
+  value?: string;
 }
 
 interface Props {
   section: WelcomeType;
+  robotsProps?: Robot[];
+  setLinkRedirect?: Dispatch<SetStateAction<string>>;
 }
 
 export interface ModalInputs {
@@ -30,15 +32,18 @@ export interface ModalInputs {
   setValue: Dispatch<SetStateAction<string | null>>;
 }
 
-interface Robot {
+export interface Robot {
   id: number;
   name: string;
   ip: string;
   createdAt: string;
 }
 
-const WelcomeBody: React.FC<Props> = ({ section }) => {
-
+const WelcomeBody: React.FC<Props> = ({
+  section,
+  robotsProps,
+  setLinkRedirect,
+}) => {
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -47,37 +52,41 @@ const WelcomeBody: React.FC<Props> = ({ section }) => {
 
   const [robotIp, setRobotIp] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (setLinkRedirect) {
+      // console.log("selectedChoice", selectedChoice);
+      setLinkRedirect(`dashboard/${selectedChoice}`);
+    }
+  }, [selectedChoice]);
+
   const fields: Field = {
     header: "Add new robot",
-    inputs: [{
-      name: "Robot name",
-      value: robotName,
-      setValue: setRobotName
-    }, {
-      name: "Robot IP",
-      value: robotIp,
-      setValue: setRobotIp
-    }],
+    inputs: [
+      {
+        name: "Robot name",
+        value: robotName,
+        setValue: setRobotName,
+      },
+      {
+        name: "Robot IP",
+        value: robotIp,
+        setValue: setRobotIp,
+      },
+    ],
     button: "Add",
   };
 
-  const [robots, setRobots] = useState<Robot[]>([])
+  const [robots, setRobots] = useState<Robot[] | undefined>(robotsProps);
 
-  const getRobots = async() => {
-    try {
-      const response = await axios.get('/get_robots');
-      const data =response.data
-      console.log(data)
-      setRobots(data)
-    } catch (error){
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    getRobots()
-  }, [])
-
+  // const getRobots = async () => {
+  //   try {
+  //     const response = await axios.get("/robot/get_robots");
+  //     const data = response.data.robots;
+  //     setRobots(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   switch (section) {
     case WelcomeType.Home:
@@ -118,15 +127,28 @@ const WelcomeBody: React.FC<Props> = ({ section }) => {
             link=""
             onClick={onOpen}
           />
-          <ModalHome isOpen={isOpen} onClose={onClose} fields={fields} />
-          {robots.length === 0 ? <p className="block font-mont text-blue-gerdau-end select-none">Add a robot before</p>: (
-            robots.map((robot) => (
-              <RobotChoice
-                onClick={() => setSelectedChoice(robot.id)}
-                isActive={selectedChoice === robot.id}
-                name={robot.name}
-              />
-            )))}
+          <ModalHome
+            setRobots={setRobots}
+            isOpen={isOpen}
+            onClose={onClose}
+            fields={fields}
+          />
+          <div className="flex px-2 flex-col gap-2 overflow-x-hidden grow overflow-y-auto">
+            {robots &&
+              (robots.length === 0 ? (
+                <p className="block font-mont text-blue-gerdau-end select-none">
+                  Add a robot before
+                </p>
+              ) : (
+                robots.map((robot) => (
+                  <RobotChoice
+                    onClick={() => setSelectedChoice(robot.id)}
+                    isActive={selectedChoice === robot.id}
+                    name={robot.name}
+                  />
+                ))
+              ))}
+          </div>
         </>
       );
   }

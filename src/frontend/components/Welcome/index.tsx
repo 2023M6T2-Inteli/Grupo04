@@ -4,14 +4,15 @@ import Button from "../Button";
 import { ButtonType } from "../Button";
 import React from "react";
 import WelcomeBody from "../WelcomeBody";
-import { WelcomeType } from "../WelcomeBody";
+import { WelcomeType, Robot } from "../WelcomeBody";
 import { motion } from "framer-motion";
 interface Props {
   section: WelcomeType;
   link: string;
+  robots?: Robot[];
 }
 
-const Welcome: React.FC<Props> = ({ section, link }) => {
+const Welcome: React.FC<Props> = ({ section, link, robots }) => {
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -24,23 +25,29 @@ const Welcome: React.FC<Props> = ({ section, link }) => {
     },
   };
 
+  const [linkRedirect, setLinkRedirect] = React.useState<string>(link);
+
   return (
     <motion.div
       initial="hidden"
       animate="visible"
       variants={container}
-      className="flex flex-col h-screen gap-8 px-10 lg:px-20 pt-28 lg:pt-12 lg:pb-32 pb-40 place-content-center col-span-2"
+      className="flex flex-col h-screen gap-8 px-10 lg:px-20 pt-28 lg:pt-12 lg:pb-11 pb-40 place-content-center col-span-2"
     >
       {section === WelcomeType.Selection && (
-        <Button text="" type={ButtonType.RollBack} link={link} />
+        <Button text="" type={ButtonType.RollBack} link={"/"} />
       )}
       <Image
         src={gerdauLogoBlue}
         className="mx-auto select-none"
         alt="Gerdau Logo Blue"
       />
-      <WelcomeBody section={section} />
-      <Button text="Start" type={ButtonType.Home} link={link} />
+      <WelcomeBody
+        setLinkRedirect={setLinkRedirect}
+        robotsProps={robots}
+        section={section}
+      />
+      <Button text="Start" type={ButtonType.Home} link={linkRedirect} />
     </motion.div>
   );
 };

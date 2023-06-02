@@ -30,7 +30,8 @@
     "**/*.tsx",
     "components/**/*.tsx",
     "custom.d.ts",
-    "next-auth.d.ts"
+    "next-auth.d.ts",
+    "HOC/**/*.tsx",
   ],
   "exclude": [
     "node_modules"

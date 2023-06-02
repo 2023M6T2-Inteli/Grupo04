@@ -12,34 +12,43 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-import {Field} from '@/components/WelcomeBody'
-import { Dispatch, SetStateAction, useState } from 'react';
-import {ModalInputs} from '@/components/WelcomeBody'
-import axios from '@/utils/axios';
-
-
+import { Field, Robot } from "@/components/WelcomeBody";
+import { Dispatch, SetStateAction, useState } from "react";
+import { ModalInputs } from "@/components/WelcomeBody";
+import { axios } from "@/utils/axios";
+import { toast } from "react-toastify";
 
 interface Props {
   fields: Field;
   onClose: () => void;
   isOpen: boolean;
+  setRobots?: React.Dispatch<React.SetStateAction<Robot[] | undefined>>;
 }
 
-const ModalHome: React.FC<Props> = ({ fields, onClose, isOpen }) => {
-
+const ModalHome: React.FC<Props> = ({ fields, onClose, isOpen, setRobots }) => {
   const addRobot = async () => {
-    
-    const name = fields.inputs[0].value
-    const ip = fields.inputs[1].value
+    if (setRobots) {
+      const name = fields.inputs[0].value;
+      const ip = fields.inputs[1].value;
 
-    console.log(fields.inputs[0].value, fields.inputs[1].value)
+      const post_res = await axios.post("/robot/register", {
+        name: name,
+        ip: ip,
+      });
 
-    await axios.post('/register', {
-      name: name,
-      ip: ip
-    })
-  }
+      if (post_res.status === 200) {
+        toast.success("Robot added successfully!");
 
+        const res = await axios.get("/robot/get_robots");
+
+        onClose();
+
+        setRobots(res.data.robots);
+      } else {
+        toast.error("Error adding robot!");
+      }
+    }
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -52,10 +61,10 @@ const ModalHome: React.FC<Props> = ({ fields, onClose, isOpen }) => {
         <ModalBody pb={6}>
           {fields.inputs.map((input) => (
             <FormControl mt={4}>
-              <FormLabel >{input.name}</FormLabel>
-              <Input 
-                onChange = {(e) => input.setValue(e.target.value)}
-                placeholder={input.name} 
+              <FormLabel>{input.name}</FormLabel>
+              <Input
+                onChange={(e) => input.setValue(e.target.value)}
+                placeholder={input.name}
               />
             </FormControl>
           ))}

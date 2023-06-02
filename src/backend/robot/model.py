@@ -12,7 +12,7 @@ def create_robot(name: str, ip: str) -> bool:
     return True
 
 def get_robots() -> list[Prisma.robot]:
-    robots = db.robot.find_many()
+    robots = db.robot.find_many(order={'createdAt': 'desc'})
     if not robots:
         raise NameError(f'No robots registered')
     else:
