@@ -9,6 +9,7 @@ export enum DisplayType {
     AddAnalyze,
     History,
     TestRobot,
+    SignOut,
 }
 
 const DashBoard = () => {
