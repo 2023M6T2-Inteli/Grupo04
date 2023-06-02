@@ -56,14 +56,28 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
-    session({ session, token }) {
+    async session({ session, token }) {
       // @ts-ignore
-      session.accessToken = token.accessToken;
+      try {
+        const res = await fetch("http://localhost:3001/user/", {
+          method: "GET",
+          headers: {
+            Bearer: token.accessToken,
+          },
+        });
+        if (res.status !== 200) {
+          session = {};
+        }
+        session.accessToken = token.accessToken;
+      } catch (e) {
+        console.log(e);
+        session = {};
+      }
       return session;
     },
   },
   session: {
-    maxAge: 60 * 60 * 2, // A sessão expirará após 1 hora de inatividade
+    maxAge: 60 * 60 * 2, // A sessão expirará após 2 horas
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

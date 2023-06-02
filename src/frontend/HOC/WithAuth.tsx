@@ -25,21 +25,6 @@ export const WithAuth = async (
       },
     };
   }
-  try {
-    await fetch("http://localhost:3001/user/", {
-      method: "GET",
-      headers: {
-        Bearer: session.accessToken,
-      },
-    });
-  } catch (e) {
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
-  }
 
   // Se a sessão existir, então chame a função getServerSideProps da página.
   if (getServerSidePropsFunc) {
