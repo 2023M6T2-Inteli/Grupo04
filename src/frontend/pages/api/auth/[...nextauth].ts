@@ -20,7 +20,6 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials, req) {
         const { email, password } = credentials as Credentials;
-        console.log(email, password);
 
         const response = await fetch("http://localhost:3001/user/login", {
           method: "POST",
@@ -53,8 +52,6 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        console.log("USER", user);
-        console.log("TOKEN", token);
         // @ts-ignore
         token.accessToken = user.token;
       }
@@ -62,8 +59,6 @@ export const authOptions: NextAuthOptions = {
     },
     session({ session, token }) {
       // @ts-ignore
-      console.log("SESSION", session);
-      console.log("TOKEN", token);
       session.accessToken = token.accessToken;
       return session;
     },
