@@ -11,7 +11,7 @@ def auth(f):
         try:
             # Token must be passed as 'Bearer <token>' in the header
             # token = request.cookies.get('token')
-            token = request.headers.token
+            token = request.headers.Bearer
             # Decoding the token with the secret key
             decoded = jwt.decode(token, key='secret', algorithms=['HS256', ])
             # Adding the user id to the request context
