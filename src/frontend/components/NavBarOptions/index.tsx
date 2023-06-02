@@ -1,4 +1,4 @@
-import { DisplayType } from "@/pages/dashboard";
+import { DisplayType } from "@/pages/dashboard/[...id]";
 import { Button } from "@chakra-ui/react";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { Dispatch, SetStateAction } from "react";

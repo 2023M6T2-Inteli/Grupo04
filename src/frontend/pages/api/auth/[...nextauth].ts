@@ -35,6 +35,7 @@ export const authOptions: NextAuthOptions = {
               Bearer: jsonResponse.token,
             },
           });
+    
           if (user_response.status === 200) {
             const user = await user_response.json();
 
@@ -58,22 +59,25 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       // @ts-ignore
-      try {
-        const res = await fetch("http://localhost:3001/user/", {
-          method: "GET",
-          headers: {
-            Bearer: token.accessToken,
-          },
+      let updatedSession;
+      await fetch("http://localhost:3001/user/", {
+        method: "GET",
+        headers: {
+          Bearer: token.accessToken,
+        },
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            updatedSession = { ...session, accessToken: token.accessToken };
+            // session.accessToken = token.accessToken;
+          } else {
+            updatedSession = {};
+          }
+        })
+        .catch((e) => {
+          updatedSession = {};
         });
-        if (res.status !== 200) {
-          session = {};
-        }
-        session.accessToken = token.accessToken;
-      } catch (e) {
-        console.log(e);
-        session = {};
-      }
-      return session;
+      return updatedSession;
     },
   },
   session: {

@@ -28,7 +28,16 @@ export const WithAuth = async (
 
   // Se a sessão existir, então chame a função getServerSideProps da página.
   if (getServerSidePropsFunc) {
-    const wrappedProps = await getServerSidePropsFunc(ctx);
+    const wrappedProps = (await getServerSidePropsFunc(ctx)) as any;
+
+    if (wrappedProps.redirect) {
+      return {
+        ...wrappedProps,
+        props: {
+          session,
+        },
+      };
+    }
 
     // Retorne os props recebidos da função getServerSideProps da página.
     return {

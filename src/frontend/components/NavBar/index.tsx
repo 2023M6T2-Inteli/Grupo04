@@ -6,7 +6,7 @@ import {MdSpaceDashboard} from "react-icons/md";
 import {AiOutlinePlus, AiOutlineScan} from "react-icons/ai";
 import {FaMicroscope} from "react-icons/fa";
 import {NavBarOption, NavBarOptions} from "../NavBarOptions";
-import {DisplayType} from "@/pages/dashboard";
+import {DisplayType} from "@/pages/dashboard/[...id]";
 import SignOutButton from "@/components/SignOutButton";
 
 interface Props {
