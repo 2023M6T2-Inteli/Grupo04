@@ -1,7 +1,29 @@
-import axios from 'axios';
+import axiosPackage, {AxiosInstance} from "axios";
+import {getSession} from "next-auth/react";
 
-const instance = axios.create({
-    baseURL: 'https://jsonplaceholder.typicode.com'
+interface Axios extends AxiosInstance {
+    CancelToken?: any;
+    isCancel?: any;
+}
+
+const axios: Axios = axiosPackage.create({
+    // withCredentials: true,
+    baseURL: 'http://localhost:3001',
+    headers: {
+        common: {
+            Accept: "application/json",
+        },
+    },
 });
 
-export default instance;
+axios.interceptors.request.use(async (config) => {
+    const session = await getSession();
+    // @ts-ignore
+    config.headers.Authorization = `Bearer ${session?.accessToken}`;
+    return config;
+});
+
+axios.CancelToken = axiosPackage.CancelToken;
+axios.isCancel = axiosPackage.isCancel;
+
+export {axios};

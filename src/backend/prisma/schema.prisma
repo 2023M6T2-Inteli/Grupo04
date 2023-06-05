@@ -1,11 +1,11 @@
-datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
-}
-
 generator db {
   provider  = "prisma-client-py"
   interface = "sync"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model user {
@@ -20,31 +20,35 @@ model user {
 model route {
   id        Int       @id @default(autoincrement())
   name      String
-  points    point[]
   createdAt DateTime  @default(now())
   Analyze   analyze[]
+  points    point[]
 }
 
 model point {
   id        Int      @id @default(autoincrement())
-  pointX    Float
-  pointY    Float
+  pointX    Float    @db.Float
+  pointY    Float    @db.Float
+  routeId   Int
   createdAt DateTime @default(now())
   Route     route    @relation(fields: [routeId], references: [id])
-  routeId   Int
+
+  @@index([routeId], map: "point_routeId_fkey")
 }
 
 model analyze {
   id         Int             @id @default(autoincrement())
-  route      route           @relation(fields: [routeId], references: [id])
   routeId    Int
   name       String
-  startDate  DateTime
-  endDate    DateTime
+  startDate  String
+  endDate    String
   supervisor String
   operator   String
-  images     image_analyse[]
   createdAt  DateTime        @default(now())
+  route      route           @relation(fields: [routeId], references: [id])
+  images     image_analyse[]
+
+  @@index([routeId], map: "analyze_routeId_fkey")
 }
 
 model robot {
@@ -59,6 +63,7 @@ model image_analyse {
   name      String
   path      String
   createdAt DateTime @default(now())
-  Analyze   analyze  @relation(fields: [analyzeId], references: [id])
   analyzeId Int
+  Analyze   analyze  @relation(fields: [analyzeId], references: [id])
+  @@index([analyzeId], map: "image_analyse_analyzeId_fkey")
 }
