@@ -27,7 +27,7 @@ def get_analyzes() -> list[Prisma.analyze]:
         return analyzes
 
 def get_analyze(id: int) -> Prisma.analyze:
-    analyze = db.analyze.find_first(where={'id': id})
+    analyze = db.analyze.find_first(where={'id': id})  
     if not analyze:
         raise NameError(f'Analyze not exists')
     else:
@@ -35,7 +35,7 @@ def get_analyze(id: int) -> Prisma.analyze:
     
 def update_analyze(id: int, routeId:int ,name: str, startDate: str, endDate: str, supervisor: str,operator: str, createdAt: datetime) -> bool:
     analyze = db.analyze.find_first(where={'id': id})
-    if analyze is None:
+    if not analyze:
         raise NameError(f'Analyze not exists with this id: {id}')
     else:
         data = {
