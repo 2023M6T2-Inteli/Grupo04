@@ -139,10 +139,10 @@ A documentação das rotas da API foi construida por meio do SWAGGER, ao qual é
 
 **Criar uma nova rota**
 
-Para criar uma nova rota, precisamos fornecer o nome da rota no endpoint.
+Para criar uma nova rota, precisamos fornecer a id rota, nome da rota, data de ínicio e final, nome do supervisor e operador no endpoint.
 
     Criar rota `POST /create`
-    Corpo da requisição: {"name": "nome_da_rota"}
+    Corpo da requisição: {  "routeId": "id_da_rota", "name": "nome_da_rota", "startDate": "data_de_inicio", "endDate": "data_de_fim","supervisor": "nome_supervisor", "operator": "nome_operador"}
     200 - [["Route "nome_da_rota" created with success!"]]
     500 - "Erro ao criar a rota"
 
