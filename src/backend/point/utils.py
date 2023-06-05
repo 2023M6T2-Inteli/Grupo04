@@ -5,13 +5,11 @@ class Schema(Enum):
    REGISTER = {
       "type": "object",
       "properties": {
-         
-         "name": {"type": "string"},
          "pointX": {"type": "double"},
          "pointY": {"type": "double"},
          "routeId": {"type": "integer"}
       },
-      "required": [ "name", "pointX", "pointY", "routeId"]
+      "required": ["pointX", "pointY", "routeId"]
    }
    
    GET_POINTS = {

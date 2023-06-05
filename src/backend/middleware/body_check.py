@@ -1,8 +1,10 @@
 from enum import Enum
+from functools import wraps
+
+from jsonschema import validate, ValidationError
 from sanic.request import Request
 from sanic.response import json
-from jsonschema import validate, ValidationError
-from functools import wraps
+
 
 def validate_body(schema: Enum):
     def wraper(f):
@@ -14,6 +16,7 @@ def validate_body(schema: Enum):
                 return f(request)
             except ValidationError as e:
                 return json({"error": str(e.message)}, 400)
-        return validate_body_function
-    return wraper
 
+        return validate_body_function
+
+    return wraper

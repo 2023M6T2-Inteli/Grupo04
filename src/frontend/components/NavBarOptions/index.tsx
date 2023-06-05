@@ -1,6 +1,6 @@
-import { DisplayType } from "@/pages/dashBoard";
+import { DisplayType } from "@/pages/dashboard/[...id]";
 import { Button } from "@chakra-ui/react";
-import { AnimatePresence, Variants, motion } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import { Dispatch, SetStateAction } from "react";
 
 export interface NavBarOption {

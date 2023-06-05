@@ -1,4 +1,5 @@
 from robot.model import create_robot, get_robots, get_robot, delete_robot
+from pydantic import BaseModel, Field
 
 class Robot:
     def __init__(self, name: str="", ip:str="") -> None:
@@ -38,3 +39,7 @@ class Robot:
             return f"Robot deleted with success!"
         except:
             raise NameError(f'Error to delete robot')
+        
+class RobotTestCreate(BaseModel):
+    name: str = "Robot Test"
+    ip : str = "112.224.131.11"
