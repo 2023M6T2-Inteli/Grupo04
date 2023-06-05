@@ -129,6 +129,58 @@ O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comuni
 #### Documentação da API
 A documentação das rotas da API foi construida por meio do SWAGGER, ao qual é integrado diretamente com o Sanic, permitindo a criação e ajuste mais rapido do formato de entrada, saida e tipos de dados de cada rota. Para acessar a documentação, basta rodar o servidor acessando a pasta ```./src/backend``. Na pasta raiz do repositório, execute o comando ```python3 app.py```. Após isso, acesse o endereço ```http://localhost:3001/docs/swagger```.
 
+#### Documentação Respostas HTTP Backend 
+
+1) Analyze
+
+3) Point
+4) Robot
+5) Route
+
+**Criar uma nova rota**
+
+Para criar uma nova rota, precisamos fornecer o nome da rota no endpoint.
+
+    Criar rota `POST /create`
+    Corpo da requisição: {"name": "nome_da_rota"}
+    200 - [["Route "nome_da_rota" created with success!"]]
+    500 - "Erro ao criar a rota"
+
+**Obter todas as rotas**
+
+Para obter todas as rotas existentes, não é necessário passar nenhum parâmetro para o endpoint.
+
+    Obter todas as rotas GET /get_all
+    200 - [[mostra todas as rotas]]
+    500 - "Error to get routes"
+
+**Obter uma rota específica**
+
+Para obter uma rota específica, precisamos fornecer o id da rota no endpoint.
+
+    Obter rota GET /get_route/{id}
+    200 - [[mostra a rota]]
+    500 - "Error to get route"
+
+**Atualizar uma rota**
+
+Para atualizar uma rota, precisamos fornecer o id, o nome e a data de criação no corpo da requisição.
+
+    Atualizar rota PUT /update_route
+    Corpo da requisição: {"id": id_da_rota, "name": "novo_nome_da_rota", "createdAt": "data_de_criação"}
+    200 - [[Route [id] updated with success!]]
+    500 - "Error to update route"
+
+**Excluir uma rota**
+
+Para excluir uma rota, precisamos fornecer o id da rota no endpoint.
+
+    Excluir rota DELETE /delete_route/{id}
+    200 - [[Route [id] deleted with success!]]
+    500 - "Error to delete route"
+
+7) User
+
 #### Sistema de locomoção e otimização de rota
 
 ##### Arquitetura do sistema de simulação e integração com o sistema operacional robótico
