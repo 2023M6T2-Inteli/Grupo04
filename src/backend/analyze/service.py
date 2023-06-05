@@ -31,20 +31,17 @@ class Analyze:
                 response = []
                 for analyze in analyzes:
                     analyze.createdAt = analyze.createdAt.strftime("%d/%m/%Y %H:%M:%S")
-                    analyze.startDate = analyze.startDate.strftime("%d/%m/%Y %H:%M:%S")
-                    analyze.endDate = analyze.endDate.strftime("%d/%m/%Y %H:%M:%S")
                     analyze = analyze.__dict__
                     response.append(analyze)
                 return response
         except:
             raise NameError(f'Error to get analyzes!')
     
-    def get_analyze(self, id: int) -> dict[str, str]:
+    def get_analyze(self) -> dict[str, str]:
         try:
-            analyze = get_analyze(id)
+            analyze = get_analyze(id=self.id)
+            print(self.id, analyze)
             analyze.createdAt = analyze.createdAt.strftime("%d/%m/%Y %H:%M:%S")
-            analyze.startDate = analyze.startDate.strftime("%d/%m/%Y %H:%M:%S")
-            analyze.endDate = analyze.endDate.strftime("%d/%m/%Y %H:%M:%S") 
             analyze = analyze.__dict__
             return analyze
         except:
