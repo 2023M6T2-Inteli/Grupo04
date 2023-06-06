@@ -65,5 +65,6 @@ model image_analyse {
   createdAt DateTime @default(now())
   analyzeId Int
   Analyze   analyze  @relation(fields: [analyzeId], references: [id])
+
   @@index([analyzeId], map: "image_analyse_analyzeId_fkey")
 }

@@ -42,7 +42,7 @@ const Display: React.FC = () => {
   return (
     <div className="flex-grow">
       <HeaderDisplay />
-      <DisplayText displayContent={displayContent} image={roboOla} />
+      <DisplayText displayContent={displayContent}/>
       <DisplayData title="General Information" cardsContent={cardContent} />
     </div>
   );

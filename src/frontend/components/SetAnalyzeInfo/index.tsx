@@ -15,7 +15,7 @@ interface Circle {
   y: number;
 }
 
-const ShowMap: React.FC<Props> = ({
+const ShowInfo: React.FC<Props> = ({
   file,
   setFile,
   setStepsCompleted,
@@ -62,14 +62,15 @@ const ShowMap: React.FC<Props> = ({
           bg="white"
           onClick={() => {
             setStepsCompleted((prev) => {
-              prev[1] = false;
-              setFile(null);
+              prev[2] = false;
+              setFile(file);
+              analyzeInfo(false)
               return prev;
             });
             setCircles([]);
           }}
         >
-          Cancel
+          Back
         </Button>
         <Button
           className="grow"
@@ -78,20 +79,12 @@ const ShowMap: React.FC<Props> = ({
           borderColor="blue-gerdau-mid"
           _hover={{ bg: "blue.800" }}
           bg="blue.600"
-          onClick={() => {
-            setStepsCompleted((prev) => {
-              prev[2] = true;
-              setFile(file);
-              analyzeInfo(true)
-              return prev;
-            });
-            setCircles([])
-          }}
+          onClick={() => {setLive(true)}}
         >
-          Next
+          Finish
         </Button>
       </div>
     </>
   );
 };
-export default ShowMap;
+export default ShowInfo;
