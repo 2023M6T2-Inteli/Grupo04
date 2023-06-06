@@ -25,7 +25,7 @@ const DashBoard: React.FC<Props> = ({ robot }) => {
 
   return (
     <div className="h-screen w-screen overflow-hidden flex">
-      <NavBar display={display} setDisplay={setDisplay} />
+      <NavBar robot={robot} display={display} setDisplay={setDisplay} />
       {display === DisplayType.Dashboard && <Display />}
       {display === DisplayType.AddAnalyze && <AddAnalyze />}
     </div>
