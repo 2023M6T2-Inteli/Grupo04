@@ -309,7 +309,7 @@ Para registrar um novo usuário, precisamos fornecer o nome, o e-mail e a senha 
     - Registrar usuário `POST /register`
     	- Corpo da solicitação: `{"email": email_do_usuario, "password": senha_do_usuario, "name": nome_do_usuario}`
     	- Respostas possíveis:
-    		- `200 - `{"message": "User registred with success!"}`
+    		- `200 - `{"message": "User: [name], created successfully"}`
     		- `500 - `{"error": "Mensagem de erro"}
 
 **Login de um Usuário**
@@ -319,9 +319,9 @@ Para realizar o login de um usuário, precisamos fornecer o e-mail e a senha no 
     - Login de usuário `POST /login`
     	- Corpo da solicitação: `{"email": email_do_usuario, "password": senha_do_usuario}`
     	- Respostas possíveis:
-    		- `200 - `{"message": "Login successful!", "token": token_de_autenticacao}`
-    		- `404 - `{"error": "Usuário não encontrado"}`
-    		- `500 - `{"error": "Mensagem de erro"}
+    		- `200 - `{"message": "Thank you for login!", "token": token_de_autenticacao}`
+    		- `404 - `{"error": "User not found"}`
+    		- `500 - `{"error": "User does not exists with the email: [email_usuario]"}
 
 **Obter um Usuário**
 
@@ -332,6 +332,7 @@ Para obter as informações de um usuário, precisamos passar o token de autenti
     	- Respostas possíveis:
     		- `200 - `{"user": {informações do usuário}}
     		- `500 - `{"error": "Mensagem de erro"}
+
 
 #### Sistema de locomoção e otimização de rota
 
