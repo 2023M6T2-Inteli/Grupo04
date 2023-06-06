@@ -129,6 +129,211 @@ O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comuni
 #### Documentação da API
 A documentação das rotas da API foi construida por meio do SWAGGER, ao qual é integrado diretamente com o Sanic, permitindo a criação e ajuste mais rapido do formato de entrada, saida e tipos de dados de cada rota. Para acessar a documentação, basta rodar o servidor acessando a pasta ```./src/backend``. Na pasta raiz do repositório, execute o comando ```python3 app.py```. Após isso, acesse o endereço ```http://localhost:3001/docs/swagger```.
 
+#### Documentação Respostas HTTP Backend 
+
+1. Analyze
+
+**Criar uma nova análise**
+
+Para criar uma nova análise, é necessário fornecer o ID da rota, o nome da análise, as datas de início e término, o supervisor e o operador.
+
+    - Criar análise `POST /create`
+    	- Corpo da requisição: `{"routeId": id_da_rota, "name": "nome_da_análise", "startDate": "data_de_inicio", "endDate": "data_de_término", "supervisor": "supervisor", "operator": "operador"}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to create analyze!"`
+
+**Obter todas as análises**
+
+Para obter todas as análises existentes, não é necessário passar nenhum parâmetro para o endpoint.
+
+    - Obter todas as análises `GET /get_analyzes`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to get all analyzes"`
+
+**Obter uma análise específica**
+
+Para obter uma análise específica, precisamos fornecer o id da análise no endpoint.
+
+    - Obter análise `GET /get_analyze/{id}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to get analyze"`
+
+**Atualizar uma análise**
+
+Para atualizar uma análise, é necessário fornecer o id, o id da rota, o nome, as datas de início e término, o supervisor, o operador e a data de criação no corpo da requisição.
+
+    - Atualizar análise `PUT /update_analyze`
+    	- Corpo da requisição: `{"id": id_da_análise, "routeId": id_da_rota, "name": "novo_nome_da_análise", "startDate": "nova_data_de_inicio", "endDate": "nova_data_de_término", "supervisor": "novo_supervisor", "operator": "novo_operador", "createdAt": "nova_data_de_criação"}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to update analyze"`
+
+**Excluir uma análise**
+
+Para excluir uma análise, precisamos fornecer o id da análise no endpoint.
+
+    - Excluir análise `DELETE /delete_analyze/{id}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to delete analyze`
+
+**Enviar um vídeo para análise**
+
+Para enviar um vídeo para análise, é necessário fornecer o vídeo no endpoint.
+
+    - Enviar vídeo `POST /video_upload`
+    	- `200 - `{"status": "success"}
+    	- Erros não são tratados neste endpoint. As exceções serão impressas na console.
+
+**Receber imagem da câmera**
+
+Este é um endpoint de websocket que permite receber imagens da câmera.
+
+    - Receber imagem `WS /video_feed`
+    	- Não há códigos de status HTTP para websockets. Erros serão impressos na console.
+
+**2. Point**
+
+**Criar um ponto**
+
+Para criar um ponto, precisamos fornecer o pontoX, o pontoY e o ID da rota no corpo da requisição.
+
+    - Criar ponto `POST /create`
+    	- Corpo da requisição: `{"pointX": ponto_x, "pointY": ponto_y, "routeId": id_da_rota}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to create point"`
+
+**Obter todos os pontos de uma rota**
+
+Para obter todos os pontos de uma rota específica é necessário fornecer o ID da rota no endpoint.
+
+    - Obter todos os pontos de uma rota `GET /get_points/{routeId}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Erro to get all points"`
+
+**Excluir todos os pontos de uma rota**
+
+Para excluir todos os pontos de uma rota específica, precisamos fornecer o ID da rota no endpoint.
+
+    - Excluir todos os pontos de uma rota `DELETE /delete_points/{routeId}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to delete points"`
+    
+
+**3. Robot**
+
+ **Registrar um Robô**
+ 
+Para registrar um novo robô, precisamos fornecer o nome e o endereço IP no corpo da solicitação.
+
+    - Registrar robô `POST /register`
+    	- Corpo da solicitação: `{"name": nome_do_robo, "ip": ip_do_robo}`
+    	- Respostas possíveis:
+    		- `200 - `{"message": "Robot created with sucsess!"}`
+    		- `500 - `{"error": "Error to create point"}
+
+**Obter todos os Robôs**
+Para obter uma lista com todos os robôs registrados, você não precisa fornecer nenhuma informação adicional.
+
+    - Obter todos os robôs `GET /get_robots`
+    	- Respostas possíveis:
+    		- `200 - `{"robots": [lista de robôs]}
+    		- `500 - `{"error": "Error to get all robots"}
+
+**Obter um Robô**
+
+Para obter informações sobre um robô específico, precisamos fornecer o ID do robô no endpoint.
+
+    - Obter um robô `GET /get_robot/{id}`
+    	- Respostas possíveis:
+    		- `200 - `{"robot": [informações do robô]}
+    		- `500 - `{"error": "Error to get the robot"}
+
+**Excluir um Robô**
+
+Para excluir um robô, precisamos fornecer o ID do robô no endpoint.
+
+    - Excluir um robô `DELETE /delete_robot/{id}`
+    	- Respostas possíveis:
+    		- `200 - `{"robot": "Robot deleted with success!"}
+    		- `500 - `{"error": "Error to delete robot"}
+
+**4. Route**
+
+**Criar uma nova rota**
+
+Para criar uma nova rota, precisamos fornecer a id rota, nome da rota, data de ínicio e final, nome do supervisor e operador no endpoint.
+
+    Criar rota `POST /create`
+    Corpo da requisição: {  "routeId": "id_da_rota", "name": "nome_da_rota", "startDate": "data_de_inicio", "endDate": "data_de_fim","supervisor": "nome_supervisor", "operator": "nome_operador"}
+    200 - [["Route "nome_da_rota" created with success!"]]
+    500 - "Erro ao criar a rota"
+
+**Obter todas as rotas**
+
+Para obter todas as rotas existentes, não é necessário passar nenhum parâmetro para o endpoint.
+
+    Obter todas as rotas GET /get_all
+    200 - [[mostra todas as rotas]]
+    500 - "Error to get routes"
+
+**Obter uma rota específica**
+
+Para obter uma rota específica, precisamos fornecer o id da rota no endpoint.
+
+    Obter rota GET /get_route/{id}
+    200 - [[mostra a rota]]
+    500 - "Error to get route"
+
+**Atualizar uma rota**
+
+Para atualizar uma rota, precisamos fornecer o id, o nome e a data de criação no corpo da requisição.
+
+    Atualizar rota PUT /update_route
+    Corpo da requisição: {"id": id_da_rota, "name": "novo_nome_da_rota", "createdAt": "data_de_criação"}
+    200 - [[Route [id] updated with success!]]
+    500 - "Error to update route"
+
+**Excluir uma rota**
+
+Para excluir uma rota, precisamos fornecer o id da rota no endpoint.
+
+    Excluir rota DELETE /delete_route/{id}
+    200 - [[Route [id] deleted with success!]]
+    500 - "Error to delete route"
+
+**5. User**
+
+**Registrar um Usuário**
+
+Para registrar um novo usuário, precisamos fornecer o nome, o e-mail e a senha no corpo da solicitação.
+
+    - Registrar usuário `POST /register`
+    	- Corpo da solicitação: `{"email": email_do_usuario, "password": senha_do_usuario, "name": nome_do_usuario}`
+    	- Respostas possíveis:
+    		- `200 - `{"message": "User: [name], created successfully"}`
+    		- `500 - `{"error": "Mensagem de erro"}
+
+**Login de um Usuário**
+
+Para realizar o login de um usuário, precisamos fornecer o e-mail e a senha no corpo da solicitação.
+
+    - Login de usuário `POST /login`
+    	- Corpo da solicitação: `{"email": email_do_usuario, "password": senha_do_usuario}`
+    	- Respostas possíveis:
+    		- `200 - `{"message": "Thank you for login!", "token": token_de_autenticacao}`
+    		- `404 - `{"error": "User not found"}`
+    		- `500 - `{"error": "User does not exists with the email: [email_usuario]"}
+
+**Obter um Usuário**
+
+Para obter as informações de um usuário, precisamos passar o token de autenticação no cabeçalho da solicitação.
+
+    - Obter usuário `GET /`
+    	- Headers: `Authorization: Bearer token_de_autenticacao`
+    	- Respostas possíveis:
+    		- `200 - `{"user": {informações do usuário}}
+    		- `500 - `{"error": "Mensagem de erro"}
+
+
 #### Sistema de locomoção e otimização de rota
 
 ##### Arquitetura do sistema de simulação e integração com o sistema operacional robótico
