@@ -4,7 +4,9 @@ import FixedRoutes from "../FixedRoutes";
 import mapa from "../../assets/Mapa.svg";
 import ShowMap from "../ShowMap";
 
-interface Props {}
+interface Props {
+  setLive: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 export interface RoutesInterface {
   name: string;
@@ -13,7 +15,7 @@ export interface RoutesInterface {
   image: any;
 }
 
-const SetRoute: React.FC<Props> = (props) => {
+const SetRoute: React.FC<Props> = ({ setLive }) => {
   const routes: RoutesInterface[] = [
     {
       name: "Tubulação de gás",
@@ -56,6 +58,7 @@ const SetRoute: React.FC<Props> = (props) => {
         )}
         {file && (
           <ShowMap
+            setLive={setLive}
             setFile={setFile}
             setStepsCompleted={setStepsCompleted}
             file={file}
