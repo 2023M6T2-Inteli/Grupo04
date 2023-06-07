@@ -15,7 +15,7 @@ const AddAnalyze: React.FC<Props> = (props) => {
   };
 
   return (
-    <div className="flex flex-col flex-grow">
+    <div className="flex flex-col flex-grow overflow-y-scroll">
       <HeaderDisplay />
       <DisplayText displayContent={displayContent} />
       {live ? <LiveStream /> : <SetRoute setLive={setLive} />}

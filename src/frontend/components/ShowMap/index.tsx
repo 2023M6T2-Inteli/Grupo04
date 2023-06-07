@@ -7,6 +7,7 @@ interface Props {
   setFile: React.Dispatch<React.SetStateAction<File | null>>;
   setStepsCompleted: React.Dispatch<React.SetStateAction<boolean[]>>;
   setLive: React.Dispatch<React.SetStateAction<boolean>>;
+  analyzeInfo: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 interface Circle {
@@ -19,6 +20,7 @@ const ShowMap: React.FC<Props> = ({
   setFile,
   setStepsCompleted,
   setLive,
+  analyzeInfo,
 }) => {
   const [circles, setCircles] = useState<Circle[]>([]);
 
@@ -51,13 +53,14 @@ const ShowMap: React.FC<Props> = ({
           />
         ))}
       </div>
-      <div className="flex w-full px-7 gap-8 flex-grow">
+      <div className="flex w-4/5 px-7 gap-4  flex-grow">
         <Button
           className="grow"
           color="black"
           borderRadius="full"
-          border="4px"
+          border="1px"
           bg="white"
+          fontWeight="bold"
           onClick={() => {
             setStepsCompleted((prev) => {
               prev[1] = false;
@@ -76,7 +79,15 @@ const ShowMap: React.FC<Props> = ({
           borderColor="blue-gerdau-mid"
           _hover={{ bg: "blue.800" }}
           bg="blue.600"
-          onClick={() => setLive(true)}
+          onClick={() => {
+            setStepsCompleted((prev) => {
+              prev[2] = true;
+              setFile(file);
+              analyzeInfo(true)
+              return prev;
+            });
+            setCircles([])
+          }}
         >
           Next
         </Button>
