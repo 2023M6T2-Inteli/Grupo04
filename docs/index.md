@@ -927,6 +927,22 @@ Os nós acabam se comunicam através de tópicos, que são canais de comunicaç�
 
 ### Detalhamento dos testes
 
+Com o objetivo de oferecer a melhor experiência possível ao usuário, é essencial dedicar atenção ao tempo necessário para a conclusão de uma requisição. Caso esse período seja excessivamente prolongado, ocorre o risco de desmotivar e frustrar o usuário. Portanto, é fundamental garantir um tempo de resposta adequado, que proporcione uma interação fluída e eficiente, evitando assim o desgaste emocional e a perda de interesse do usuário.
+
+Consequentemente, optou-se por empregar dois tipos distintos de testes de desempenho de rotas: o teste de carga e o teste de latência. No teste de carga, é selecionado um determinado número de usuários, os quais realizam solicitações à rota especificada, simulando assim uma situação de tráfego intenso. Por outro lado, no teste de latência, ocorre o incremento deliberado da latência, a fim de simular o funcionamento em redes mais lentas. Essa abordagem abrange uma análise abrangente do desempenho das rotas, levando em consideração tanto a capacidade de suportar demandas elevadas quanto a efetividade em ambientes com conexões mais lentas.
+
+Em ambos os tipos de testes realizados, foram empregados estágios distintos com o intuito de avaliar as variações de resultados à medida que as variáveis de usuários e latência eram incrementadas. Essa abordagem em estágios permitiu uma análise mais aprofundada do impacto causado pelo aumento do número de usuários e pela intensificação da latência. 
+
+Além disso, os testes foram executados em duas rotas distintas, uma utilizando o método POST e outra utilizando o método GET, com o objetivo de avaliar o tempo necessário para adicionar informações ao banco de dados, bem como para recuperar todos os dados de uma determinada área do sistema. Ao aplicar os testes nessas duas rotas com métodos diferentes, foi possível analisar de maneira abrangente o desempenho do sistema em diferentes operações. As rotas selecionadas estão relacionadas ao cadastro de um robô e a consulta de todos os robô cadastrados previamente.
+
+#### Teste de carga
+
+Os estágios selecionados para a realização deste teste envolvem uma progressão gradual do número de usuários, partindo de 10 inicialmente e aumentando para 50 e, posteriormente, para 100. Em relação ao método GET, observamos que sua performance é superior, apresentando incrementos pouco significativos no tempo médio de conclusão das requisições à medida que avançamos pelos estágios. Inicialmente, o tempo médio é de 300ms, e esse valor aumenta para 600ms. Por outro lado, ao considerarmos o método POST, constatamos que há um aumento mais substancial no tempo de processamento entre os estágios, no entanto, isso não prejudica a experiência dos usuários. No início, o tempo médio é de 500ms, e ao progredirmos para os estágios seguintes, ele aumenta para 1200ms.
+
+#### Teste de latência
+
+No decorrer deste teste, estamos simulando a execução de uma único usuário realizando a requisição, considerando diferentes estágios de latência. No primeiro estágio, a latência é de 500ms, e posteriormente, no segundo estágio, a latência aumenta para 1000ms, emulando uma situação de rede mais lenta. Em ambos os métodos de requisição, os resultados obtidos nos estágios foram considerados aceitáveis, uma vez que se mantiveram abaixo de 1500ms. Esses resultados indicam que o tempo de resposta foi mantido em um nível adequado, mesmo diante de uma condição de rede desfavorável. Assim, é possível afirmar que a experiência do usuário não foi prejudicada, mesmo em uma situação em que a qualidade da rede não é ideal.
+
 # Referências
 
 https://www.gov.br/fundacentro/pt-br/comunicacao/noticias/noticias/2019/4/acoes-regressivas-gestao-de-riscos-e-impacto-dos-acidentes-de-trabalho-foram-temas-de-debate acesso em 27/04/2023
