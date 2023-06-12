@@ -3,6 +3,7 @@ import ProgressionBar from "../ProgressionBar";
 import FixedRoutes from "../FixedRoutes";
 import mapa from "../../assets/Mapa.svg";
 import ShowMap from "../ShowMap";
+import ShowInfo from "../SetAnalyzeInfo"
 
 interface Props {
   setLive: React.Dispatch<React.SetStateAction<boolean>>;
@@ -45,6 +46,8 @@ const SetRoute: React.FC<Props> = ({ setLive }) => {
 
   const [file, setFile] = useState<File | null>(null);
 
+  const [analyze_info, analyzeInfo ] = useState<boolean>(false);
+
   return (
     <div className="flex flex-grow pb-3 justify-center">
       <div className="flex flex-col relative items-center h-[65vh] w-[65vw] rounded-2xl shadow-2xl">
@@ -56,12 +59,22 @@ const SetRoute: React.FC<Props> = ({ setLive }) => {
             setFile={setFile}
           />
         )}
-        {file && (
+        {(file && !analyze_info) && (
           <ShowMap
             setLive={setLive}
             setFile={setFile}
             setStepsCompleted={setStepsCompleted}
             file={file}
+            analyzeInfo={analyzeInfo}
+          />
+        )}
+        {(file && analyze_info) && (
+          <ShowInfo
+            setLive={setLive}
+            setFile={setFile}
+            setStepsCompleted={setStepsCompleted}
+            file={file}
+            analyzeInfo={analyzeInfo}
           />
         )}
       </div>

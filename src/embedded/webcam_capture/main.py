@@ -23,4 +23,4 @@ while True:
 
     # Agora você pode enviar o quadro codificado para o seu servidor.
     # Substitua 'http://your-server.com/your-endpoint' pelo URL do seu endpoint que está esperando os quadros.
-    requests.post('http://127.0.0.1:3001/analyze/video_upload', files={'image': ('image.jpg', jpeg_bytes, 'image/jpeg')})
+    requests.post('http://localhost:3001/analyze/video_upload', files={'image': ('image.jpg', jpeg_bytes, 'image/jpeg')})

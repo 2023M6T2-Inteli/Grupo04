@@ -108,13 +108,16 @@ O TurtleBot será equipado com os seguintes componentes:
 - Sensor Lidar 360º: responsável por fornecer as imagens do escaneamento para o Raspberry Pi 3.
 
 ### Banco de dados
+
 A construção do banco de dados ocorreu totalmente durante a sprint 3, dando ênfase na geração de todas as tabelas necessárias atualmente e futuramente. O banco em si foi construído por meio do ORM (Object Relational Mapper), que é uma técnica de mapeamento objeto-relacional que permite fazer uma relação dos objetos com os dados que os mesmos representam, denominado Prisma. A escolha do Prisma se deu pelo fato da sua fácil utilização, documentação bem estruturada e facilidade de aprendizado, além de ter uma série de ferramentas que possibilitam várias outras utilizações ou em linguagens diferentes. Como linguagem para o banco de dados, foi escolhido o MySQL por ser um banco de dados relacional, que é o mais utilizado atualmente, além de ser um banco de dados que possui uma grande comunidade e uma documentação bem estruturada.
 
 Após a construção do banco de dados, foi feito o deploy por meio do próprio Prisma na AWS, mais especificamente no servidor RDS, dessa forma garantindo uma maior integridade do banco, acesso melhor da equipe e uma maior segurança dos dados. Também foram criados grupos de segurança para proteção do banco de dados, garantindo que apenas os membros da equipe tenham acesso a ele. A utilização da AWS surgiu para evitar possíveis conflitos gerados por arquivos de banco de dados que normalmente acabam sendo excluídos ou corrompidos, além de ser uma ferramenta que permite à equipe ter acesso ao banco de dados de qualquer lugar, facilitando a utilização do mesmo.
 
 Abaixo é possível ver o diagrama do banco de dados:
+
 #### Diagrama do banco de dados
-![Alt text](images/diagrama-banco-de-dados.svg)
+
+![Alt text](images/diagrama-banco-de-dados-v1.svg)
 
 ### Backend
 
@@ -127,7 +130,8 @@ O backend será construído usando as seguintes tecnologias:
 O backend será hospedado em um serviço cloud e utiliza a rede ROS2 para comunicação bidirecional com o TurtleBot.
 
 #### Documentação da API
-A documentação das rotas da API foi construida por meio do SWAGGER, ao qual é integrado diretamente com o Sanic, permitindo a criação e ajuste mais rapido do formato de entrada, saida e tipos de dados de cada rota. Para acessar a documentação, basta rodar o servidor acessando a pasta ```./src/backend``. Na pasta raiz do repositório, execute o comando ```python3 app.py```. Após isso, acesse o endereço ```http://localhost:3001/docs/swagger```.
+
+A documentação das rotas da API foi construida por meio do SWAGGER, ao qual é integrado diretamente com o Sanic, permitindo a criação e ajuste mais rapido do formato de entrada, saida e tipos de dados de cada rota. Para acessar a documentação, basta rodar o servidor acessando a pasta ``./src/backend``. Na pasta raiz do repositório, execute o comando ``python3 app.py ``. Após isso, acesse o endereço ``http://localhost:3001/docs/swagger```.
 
 #### Sistema de locomoção e otimização de rota
 
@@ -286,6 +290,7 @@ E acessar o link:
 Posteriormente a paginas de boas vindas será carregada, sendo possível vizualizar o que já foi implementado.
 
 # Entendimento de negócios
+
 ## Análise financeira
 
 A análise financeira objetivou principalmente estimar o valor que seria gasto pela Gerdau, caso ela optasse por desenvolver uma outra empresa para desenvolver um MVP. Seria um projeto desenvolvido ao longo de 2 meses, caso os desenvolvedores dedicassem toda suas horas ao projeto. Os itens foram estimados com base em análise de mercado.Principais observações:
@@ -373,6 +378,7 @@ Criar um código imbuído no robô para, caso ele perca conexão ou dê erro, qu
 Adicionar um controlador de tensão para monitorar a quantidade de bateria;
 
 # Entendimento de metadesign
+
 ## Fatores mercadológicos
 
 ### Orientação ao mercado e precificação
@@ -469,7 +475,6 @@ Com o intuito de definir os principais objetivos dos usuários e o que se é esp
   </tbody>
 </table>
 
-
 ## Sistema produto-design
 
 ### Entendimento do problema
@@ -507,7 +512,6 @@ Em relação aos demais materiais do robô, o possível problema encontrado pode
 
 Em geral, a solução apresenta possíveis impactos ambientais que são contornáveis por meio da implementação de um conjunto de planejamentos que promovam a sustentabilidade do projeto reduzindo os impactos ambientais que referem-se ao sistema robótico.
 
-
 # Sistemas de segurança e visão computacional
 
 ## **Sistema de visão computacional - Análise de Rachadura nas Paredes**
@@ -529,7 +533,7 @@ A análise de rachaduras em paredes é realizada usando um modelo de detecção 
 
 ## 1.2. Desenvolvimento de implementação de testes de eficácia de detecção
 
-Durante a o treinamento do modelo de reconhecimento de rachaduras empregado neste projeto, várias métricas de eficácia foram coletadas. Estas métricas tem o objetivo de mensurar a habilidade do modelo treinado em reconhecer padrões de rachaduras em imagens que não participaram de seu conjunto de treinamento, com o objetivo de não enviesar sua avaliação. Abaixo, a representação gráfica dessas métricas, bem como alguns exemplos de imagens de rachaduras que foram identificadas, com seus respectivos níveis de confiança de identificação, serão exibidas. 
+Durante a o treinamento do modelo de reconhecimento de rachaduras empregado neste projeto, várias métricas de eficácia foram coletadas. Estas métricas tem o objetivo de mensurar a habilidade do modelo treinado em reconhecer padrões de rachaduras em imagens que não participaram de seu conjunto de treinamento, com o objetivo de não enviesar sua avaliação. Abaixo, a representação gráfica dessas métricas, bem como alguns exemplos de imagens de rachaduras que foram identificadas, com seus respectivos níveis de confiança de identificação, serão exibidas.
 
 Abaixo, encontra-se um exemplo de imagens do conjunto de teste tendo suas rachaduras reconhecidas pelo modelo, e seus respectivos níveis de confiança de classificação representados na região de interesse traçada.
 
@@ -543,7 +547,7 @@ Tais testes foram obtidos por meio da separação randômica de 80% das imagens 
 
 ### 1.2.1. Acurácia
 
-A matriz de confusão normalizada abaixo representa uma visão geral da acurácia do modelo treinado para a tarefa de detecção de rachaduras. Ela mostra a parcela de verdadeiros positivos (rachaduras que foram corretamente identificadas como tais), verdadeiros negativos (fotos onde não havia rachaduras e, portanto, nenhuma rachadura foi identificada), falsos positivos (imagens que não continham rachaduras mas que o modelo identificou como imagem que continha uma rachadura) e, por fim, falsos negativos (imagens que continham rachaduras que não foram identificadas como tal pelo modelo). A matriz de confusão normalizada foi escolhida pois permite analisar proporção de cada tipo de possibilidade de predição relativa ao número de predições possíveis. 
+A matriz de confusão normalizada abaixo representa uma visão geral da acurácia do modelo treinado para a tarefa de detecção de rachaduras. Ela mostra a parcela de verdadeiros positivos (rachaduras que foram corretamente identificadas como tais), verdadeiros negativos (fotos onde não havia rachaduras e, portanto, nenhuma rachadura foi identificada), falsos positivos (imagens que não continham rachaduras mas que o modelo identificou como imagem que continha uma rachadura) e, por fim, falsos negativos (imagens que continham rachaduras que não foram identificadas como tal pelo modelo). A matriz de confusão normalizada foi escolhida pois permite analisar proporção de cada tipo de possibilidade de predição relativa ao número de predições possíveis.
 
 <p align="center">
 <img src="./images/matriz_confusao_normalizada.png">
@@ -553,23 +557,23 @@ Com a análise da matriz de confusão gerada durante o treinamento do modelo apr
 
 ### 1.2.2. Curva precisão-confiabilidade
 
-Na curva de precisão-confiabilidade representada abaixo, temos a demonstração que um valor maior de precisão implica em uma taxa menor de falsos positivos, isto é, imagens que não contém rachaduras mas que são classificadas como tal. Desta forma, o modelo teria uma menor chance de identificar rachaduras em áreas que não as apresentam. 
+Na curva de precisão-confiabilidade representada abaixo, temos a demonstração que um valor maior de precisão implica em uma taxa menor de falsos positivos, isto é, imagens que não contém rachaduras mas que são classificadas como tal. Desta forma, o modelo teria uma menor chance de identificar rachaduras em áreas que não as apresentam.
 
 <p align="center">
 <img src="./images/precisao_confiabilidade.png">
 </p>
 
-No contexto deste projeto, o limitar entre a precisão e confiabilidade pode ser escolhido admitindo a premissa de que é mais maléfico deixar de identificar uma rachadura como tal do que não identificar uma rachadura. 
+No contexto deste projeto, o limitar entre a precisão e confiabilidade pode ser escolhido admitindo a premissa de que é mais maléfico deixar de identificar uma rachadura como tal do que não identificar uma rachadura.
 
-### 1.2.3. Curva precisão-sensibilidade 
+### 1.2.3. Curva precisão-sensibilidade
 
-Esta curva demonstra como o aumento do limiar de detecção afeta a precisão e a sensibilidade simultaneamente. Uma maior taxa de precisão indicaria uma taxa menor de alarmes falsos, enquanto uma maior sensibilidade, implica no aumento do sucesso do modelo na identificação de imagens que contenham rachaduras. 
+Esta curva demonstra como o aumento do limiar de detecção afeta a precisão e a sensibilidade simultaneamente. Uma maior taxa de precisão indicaria uma taxa menor de alarmes falsos, enquanto uma maior sensibilidade, implica no aumento do sucesso do modelo na identificação de imagens que contenham rachaduras.
 
 <p align="center">
 <img src="./images/precisao_sensibilidade.png">
 </p>
 
-Como discutido na curva de precisão e confiabilidade, o limitar entre a precisão e sensibilidade pode ser escolhido admitindo a premissa de que é mais maléfico deixar de identificar uma rachadura como tal do que não identificar uma rachadura. 
+Como discutido na curva de precisão e confiabilidade, o limitar entre a precisão e sensibilidade pode ser escolhido admitindo a premissa de que é mais maléfico deixar de identificar uma rachadura como tal do que não identificar uma rachadura.
 
 ### 1.2.3. Curva sensibilidade-confiança
 
@@ -582,7 +586,7 @@ Também conhecida como curva de recall ou revocação, a curva abaixo estabelece
 No caso da curva de sensibilidade para o modelo treinado, o limiar foi escolhido pelas próprias configurações do modelo. Este limitar se demostrou ser o do vértice presente na região entre 60 e 80% de sensibilidade e confiança.
 
 ### 1.2.4. Curva F1-confiança
- 
+
 Para a curva do Score F1, representa-se a variação do score F1 ao longo de vários limiares. O Score F1 é calculado levando em consideração a otimização entre a acurácia e a sensibilidade do modelo. A avaliação deste tipo de métrica é importante no cenário onde treinamos modelos que possuem classes desbalanceadas. Para oferecer uma métrica que considere a proporção das classes oferecidas, a Pontuação F1 combina a precisão e sensibilidade em uma média harmônica. Desta forma, a maximização desta métrica significa a maximização de ambas as métricas.
 
 <p align="center">
@@ -594,6 +598,7 @@ Acima, está a representação da relação entre a Pontuação F1 e confiabilid
 ## Sistemas de segurança
 
 ### Fabricação e implementação dos dispositivos de segurança
+
 Para fins de viabilidade do projeto e entrega do MVP, o projeto não contemplará a parte de desenvolvimento de segurança operacional, por se tratar de mudanças relacionadas à estrutura do chassi do robô. Em estudos realizados no TurtleBot3, constatou-se que a alteração na mudança de estrutura ou adição de novos componentes, molduras, etc., pode ocasionar mau desempenho e funcionamento do robô.
 
 Além disso, a maioria dos riscos levantados que esse modelo de TurtleBot pode enfrentar está relacionada à exposição de seus componentes, devido a sua estrutura ser aberta e o chassi com furos. Isso possibilita possíveis acidentes quando exposto a ambientes com água, umidade, possíveis gases corrosivos, entre outros.
@@ -601,6 +606,7 @@ Além disso, a maioria dos riscos levantados que esse modelo de TurtleBot pode e
 Dessa forma, como possível solução futura, recomendamos utilizar outro modelo do TurtleBot, que tenha sua estrutura fechada, ou até mesmo a utilização de outro robô, eliminando assim o problema de durabilidade do robô.
 
 ### Sistema de proteção contra comandos indesejados
+
 Quando falamos de sistema de proteção contra comandos indesejados, vamos além apenas da prevenção contra eventuais comandos indesejados realizados pelo robô, por mais que essa sprint planeje isso, o grupo como um todo começou a pensar de fato em questões que irão surgir futuramente. Como sistema de proteção contra comandos indesejados no Front-end e Back-end, dessa forma, soluções foram pensadas para que o robô não seja danificado e nem danifique o ambiente em que ele está inserido e também a própria plataforma de controle. Sendo assim, atualmente o sistema de proteção contra comandos indesejados é composto por:
 
 - Front-end:
@@ -618,12 +624,15 @@ Quando falamos de sistema de proteção contra comandos indesejados, vamos além
   - Algoritmo de prevenção contra eventuais colisões com obstáculos.
 
 ### Sistema de segurança da bateria
+
 No modelo de robô utilizado, existe um potencial significativo de danos à sua bateria caso seu nível de energia seja excessivamente baixo. Quando tal nível crítico é alcançado, um alerta sonoro é emitido. Se esse alerta não for atendido, a célula de bateria se tornará inutilizável e não poderá ser recarregada. No entanto, embora exista um sistema de segurança já implementado, ele não se mostra suficiente, uma vez que, durante as operações do robô, ele pode estar localizado em uma área isolada, o que impossibilita que os colaboradores tomem conhecimento da situação. Portanto, para abordar essa questão de forma eficaz, é necessário exibir o nível de bateria na página web, para que antes da inicialização de uma inspeção, o colaborador saiba o nível de segurança ao mandar o robô para um espaço isolado naquele momento. Ademais, emitir alertas de bateria fraca na interface gráfica, não ficando dependente do aviso sonoro do robô ou da checagem constante do nível.
 
 ### Sistema anticolisão
+
 O sistema implementado para prevenir a colisão do robô com obstáculos envolve a utilização do sensor Lidar, posicionado na parte superior do chassi. Esse sensor emite pulsos de luz ao seu redor e, quando esses pulsos encontram objetos, retornam ao sensor. Dessa forma, o sensor é capaz de calcular a distância dos objetos com base no tempo de ida e volta do pulso, criando assim um mapa denominado nuvem de pontos. Atualmente, quando o robô detecta a presença de um objeto em proximidade, interrompe seu movimento para evitar a colisão. No entanto, em uma fase futura, será implementada a funcionalidade de desvio do obstáculo sem a necessidade de intervenção de algum funcionário.
 
 ### Mapeamento de riscos dos sistemas eletromecânicos, mecânicos e eletrônicos.
+
 Durante o processo de mapeamento de riscos, o grupo buscou estimar as chances em porcentagem e o nível de impacto, utilizando como base a matriz de riscos para poder estruturar todo o mapeamento. É válido ressaltar que, para essa parte, foram considerados fatores como o ambiente de trabalho, o tipo de trabalho, a exposição do robô, a frequência de exposição, a duração da exposição e a probabilidade de ocorrência à qual o robô está exposto. Esses fatores podem afetar diretamente as eletromecânicos, mecânicos e eletrônicos do robô.
 
 <p align="center">
@@ -655,6 +664,268 @@ No vídeo a seguir, é mostrado como o TurtleBot emite este alarme. Através de 
 [Medida de proteção de alarme contra sobredescarga da bateria do TurtleBot](https://github.com/2023M6T2-Inteli/Grupo04/assets/99269584/cc5881fe-479a-49ba-8014-4391f94fe2da)
 
 Essa funcionalidade é um importante mecanismo de segurança, pois fornece um aviso antecipado que permite que medidas preventivas sejam tomadas antes que a bateria se esgote completamente. Isso evita paradas abruptas do robô, que poderiam resultar em danos ao equipamento ou acidentes.
+
+# Integração de sistemas e backend
+
+## Arquitetura da API REST
+
+Para a estruturação da documentação, testes e manual de implementação da API do backend, o grupo considerou utilizar uma das ferramentas fornecidas pelo próprio Sanic, o "Swagger". O Swagger consiste em uma ferramenta de código aberto que ajuda a projetar, construir, documentar e consumir APIs (Interfaces de Programação de Aplicativos) de maneira fácil e eficiente.
+
+Por meio dele, todas as rotas possuem um título breve de explicação. Ao expandir um accordion, você encontra uma descrição mais detalhada, a maneira como pode ser utilizada e um exemplo de como os dados devem ser enviados. Além disso, nele você encontra todas as rotas construídas no backend, de forma organizada, pois todas as rotas estão atribuídas à sua respectiva entidade, como pode ser visto nos exemplos abaixo.
+
+Além disso, a documentação construída no Swagger foi disponibilizada juntamente com o backend no serviço de EC2 da AWS, que pode ser acessado [clicando aqui](http://ec2-52-90-253-66.compute-1.amazonaws.com:3001/docs/swagger).
+
+**1 - Todas as rotas presentes:**
+
+![1686518996036](image/index/1686518996036.png)
+
+**2 - Exemplo de consulta pelo Swagger:**
+
+![1686525233951](image/index/1686525233951.png)
+
+**3 - Exemplo de resultado obtido pelo Swagger:**
+
+![1686525274187](image/index/1686525274187.png)
+
+Por fim, é válido ressaltar que todo o backend já está disponível em deploy na AWS, especificamente no serviço EC2, tornando-se ainda mais alinhado com as tecnologias adotadas pela empresa.
+
+
+## Documentação Respostas HTTP Backend
+
+### Analyze
+
+#### **Criar uma nova análise**
+
+Para criar uma nova análise, é necessário fornecer o ID da rota, o nome da análise, as datas de início e término, o supervisor e o operador.
+
+    - Criar análise`POST /create`
+    	- Corpo da requisição: `{"routeId": id_da_rota, "name": "nome_da_análise", "startDate": "data_de_inicio", "endDate": "data_de_término", "supervisor": "supervisor", "operator": "operador"}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to create analyze!"`
+
+#### **Obter todas as análises**
+
+Para obter todas as análises existentes, não é necessário passar nenhum parâmetro para o endpoint.
+
+    - Obter todas as análises`GET /get_analyzes`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to get all analyzes"`
+
+#### **Obter uma análise específica**
+
+Para obter uma análise específica, precisamos fornecer o id da análise no endpoint.
+
+    - Obter análise`GET /get_analyze/{id}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to get analyze"`
+
+#### Atualizar uma análise
+
+Para atualizar uma análise, é necessário fornecer o id, o id da rota, o nome, as datas de início e término, o supervisor, o operador e a data de criação no corpo da requisição.
+
+    - Atualizar análise`PUT /update_analyze`
+    	- Corpo da requisição: `{"id": id_da_análise, "routeId": id_da_rota, "name": "novo_nome_da_análise", "startDate": "nova_data_de_inicio", "endDate": "nova_data_de_término", "supervisor": "novo_supervisor", "operator": "novo_operador", "createdAt": "nova_data_de_criação"}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to update analyze"`
+
+#### **Excluir uma análise**
+
+Para excluir uma análise, precisamos fornecer o id da análise no endpoint.
+
+    - Excluir análise`DELETE /delete_analyze/{id}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to delete analyze`
+
+#### **Enviar um vídeo para análise**
+
+Para enviar um vídeo para análise, é necessário fornecer o vídeo no endpoint.
+
+    - Enviar vídeo`POST /video_upload`
+    	- `200 - `{"status": "success"}
+    	- Erros não são tratados neste endpoint. As exceções serão impressas na console.
+
+#### **Receber imagem da câmera**
+
+Este é um endpoint de websocket que permite receber imagens da câmera.
+
+    - Receber imagem`WS /video_feed`
+    	- Não há códigos de status HTTP para websockets. Erros serão impressos na console.
+
+### **Point**
+
+#### **Criar um ponto**
+
+Para criar um ponto, precisamos fornecer o pontoX, o pontoY e o ID da rota no corpo da requisição.
+
+    - Criar ponto`POST /create`
+    	- Corpo da requisição: `{"pointX": ponto_x, "pointY": ponto_y, "routeId": id_da_rota}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to create point"`
+
+#### **Obter todos os pontos de uma rota**
+
+Para obter todos os pontos de uma rota específica é necessário fornecer o ID da rota no endpoint.
+
+    - Obter todos os pontos de uma rota`GET /get_points/{routeId}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Erro to get all points"`
+
+#### **Excluir todos os pontos de uma rota**
+
+Para excluir todos os pontos de uma rota específica, precisamos fornecer o ID da rota no endpoint.
+
+    - Excluir todos os pontos de uma rota`DELETE /delete_points/{routeId}`
+    	- `200 - `[[resposta do usuário]]
+    	- `500 - "Error to delete points"`
+
+### **Robot**
+
+#### **Registrar um Robô**
+
+Para registrar um novo robô, precisamos fornecer o nome e o endereço IP no corpo da solicitação.
+
+    - Registrar robô`POST /register`
+    	- Corpo da solicitação: `{"name": nome_do_robo, "ip": ip_do_robo}`
+    	- Respostas possíveis:
+    		- `200 - `{"message": "Robot created with sucsess!"}`    		-`500 - `{"error": "Error to create point"}
+
+#### **Obter todos os Robôs**
+
+Para obter uma lista com todos os robôs registrados, você não precisa fornecer nenhuma informação adicional.
+
+    - Obter todos os robôs`GET /get_robots`
+    	- Respostas possíveis:
+    		- `200 - `{"robots": [lista de robôs]}
+    		- `500 - `{"error": "Error to get all robots"}
+
+#### **Obter um Robô**
+
+Para obter informações sobre um robô específico, precisamos fornecer o ID do robô no endpoint.
+
+    - Obter um robô`GET /get_robot/{id}`
+    	- Respostas possíveis:
+    		- `200 - `{"robot": [informações do robô]}
+    		- `500 - `{"error": "Error to get the robot"}
+
+#### **Excluir um Robô**
+
+Para excluir um robô, precisamos fornecer o ID do robô no endpoint.
+
+    - Excluir um robô`DELETE /delete_robot/{id}`
+    	- Respostas possíveis:
+    		- `200 - `{"robot": "Robot deleted with success!"}
+    		- `500 - `{"error": "Error to delete robot"}
+
+### **Route**
+
+#### **Criar uma nova rota**
+
+Para criar uma nova rota, precisamos fornecer a id rota, nome da rota, data de ínicio e final, nome do supervisor e operador no endpoint.
+
+    Criar rota`POST /create`
+    Corpo da requisição: {  "routeId": "id_da_rota", "name": "nome_da_rota", "startDate": "data_de_inicio", "endDate": "data_de_fim","supervisor": "nome_supervisor", "operator": "nome_operador"}
+    200 - [["Route "nome_da_rota" created with success!"]]
+    500 - "Erro ao criar a rota"
+
+#### **Obter todas as rotas**
+
+Para obter todas as rotas existentes, não é necessário passar nenhum parâmetro para o endpoint.
+
+    Obter todas as rotas GET /get_all
+    200 - [[mostra todas as rotas]]
+    500 - "Error to get routes"
+
+#### **Obter uma rota específica**
+
+Para obter uma rota específica, precisamos fornecer o id da rota no endpoint.
+
+    Obter rota GET /get_route/{id}
+    200 - [[mostra a rota]]
+    500 - "Error to get route"
+
+#### **Atualizar uma rota**
+
+Para atualizar uma rota, precisamos fornecer o id, o nome e a data de criação no corpo da requisição.
+
+    Atualizar rota PUT /update_route
+    Corpo da requisição: {"id": id_da_rota, "name": "novo_nome_da_rota", "createdAt": "data_de_criação"}
+    200 - [[Route [id] updated with success!]]
+    500 - "Error to update route"
+
+#### **Excluir uma rota**
+
+Para excluir uma rota, precisamos fornecer o id da rota no endpoint.
+
+    Excluir rota DELETE /delete_route/{id}
+    200 - [[Route [id] deleted with success!]]
+    500 - "Error to delete route"
+
+### **User**
+
+#### **Registrar um Usuário**
+
+Para registrar um novo usuário, precisamos fornecer o nome, o e-mail e a senha no corpo da solicitação.
+
+    - Registrar usuário`POST /register`
+    	- Corpo da solicitação: `{"email": email_do_usuario, "password": senha_do_usuario, "name": nome_do_usuario}`
+    	- Respostas possíveis:
+    		- `200 - `{"message": "User: [name], created successfully"}`    		-`500 - `{"error": "Mensagem de erro"}
+
+#### **Login de um Usuário**
+
+Para realizar o login de um usuário, precisamos fornecer o e-mail e a senha no corpo da solicitação.
+
+    - Login de usuário`POST /login`
+    	- Corpo da solicitação: `{"email": email_do_usuario, "password": senha_do_usuario}`
+    	- Respostas possíveis:
+    		- `200 - `{"message": "Thank you for login!", "token": token_de_autenticacao}`    		-`404 - `{"error": "User not found"}`
+    		- `500 - `{"error": "User does not exists with the email: [email_usuario]"}
+
+#### **Obter um Usuário**
+
+Para obter as informações de um usuário, precisamos passar o token de autenticação no cabeçalho da solicitação.
+
+    - Obter usuário`GET /`
+    	- Headers: `Authorization: Bearer token_de_autenticacao`
+    	- Respostas possíveis:
+    		- `200 - `{"user": {informações do usuário}}
+    		- `500 - `{"error": "Mensagem de erro"}
+
+
+## Banco de dados relacional
+
+A construção do banco de dados ocorreu inicialmente durante a sprint 3 e finalizado na sprint 4, dando ênfase na alteração de algumas tabelas. O banco em si permaneceu modelado por meio do ORM (Object Relational Mapper), que é uma técnica de mapeamento objeto-relacional que permite fazer uma relação dos objetos com os dados que os mesmos representam, denominado Prisma. A escolha do Prisma se deu pelo fato da sua fácil utilização, documentação bem estruturada e facilidade de aprendizado, além de ter uma série de ferramentas que possibilitam várias outras utilizações ou em linguagens diferentes. Como linguagem para o banco de dados, foi escolhido o MySQL por ser um banco de dados relacional, que é o mais utilizado atualmente, além de ser um banco de dados que possui uma grande comunidade e uma documentação bem estruturada.
+
+Após a construção do banco de dados, foi feito o deploy por meio do próprio Prisma na AWS, mais especificamente no servidor RDS, dessa forma garantindo uma maior integridade do banco, acesso melhor da equipe e uma maior segurança dos dados. Também foram criados grupos de segurança para proteção do banco de dados, garantindo que apenas os membros da equipe tenham acesso a ele. A utilização da AWS surgiu para evitar possíveis conflitos gerados por arquivos de banco de dados que normalmente acabam sendo excluídos ou corrompidos, além de ser uma ferramenta que permite à equipe ter acesso ao banco de dados de qualquer lugar, facilitando a utilização do mesmo.
+
+![1686518591519](image/index/1686518591519.png)
+
+Abaixo é possível ver o diagrama do banco de dados:
+
+#### Diagrama do banco de dados
+
+![Alt text](images/diagrama-banco-de-dados-v2.svg)
+
+
+
+## Integração de sistemas
+
+### Protocolos de comunicação
+
+Ao longo da Sprint 4, surgiram algumas mudanças nas formas de comunicação utilizadas para realizar a integração dos sistemas. Entre elas, foi adicionado um novo método: o WebSocket.
+
+A maioria das rotas construídas utiliza o Protocolo de Transferência de Hipertexto (HTTP), que normalmente é utilizado para transferir dados entre um cliente (geralmente um navegador web) e um servidor web. No entanto, para a transmissão de vídeo do robô para o back-end, optamos por utilizar o WebSocket.
+
+O WebSocket é um protocolo de comunicação bidirecional em tempo real, baseado no TCP (Transmission Control Protocol). Ele proporciona uma maneira eficiente de estabelecer uma conexão persistente entre um servidor (back-end) e um cliente (navegador), permitindo a troca contínua de dados em ambas as direções. Dessa forma, o envio das imagens se torna mais eficiente, pois o WebSocket opera de maneira oposta ao HTTP, que é um protocolo de solicitação e resposta, no qual o cliente faz uma solicitação e o servidor responde.
+
+Isso significa que o servidor pode enviar dados para o cliente a qualquer momento, sem precisar esperar por uma solicitação, tornando o fluxo de transmissão das imagens da câmera mais eficiente, rápido e adequado para o processamento pelo modelo preditivo.
+
+Por fim, o último protocolo que temos utilizado desde o início do módulo é o ROS Communication Protocol, que permite a troca de mensagens e serviços entre os nós implementados na parte embarcada do robô. O ROS é baseado em mensagens assíncronas e é responsável por permitir que os nós se comuniquem de forma eficiente. Ele utiliza um sistema de mensagens serializadas para transmitir dados entre os nós e suporta diferentes formatos de mensagem, como binário ou texto.
+
+Os nós acabam se comunicam através de tópicos, que são canais de comunicação unidirecional. Um nó pode publicar mensagens em um tópico e outros nós podem se inscrever para receber essas mensagens. Essa comunicação assíncrona permite que os nós operem de forma independente, sem a necessidade de comunicação direta e síncrona entre eles.
+
+
+### Detalhamento dos testes
 
 # Referências
 

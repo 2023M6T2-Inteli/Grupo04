@@ -1,10 +1,9 @@
-import WebSocketClient from '@/components/WebSocketComponent';
+import LiveStream from '@/components/LiveStream';
 
 const HomePage = () => {
   return (
     <div>
-      <h1>Minha Página Inicial</h1>
-      <WebSocketClient />
+      <LiveStream />
     </div>
   );
 };
