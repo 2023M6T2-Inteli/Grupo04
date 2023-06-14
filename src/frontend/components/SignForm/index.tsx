@@ -88,18 +88,18 @@ const SignForm: React.FC<Props> = ({ signType }) => {
     >
       {signType === SignType.Register && (
         <label>
-          <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
+          <p className="border-b-2 p-2 border-blue-800 w-full font-inter font-xs mb-4">
             <input
               className="w-full outline-none ring-0"
               {...register("name")}
               type="text"
-              placeholder="Your name"
+              placeholder="Name"
             />
           </p>
         </label>
       )}
       <label>
-        <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
+        <p className="border-b-2 p-2 border-blue-800 w-full font-inter font-xs mb-4">
           <input
             className="w-full outline-none ring-0"
             type="text"
@@ -109,7 +109,7 @@ const SignForm: React.FC<Props> = ({ signType }) => {
         </p>
       </label>
       <label>
-        <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
+        <p className="border-b-2 p-2 border-blue-800 w-full font-inter font-xs mb-4">
           <input
             className="w-full outline-none ring-0"
             type="password"
@@ -120,7 +120,7 @@ const SignForm: React.FC<Props> = ({ signType }) => {
       </label>
       {signType === SignType.Register && (
         <label>
-          <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
+          <p className="border-b-2 p-2 border-blue-800 w-full font-inter font-xs mb-4">
             <input
               className="w-full outline-none ring-0"
               type="password"
@@ -130,10 +130,12 @@ const SignForm: React.FC<Props> = ({ signType }) => {
           </p>
         </label>
       )}
-      <Button
-        type={ButtonType.Home}
-        text={signType === SignType.Register ? "Sign Up" : "Sign" + " In"}
-      />
+      <div className="py-4">
+        <Button
+          type={ButtonType.Home}
+          text={signType === SignType.Register ? "Sign Up" : "Sign" + " In"}
+        />
+      </div>
     </form>
   );
 };

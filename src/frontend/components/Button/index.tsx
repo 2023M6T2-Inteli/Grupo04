@@ -27,7 +27,7 @@ const Button: React.FC<Props> = ({link, text, type, onClick}) => {
                 return (
                     <Link href={link} className="mx-auto w-full select-none">
                         <button
-                            className="bg-blue-zero w-full py-2 text-white text-base lg:text-2xl font-mont font-bold rounded-full">
+                            className="bg-blue-zero w-full py-2 text-white text-base lg:text-1xl font-mont font-bold rounded-full">
                             {text}
                         </button>
                     </Link>)
@@ -35,7 +35,7 @@ const Button: React.FC<Props> = ({link, text, type, onClick}) => {
             return (
                 <div className="mx-auto w-full select-none">
                     <button
-                        className="bg-blue-zero w-full py-2 text-white text-base lg:text-2xl font-mont font-bold rounded-full">
+                        className="bg-blue-zero w-full py-2 text-white text-base lg:text-1xl font-mont font-bold rounded-full">
                         {text}
                     </button>
                 </div>)
