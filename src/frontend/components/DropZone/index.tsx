@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Field } from "../ModalHome";
+import { Field } from "../RobotSelectionBody";
 import { Icon } from "@chakra-ui/react";
 import { AiFillFileAdd } from "react-icons/ai";
 
@@ -53,7 +53,7 @@ const DropZone: React.FC<Props> = ({ setFile, setStepsCompleted }) => {
       onDrop={handleDrop}
     >
       <AiFillFileAdd size={50} />
-      <p className="font-mont text-xl" >Drag or choose a file </p>
+      <p className="font-mont text-xl">Drag or choose a file </p>
       <input id="File" type="file" onChange={handleFile} className="hidden" />
     </label>
   );

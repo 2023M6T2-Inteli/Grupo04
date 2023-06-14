@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { MdOutlineChangeCircle } from "react-icons/md";
 import robotImage from "@/assets/TurtleBot.svg";
 import { useRouter } from "next/router";
-import { Robot } from "../WelcomeBody";
+import { Robot } from "../RobotSelectionBody";
 
 interface Props {
   isHover: boolean;
