@@ -8,7 +8,7 @@ import { FaMicroscope } from "react-icons/fa";
 import { NavBarOption, NavBarOptions } from "../NavBarOptions";
 import { DisplayType } from "@/pages/dashboard/[...id]";
 import SignOutButton from "@/components/SignOutButton";
-import { Robot } from "../WelcomeBody";
+import { Robot } from "../RobotSelectionBody";
 
 interface Props {
   display: DisplayType;

@@ -12,9 +12,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-import { Field, Robot } from "@/components/WelcomeBody";
-import { Dispatch, SetStateAction, useState } from "react";
-import { ModalInputs } from "@/components/WelcomeBody";
+import { Field, Robot } from "@/components/RobotSelectionBody";
 import { axios } from "@/utils/axios";
 import { toast } from "react-toastify";
 

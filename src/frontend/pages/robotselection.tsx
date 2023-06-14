@@ -1,25 +1,28 @@
-import Welcome from "@/components/Welcome";
+import WelcomeLayout from "@/components/WelcomeLayout";
 import GerdauBanner from "@/components/GerdauBanner.tsx";
-import { WelcomeType } from "@/components/WelcomeBody";
 import { WithAuth } from "@/HOC/WithAuth";
 import { GetServerSideProps } from "next";
 import { axios } from "@/utils/axios";
 import React from "react";
-import { Robot } from "@/components/WelcomeBody";
+import { Robot } from "@/components/RobotSelectionBody";
+import RobotSelectionBody from "@/components/RobotSelectionBody";
 
 interface Props {
   robots: Robot[];
 }
 
 const robotSelection: React.FC<Props> = ({ robots }) => {
+  const [linkRedirect, setLinkRedirect] = React.useState<string>("/dashboard");
+
   return (
     <div className="w-screen h-screen lg:grid lg:grid-cols-5 overflow-hidden">
       <GerdauBanner />
-      <Welcome
-        robots={robots}
-        section={WelcomeType.Selection}
-        link="/dashboard"
-      />
+      <WelcomeLayout robotSelection={true} link={linkRedirect}>
+        <RobotSelectionBody
+          setLinkRedirect={setLinkRedirect}
+          robotsProps={robots}
+        />
+      </WelcomeLayout>
     </div>
   );
 };

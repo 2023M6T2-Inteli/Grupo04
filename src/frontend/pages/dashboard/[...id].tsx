@@ -5,7 +5,7 @@ import AddAnalyze from "@/components/AddAnalyze";
 import { WithAuth } from "@/HOC/WithAuth";
 import { GetServerSideProps } from "next";
 import { axios } from "@/utils/axios";
-import { Robot } from "@/components/WelcomeBody";
+import { Robot } from "@/components/RobotSelectionBody";
 
 export enum DisplayType {
   Dashboard,
@@ -20,7 +20,6 @@ interface Props {
 }
 
 const DashBoard: React.FC<Props> = ({ robot }) => {
-  // const [authenticated, setAuthenticated] = useState<boolean>(false);
   const [display, setDisplay] = useState<DisplayType>(DisplayType.Dashboard);
 
   return (
