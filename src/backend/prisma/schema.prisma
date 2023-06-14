@@ -60,11 +60,10 @@ model robot {
 
 model image_analyse {
   id        Int      @id @default(autoincrement())
-  name      String
   path      String
-  createdAt DateTime @default(now())
   analyzeId Int
   Analyze   analyze  @relation(fields: [analyzeId], references: [id])
+  createdAt DateTime @default(now())
 
   @@index([analyzeId], map: "image_analyse_analyzeId_fkey")
 }

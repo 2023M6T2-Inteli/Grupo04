@@ -1,7 +1,7 @@
 from sanic.response import HTTPResponse,json
 from middleware.body_check import validate_body
 from analyze.utils import Schema
-from analyze.controller import register, get_all, get_analyze, update_analyze, delete_analyze
+from analyze.controller import register, get_all, get_analyze, update_analyze, delete_analyze, register_video
 from sanic import Blueprint, Websocket, Request
 from ultralytics import YOLO
 import numpy as np
@@ -76,22 +76,20 @@ async def video_upload(request: Request) -> json:
     nparr = np.fromstring(image_bytes, np.uint8)
     img = cv.imdecode(nparr, cv.IMREAD_COLOR)
     result = model.predict(img, conf=0.4)
-    output_image = result[0].plot()
     image_name = 'analyze-image-'+ str(datetime.now().strftime("%m-%d-%Y-%H-%M-%S"))+'.jpg'
-    cv2.imwrite('analyze/images/'+ image_name, output_image)
-    
-    images = []
-
+    cv2.imwrite('analyze/images/'+ image_name, result[0].plot())
     
     s3 = boto3.resource('s3')
     with open('analyze/images/'+image_name, 'rb') as data:
-        s3.Bucket('bucket-analyze-images').put_object(Key=image_name, Body=data)   
-        images.append('https://bucket-analyze-images.s3.amazonaws.com/'+image_name)
+        s3.Bucket('bucket-analyze-images').put_object(Key=image_name, Body=data) 
+        Analyzeid = 5
+        response, code = register_video(Analyzeid=Analyzeid, frame='https://bucket-analyze-images.s3.amazonaws.com/'+image_name)
+
     os.remove('analyze/images/'+image_name)
 
     await frame_queue.put(result[0].plot())
 
-    return json({"status": "success"})
+    return json(response, code)
 
 @analyze.websocket("/video_feed")
 @openapi.summary("Get image from camera")
