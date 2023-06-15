@@ -1,4 +1,4 @@
-**Conteúdo**
+**yConteúdo**
 
 - [Arquitetura do sistema](#arquitetura-do-sistema)
   - [Análise de Requisitos](#análise-de-requisitos)
@@ -82,7 +82,7 @@ Os Requisitos Não Funcionais foram idealizados em discussão entre os participa
 
 ### Requisitos Não Funcionais Tecnologicos
 
-<table><tbody><tr><td><strong>Código</strong></td><td><strong>Requisitos Não Funcional</strong></td></tr><tr><td>RNFT-01</td><td>O sistema deve usar o Prisma para fins de construção do Banco de Dados em SQLite3.</td></tr><tr><td>RNFT-02</td><td>O sistema deve usar o framework React e a linguagem de estilo CSS para o desenvolvimento Front-End do sistema.</td></tr><tr><td>RNFT-03</td><td>O sistema deve usar a linguagem de programação NEXT.js para desenvolvimento Back-End do sistema.</td></tr><tr><td>RNFT-04</td><td>Durante o desenvolvimento do projeto, a equipe deverá usar o Git e o GitHub para fins de versionamento de código.</td></tr><tr><td>RNFT-05</td><td>Durante o desenvolvimento do projeto, a equipe deverá usar o Monday para fins de organização de tarefas.</td></tr><tr><td>RNFT-06</td><td>O efetuador robótico a ser utilizado no projeto deverá ser o Turtle Bot 3 Burguer.</td></tr><tr><td>RNFT-07</td><td>Durante o projeto, a equipe deverá usar como microprocesador embarcado o Raspberry Pi 3.</td></tr><tr><td>RNFT-08</td><td>O Turtle Bot 3 Burguer deverá utilizar o ROS2 para transmissão de dados para o sistema.</td></tr></tbody></table>
+<table><tbody><tr><td><strong>Código</strong></td><td><strong>Requisitos Não Funcional</strong></td></tr><tr><td>RNFT-01</td><td>O sistema deve usar o Prisma para fins de construção do Banco de Dados em MYSQL.</td></tr><tr><td>RNFT-02</td><td>O sistema deve usar o framework React.js, Next.js e Tailwind para o desenvolvimento Front-End do sistema.</td></tr><tr><td>RNFT-03</td><td>O sistema deve usar a linguagem de programação Python  para desenvolvimento Back-End do sistema.</td></tr><tr><td>RNFT-04</td><td>Durante o desenvolvimento do projeto, a equipe deverá usar o Git e o GitHub para fins de versionamento de código.</td></tr><tr><td>RNFT-05</td><td>Durante o desenvolvimento do projeto, a equipe deverá usar o Monday para fins de organização de tarefas.</td></tr><tr><td>RNFT-06</td><td>O efetuador robótico a ser utilizado no projeto deverá ser o Turtle Bot 3 Burguer.</td></tr><tr><td>RNFT-07</td><td>Durante o projeto, a equipe deverá usar como microprocesador embarcado o Raspberry Pi 3.</td></tr><tr><td>RNFT-08</td><td>O Turtle Bot 3 Burguer deverá utilizar o ROS2 para transmissão de dados para o sistema.</td></tr></tbody></table>
 
 ## Viabilidade técnica
 
@@ -188,15 +188,15 @@ O ROS2 permite a comunicação entre os diferentes nós do sistema, enquanto o G
 
 **Script.js, Python e Servidor Sanic**
 
-O algoritmo de otimização de rota é implementado em um script.js e main.py, que é executado em um servidor Sanic. O servidor Sanic permite que o script.js e main.py se comunique com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e main.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Sanic.
+O algoritmo de otimização de rota é implementado em um script.js e app.py, que é executado em um servidor Sanic. O servidor Sanic permite que o script.js e app.py se comunique com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e app.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Sanic.
 
 **Planejamento da comunicação entre os Componentes**
 
-A arquitetura do sistema é dividida em quatro componentes principais: ROS2, Gazebo, Sanic e os scripts de algoritmo (script.js e main.py). A comunicação entre esses componentes é uma parte crucial do projeto e será implementada na sprint três do desenvolvimento. A seguir, é apresentado o papel de cada componente e como eles se comunicam entre si:
+A arquitetura do sistema é dividida em quatro componentes principais: ROS2, Gazebo, Sanic e os scripts de algoritmo (script.js e app.py). A comunicação entre esses componentes é uma parte crucial do projeto e será implementada na sprint três do desenvolvimento. A seguir, é apresentado o papel de cada componente e como eles se comunicam entre si:
 
-**1. Script.js e main.py:** O algoritmo escrito em JavaScript e Python é o ponto de partida para a otimização da rota do robô. Ele processa os dados inseridos pelo usuário através de uma interface web e calcula a rota mais eficiente para o robô. Essas informações são então enviadas para o servidor Sanic.
+**1. Script.js e app.py:** O algoritmo escrito em JavaScript e Python é o ponto de partida para a otimização da rota do robô. Ele processa os dados inseridos pelo usuário através de uma interface web e calcula a rota mais eficiente para o robô. Essas informações são então enviadas para o servidor Sanic.
 
-**2. Sanic:** O servidor Sanic atua como um intermediário entre o algoritmo e o ROS2. Ele recebe a rota otimizada do script.js e main.py e a encaminha para o ROS2. Esta comunicação é realizada através de um websocket, um protocolo que permite a troca de mensagens em tempo real.
+**2. Sanic:** O servidor Sanic atua como um intermediário entre o algoritmo e o ROS2. Ele recebe a rota otimizada do script.js e app.py e a encaminha para o ROS2. Esta comunicação é realizada através de um websocket, um protocolo que permite a troca de mensagens em tempo real.
 
 **3. ROS2 (Robot Operating System 2):** O ROS2 é o componente que se comunica diretamente com a simulação do Gazebo. Ele recebe as instruções de rota do servidor Sanic e as converte em comandos de movimento para o robô na simulação. Esta comunicação é feita através do pacote gazebo_ros_pkgs, que permite a troca de mensagens e serviços entre o ROS2 e o Gazebo utilizando o método de subscribers e publishers.
 
@@ -210,13 +210,13 @@ A arquitetura do sistema pode ser visualizada abaixo:
 
 **Pacote para o Algoritmo**
 
-Para a implementação da integração do algoritmo no sistema, o script.js, main.py e o servidor Sanic serão encapsulados em um pacote de software dedicado. Este pacote será instalado no ROS2 e atuará como o principal condutor das funcionalidades do algoritmo dentro do ambiente ROS2 para comunicação com o simulador Gazebo. Abaixo estão detalhadas as etapas para implementação desse sistema.
+Para a implementação da integração do algoritmo no sistema, o script.js, app.py e o servidor Sanic serão encapsulados em um pacote de software dedicado. Este pacote será instalado no ROS2 e atuará como o principal condutor das funcionalidades do algoritmo dentro do ambiente ROS2 para comunicação com o simulador Gazebo. Abaixo estão detalhadas as etapas para implementação desse sistema.
 
-**1. Componentes do Pacote:** O pacote será composto pelo script.js e main.py, responsáveis pela lógica do algoritmo de otimização de rota. Também incluirá o código do servidor Sanic, que serve como o intermediário entre o algoritmo e o ROS2, facilitando a troca de informações.
+**1. Componentes do Pacote:** O pacote será composto pelo script.js e app.py, responsáveis pela lógica do algoritmo de otimização de rota. Também incluirá o código do servidor Sanic, que serve como o intermediário entre o algoritmo e o ROS2, facilitando a troca de informações.
 
 **2. Dependências:** Além dos componentes principais, o pacote também conterá todas as dependências necessárias para a execução do algoritmo. Isso pode incluir bibliotecas JavaScript e Python, pacotes ROS2, módulos Sanic, entre outros. Ao incluir todas as dependências no pacote, garante-se que o algoritmo possa ser executado em qualquer ambiente que tenha o ROS2 instalado, sem a necessidade de instalações adicionais.
 
-**3. Integração com o Gazebo:** Uma vez instalado no ROS2, o pacote permitirá a integração do algoritmo com o Gazebo. A rota otimizada, calculada pelo script.js e main.py, será transmitida ao Gazebo através do ROS2, permitindo que o robô se mova de acordo com essa rota no ambiente de simulação.
+**3. Integração com o Gazebo:** Uma vez instalado no ROS2, o pacote permitirá a integração do algoritmo com o Gazebo. A rota otimizada, calculada pelo script.js e app.py, será transmitida ao Gazebo através do ROS2, permitindo que o robô se mova de acordo com essa rota no ambiente de simulação.
 
 **4. Instalação e Configuração:** As instruções detalhadas para a instalação e configuração do pacote serão fornecidas na documentação do pacote.
 
@@ -239,7 +239,7 @@ Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 
 #### Diagrama de arquitetura
 
-![Diagrama em blocos](./images/DiagramaGERDAU.jpg)
+![1686773016794](image/index/1686773016794.png)
 
 #### Diagrama de blocos
 
@@ -697,7 +697,6 @@ Além disso, a documentação construída no Swagger foi disponibilizada juntame
 
 Por fim, é válido ressaltar que todo o backend já está disponível em deploy na AWS, especificamente no serviço EC2, tornando-se ainda mais alinhado com as tecnologias adotadas pela empresa.
 
-
 ## Documentação Respostas HTTP Backend
 
 ### Analyze
@@ -899,7 +898,6 @@ Para obter as informações de um usuário, precisamos passar o token de autenti
     		- `200 - `{"user": {informações do usuário}}
     		- `500 - `{"error": "Mensagem de erro"}
 
-
 ## Banco de dados relacional
 
 A construção do banco de dados ocorreu inicialmente durante a sprint 3 e finalizado na sprint 4, dando ênfase na alteração de algumas tabelas. O banco em si permaneceu modelado por meio do ORM (Object Relational Mapper), que é uma técnica de mapeamento objeto-relacional que permite fazer uma relação dos objetos com os dados que os mesmos representam, denominado Prisma. A escolha do Prisma se deu pelo fato da sua fácil utilização, documentação bem estruturada e facilidade de aprendizado, além de ter uma série de ferramentas que possibilitam várias outras utilizações ou em linguagens diferentes. Como linguagem para o banco de dados, foi escolhido o MySQL por ser um banco de dados relacional, que é o mais utilizado atualmente, além de ser um banco de dados que possui uma grande comunidade e uma documentação bem estruturada.
@@ -913,8 +911,6 @@ Abaixo é possível ver o diagrama do banco de dados:
 #### Diagrama do banco de dados
 
 ![Alt text](images/diagrama-banco-de-dados-v2.svg)
-
-
 
 ## Integração de sistemas
 
@@ -932,14 +928,13 @@ Por fim, o último protocolo que temos utilizado desde o início do módulo é o
 
 Os nós acabam se comunicam através de tópicos, que são canais de comunicação unidirecional. Um nó pode publicar mensagens em um tópico e outros nós podem se inscrever para receber essas mensagens. Essa comunicação assíncrona permite que os nós operem de forma independente, sem a necessidade de comunicação direta e síncrona entre eles.
 
-
 ### Detalhamento dos testes
 
 Com o objetivo de oferecer a melhor experiência possível ao usuário, é essencial dedicar atenção ao tempo necessário para a conclusão de uma requisição. Caso esse período seja excessivamente prolongado, ocorre o risco de desmotivar e frustrar o usuário. Portanto, é fundamental garantir um tempo de resposta adequado, que proporcione uma interação fluída e eficiente, evitando assim o desgaste emocional e a perda de interesse do usuário.
 
 Consequentemente, optou-se por empregar dois tipos distintos de testes de desempenho de rotas: o teste de carga e o teste de latência. No teste de carga, é selecionado um determinado número de usuários, os quais realizam solicitações à rota especificada, simulando assim uma situação de tráfego intenso. Por outro lado, no teste de latência, ocorre o incremento deliberado da latência, a fim de simular o funcionamento em redes mais lentas. Essa abordagem abrange uma análise abrangente do desempenho das rotas, levando em consideração tanto a capacidade de suportar demandas elevadas quanto a efetividade em ambientes com conexões mais lentas.
 
-Em ambos os tipos de testes realizados, foram empregados estágios distintos com o intuito de avaliar as variações de resultados à medida que as variáveis de usuários e latência eram incrementadas. Essa abordagem em estágios permitiu uma análise mais aprofundada do impacto causado pelo aumento do número de usuários e pela intensificação da latência. 
+Em ambos os tipos de testes realizados, foram empregados estágios distintos com o intuito de avaliar as variações de resultados à medida que as variáveis de usuários e latência eram incrementadas. Essa abordagem em estágios permitiu uma análise mais aprofundada do impacto causado pelo aumento do número de usuários e pela intensificação da latência.
 
 Além disso, os testes foram executados em duas rotas distintas, uma utilizando o método POST e outra utilizando o método GET, com o objetivo de avaliar o tempo necessário para adicionar informações ao banco de dados, bem como para recuperar todos os dados de uma determinada área do sistema. Ao aplicar os testes nessas duas rotas com métodos diferentes, foi possível analisar de maneira abrangente o desempenho do sistema em diferentes operações. As rotas selecionadas estão relacionadas ao cadastro de um robô e a consulta de todos os robô cadastrados previamente.
 
