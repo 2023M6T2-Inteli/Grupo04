@@ -305,6 +305,14 @@ Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a soluç�
 
 <table><tbody><tr><td><strong>Itens</strong></td><td><strong>Categoria</strong></td><td><strong>Preço Estimado</strong></td></tr><tr><td>Desenvolvimento de um MVP</td><td>Hardware</td><td>R$ 2.000.000</td></tr><tr><td>Engenharia</td><td>Serviço</td><td>R$ 2.010.000</td></tr><tr><td>Seguro</td><td>Manutenção</td><td>R$ 200.500,00</td></tr><tr><td>Margem de lucro da terceirizada (20%)</td><td>Margem de lucro</td><td>R$ 818.664,00</td></tr><tr><td> </td><td><strong>Total:</strong></td><td>R$ 5.052.600,00</td></tr></tbody></table>
 
+Outro item que gera custos para a empresa, porém com frequência mensal, é o AWS(Amazon Web Services).
+
+Para estimar o custo do serviço, consideramos que serão feitas 10 análises por dia, durante os 20 dias úteis do mês. Dado isso, o preço definido por ensaio é de 0,80 dólars em uma conversão 1 dólar para 5 reais. 
+
+Outro custo, além das análises, é de hospedagem de ambos frontend e backend.
+
+<table><tbody><tr><td><strong>Itens</strong></td><td><strong>Categoria</strong></td><td><strong>Preço Estimado (por mês)</strong></td></tr><tr><td>AWS(Análises)</td><td>Serviço de Assinatura</td><td>160 USD</td></tr><tr><td>AWS (Hospedagem deo front e back)</td><td>Serviço de Assinatura</td><td>200 USD</td></tr></tbody></tr><tr><td> </td><td><strong>Total:</strong></td><td>360 USD (R$ 1.800.00)</td></tr></table>
+
 </p>
 
 O [Link da planilha](https://docs.google.com/spreadsheets/d/1r8g5DCsZJI9akuSPPXa-gyhqJ1ZzOMrjQ_6VsDGgP98/edit?usp=sharing) para vizualição completa pode ser encontrado aqui.
