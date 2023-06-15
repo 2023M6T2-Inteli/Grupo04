@@ -8,6 +8,15 @@ def register(routeId: int, name: str, startDate: str, endDate: str, supervisor: 
     except Exception as e:
         return {'error': str(e)}, 500
     
+def register_video(Analyzeid: int, frame:str) -> tuple[dict[str, str], int]:
+    try:
+        analyze = Analyze(id=Analyzeid)
+        message = analyze.register_video(frame)
+        return {'message': message}, 200
+    except Exception as e:
+        return {'error': str(e)}, 500
+
+
 def get_all() -> tuple[list[dict[str, str]], int]:
     try:
         analyze = Analyze()
