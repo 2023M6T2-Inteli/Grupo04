@@ -88,9 +88,9 @@ const SignForm: React.FC<Props> = ({ signType }) => {
     >
       {signType === SignType.Register && (
         <label>
-          <p className="border-b-2 p-2 border-blue-800 w-full font-inter font-xs mb-4">
+          <p className="border-b-2 p-2 border-blue-gerdau-mid w-full font-inter font-xs mb-4">
             <input
-              className="w-full outline-none ring-0"
+              className="w-full outline-none ring-0 placeholder:font-inter placeholder-black-zero placeholder:text-px-18"
               {...register("name")}
               type="text"
               placeholder="Name"
@@ -99,9 +99,9 @@ const SignForm: React.FC<Props> = ({ signType }) => {
         </label>
       )}
       <label>
-        <p className="border-b-2 p-2 border-blue-800 w-full font-inter font-xs mb-4">
+        <p className="border-b-2 p-2 border-blue-gerdau-mid w-full font-inter font-xs mb-4">
           <input
-            className="w-full outline-none ring-0"
+            className="w-full outline-none ring-0 placeholder:font-inter placeholder-black-zero placeholder:text-px-18"
             type="text"
             placeholder="E-mail"
             {...register("email")}
@@ -109,9 +109,9 @@ const SignForm: React.FC<Props> = ({ signType }) => {
         </p>
       </label>
       <label>
-        <p className="border-b-2 p-2 border-blue-800 w-full font-inter font-xs mb-4">
+        <p className="border-b-2 p-2 border-blue-gerdau-mid w-full font-inter font-xs mb-4">
           <input
-            className="w-full outline-none ring-0"
+            className="w-full outline-none ring-0 placeholder:font-inter placeholder-black-zero placeholder:text-px-18"
             type="password"
             placeholder="Password"
             {...register("password")}
@@ -120,9 +120,9 @@ const SignForm: React.FC<Props> = ({ signType }) => {
       </label>
       {signType === SignType.Register && (
         <label>
-          <p className="border-b-2 p-2 border-blue-800 w-full font-inter font-xs mb-4">
+          <p className="border-b-2 p-2 border-blue-gerdau-mid w-full font-inter font-xs mb-4">
             <input
-              className="w-full outline-none ring-0"
+              className="w-full outline-none ring-0 placeholder:font-inter placeholder-black-zero placeholder:text-px-18"
               type="password"
               placeholder="Confirm password"
               {...register("confirmPassword")}

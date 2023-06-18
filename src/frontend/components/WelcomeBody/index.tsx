@@ -16,7 +16,7 @@ const WelcomeBody: React.FC<Props> = ({}) => {
           alt="Confetti"
         />
 
-        <p className="font-mont  text-blue-zero font-bold text-lg md:text-3xl flex items-center select-none">
+        <p className="font-mont  text-blue-gerdau-init font-bold text-lg md:text-3xl flex items-center select-none">
           You're back!!
         </p>
       </div>

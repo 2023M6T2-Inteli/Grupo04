@@ -25,11 +25,18 @@ const LoginPage: React.FC = () => {
             header={"Sign In"}
           />
         )}
-        {sign === SignType.Login && (
-          <p onClick={() => setSign(SignType.Register)}>
-            {"Don't have" + " an account yet? "}
-            <span className="mx-auto w-full select-none text-blue-500">
+        {sign === SignType.Login ? (
+          <p className="text-center font-medium text-px-18 text-black-zero" onClick={() => setSign(SignType.Register)}>
+            {"Don't have an account? "}
+            <span className="mx-auto w-full select-none text-blue-gerdau-init cursor-pointer">
               {"Sign Up."}
+            </span>
+          </p>
+        ): (
+          <p className="text-center font-medium text-px-18 text-black-zero" onClick={() => setSign(SignType.Login)}>
+            {"Already have an account? "}
+            <span className="mx-auto w-full select-none text-blue-gerdau-init cursor-pointer">
+              {"Sign In."}
             </span>
           </p>
         )}

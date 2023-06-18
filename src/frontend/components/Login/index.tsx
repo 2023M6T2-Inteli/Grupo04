@@ -53,7 +53,7 @@ const Login: React.FC<Props> = ({}) => {
                            header={"Sign In"}/>)}
             {sign === SignType.Login && (
                 <div className="text-center">
-                    <p onClick={() => setSign(SignType.Register)}>{"Don't have" +
+                    <p className="text-center" onClick={() => setSign(SignType.Register)}>{"Don't have" +
                         " an account? "}
                         <span className="mx-auto w-full select-none text-blue-500">
                             {"Sign Up."}
