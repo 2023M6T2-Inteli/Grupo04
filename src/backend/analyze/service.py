@@ -1,4 +1,4 @@
-from analyze.model import get_analyze, get_analyzes, create_analyze, update_analyze, delete_analyze
+from analyze.model import get_analyze, get_analyzes, create_analyze, update_analyze, delete_analyze, save_image
 from datetime import datetime, date
 from pydantic import BaseModel, Field
 
@@ -21,6 +21,13 @@ class Analyze:
             return analyze
         except: 
             raise NameError(f'Error to create {self.name} analyze!')
+        
+    def register_video(self, frame:str) -> str:
+        try:
+            save_image(self.id, frame)
+            return f"Image saved with success!"
+        except:
+            raise NameError(f'Error to save image!')
     
     def get_all(self) -> list[dict[str, str]]:
         try:

@@ -11,7 +11,7 @@ import { BiDoorOpen } from "react-icons/bi";
 
 const Display: React.FC = () => {
   const displayContent: DisplayContent = {
-    title: "Welcome back!",
+    title: "WelcomeLayout back!",
     text: "Hello and welcome to Turtle Controller! We're very happy to have you here with us and we hope you have an amazing experience using our platform.",
   };
 
