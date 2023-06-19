@@ -20,7 +20,7 @@ module.exports = {
 
     },
     fontFamily: {
-      'mont': ['Montserrat'],
+      'mont': ['Montserrat', 'sans-serif'],
       'inter' : ['Inter'],
     },
     screens: {
@@ -44,6 +44,9 @@ module.exports = {
       //   'gradient-conic':
       //     'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       // },
+    },
+    boxShadow: {
+      'custom': '0px 0px 10px rgba(0, 0, 0, 0.25)',
     },
   },
   plugins: [],

@@ -49,8 +49,8 @@ const SetRoute: React.FC<Props> = ({ setLive }) => {
   const [analyze_info, analyzeInfo ] = useState<boolean>(false);
 
   return (
-    <div className="flex flex-grow pb-3 justify-center">
-      <div className="flex flex-col relative items-center h-[65vh] w-[65vw] rounded-2xl shadow-2xl">
+    <div className="flex flex-grow pb-3 justify-center mt-8">
+      <div className="flex flex-col relative items-center h-max w-[70%] mx-auto p-6 rounded-2xl shadow-custom">
         <ProgressionBar stepsCompleted={stepsCompleted} />
         {!file && (
           <FixedRoutes

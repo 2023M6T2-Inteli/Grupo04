@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Field } from "../RobotSelectionBody";
 import { Icon } from "@chakra-ui/react";
-import { AiFillFileAdd } from "react-icons/ai";
+import { FiUpload } from "react-icons/fi";
 
 interface Props {
   setFile: React.Dispatch<React.SetStateAction<File | null>>;
@@ -43,7 +43,7 @@ const DropZone: React.FC<Props> = ({ setFile, setStepsCompleted }) => {
   return (
     <label
       htmlFor="File"
-      className={`flex flex-col items-center hover:cursor-pointer justify-center grow w-full border-dashed border-2 ${
+      className={`flex py-[10vh] flex-col h-[50%] items-center hover:cursor-pointer justify-center grow w-full border-dashed border-2 ${
         isDraggingOver ? "border-green-500" : "border-gray-500"
       }`}
       style={{ borderRadius: "8px" }}
@@ -52,8 +52,9 @@ const DropZone: React.FC<Props> = ({ setFile, setStepsCompleted }) => {
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-      <AiFillFileAdd size={50} />
-      <p className="font-mont text-xl">Drag or choose a file </p>
+      <FiUpload size={40} />
+      <p className="font-inter text-xl font-light">Drag & Drop or <span className="font-inter text-blue-gerdau-init">Choose file </span> to upload </p>
+      <p className="font-inter text-xl font-light">PNG, JPEG and JPG </p>
       <input id="File" type="file" onChange={handleFile} className="hidden" />
     </label>
   );
