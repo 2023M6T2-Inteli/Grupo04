@@ -53,9 +53,7 @@ const SignOutButton: React.FC<Props> = ({ isHover, robot }) => {
       initial="hidden"
       animate="visible"
       variants={container}
-      className={`flex flex-col ${
-        isHover ? "h-[50vh]" : "h-[57vh]"
-      } justify-end items-center gap-9`}
+      className={`flex flex-col  justify-end items-center gap-9`}
     >
       <AnimatePresence>
         {isHover ? (

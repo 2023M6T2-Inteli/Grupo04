@@ -21,11 +21,11 @@ const FixedRoutes: React.FC<Props> = ({ routes, setFile, setStepsCompleted }) =>
   );
 
   return (
-    <div className="flex flex-grow w-full px-10 py-4 flex-col items-center justify-center">
-      <h1 className="w-auto text-3xl font-mont text-center text-blue-gerdau-mid">
+    <div className="flex flex-grow w-full flex-col items-center justify-center">
+      <h1 className="w-auto text-3xl py-4 font-mont text-center text-blue-gerdau-init">
         Set route
       </h1>
-      <div className="flex pt-1 gap-7 h-auto justify-center">
+      <div className="flex pt-1 gap-2 h-auto justify-center w-full">
         <Button
           className="my-auto"
           background={"white"}
@@ -44,7 +44,7 @@ const FixedRoutes: React.FC<Props> = ({ routes, setFile, setStepsCompleted }) =>
           leftIcon={arrowFoward}
         />
       </div>
-      <h1 className="text-3xl pt-4 font-mont text-center text-blue-gerdau-mid">
+      <h1 className="text-3xl py-4 font-mont text-center text-blue-gerdau-init">
         Or
       </h1>
       <DropZone setStepsCompleted={setStepsCompleted} setFile={setFile} />
