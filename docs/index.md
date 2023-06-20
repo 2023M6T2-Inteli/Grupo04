@@ -56,6 +56,7 @@
     - [Fabricação e implementação dos dispositivos de segurança](#fabricação-e-implementação-dos-dispositivos-de-segurança)
     - [Sistema de proteção contra comandos indesejados](#sistema-de-proteção-contra-comandos-indesejados)
     - [Mapeamento de riscos dos sistemas eletromecânicos, mecânicos e eletrônicos.](#mapeamento-de-riscos-dos-sistemas-eletromecânicos-mecânicos-e-eletrônicos)
+  
 - [Referências](#referências)
 
 # Arquitetura do sistema
@@ -174,7 +175,7 @@ Dada a relação do algoritmo com a tarefa mencionada, sua escolha como método 
 - Caso alguma alteração ocorra nos dutos de ventilação como reformas, mudanças de topologia ou inserção de dispositivos que possam se tornar obstáculos a navegação do dispositivo, o método escolhido pode se adaptar. A obstrução pode ser considerada como um nó ou uma série de nós pode ser traçada ao redor dela, fazendo com que o dispositivo a contorne.
 - Possui baixo custo computacional, tornando-se adequado para uma aplicação embarcada
 
-##### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
+### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
 
 O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, serão utilizados ROS2 (Robot Operating System 2), Gazebo, e um algoritmo personalizado escrito em JavaScript e Python, com o framework Sanic. Por meio dessa implementação, almeja-se que o robô se locomova no ambiente simulado no Gazebo de forma eficiente, considerando a melhor rota e evitando obstáculos.
 
@@ -230,6 +231,10 @@ O frontend será desenvolvido com Next.js e React.js, e será hospedado em um se
 - Acompanhamento em tempo real do TurtleBot realizando a analise;
 - Acompnanhamento da analise em tempo real;
 - Entre outras operações.
+
+### Integração de sistemas 
+
+
 
 ### Comunicação
 
@@ -945,6 +950,21 @@ Os estágios selecionados para a realização deste teste envolvem uma progress�
 #### Teste de latência
 
 No decorrer deste teste, estamos simulando a execução de uma único usuário realizando a requisição, considerando diferentes estágios de latência. No primeiro estágio, a latência é de 500ms, e posteriormente, no segundo estágio, a latência aumenta para 1000ms, emulando uma situação de rede mais lenta. Em ambos os métodos de requisição, os resultados obtidos nos estágios foram considerados aceitáveis, uma vez que se mantiveram abaixo de 1500ms. Esses resultados indicam que o tempo de resposta foi mantido em um nível adequado, mesmo diante de uma condição de rede desfavorável. Assim, é possível afirmar que a experiência do usuário não foi prejudicada, mesmo em uma situação em que a qualidade da rede não é ideal.
+
+# Integração de sistemas
+
+
+## Integração com Frontend 
+A integração foi feita utilizando a biblioteca axios, do javascript, para fins de realizar requisições HTTP(GET, POST, PUT e DELETE) via web browser. Também foi usado web socket, um protocolo de comunicação baseado em solicitação-resposta, para o envio de frames da da LiveStream feita pela câmera.
+
+## Integração com Robô
+
+
+
+## Integração entre Robô e atuadores
+
+
+# Validação da eficácia do sistema 
 
 # Referências
 
