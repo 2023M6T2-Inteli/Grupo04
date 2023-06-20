@@ -2,17 +2,24 @@ import React, { useEffect, useRef } from "react";
 import { HiOutlineEmojiSad } from "react-icons/hi";
 import { Icon } from "@chakra-ui/react";
 import Button, {ButtonType} from "../Button";
+import { Robot } from "@/components/RobotSelectionBody";
 
-interface Props {}
+interface Props {
+  robot: Robot;
+}
 
-const LiveStream: React.FC<Props> = (props) => {
+const LiveStream: React.FC<Props> = ({robot}) => {
   const [videoAvaiability, setVideoAvaiability] =
     React.useState<boolean>(false);
 
   const videoFeedRef = useRef() as any;
 
   useEffect(() => {
+<<<<<<< Updated upstream
     const socket = new WebSocket("ws://localhost:3001/analyze/video_feed");
+=======
+    const socket = new WebSocket(`ws://localhost:3001/analyze/video_feed/${robot.ip}`);
+>>>>>>> Stashed changes
 
     socket.onmessage = function (event) {
       setVideoAvaiability(true);
@@ -44,7 +51,7 @@ const LiveStream: React.FC<Props> = (props) => {
             <div className="text-gray-700 text-xl basis-1/4 text-left"><b>Name:</b> Analyze Xxx</div>
             <div className="text-gray-700 text-xl basis-1/4 text-left"><b>Start:</b> 10/02/2023 - 10:02:45</div>
             <div className="text-gray-700 text-xl basis-1/4 text-left"><b>End:</b> 10/02/2023 - 15:04:22</div>
-            <div className="text-gray-700 text-xl basis-1/4 text-right"><b>Delete</b> </div>
+            <div className="text-gray-700 text-xl basis-1/4 text-right"><b>IP: {robot.ip}</b> </div>
           </div>
           </div>
     <div className="flex flex-row flex-nowrap">

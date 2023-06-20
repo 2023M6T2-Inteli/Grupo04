@@ -20,6 +20,7 @@ analyze = Blueprint('analyze', __name__)
 model = YOLO('analyze/best.pt')
 clients = []
 frame_queue = asyncio.Queue()
+queues_list = {}
 
 
 @analyze.post("/create")
@@ -66,10 +67,10 @@ async def handler_delete_analyze(request: Request, id: int) -> HTTPResponse:
     response, code = delete_analyze(id)
     return json(response, code)
 
-@analyze.post("/video_upload")
+@analyze.post("/video_upload/<ip:str>")
 @openapi.summary("Upload a video from camera")
 @openapi.description("This endpoint allows you to upload a video from camera.")
-async def video_upload(request: Request) -> json:
+async def video_upload(request: Request, ip: str) -> json:
     print(len(request.files.get('image')))
     print(type(request.files.get('image')))
     image_bytes = request.files.get('image')[1]
@@ -87,18 +88,21 @@ async def video_upload(request: Request) -> json:
 
     os.remove('analyze/images/'+image_name)
 
-    await frame_queue.put(result[0].plot())
+    if ip in queues_list:
+        await queues_list[ip].put(result[0].plot())
 
     return json(response, code)
 
-@analyze.websocket("/video_feed")
+@analyze.websocket("/video_feed/<ip:str>")
 @openapi.summary("Get image from camera")
 @openapi.description("This endpoint allows you to get image from camera.")
-async def video_feed(request: Request, ws: Websocket):
+async def video_feed(request: Request, ws: Websocket, ip: str):
     clients.append(ws)
+    if ip not in queues_list:
+            queues_list[ip] = asyncio.Queue()
     try:
         while True:
-            frame = await frame_queue.get()
+            frame = await queues_list[ip].get()
             if frame is not None:
                 _, buffer = cv.imencode('.jpg', frame)
                 frame_bytes = buffer.tobytes()

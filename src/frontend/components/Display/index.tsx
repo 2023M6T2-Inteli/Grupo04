@@ -8,10 +8,15 @@ import { BsRobot } from "react-icons/bs";
 import { MdSensors } from "react-icons/md";
 import { TbMicroscope } from "react-icons/tb";
 import { BiDoorOpen } from "react-icons/bi";
+import { Robot } from "@/components/RobotSelectionBody";
 
-const Display: React.FC = () => {
+interface Props {
+  robot: Robot;
+}
+
+const Display: React.FC<Props> = ({ robot }) => {
   const displayContent: DisplayContent = {
-    title: "WelcomeLayout back!",
+    title: `Welcome back to robot ${robot.name}!`,
     text: "Hello and welcome to Turtle Controller! We're very happy to have you here with us and we hope you have an amazing experience using our platform.",
   };
 
