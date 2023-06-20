@@ -26,12 +26,12 @@ const DisplayText: React.FC<Props> = ({ image, displayContent }) => {
   };
 
   return (
-    <div className="flex w-full h-[33vh]">
+    <div className="flex w-full h-min">
       <div className={`${image && "w-[65vw]"} pl-[5%]`}>
-        <h1 className="font-mont select-none pt-16 text-4xl text-blue-gerdau-init">
+        <h1 className="font-mont select-none pt-3 pb-1 text-4xl text-blue-gerdau-init">
           {displayContent.title}
         </h1>
-        <p className="font-inter pr-28 pt-5 select-none text-base">
+        <p className="font-inter pr-28 select-none text-base">
           {displayContent.text}
         </p>
       </div>
