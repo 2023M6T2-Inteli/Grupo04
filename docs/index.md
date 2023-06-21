@@ -1,13 +1,13 @@
 **Conteúdo**
 
+- [Proposta geral](#proposta-geral)
+    - [Componentes do TurtleBot](#componentes-do-turtlebot)
 - [Arquitetura do sistema](#arquitetura-do-sistema)
   - [Análise de Requisitos](#análise-de-requisitos)
     - [Requisitos funcionais](#requisitos-funcionais)
     - [Requisitos Não Funcionais](#requisitos-não-funcionais)
     - [Requisitos Não Funcionais Tecnologicos](#requisitos-não-funcionais-tecnologicos)
   - [Viabilidade técnica](#viabilidade-técnica)
-  - [Proposta geral](#proposta-geral)
-    - [Componentes do TurtleBot](#componentes-do-turtlebot)
     - [Banco de dados](#banco-de-dados)
       - [Diagrama do banco de dados](#diagrama-do-banco-de-dados)
     - [Backend](#backend)
@@ -58,6 +58,20 @@
     - [Mapeamento de riscos dos sistemas eletromecânicos, mecânicos e eletrônicos.](#mapeamento-de-riscos-dos-sistemas-eletromecânicos-mecânicos-e-eletrônicos)
 - [Referências](#referências)
 
+# Proposta geral
+
+Nosso projeto consiste em um sistema integrado que envolve o modelo de robô TurtleBot3, juntamente com um sistema de controle construído através de um backend e um frontend, resultando em uma interface web amigável. O TurtleBot3 é um robô de duas rodas equipado com diversos sensores e componentes essenciais para a execução de suas tarefas.
+
+### Componentes do TurtleBot
+
+O TurtleBot será equipado com os seguintes componentes:
+
+- Microcontrolador OpenCR: responsável por ler as informações do sensor de gás MQ2.
+- Sensor de gás MQ2: responsável por detectar os gases.
+- Raspberry Pi 3: responsável por processar as informações de todos os componentes e se comunica com o backend.
+- Webcam: responsável por fornecer imagens ao vivo para o Raspberry Pi 3.
+- Sensor Lidar 360º: responsável por fornecer as imagens do escaneamento para o Raspberry Pi 3.
+
 # Arquitetura do sistema
 
 ## Análise de Requisitos
@@ -92,20 +106,6 @@ Diante da sua proposta, escolhemos utilizar o TurtleBot Burger, um robô que pos
 Além disso, o robô terá sensores acoplados que são responsáveis por identificar níveis de gases tóxicos no ambiente, suas capacidades serão testadas através de sensores mais simples, semelhantes aos usados na indústria. Apesar de serem mais básicos, eles conseguem captar o que é preciso, em contrapartida, não é possível captar todos os gases tóxicos, sendo limitados a apenas 5 gases. Dizendo um pouco sobre onde esses dados serão armazenados, o robô terá um sistema que realizará comunicações através do protocolo MQTT, utilizando o servidor do HiveMQ, que funciona como um broker remoto, por ele possuir dependências da rede, caso a rede caia, será armazenado informações no próprio robô até a conexão ser restabelecida.
 
 Diante do exposto, pode-se dizer que o TurtleBee é uma solução viável para análise de espaços confinados que facilita o serviço de técnicos dessa área e que promove sua segurança através das informações transmitidas pelo mesmo.
-
-## Proposta geral
-
-Nosso projeto consiste em um sistema integrado que envolve o modelo de robô TurtleBot3, juntamente com um sistema de controle construído através de um backend e um frontend, resultando em uma interface web amigável. O TurtleBot3 é um robô de duas rodas equipado com diversos sensores e componentes essenciais para a execução de suas tarefas.
-
-### Componentes do TurtleBot
-
-O TurtleBot será equipado com os seguintes componentes:
-
-- Microcontrolador OpenCR: responsável por ler as informações do sensor de gás MQ2.
-- Sensor de gás MQ2: responsável por detectar os gases.
-- Raspberry Pi 3: responsável por processar as informações de todos os componentes e se comunica com o backend.
-- Webcam: responsável por fornecer imagens ao vivo para o Raspberry Pi 3.
-- Sensor Lidar 360º: responsável por fornecer as imagens do escaneamento para o Raspberry Pi 3.
 
 ### Banco de dados
 
