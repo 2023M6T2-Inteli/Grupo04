@@ -70,11 +70,11 @@ const RobotSelectionBody: React.FC<Props> = ({
   return (
     <>
       <div className="flex items-center justify-center gap-2">
-        <p className="font-mont  text-blue-zero font-bold text-lg md:text-3xl flex items-center select-none">
+        <p className="font-mont  text-blue-gerdau-init font-bold text-lg md:text-3xl flex items-center select-none">
           Let's Start
         </p>
       </div>
-      <p className="block font-mont text-blue-gerdau-end text-xl select-none">
+      <p className="block font-mont text-black-zero font-medium text-xl select-none">
         Choose the turtle boot:
       </p>
       <Button

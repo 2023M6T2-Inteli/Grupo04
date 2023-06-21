@@ -14,10 +14,14 @@ module.exports = {
       '3xl': '1.953rem',
       '4xl': '2.441rem',
       '5xl': '3.052rem',
+      'px-18': '18px',
+      'px-22': '22px',
+      'px-40': '40px',
+
     },
     fontFamily: {
       'mont': ['Montserrat', 'sans-serif'],
-      'inter' : ['Inter', 'sans-serif'],
+      'inter' : ['Inter'],
     },
     screens: {
       'sm': '480px',
@@ -29,7 +33,8 @@ module.exports = {
     extend: {
       colors: {
         'white': '#ffffff',
-        'blue-zero': '#0079C1',
+        'black-zero': '#373D43',
+        'black-cem': '#000000',
         'blue-gerdau-init': "#0079C1",
         'blue-gerdau-mid': "#004A8F",
         'blue-gerdau-end': "#003068",
@@ -39,6 +44,9 @@ module.exports = {
       //   'gradient-conic':
       //     'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       // },
+    },
+    boxShadow: {
+      'custom': '0px 0px 10px rgba(0, 0, 0, 0.25)',
     },
   },
   plugins: [],
