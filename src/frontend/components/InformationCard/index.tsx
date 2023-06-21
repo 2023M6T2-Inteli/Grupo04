@@ -19,7 +19,7 @@ const InformationCard: React.FC<Props> = ({ cardContent }) => {
   return (
     <motion.div
       variants={item}
-      className="flex-grow w-[10%] h-[19%] rounded-3xl shadow-2xl select-none"
+      className="flex-grow w-[10%] h-[19%] rounded-2xl shadow-custom select-none"
     >
       <h1 className="mt-[5%] ml-[10%] select-none text-xl text-blue-gerdau-init font-mont">
         {cardContent.title}

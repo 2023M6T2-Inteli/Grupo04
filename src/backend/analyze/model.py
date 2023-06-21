@@ -18,7 +18,20 @@ def create_analyze(routeId:int ,name: str, startDate: str, endDate: str, supervi
         db.analyze.create(data=data)
         analyze = db.analyze.find_first(order={'id': 'desc'})
         return analyze
-
+    
+def save_image(Analyzeid:int, frame:str) -> str:
+    analyze = db.analyze.find_first(where={'id': Analyzeid})
+    if not analyze:
+        raise NameError(f'Analyze not exists with this id: {Analyzeid}')
+    else:
+        data = {
+        "path": frame,
+        "analyzeId": Analyzeid
+        }
+        print(data)
+        db.image_analyse.create(data=data)
+        return f"Image saved with success!"
+    
 def get_analyzes() -> list[Prisma.analyze]:
     analyzes = db.analyze.find_many()
     if not analyzes:

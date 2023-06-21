@@ -38,7 +38,7 @@ const ShowInfo: React.FC<Props> = ({
   return (
     <>
       <div className="relative self-center flex-1 w-3/4">
-        <p className="w-full font-mont text-blue-zero font-bold text-lg md:text-3xl text-center mb-8">Analyze Information</p>
+        <p className="w-full font-mont text-blue-gerdau-init font-bold text-lg md:text-3xl text-center mb-8">Analyze Information</p>
         <div className="flex-grow">
           <form>
             <label>

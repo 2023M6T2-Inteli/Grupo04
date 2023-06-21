@@ -52,12 +52,14 @@ const Login: React.FC<Props> = ({}) => {
                 <LoginBody signType={sign} text={"Welcome Back!"}
                            header={"Sign In"}/>)}
             {sign === SignType.Login && (
-                <p onClick={() => setSign(SignType.Register)}>{"Don't have" +
-                    " an account yet? "}
-                    <span className="mx-auto w-full select-none text-blue-500">
-                        {"Sign Up."}
-                    </span>
-                </p>
+                <div className="text-center">
+                    <p className="text-center" onClick={() => setSign(SignType.Register)}>{"Don't have" +
+                        " an account? "}
+                        <span className="mx-auto w-full select-none text-blue-500">
+                            {"Sign Up."}
+                        </span>
+                    </p>
+                </div>
             )}
         </motion.div>
     );

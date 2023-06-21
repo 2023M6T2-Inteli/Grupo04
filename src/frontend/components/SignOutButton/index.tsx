@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { MdOutlineChangeCircle } from "react-icons/md";
 import robotImage from "@/assets/TurtleBot.svg";
 import { useRouter } from "next/router";
-import { Robot } from "../WelcomeBody";
+import { Robot } from "../RobotSelectionBody";
 
 interface Props {
   isHover: boolean;
@@ -53,9 +53,7 @@ const SignOutButton: React.FC<Props> = ({ isHover, robot }) => {
       initial="hidden"
       animate="visible"
       variants={container}
-      className={`flex flex-col ${
-        isHover ? "h-[50vh]" : "h-[57vh]"
-      } justify-end items-center gap-9`}
+      className={`flex flex-col  justify-end items-center gap-9`}
     >
       <AnimatePresence>
         {isHover ? (

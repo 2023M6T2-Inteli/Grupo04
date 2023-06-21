@@ -1,4 +1,4 @@
-**Conteúdo**
+**yConteúdo**
 
 - [Arquitetura do sistema](#arquitetura-do-sistema)
   - [Análise de Requisitos](#análise-de-requisitos)
@@ -82,7 +82,7 @@ Os Requisitos Não Funcionais foram idealizados em discussão entre os participa
 
 ### Requisitos Não Funcionais Tecnologicos
 
-<table><tbody><tr><td><strong>Código</strong></td><td><strong>Requisitos Não Funcional</strong></td></tr><tr><td>RNFT-01</td><td>O sistema deve usar o Prisma para fins de construção do Banco de Dados em SQLite3.</td></tr><tr><td>RNFT-02</td><td>O sistema deve usar o framework React e a linguagem de estilo CSS para o desenvolvimento Front-End do sistema.</td></tr><tr><td>RNFT-03</td><td>O sistema deve usar a linguagem de programação NEXT.js para desenvolvimento Back-End do sistema.</td></tr><tr><td>RNFT-04</td><td>Durante o desenvolvimento do projeto, a equipe deverá usar o Git e o GitHub para fins de versionamento de código.</td></tr><tr><td>RNFT-05</td><td>Durante o desenvolvimento do projeto, a equipe deverá usar o Monday para fins de organização de tarefas.</td></tr><tr><td>RNFT-06</td><td>O efetuador robótico a ser utilizado no projeto deverá ser o Turtle Bot 3 Burguer.</td></tr><tr><td>RNFT-07</td><td>Durante o projeto, a equipe deverá usar como microprocesador embarcado o Raspberry Pi 3.</td></tr><tr><td>RNFT-08</td><td>O Turtle Bot 3 Burguer deverá utilizar o ROS2 para transmissão de dados para o sistema.</td></tr></tbody></table>
+<table><tbody><tr><td><strong>Código</strong></td><td><strong>Requisitos Não Funcional</strong></td></tr><tr><td>RNFT-01</td><td>O sistema deve usar o Prisma para fins de construção do Banco de Dados em MYSQL.</td></tr><tr><td>RNFT-02</td><td>O sistema deve usar o framework React.js, Next.js e Tailwind para o desenvolvimento Front-End do sistema.</td></tr><tr><td>RNFT-03</td><td>O sistema deve usar a linguagem de programação Python  para desenvolvimento Back-End do sistema.</td></tr><tr><td>RNFT-04</td><td>Durante o desenvolvimento do projeto, a equipe deverá usar o Git e o GitHub para fins de versionamento de código.</td></tr><tr><td>RNFT-05</td><td>Durante o desenvolvimento do projeto, a equipe deverá usar o Monday para fins de organização de tarefas.</td></tr><tr><td>RNFT-06</td><td>O efetuador robótico a ser utilizado no projeto deverá ser o Turtle Bot 3 Burguer.</td></tr><tr><td>RNFT-07</td><td>Durante o projeto, a equipe deverá usar como microprocesador embarcado o Raspberry Pi 3.</td></tr><tr><td>RNFT-08</td><td>O Turtle Bot 3 Burguer deverá utilizar o ROS2 para transmissão de dados para o sistema.</td></tr></tbody></table>
 
 ## Viabilidade técnica
 
@@ -188,15 +188,15 @@ O ROS2 permite a comunicação entre os diferentes nós do sistema, enquanto o G
 
 **Script.js, Python e Servidor Sanic**
 
-O algoritmo de otimização de rota é implementado em um script.js e main.py, que é executado em um servidor Sanic. O servidor Sanic permite que o script.js e main.py se comunique com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e main.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Sanic.
+O algoritmo de otimização de rota é implementado em um script.js e app.py, que é executado em um servidor Sanic. O servidor Sanic permite que o script.js e app.py se comunique com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e app.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Sanic.
 
 **Planejamento da comunicação entre os Componentes**
 
-A arquitetura do sistema é dividida em quatro componentes principais: ROS2, Gazebo, Sanic e os scripts de algoritmo (script.js e main.py). A comunicação entre esses componentes é uma parte crucial do projeto e será implementada na sprint três do desenvolvimento. A seguir, é apresentado o papel de cada componente e como eles se comunicam entre si:
+A arquitetura do sistema é dividida em quatro componentes principais: ROS2, Gazebo, Sanic e os scripts de algoritmo (script.js e app.py). A comunicação entre esses componentes é uma parte crucial do projeto e será implementada na sprint três do desenvolvimento. A seguir, é apresentado o papel de cada componente e como eles se comunicam entre si:
 
-**1. Script.js e main.py:** O algoritmo escrito em JavaScript e Python é o ponto de partida para a otimização da rota do robô. Ele processa os dados inseridos pelo usuário através de uma interface web e calcula a rota mais eficiente para o robô. Essas informações são então enviadas para o servidor Sanic.
+**1. Script.js e app.py:** O algoritmo escrito em JavaScript e Python é o ponto de partida para a otimização da rota do robô. Ele processa os dados inseridos pelo usuário através de uma interface web e calcula a rota mais eficiente para o robô. Essas informações são então enviadas para o servidor Sanic.
 
-**2. Sanic:** O servidor Sanic atua como um intermediário entre o algoritmo e o ROS2. Ele recebe a rota otimizada do script.js e main.py e a encaminha para o ROS2. Esta comunicação é realizada através de um websocket, um protocolo que permite a troca de mensagens em tempo real.
+**2. Sanic:** O servidor Sanic atua como um intermediário entre o algoritmo e o ROS2. Ele recebe a rota otimizada do script.js e app.py e a encaminha para o ROS2. Esta comunicação é realizada através de um websocket, um protocolo que permite a troca de mensagens em tempo real.
 
 **3. ROS2 (Robot Operating System 2):** O ROS2 é o componente que se comunica diretamente com a simulação do Gazebo. Ele recebe as instruções de rota do servidor Sanic e as converte em comandos de movimento para o robô na simulação. Esta comunicação é feita através do pacote gazebo_ros_pkgs, que permite a troca de mensagens e serviços entre o ROS2 e o Gazebo utilizando o método de subscribers e publishers.
 
@@ -210,13 +210,13 @@ A arquitetura do sistema pode ser visualizada abaixo:
 
 **Pacote para o Algoritmo**
 
-Para a implementação da integração do algoritmo no sistema, o script.js, main.py e o servidor Sanic serão encapsulados em um pacote de software dedicado. Este pacote será instalado no ROS2 e atuará como o principal condutor das funcionalidades do algoritmo dentro do ambiente ROS2 para comunicação com o simulador Gazebo. Abaixo estão detalhadas as etapas para implementação desse sistema.
+Para a implementação da integração do algoritmo no sistema, o script.js, app.py e o servidor Sanic serão encapsulados em um pacote de software dedicado. Este pacote será instalado no ROS2 e atuará como o principal condutor das funcionalidades do algoritmo dentro do ambiente ROS2 para comunicação com o simulador Gazebo. Abaixo estão detalhadas as etapas para implementação desse sistema.
 
-**1. Componentes do Pacote:** O pacote será composto pelo script.js e main.py, responsáveis pela lógica do algoritmo de otimização de rota. Também incluirá o código do servidor Sanic, que serve como o intermediário entre o algoritmo e o ROS2, facilitando a troca de informações.
+**1. Componentes do Pacote:** O pacote será composto pelo script.js e app.py, responsáveis pela lógica do algoritmo de otimização de rota. Também incluirá o código do servidor Sanic, que serve como o intermediário entre o algoritmo e o ROS2, facilitando a troca de informações.
 
 **2. Dependências:** Além dos componentes principais, o pacote também conterá todas as dependências necessárias para a execução do algoritmo. Isso pode incluir bibliotecas JavaScript e Python, pacotes ROS2, módulos Sanic, entre outros. Ao incluir todas as dependências no pacote, garante-se que o algoritmo possa ser executado em qualquer ambiente que tenha o ROS2 instalado, sem a necessidade de instalações adicionais.
 
-**3. Integração com o Gazebo:** Uma vez instalado no ROS2, o pacote permitirá a integração do algoritmo com o Gazebo. A rota otimizada, calculada pelo script.js e main.py, será transmitida ao Gazebo através do ROS2, permitindo que o robô se mova de acordo com essa rota no ambiente de simulação.
+**3. Integração com o Gazebo:** Uma vez instalado no ROS2, o pacote permitirá a integração do algoritmo com o Gazebo. A rota otimizada, calculada pelo script.js e app.py, será transmitida ao Gazebo através do ROS2, permitindo que o robô se mova de acordo com essa rota no ambiente de simulação.
 
 **4. Instalação e Configuração:** As instruções detalhadas para a instalação e configuração do pacote serão fornecidas na documentação do pacote.
 
@@ -239,7 +239,7 @@ Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 
 #### Diagrama de arquitetura
 
-![Diagrama em blocos](./images/DiagramaGERDAU.jpg)
+![1686773016794](image/index/1686773016794.png)
 
 #### Diagrama de blocos
 
@@ -304,6 +304,14 @@ Em quesito de retorno para Gerdau, seriam todos indiretos, uma vez que a soluç�
 <p align="center">
 
 <table><tbody><tr><td><strong>Itens</strong></td><td><strong>Categoria</strong></td><td><strong>Preço Estimado</strong></td></tr><tr><td>Desenvolvimento de um MVP</td><td>Hardware</td><td>R$ 2.000.000</td></tr><tr><td>Engenharia</td><td>Serviço</td><td>R$ 2.010.000</td></tr><tr><td>Seguro</td><td>Manutenção</td><td>R$ 200.500,00</td></tr><tr><td>Margem de lucro da terceirizada (20%)</td><td>Margem de lucro</td><td>R$ 818.664,00</td></tr><tr><td> </td><td><strong>Total:</strong></td><td>R$ 5.052.600,00</td></tr></tbody></table>
+
+Outro item que gera custos para a empresa, porém com frequência mensal, é o AWS(Amazon Web Services).
+
+Para estimar o custo do serviço, consideramos que serão feitas 10 análises por dia, durante os 20 dias úteis do mês. Dado isso, o preço definido por ensaio é de 0,80 dólars em uma conversão 1 dólar para 5 reais. 
+
+Outro custo, além das análises, é de hospedagem de ambos frontend e backend.
+
+<table><tbody><tr><td><strong>Itens</strong></td><td><strong>Categoria</strong></td><td><strong>Preço Estimado (por mês)</strong></td></tr><tr><td>AWS(Análises)</td><td>Serviço de Assinatura</td><td>160 USD</td></tr><tr><td>AWS (Hospedagem deo front e back)</td><td>Serviço de Assinatura</td><td>200 USD</td></tr></tbody></tr><tr><td> </td><td><strong>Total:</strong></td><td>360 USD (R$ 1.800.00)</td></tr></table>
 
 </p>
 
@@ -595,6 +603,42 @@ Para a curva do Score F1, representa-se a variação do score F1 ao longo de vá
 
 Acima, está a representação da relação entre a Pontuação F1 e confiabilidade do modelo treinado.
 
+## 1.3. Sensoriamento de gás
+
+Um dos principais requisitos especificados pela Gerdau no momento da solicitação do projeto e condução das entrevistas foi que o dispositivo desenvolvido assim o fosse com a capacidade de detectar e mensurar a presença de gases voláteis em ambientes confinados. Esta característica é tão relevante quando a navegação, pois ela dá à navegação seu propósito: Explorar as diferentes regiões das tubulações em busca da presença de gases voláteis. As estratégias adotadas para o sensoriamento, digitalização e transmissão dos dados coletados, através de protocolos de rede e middlewares serão descritas nesta seção. 
+
+### 1.3.1 Sensor
+
+O componente responsável pela realização do sensoriamento dos gases voláteis escolhido para solução foi o Sensor de Gases Combustíveis MQ-2 (https://www.pololu.com/file/0J309/MQ2.pdf). Este sensor é baseado em Óxido de estanho, que apresenta uma condutividade relativamente baixa em contato com o ar puro, comparada a maior condutividade de adquire quando exposto a gases inflamáveis. Esta reação é esperada com os gases GLP (Gás Liquefeito do Petróleo), propano, hidrogênio, metano e outros gases combustíveis. 
+
+<p align="center">
+<img src="./images/mq-2.jpg">
+</p>
+
+### 1.3.2. Circuito de condicionamento
+
+A transdução para a detecção de gás ocorre por meio da variação da resistência que o sensor oferece ao circuito mediante à exposição a gases inflamáveis. A forma empregada para mensurar tal variação foi a mensuração da variação da corrente elétrica no circuito. Dada que esta variação é sutil, fez-se necessário a integração do sensor em uma placa de condicionamento munida de um amplificador operacional, capaz de amplificar o sinal da variação de corrente gerado pelo sensor MQ-2. Como a variação da corrente amplificada se dá por meio de sinal analógico, foi necessário o uso de um conversor ADC (conversor analógico-digital) para que esse sinal pudesse ser registrado digitalmente. Para tanto, o ADC responsável por tal conversão foi o ADC de 10 bits integrado no microcontrolador ATmega328. Como forma de facilitar o processo de prototipagem e testagem de diferentes tipos de firmware no microcontrolador, a plataforma de prototipagem OpenSource Arduino Uno foi escolhida. O circuito responsável pelo sensoriamento e digitalização da presença de gases voláteis é descrito no diagrama abaixo.
+
+<p align="center">
+<img src="./images/mq-2-wiring.jpg">
+</p>
+
+No diagrama apresentado acima é possível ver a ligação da placa de condicionamento do sensor MQ-2 a plataforma Arduino Uno. Para a alimentação da placa de condicionamento e consequente formação de seu circuito interno de medição de variação da corrente elétrica, foram ligadas a ela a fonte de tensão contínua de 5V do Arduino Uno, bem como sua ligação terra (GND). A medida da variação da corrente amplificada é feita por meio de uma das entradas analógicas do Arduino Uno. 
+
+### 1.3.3 Teste de detecção e quantificação de gases voláteis
+
+Abaixo, encontra-se uma demonstração da detecção e quantificação da presença do gás butano e vapor de álcool etílico, presente em isqueiros comuns, pelo circuito descrito:
+
+https://github.com/2023M6T2-Inteli/Grupo04/assets/40524905/b31895f6-f636-4267-a70e-3755a0466418
+
+No vídeo acima, nota-se que o comportamento do gráfico responsável por representar o nível de gás proximal ao sensor reage de acordo com sua exposição a uma fonte de gás inflamável. A resposta da leitura do sensor a sua exposição as fontes de gás butano e vapor de álcool etílico aparenta ser linear. A leitura do valor do sensor no circuito da demonstração acima está sendo feita a uma frequência de amostragem de 125 KHz.
+
+### 1.3.4. Transmissão da leitura do sensor para o backend
+
+A leitura dos dados de variação de corrente amplificada da placa de condicionamento com o sensor MQ-2 é feita via firmware e foi transmitida para representação gráfica no último vídeo por comunicação serial. Da mesma forma, a comunicação entre a plataforma Arduino Uno e o computador Raspberry Pi 4, presente no Turblebot Burguer, se deu via interface serial USB. Para tornar possível a obtenção dos dados transmitidos via serial a partir do script Python foi utilizada a biblioteca Pyserial. A transmissão de tais dados para o servidor foi feita pelo protocolo de comunicação por websockets, usando a biblioteca de mesmo nome, em conjunto com a biblioteca asyncio, para gerenciamento assíncrono deste processo. 
+
+A arquitetura de obtenção, digitalização, quando for o caso, e envio de dados do sensor MQ-2 pode ser aproveitada para a maior parte de sensores analógicos ou digitais. Neste último caso, sem a necessidade da etapa de digitalização pela interface AD do Arduino Uno. Por causa disso, sensores de temperatura, umidade, som, vibração, campos eletromagnéticos, dentro outros, podem ser incorporados na plataforma desenvolvida conforme a necessidade, expandindo suas funcionalidades e aplicações.
+
 ## Sistemas de segurança
 
 ### Fabricação e implementação dos dispositivos de segurança
@@ -625,7 +669,7 @@ Quando falamos de sistema de proteção contra comandos indesejados, vamos além
 
 ### Sistema de segurança da bateria
 
-No modelo de robô utilizado, existe um potencial significativo de danos à sua bateria caso seu nível de energia seja excessivamente baixo. Quando tal nível crítico é alcançado, um alerta sonoro é emitido. Se esse alerta não for atendido, a célula de bateria se tornará inutilizável e não poderá ser recarregada. No entanto, embora exista um sistema de segurança já implementado, ele não se mostra suficiente, uma vez que, durante as operações do robô, ele pode estar localizado em uma área isolada, o que impossibilita que os colaboradores tomem conhecimento da situação. Portanto, para abordar essa questão de forma eficaz, é necessário exibir o nível de bateria na página web, para que antes da inicialização de uma inspeção, o colaborador saiba o nível de segurança ao mandar o robô para um espaço isolado naquele momento. Ademais, emitir alertas de bateria fraca na interface gráfica, não ficando dependente do aviso sonoro do robô ou da checagem constante do nível.
+No modelo de robô utilizado, existe um potencial significativo de danos à sua bateria caso seu nível de energia seja excessivamente baixo. Quando tal nível crítico é alcançado, um alerta sonoro é emitido. Se esse alerta não for atendido, a célula de bateria se tornará inutilizável e não poderá ser recarregada. No entanto, embora exista um sistema de segurança já implementado, ele não se mostra suficiente, uma vez que, durante as operações do robô, ele pode estar localizado em uma área isolada, o que impossibilita que os colaboradores tomem conhecimento da situação. Portanto, para abordar essa questão de forma eficaz, pretendemos em nosso roadmap adicionar um equipamento capaz de exibir o nível de bateria na página web, para que antes da inicialização de uma inspeção, o colaborador saiba o nível de segurança ao mandar o robô para um espaço isolado naquele momento. Ademais, emitir alertas de bateria fraca na interface gráfica, não ficando dependente do aviso sonoro do robô ou da checagem constante do nível.
 
 ### Sistema anticolisão
 
@@ -688,7 +732,6 @@ Além disso, a documentação construída no Swagger foi disponibilizada juntame
 ![1686525274187](image/index/1686525274187.png)
 
 Por fim, é válido ressaltar que todo o backend já está disponível em deploy na AWS, especificamente no serviço EC2, tornando-se ainda mais alinhado com as tecnologias adotadas pela empresa.
-
 
 ## Documentação Respostas HTTP Backend
 
@@ -891,7 +934,6 @@ Para obter as informações de um usuário, precisamos passar o token de autenti
     		- `200 - `{"user": {informações do usuário}}
     		- `500 - `{"error": "Mensagem de erro"}
 
-
 ## Banco de dados relacional
 
 A construção do banco de dados ocorreu inicialmente durante a sprint 3 e finalizado na sprint 4, dando ênfase na alteração de algumas tabelas. O banco em si permaneceu modelado por meio do ORM (Object Relational Mapper), que é uma técnica de mapeamento objeto-relacional que permite fazer uma relação dos objetos com os dados que os mesmos representam, denominado Prisma. A escolha do Prisma se deu pelo fato da sua fácil utilização, documentação bem estruturada e facilidade de aprendizado, além de ter uma série de ferramentas que possibilitam várias outras utilizações ou em linguagens diferentes. Como linguagem para o banco de dados, foi escolhido o MySQL por ser um banco de dados relacional, que é o mais utilizado atualmente, além de ser um banco de dados que possui uma grande comunidade e uma documentação bem estruturada.
@@ -905,8 +947,6 @@ Abaixo é possível ver o diagrama do banco de dados:
 #### Diagrama do banco de dados
 
 ![Alt text](images/diagrama-banco-de-dados-v2.svg)
-
-
 
 ## Integração de sistemas
 
@@ -924,8 +964,23 @@ Por fim, o último protocolo que temos utilizado desde o início do módulo é o
 
 Os nós acabam se comunicam através de tópicos, que são canais de comunicação unidirecional. Um nó pode publicar mensagens em um tópico e outros nós podem se inscrever para receber essas mensagens. Essa comunicação assíncrona permite que os nós operem de forma independente, sem a necessidade de comunicação direta e síncrona entre eles.
 
-
 ### Detalhamento dos testes
+
+Com o objetivo de oferecer a melhor experiência possível ao usuário, é essencial dedicar atenção ao tempo necessário para a conclusão de uma requisição. Caso esse período seja excessivamente prolongado, ocorre o risco de desmotivar e frustrar o usuário. Portanto, é fundamental garantir um tempo de resposta adequado, que proporcione uma interação fluída e eficiente, evitando assim o desgaste emocional e a perda de interesse do usuário.
+
+Consequentemente, optou-se por empregar dois tipos distintos de testes de desempenho de rotas: o teste de carga e o teste de latência. No teste de carga, é selecionado um determinado número de usuários, os quais realizam solicitações à rota especificada, simulando assim uma situação de tráfego intenso. Por outro lado, no teste de latência, ocorre o incremento deliberado da latência, a fim de simular o funcionamento em redes mais lentas. Essa abordagem abrange uma análise abrangente do desempenho das rotas, levando em consideração tanto a capacidade de suportar demandas elevadas quanto a efetividade em ambientes com conexões mais lentas.
+
+Em ambos os tipos de testes realizados, foram empregados estágios distintos com o intuito de avaliar as variações de resultados à medida que as variáveis de usuários e latência eram incrementadas. Essa abordagem em estágios permitiu uma análise mais aprofundada do impacto causado pelo aumento do número de usuários e pela intensificação da latência.
+
+Além disso, os testes foram executados em duas rotas distintas, uma utilizando o método POST e outra utilizando o método GET, com o objetivo de avaliar o tempo necessário para adicionar informações ao banco de dados, bem como para recuperar todos os dados de uma determinada área do sistema. Ao aplicar os testes nessas duas rotas com métodos diferentes, foi possível analisar de maneira abrangente o desempenho do sistema em diferentes operações. As rotas selecionadas estão relacionadas ao cadastro de um robô e a consulta de todos os robô cadastrados previamente.
+
+#### Teste de carga
+
+Os estágios selecionados para a realização deste teste envolvem uma progressão gradual do número de usuários, partindo de 10 inicialmente e aumentando para 50 e, posteriormente, para 100. Em relação ao método GET, observamos que sua performance é superior, apresentando incrementos pouco significativos no tempo médio de conclusão das requisições à medida que avançamos pelos estágios. Inicialmente, o tempo médio é de 300ms, e esse valor aumenta para 600ms. Por outro lado, ao considerarmos o método POST, constatamos que há um aumento mais substancial no tempo de processamento entre os estágios, no entanto, isso não prejudica a experiência dos usuários. No início, o tempo médio é de 500ms, e ao progredirmos para os estágios seguintes, ele aumenta para 1200ms.
+
+#### Teste de latência
+
+No decorrer deste teste, estamos simulando a execução de uma único usuário realizando a requisição, considerando diferentes estágios de latência. No primeiro estágio, a latência é de 500ms, e posteriormente, no segundo estágio, a latência aumenta para 1000ms, emulando uma situação de rede mais lenta. Em ambos os métodos de requisição, os resultados obtidos nos estágios foram considerados aceitáveis, uma vez que se mantiveram abaixo de 1500ms. Esses resultados indicam que o tempo de resposta foi mantido em um nível adequado, mesmo diante de uma condição de rede desfavorável. Assim, é possível afirmar que a experiência do usuário não foi prejudicada, mesmo em uma situação em que a qualidade da rede não é ideal.
 
 # Referências
 

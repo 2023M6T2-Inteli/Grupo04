@@ -9,15 +9,14 @@ interface Props {
 
 const RouteCard: React.FC<Props> = ({ route }) => {
   return (
-    <div className="flex shadow-2xl flex-col h-36 w-56 rounded-xl">
+    <div className="flex shadow-custom flex-col h-max w-full rounded-xl p-4">
       <Image
-        className="pt-1 mx-auto"
+        className="mx-auto w-full"
         src={route.image}
-        width={170}
         height={110}
         alt={route.name}
       ></Image>
-      <h1 className="select-none pl-2 font-inter text-blue-gerdau-mid">
+      <h1 className="select-none pl-2 font-mont font-medium text-blue-gerdau-init">
         {route.name}
       </h1>
       <p className="pl-3 text-sm pb-1 font-inter">
