@@ -603,6 +603,42 @@ Para a curva do Score F1, representa-se a variação do score F1 ao longo de vá
 
 Acima, está a representação da relação entre a Pontuação F1 e confiabilidade do modelo treinado.
 
+## 1.3. Sensoriamento de gás
+
+Um dos principais requisitos especificados pela Gerdau no momento da solicitação do projeto e condução das entrevistas foi que o dispositivo desenvolvido assim o fosse com a capacidade de detectar e mensurar a presença de gases voláteis em ambientes confinados. Esta característica é tão relevante quando a navegação, pois ela dá à navegação seu propósito: Explorar as diferentes regiões das tubulações em busca da presença de gases voláteis. As estratégias adotadas para o sensoriamento, digitalização e transmissão dos dados coletados, através de protocolos de rede e middlewares serão descritas nesta seção. 
+
+### 1.3.1 Sensor
+
+O componente responsável pela realização do sensoriamento dos gases voláteis escolhido para solução foi o Sensor de Gases Combustíveis MQ-2 (https://www.pololu.com/file/0J309/MQ2.pdf). Este sensor é baseado em Óxido de estanho, que apresenta uma condutividade relativamente baixa em contato com o ar puro, comparada a maior condutividade de adquire quando exposto a gases inflamáveis. Esta reação é esperada com os gases GLP (Gás Liquefeito do Petróleo), propano, hidrogênio, metano e outros gases combustíveis. 
+
+<p align="center">
+<img src="./images/mq-2.jpg">
+</p>
+
+### 1.3.2. Circuito de condicionamento
+
+A transdução para a detecção de gás ocorre por meio da variação da resistência que o sensor oferece ao circuito mediante à exposição a gases inflamáveis. A forma empregada para mensurar tal variação foi a mensuração da variação da corrente elétrica no circuito. Dada que esta variação é sutil, fez-se necessário a integração do sensor em uma placa de condicionamento munida de um amplificador operacional, capaz de amplificar o sinal da variação de corrente gerado pelo sensor MQ-2. Como a variação da corrente amplificada se dá por meio de sinal analógico, foi necessário o uso de um conversor ADC (conversor analógico-digital) para que esse sinal pudesse ser registrado digitalmente. Para tanto, o ADC responsável por tal conversão foi o ADC de 10 bits integrado no microcontrolador ATmega328. Como forma de facilitar o processo de prototipagem e testagem de diferentes tipos de firmware no microcontrolador, a plataforma de prototipagem OpenSource Arduino Uno foi escolhida. O circuito responsável pelo sensoriamento e digitalização da presença de gases voláteis é descrito no diagrama abaixo.
+
+<p align="center">
+<img src="./images/mq-2-wiring.jpg">
+</p>
+
+No diagrama apresentado acima é possível ver a ligação da placa de condicionamento do sensor MQ-2 a plataforma Arduino Uno. Para a alimentação da placa de condicionamento e consequente formação de seu circuito interno de medição de variação da corrente elétrica, foram ligadas a ela a fonte de tensão contínua de 5V do Arduino Uno, bem como sua ligação terra (GND). A medida da variação da corrente amplificada é feita por meio de uma das entradas analógicas do Arduino Uno. 
+
+### 1.3.3 Teste de detecção e quantificação de gases voláteis
+
+Abaixo, encontra-se uma demonstração da detecção e quantificação da presença do gás butano e vapor de álcool etílico, presente em isqueiros comuns, pelo circuito descrito:
+
+https://github.com/2023M6T2-Inteli/Grupo04/assets/40524905/b31895f6-f636-4267-a70e-3755a0466418
+
+No vídeo acima, nota-se que o comportamento do gráfico responsável por representar o nível de gás proximal ao sensor reage de acordo com sua exposição a uma fonte de gás inflamável. A resposta da leitura do sensor a sua exposição as fontes de gás butano e vapor de álcool etílico aparenta ser linear. A leitura do valor do sensor no circuito da demonstração acima está sendo feita a uma frequência de amostragem de 125 KHz.
+
+### 1.3.4. Transmissão da leitura do sensor para o backend
+
+A leitura dos dados de variação de corrente amplificada da placa de condicionamento com o sensor MQ-2 é feita via firmware e foi transmitida para representação gráfica no último vídeo por comunicação serial. Da mesma forma, a comunicação entre a plataforma Arduino Uno e o computador Raspberry Pi 4, presente no Turblebot Burguer, se deu via interface serial USB. Para tornar possível a obtenção dos dados transmitidos via serial a partir do script Python foi utilizada a biblioteca Pyserial. A transmissão de tais dados para o servidor foi feita pelo protocolo de comunicação por websockets, usando a biblioteca de mesmo nome, em conjunto com a biblioteca asyncio, para gerenciamento assíncrono deste processo. 
+
+A arquitetura de obtenção, digitalização, quando for o caso, e envio de dados do sensor MQ-2 pode ser aproveitada para a maior parte de sensores analógicos ou digitais. Neste último caso, sem a necessidade da etapa de digitalização pela interface AD do Arduino Uno. Por causa disso, sensores de temperatura, umidade, som, vibração, campos eletromagnéticos, dentro outros, podem ser incorporados na plataforma desenvolvida conforme a necessidade, expandindo suas funcionalidades e aplicações.
+
 ## Sistemas de segurança
 
 ### Fabricação e implementação dos dispositivos de segurança
