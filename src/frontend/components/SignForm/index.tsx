@@ -88,20 +88,20 @@ const SignForm: React.FC<Props> = ({ signType }) => {
     >
       {signType === SignType.Register && (
         <label>
-          <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
+          <p className="border-b-2 p-2 border-blue-gerdau-mid w-full font-inter font-xs mb-4">
             <input
-              className="w-full outline-none ring-0"
+              className="w-full outline-none ring-0 placeholder:font-inter placeholder-black-zero placeholder:text-px-18"
               {...register("name")}
               type="text"
-              placeholder="Your name"
+              placeholder="Name"
             />
           </p>
         </label>
       )}
       <label>
-        <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
+        <p className="border-b-2 p-2 border-blue-gerdau-mid w-full font-inter font-xs mb-4">
           <input
-            className="w-full outline-none ring-0"
+            className="w-full outline-none ring-0 placeholder:font-inter placeholder-black-zero placeholder:text-px-18"
             type="text"
             placeholder="E-mail"
             {...register("email")}
@@ -109,9 +109,9 @@ const SignForm: React.FC<Props> = ({ signType }) => {
         </p>
       </label>
       <label>
-        <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
+        <p className="border-b-2 p-2 border-blue-gerdau-mid w-full font-inter font-xs mb-4">
           <input
-            className="w-full outline-none ring-0"
+            className="w-full outline-none ring-0 placeholder:font-inter placeholder-black-zero placeholder:text-px-18"
             type="password"
             placeholder="Password"
             {...register("password")}
@@ -120,9 +120,9 @@ const SignForm: React.FC<Props> = ({ signType }) => {
       </label>
       {signType === SignType.Register && (
         <label>
-          <p className="border-b-2 border-blue-700 w-full rounded font-inter font-xs mb-4">
+          <p className="border-b-2 p-2 border-blue-gerdau-mid w-full font-inter font-xs mb-4">
             <input
-              className="w-full outline-none ring-0"
+              className="w-full outline-none ring-0 placeholder:font-inter placeholder-black-zero placeholder:text-px-18"
               type="password"
               placeholder="Confirm password"
               {...register("confirmPassword")}
@@ -130,10 +130,12 @@ const SignForm: React.FC<Props> = ({ signType }) => {
           </p>
         </label>
       )}
-      <Button
-        type={ButtonType.Home}
-        text={signType === SignType.Register ? "Sign Up" : "Sign" + " In"}
-      />
+      <div className="py-4">
+        <Button
+          type={ButtonType.Home}
+          text={signType === SignType.Register ? "Sign Up" : "Sign" + " In"}
+        />
+      </div>
     </form>
   );
 };

@@ -57,13 +57,13 @@ const NavBar: React.FC<Props> = ({ display, setDisplay, robot }) => {
 
   return (
     <div
-      className="bg-blue-gerdau-mid w-[5vw] transition-all hover:w-[12vw] rounded-r-lg"
+      className="bg-blue-gerdau-mid w-[7vw] transition-all hover:w-[14vw] justify-between flex flex-col py-6 max-h-full rounded-r-lg"
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
     >
       <Image
         src={gerdauLogoBranca}
-        className="mx-auto mt-4 mb-16"
+        className="mx-auto"
         alt="Gerdau Logo"
       />
       <NavBarOptions
