@@ -11,7 +11,7 @@ from robot.service import RobotTestCreate
 
 robot = Blueprint('robot', __name__)
 
-@robot.post("/register")
+@robot.post("/create")
 @openapi.summary("Create a new robot")
 @openapi.description("This endpoint allows you to create a new analyze.")
 @openapi.definition(body={'application/json': RobotTestCreate.schema()})
