@@ -52,10 +52,61 @@
   - [**Sistema de visão computacional - Análise de Rachadura nas Paredes**](#sistema-de-visão-computacional---análise-de-rachadura-nas-paredes)
     - [Implementação](#implementação)
     - [Testes e Resultados](#testes-e-resultados)
+    - [1. Desenvolvimento de implementação de testes de eficácia de detecção](#1-desenvolvimento-de-implementação-de-testes-de-eficácia-de-detecção)
+      - [1.2 Acurácia](#12-acurácia)
+      - [1.3 Curva precisão-confiabilidade](#13-curva-precisão-confiabilidade)
+      - [1.4 Curva precisão-sensibilidade](#14-curva-precisão-sensibilidade)
+      - [1.5 Curva sensibilidade-confiança](#15-curva-sensibilidade-confiança)
+      - [1.6 Curva F1-confiança](#16-curva-f1-confiança)
+    - [2. Sensoriamento de gás](#2-sensoriamento-de-gás)
+      - [2.1 Sensor](#21-sensor)
+      - [2.2 Circuito de condicionamento](#22-circuito-de-condicionamento)
+      - [2.3 Teste de detecção e quantificação de gases voláteis](#23-teste-de-detecção-e-quantificação-de-gases-voláteis)
+      - [2.4 Transmissão da leitura do sensor para o backend](#24-transmissão-da-leitura-do-sensor-para-o-backend)
   - [Sistemas de segurança](#sistemas-de-segurança)
     - [Fabricação e implementação dos dispositivos de segurança](#fabricação-e-implementação-dos-dispositivos-de-segurança)
     - [Sistema de proteção contra comandos indesejados](#sistema-de-proteção-contra-comandos-indesejados)
+    - [Sistema de segurança da bateria](#sistema-de-segurança-da-bateria)
+    - [Sistema anticolisão](#sistema-anticolisão)
     - [Mapeamento de riscos dos sistemas eletromecânicos, mecânicos e eletrônicos.](#mapeamento-de-riscos-dos-sistemas-eletromecânicos-mecânicos-e-eletrônicos)
+    - [Validação da eficiência dos sistemas de segurança](#validação-da-eficiência-dos-sistemas-de-segurança)
+- [Integração de sistemas e backend](#integração-de-sistemas-e-backend)
+  - [Arquitetura da API REST](#arquitetura-da-api-rest)
+  - [Documentação Respostas HTTP Backend](#documentação-respostas-http-backend)
+    - [Analyze](#analyze)
+      - [**Criar uma nova análise**](#criar-uma-nova-análise)
+      - [**Obter todas as análises**](#obter-todas-as-análises)
+      - [**Obter uma análise específica**](#obter-uma-análise-específica)
+      - [Atualizar uma análise](#atualizar-uma-análise)
+      - [**Excluir uma análise**](#excluir-uma-análise)
+      - [**Enviar um vídeo para análise**](#enviar-um-vídeo-para-análise)
+      - [**Receber imagem da câmera**](#receber-imagem-da-câmera)
+    - [**Point**](#point)
+      - [**Criar um ponto**](#criar-um-ponto)
+      - [**Obter todos os pontos de uma rota**](#obter-todos-os-pontos-de-uma-rota)
+      - [**Excluir todos os pontos de uma rota**](#excluir-todos-os-pontos-de-uma-rota)
+    - [**Robot**](#robot)
+      - [**Registrar um Robô**](#registrar-um-robô)
+      - [**Obter todos os Robôs**](#obter-todos-os-robôs)
+      - [**Obter um Robô**](#obter-um-robô)
+      - [**Excluir um Robô**](#excluir-um-robô)
+    - [**Route**](#route)
+      - [**Criar uma nova rota**](#criar-uma-nova-rota)
+      - [**Obter todas as rotas**](#obter-todas-as-rotas)
+      - [**Obter uma rota específica**](#obter-uma-rota-específica)
+      - [**Atualizar uma rota**](#atualizar-uma-rota)
+      - [**Excluir uma rota**](#excluir-uma-rota)
+    - [**User**](#user)
+      - [**Registrar um Usuário**](#registrar-um-usuário)
+      - [**Login de um Usuário**](#login-de-um-usuário)
+      - [**Obter um Usuário**](#obter-um-usuário)
+  - [Banco de dados relacional](#banco-de-dados-relacional)
+      - [Diagrama do banco de dados](#diagrama-do-banco-de-dados-1)
+  - [Integração de sistemas](#integração-de-sistemas)
+    - [Protocolos de comunicação](#protocolos-de-comunicação)
+    - [Detalhamento dos testes](#detalhamento-dos-testes)
+      - [Teste de carga](#teste-de-carga)
+      - [Teste de latência](#teste-de-latência)
 - [Referências](#referências)
 
 # Proposta geral
@@ -717,19 +768,19 @@ Para a estruturação da documentação, testes e manual de implementação da A
 
 Por meio dele, todas as rotas possuem um título breve de explicação. Ao expandir um accordion, você encontra uma descrição mais detalhada, a maneira como pode ser utilizada e um exemplo de como os dados devem ser enviados. Além disso, nele você encontra todas as rotas construídas no backend, de forma organizada, pois todas as rotas estão atribuídas à sua respectiva entidade, como pode ser visto nos exemplos abaixo.
 
-Além disso, a documentação construída no Swagger foi disponibilizada juntamente com o backend no serviço de EC2 da AWS, que pode ser acessado [clicando aqui](http://ec2-52-90-253-66.compute-1.amazonaws.com:3001/docs/swagger).
+Além disso, a documentação construída no Swagger foi disponibilizada juntamente com o backend no serviço de EC2 da AWS, que pode ser acessado [clicando aqui](http://3.217.9.103:3001/docs/swagger).
 
 **1 - Todas as rotas presentes:**
 
-![1686518996036](image/index/1686518996036.png)
+![Alt text](images/api-routes.png)
 
 **2 - Exemplo de consulta pelo Swagger:**
 
-![1686525233951](image/index/1686525233951.png)
+![Alt text](images/api-consult.png)
 
 **3 - Exemplo de resultado obtido pelo Swagger:**
 
-![1686525274187](image/index/1686525274187.png)
+![Alt text](images/api-result.png)
 
 Por fim, é válido ressaltar que todo o backend já está disponível em deploy na AWS, especificamente no serviço EC2, tornando-se ainda mais alinhado com as tecnologias adotadas pela empresa.
 
