@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials, req) {
         const { email, password } = credentials as Credentials;
 
-        const response = await fetch("http://3.217.9.103:3001/user/login", {
+        const response = await fetch("http://localhost:3001/user/login", {
           method: "POST",
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" },
@@ -29,7 +29,7 @@ export const authOptions: NextAuthOptions = {
         if (response.status === 200) {
           const jsonResponse = await response.json();
 
-          const user_response = await fetch("http://3.217.9.103:3001/user/", {
+          const user_response = await fetch("http://localhost:3001/user/", {
             method: "GET",
             headers: {
               Bearer: jsonResponse.token,
@@ -60,7 +60,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       // @ts-ignore
       let updatedSession;
-      await fetch("http://3.217.9.103:3001/user/", {
+      await fetch("http://localhost:3001/user/", {
         method: "GET",
         headers: {
           Bearer: token.accessToken,
