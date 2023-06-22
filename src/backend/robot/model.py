@@ -1,6 +1,8 @@
 from __init__ import db
 from prisma import Prisma
 
+from analyze.service import Analyze
+
 
 def create_robot(name: str, ip: str) -> bool:
     robot = db.robot.find_first(where={'ip': ip})
@@ -24,6 +26,7 @@ def get_robots() -> list[Prisma.robot]:
 
 def get_robot(id: int) -> Prisma.robot:
     robot = db.robot.find_first(where={'id': id})
+    robot.Analyze = db.analyze.find_many(where={'robotId': id})
     if not robot:
         raise NameError(f'Robot not exists with this id: {id}!')
     else:

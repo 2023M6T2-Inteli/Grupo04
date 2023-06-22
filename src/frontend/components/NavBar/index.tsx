@@ -30,8 +30,7 @@ const NavBar: React.FC<Props> = ({ display, setDisplay, robot }) => {
       name: "Add analyze",
       icon: <Icon as={AiOutlinePlus} color={"white"} w={30} h={30} />,
       type: DisplayType.AddAnalyze,
-      color:
-        display === DisplayType.AddAnalyze ? "blue.300" : "blue-gerdau-mid",
+      color: display === DisplayType.AddAnalyze ? "blue.300" : "blue-gerdau-mid",
     },
     {
       name: "History",
