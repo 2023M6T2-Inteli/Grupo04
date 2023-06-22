@@ -42,3 +42,5 @@
 *.venv
 
 .idea
+
+*.yarn.lock

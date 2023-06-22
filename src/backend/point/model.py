@@ -21,9 +21,9 @@ def get_points(routeId: int) -> list[Prisma.point]:
     
 def delete_points(routeId: int) -> bool:
     point = db.point.find_first(where={'routeId': routeId})
-    if point == None or not point:
-        return False
+    if not point:
+        return f'Points not exists with this routeId: {routeId}!'
     else:
         db.point.delete_many(where={'routeId': routeId})
-        return True
+        return f'Points with routeId: {routeId} deleted with success!'
     

@@ -2,36 +2,40 @@ from __init__ import db
 from datetime import datetime
 from prisma import Prisma
 
-def create_analyze(routeId:int ,name: str, startDate: str, endDate: str, supervisor: str,operator: str) -> Prisma.analyze:
+
+def create_analyze(routeId: int, name: str, startDate: str, endDate: str, supervisor: str, operator: str,
+                   robotId: int) -> Prisma.analyze:
     route = db.route.find_first(where={'id': routeId})
     if not route:
         raise NameError(f'Route not exists with this id: {routeId}')
     else:
         data = {
-        "routeId": routeId,
-        "name": name,
-        "startDate": startDate,
-        "endDate": endDate,
-        "supervisor": supervisor,
-        "operator": operator
+            "routeId": routeId,
+            "name": name,
+            "startDate": startDate,
+            "endDate": endDate,
+            "supervisor": supervisor,
+            "operator": operator,
+            "robotId": int(robotId)
         }
         db.analyze.create(data=data)
         analyze = db.analyze.find_first(order={'id': 'desc'})
         return analyze
-    
-def save_image(Analyzeid:int, frame:str) -> str:
+
+
+def save_image(Analyzeid: int, frame: str) -> str:
     analyze = db.analyze.find_first(where={'id': Analyzeid})
     if not analyze:
         raise NameError(f'Analyze not exists with this id: {Analyzeid}')
     else:
         data = {
-        "path": frame,
-        "analyzeId": Analyzeid
+            "path": frame,
+            "analyzeId": Analyzeid
         }
-        print(data)
         db.image_analyse.create(data=data)
-        return f"Image saved with success!"
-    
+        return frame
+
+
 def get_analyzes() -> list[Prisma.analyze]:
     analyzes = db.analyze.find_many()
     if not analyzes:
@@ -39,35 +43,49 @@ def get_analyzes() -> list[Prisma.analyze]:
     else:
         return analyzes
 
+
 def get_analyze(id: int) -> Prisma.analyze:
-    analyze = db.analyze.find_first(where={'id': id})  
+    analyze = db.analyze.find_first(where={'id': id})
+    analyze.sensor = db.sensor.find_many(where={'analyzeId': id})
     if not analyze:
-        raise NameError(f'Analyze not exists')
+        raise NameError(f'Analyze not exists with this id: {id}!')
     else:
         return analyze
-    
-def update_analyze(id: int, routeId:int ,name: str, startDate: str, endDate: str, supervisor: str,operator: str, createdAt: datetime) -> bool:
+
+
+def update_analyze(id: int, routeId: int, name: str, status: str, startDate: str, endDate: str, supervisor: str,
+                   operator: str) -> str:
     analyze = db.analyze.find_first(where={'id': id})
     if not analyze:
-        raise NameError(f'Analyze not exists with this id: {id}')
+        raise NameError(f'Analyze not exists with this id: {id}!')
     else:
         data = {
-                'id': id,
-                'routeId': routeId,
-                'name': name,
-                'startDate': startDate,
-                'endDate': endDate,
-                'supervisor': supervisor,
-                'openator': operator,
-                'createdAt': createdAt
-            }
+            'routeId': routeId,
+            'name': name,
+            'status': status,
+            'startDate': startDate,
+            'endDate': endDate,
+            'supervisor': supervisor,
+            'operator': operator,
+        }
+        print(data)
         db.analyze.update(where={'id': id}, data=data)
-        return True
+        return f'Analyze {id} updated with success!'
 
-def delete_analyze(id: int) -> bool:
+
+def delete_analyze(id: int) -> str:
     analyze = db.analyze.find_first(where={'id': id})
     if not analyze:
-        raise NameError(f'Analyze not exists with this id: {id}')
+        raise NameError(f'Analyze not exists with this id: {id}!')
     else:
         db.analyze.delete(where={'id': id})
-        return True 
+        return f'Analyze {id} deleted with success!'
+
+
+def create_sensor_data(id: int, sensor_data: int) -> str:
+    data = {
+        'analyzeId': id,
+        'data': sensor_data
+    }
+    db.sensor.create(data=data)
+    return f'New sensor reading create with success with value: {sensor_data}!'
