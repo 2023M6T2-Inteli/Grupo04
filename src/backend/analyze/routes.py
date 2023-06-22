@@ -6,7 +6,8 @@ from sanic.response import HTTPResponse, json
 from sanic_ext import openapi
 from ultralytics import YOLO
 
-from analyze.controller import register, get_all, get_analyze, update_analyze, delete_analyze, receive_image
+from analyze.controller import register, get_all, get_analyze, update_analyze, delete_analyze, receive_image, \
+    create_sensor_data
 from analyze.service import AnalyzeTestCreate, AnalyzeTestUpdate
 
 analyze = Blueprint('analyze', __name__)
@@ -25,7 +26,8 @@ async def handler_register(request: Request) -> HTTPResponse:
     data = request.json
     response, code = register(routeId=data['routeId'], name=data['name'], status='In progress',
                               startDate=data['startDate'],
-                              endDate=data['endDate'], supervisor=data['supervisor'], operator=data['operator'])
+                              endDate=data['endDate'], supervisor=data['supervisor'], operator=data['operator'],
+                              robotId=int(data['robotId']))
     return json(response, code)
 
 
@@ -104,20 +106,26 @@ async def video_feed(request: Request, ws: Websocket):
         clients.remove(ws)
         return json({'message': 'No video available'}, 200)
 
+
 VALORES_RECEBIDOS = []
 
-@analyze.websocket("/gas-sensor")
-async def gas_sensor(request: Request, ws: Websocket):
+
+@analyze.websocket("/gas-sensor/<id:int>")
+async def gas_sensor(request: Request, ws: Websocket, id: int):
     while True:
         try:
             data = await ws.recv()
             if isinstance(data, str) and data.isdigit() and int(data) > 0:
                 VALORES_RECEBIDOS.insert(0, int(data))
                 print(f'CHEGOU O VALOR! ---> {data}')
- 
-            await ws.send("OK")
+                response, code = create_sensor_data(id, int(data))
+            if response:
+                await ws.send(f"{response['message']} with code {code}")
+            else:
+                await ws.send(f"Data is not valid!")
         except Exception as err:
             print(f"ERROOORR!! {err}")
+
 
 @analyze.websocket("/gas-sensor-frontend")
 async def gas_sensor_reading(request: Request, ws: Websocket):
@@ -130,4 +138,3 @@ async def gas_sensor_reading(request: Request, ws: Websocket):
         except Exception as err:
             print(f"ERROOORR!! {err}")
             await asyncio.sleep(1)
-
