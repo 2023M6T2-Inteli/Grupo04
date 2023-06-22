@@ -24,10 +24,15 @@ frame_queue = asyncio.Queue()
 # @validate_body(Schema.REGISTER.value)
 async def handler_register(request: Request) -> HTTPResponse:
     data = request.json
-    response, code = register(routeId=data['routeId'], name=data['name'], status='In progress',
-                              startDate=data['startDate'],
-                              endDate=data['endDate'], supervisor=data['supervisor'], operator=data['operator'],
-                              robotId=int(data['robotId']))
+    response, code = register(
+        routeId=data['routeId'], 
+        name=data['name'], 
+        status='In progress',
+        startDate=data['startDate'],
+        endDate=data['endDate'], 
+        supervisor=data['supervisor'], 
+        operator=data['operator'],
+        robotId=int(data['robotId']))
     return json(response, code)
 
 
@@ -54,9 +59,15 @@ async def handler_get_analyze(request: Request, id: int) -> HTTPResponse:
 # @validate_body(Schema.UPDATE.value)
 async def handler_update_analyze(request: Request) -> HTTPResponse:
     data = request.json
-    response, code = update_analyze(id=data['id'], routeId=data['routeId'], name=data['name'], status=data['status'],
-                                    startDate=data['startDate'], endDate=data['endDate'], supervisor=data['supervisor'],
-                                    operator=data['operator'])
+    response, code = update_analyze(
+        id=data['id'], 
+        routeId=data['routeId'], 
+        name=data['name'], 
+        status=data['status'],
+        startDate=data['startDate'], 
+        endDate=data['endDate'], 
+        supervisor=data['supervisor'],
+        operator=data['operator'])
     return json(response, code)
 
 
