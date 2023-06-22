@@ -2,10 +2,11 @@ from __init__ import db
 from prisma import Prisma
 from datetime import datetime
 
-def create_route(name: str) -> bool:
+def create_route(name: str) -> Prisma.route:
     data = { 'name': name }
     db.route.create(data)
-    return True
+    route = db.route.find_first(order={'id': 'desc'})
+    return route
 
 def get_routes() -> list[Prisma.route]:
     routes = db.route.find_many()
@@ -21,7 +22,7 @@ def get_route(id) -> Prisma.route:
     else:
         return route
 
-def update_route(id: int, name: str, createdAt:datetime) -> bool:
+def update_route(id: int, name: str, createdAt:datetime) -> str:
     route = db.route.find_first(where={'id': id})
     if not route:
         raise NameError(f'Route not exists with this id: {id}')
@@ -31,12 +32,12 @@ def update_route(id: int, name: str, createdAt:datetime) -> bool:
             'name': name
         }
         db.route.update(where={'id': id}, data=data)
-        return True
+        return f'Route {id} updated with success!'
     
-def delete_route(id: int) -> bool:
+def delete_route(id: int) -> str:
     route = db.route.find_first(where={'id': id})
     if not route:
         raise NameError(f'Route not exists with this id: {id}')
     else:
         db.route.delete(where={'id': id})
-        return True
+        return f'Route {id} deleted with success!'

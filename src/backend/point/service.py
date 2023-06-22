@@ -14,8 +14,8 @@ class Point:
             point.createdAt = point.createdAt.strftime("%d/%m/%Y %H:%M:%S")
             point = point.__dict__
             return point
-        except: 
-            raise NameError(f'Error to create point')
+        except Exception as error: 
+            raise NameError(f'Error to create point! Error: {error}')
     
     def get_all(routeId:int) -> list[dict[str, str]]:
         try:
@@ -29,19 +29,15 @@ class Point:
                     point = point.__dict__
                     response.append(point)
                 return response
-        except:
-            raise NameError(f'Error to get all points')
+        except Exception as error:
+            raise NameError(f'Error to get all points! Error: {error}')
         
     def delete_points(routeId:int) -> str:
         try:
-            msg = delete_points(routeId)
-            print(msg)
-            if msg == False:
-                return 'Points not found'
-            else:
-                return (f'Points deleted with routeId: {routeId}')
-        except:
-            raise NameError(f'Error to delete points')
+            response = delete_points(routeId)
+            return response
+        except Exception as error:
+            raise NameError(f'Error to delete points! Error: {error}')
         
 
 class PointTestCreate(BaseModel):

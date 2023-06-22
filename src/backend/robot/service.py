@@ -10,8 +10,8 @@ class Robot:
         try:
             create_robot(ip = self.ip, name = self.name)
             return f"Robot {self.name} created with success!"
-        except: 
-            raise NameError(f'Error to create point')
+        except Exception as error: 
+            raise NameError(f'Error to create point! Error: {error}')
     
     def get_all(self) -> list[dict[str, str]]:
         try:
@@ -22,23 +22,23 @@ class Robot:
                 robot = robot.__dict__
                 response.append(robot)
             return response
-        except:
-            raise NameError(f'Error to get all robots')
+        except Exception as error:
+            raise NameError(f'Error to get all robots! Error: {error}')
         
     def get_robot(self, id:int) -> dict[str, str]:
         try:
             robot = get_robot(id)
             robot.createdAt = robot.createdAt.strftime("%d-%m-%Y %H:%M:%S")
             return robot.__dict__
-        except:
-            raise NameError(f'Error to get robot')
+        except Exception as error:
+            raise NameError(f'Error to get robot! Error: {error}')
         
     def delete_robot(self, id:int) -> str:
         try:
-            delete_robot(id)
-            return f"Robot deleted with success!"
-        except:
-            raise NameError(f'Error to delete robot')
+            response = delete_robot(id)
+            return response
+        except Exception as error:
+            raise NameError(f'Error to delete robot! Error: {error}')
         
 class RobotTestCreate(BaseModel):
     name: str = "Robot Test"

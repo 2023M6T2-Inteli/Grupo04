@@ -33,9 +33,9 @@ def get_analyze(id: int) -> tuple[list[dict[str, str]], int]:
     except Exception as e:
         return {'error': str(e)}, 500
     
-def update_analyze(id: int, routeId: int, name: str, startDate: str, endDate: str, supervisor: str,operator: str, createdAt: str) -> tuple[dict[str, str], int]:
+def update_analyze(id: int, routeId: int, name: str, status:str, startDate: str, endDate: str, supervisor: str,operator: str) -> tuple[dict[str, str], int]:
     try:
-        analyze = Analyze(id=id,routeId=routeId, name=name, startDate=startDate, endDate=endDate, supervisor=supervisor,operator=operator, createdAt=createdAt)
+        analyze = Analyze(id=id,routeId=routeId, name=name, status=status, startDate=startDate, endDate=endDate, supervisor=supervisor,operator=operator)
         message = analyze.update_analyze()
         return {'message': message}, 200
     except Exception as e:

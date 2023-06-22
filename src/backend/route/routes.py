@@ -32,7 +32,6 @@ async def handler_get_all(request: Request) -> HTTPResponse:
 @openapi.summary("Get a route")
 @openapi.description("This is endpoint allows you to get a route.")
 #@validate_body(Schema.GET.value)
-
 async def handler_get(request: Request, id: int) -> HTTPResponse:
       response, code = get_route(id)
       return json(response, code)
