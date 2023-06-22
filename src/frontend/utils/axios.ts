@@ -8,7 +8,7 @@ interface Axios extends AxiosInstance {
 
 const axios: Axios = axiosPackage.create({
     // withCredentials: true,
-    baseURL: 'http://3.217.9.103:3001',
+    baseURL: 'http://localhost:3001',
     headers: {
         common: {
             Accept: "application/json",
