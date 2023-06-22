@@ -326,6 +326,8 @@ O [Link do protótipo navegável](https://www.figma.com/proto/tat7O3wJpg7LOm2fb6
 
 ### Implementação da interface de usuário
 
+![Logo Next.js](images/next-logo.png)
+
 Visando uma aceleração e adiantamento do projeto, o grupo decidiu iniciar a implementação do Frontend em React.js. Para isso, foi utilizado o Next.js, que é um framework que permite a criação de aplicações React.js. Algumas telas inicias já estão 100% implementadas e funcionando de acorodo com o planejado e protipado no Figma. Para vizualização completa do que já foi emplementado basta navegar pela pastas:
 
 `src/frontend/`
