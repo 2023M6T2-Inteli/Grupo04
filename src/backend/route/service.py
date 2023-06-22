@@ -2,17 +2,19 @@ from route.model import create_route, get_routes, get_route, delete_route, updat
 from pydantic import BaseModel, Field
 from datetime import datetime
 class Route:
-    def __init__(self,id:int="", name: str="", createdAt:datetime="") -> None:
+    def __init__(self,id:int="", name: str="", createdAt:datetime=""):
        self.id = id
        self.name = name.upper()
        self.createdAt = createdAt
 
     def register(self) -> str:
         try:
-            create_route(name = self.name)
-            return f"Route {self.name} created with success!"
-        except: 
-            raise NameError(f'Error to create route')
+            route = create_route(name = self.name)
+            route.createdAt = route.createdAt.strftime("%d/%m/%Y %H:%M:%S")
+            route = route.__dict__
+            return route
+        except Exception as error: 
+            raise NameError(f'Error to create route! Error: {error}')
         
     def get_all(self) -> list[dict[str, str]]:
         try:
@@ -23,8 +25,8 @@ class Route:
                 route = route.__dict__
                 response.append(route)
             return response
-        except:
-            raise NameError(f'Error to get routes')
+        except Exception as error:
+            raise NameError(f'Error to get routes! Error: {error}')
     
     def get_route(self, id: int) -> dict[str, str]:
         try:
@@ -32,22 +34,22 @@ class Route:
             route.createdAt = route.createdAt.strftime("%d/%m/%Y %H:%M:%S")
             route = route.__dict__
             return route
-        except:
-            raise NameError(f'Error to get route')
+        except Exception as error:
+            raise NameError(f'Error to get route! Error: {error}')
         
     def update_route(self) -> str:
         try:
-            update_route(id=self.id, name = self.name, createdAt=self.createdAt)
-            return f"Route {self.id} updated with success!"
-        except:
-            raise NameError(f'Error to update route')
+            response = update_route(id=self.id, name = self.name, createdAt=self.createdAt)
+            return response
+        except Exception as error:
+            raise NameError(f'Error to update route Error: {error}')
         
     def delete_route(self, id: int) -> str:
         try:
-            delete_route(id)
-            return f"Route {id} deleted with success!"
-        except:
-            raise NameError(f'Error to delete route')
+            response = delete_route(id)
+            return response
+        except Exception as error:
+            raise NameError(f'Error to delete route Error: {error}')
 
 class RouteTestCreate(BaseModel):
     name : str = "Test route"

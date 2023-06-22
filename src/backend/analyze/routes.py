@@ -52,9 +52,9 @@ async def handler_get_analyze(request: Request, id: int) -> HTTPResponse:
 # @validate_body(Schema.UPDATE.value)
 async def handler_update_analyze(request: Request) -> HTTPResponse:
     data = request.json
-    response, code = update_analyze(id=data['id'], routeId=data['routeId'], name=data['name'],
+    response, code = update_analyze(id=data['id'], routeId=data['routeId'], name=data['name'], status=data['status'],
                                     startDate=data['startDate'], endDate=data['endDate'], supervisor=data['supervisor'],
-                                    operator=data['operator'], createdAt=data['createdAt'])
+                                    operator=data['operator'])
     return json(response, code)
 
 

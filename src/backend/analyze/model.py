@@ -3,8 +3,7 @@ from datetime import datetime
 from prisma import Prisma
 
 
-def create_analyze(routeId: int, name: str, status: str, startDate: str, endDate: str, supervisor: str,
-                   operator: str) -> Prisma.analyze:
+def create_analyze(routeId: int, name: str, startDate: str, endDate: str, supervisor: str, operator: str) -> Prisma.analyze:
     route = db.route.find_first(where={'id': routeId})
     if not route:
         raise NameError(f'Route not exists with this id: {routeId}')
@@ -12,7 +11,6 @@ def create_analyze(routeId: int, name: str, status: str, startDate: str, endDate
         data = {
             "routeId": routeId,
             "name": name,
-            "status": status,
             "startDate": startDate,
             "endDate": endDate,
             "supervisor": supervisor,
@@ -32,9 +30,8 @@ def save_image(Analyzeid: int, frame: str) -> str:
             "path": frame,
             "analyzeId": Analyzeid
         }
-        print(data)
         db.image_analyse.create(data=data)
-        return f"Image saved with success!"
+        return frame
 
 
 def get_analyzes() -> list[Prisma.analyze]:
@@ -48,35 +45,34 @@ def get_analyzes() -> list[Prisma.analyze]:
 def get_analyze(id: int) -> Prisma.analyze:
     analyze = db.analyze.find_first(where={'id': id})
     if not analyze:
-        raise NameError(f'Analyze not exists')
+        raise NameError(f'Analyze not exists with this id: {id}!')
     else:
         return analyze
 
 
-def update_analyze(id: int, routeId: int, name: str, startDate: str, endDate: str, supervisor: str, operator: str,
-                   createdAt: datetime) -> bool:
+def update_analyze(id: int, routeId: int, name: str, status:str, startDate: str, endDate: str, supervisor: str, operator: str) -> str:
     analyze = db.analyze.find_first(where={'id': id})
     if not analyze:
-        raise NameError(f'Analyze not exists with this id: {id}')
+        raise NameError(f'Analyze not exists with this id: {id}!')
     else:
         data = {
-            'id': id,
             'routeId': routeId,
             'name': name,
+            'status': status,
             'startDate': startDate,
             'endDate': endDate,
             'supervisor': supervisor,
-            'openator': operator,
-            'createdAt': createdAt
+            'operator': operator,
         }
+        print(data)
         db.analyze.update(where={'id': id}, data=data)
-        return True
+        return f'Analyze {id} updated with success!'
 
 
-def delete_analyze(id: int) -> bool:
+def delete_analyze(id: int) -> str:
     analyze = db.analyze.find_first(where={'id': id})
     if not analyze:
-        raise NameError(f'Analyze not exists with this id: {id}')
+        raise NameError(f'Analyze not exists with this id: {id}!')
     else:
         db.analyze.delete(where={'id': id})
-        return True
+        return f'Analyze {id} deleted with success!'
