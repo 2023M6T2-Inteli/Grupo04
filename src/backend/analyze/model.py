@@ -3,7 +3,8 @@ from datetime import datetime
 from prisma import Prisma
 
 
-def create_analyze(routeId: int, name: str, startDate: str, endDate: str, supervisor: str, operator: str) -> Prisma.analyze:
+def create_analyze(routeId: int, name: str, startDate: str, endDate: str, supervisor: str, operator: str,
+                   robotId: int) -> Prisma.analyze:
     route = db.route.find_first(where={'id': routeId})
     if not route:
         raise NameError(f'Route not exists with this id: {routeId}')
@@ -14,7 +15,8 @@ def create_analyze(routeId: int, name: str, startDate: str, endDate: str, superv
             "startDate": startDate,
             "endDate": endDate,
             "supervisor": supervisor,
-            "operator": operator
+            "operator": operator,
+            "robotId": int(robotId)
         }
         db.analyze.create(data=data)
         analyze = db.analyze.find_first(order={'id': 'desc'})
@@ -44,13 +46,15 @@ def get_analyzes() -> list[Prisma.analyze]:
 
 def get_analyze(id: int) -> Prisma.analyze:
     analyze = db.analyze.find_first(where={'id': id})
+    analyze.sensor = db.sensor.find_many(where={'analyzeId': id})
     if not analyze:
         raise NameError(f'Analyze not exists with this id: {id}!')
     else:
         return analyze
 
 
-def update_analyze(id: int, routeId: int, name: str, status:str, startDate: str, endDate: str, supervisor: str, operator: str) -> str:
+def update_analyze(id: int, routeId: int, name: str, status: str, startDate: str, endDate: str, supervisor: str,
+                   operator: str) -> str:
     analyze = db.analyze.find_first(where={'id': id})
     if not analyze:
         raise NameError(f'Analyze not exists with this id: {id}!')
@@ -76,3 +80,12 @@ def delete_analyze(id: int) -> str:
     else:
         db.analyze.delete(where={'id': id})
         return f'Analyze {id} deleted with success!'
+
+
+def create_sensor_data(id: int, sensor_data: int) -> str:
+    data = {
+        'analyzeId': id,
+        'data': sensor_data
+    }
+    db.sensor.create(data=data)
+    return f'New sensor reading create with success with value: {sensor_data}!'
