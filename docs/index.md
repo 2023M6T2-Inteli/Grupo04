@@ -276,11 +276,11 @@ Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 
 #### Diagrama de arquitetura
 
-![1686773016794](image/index/1686773016794.png)
+![1686773016794](./images/diagrama-arquitetura.png)
 
 #### Diagrama de blocos
 
-![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
+![Diagrama ilustrativo](./images/diagrama-de-blocos.png)
 
 ## Ideação e implementação da interface de usuário
 
