@@ -1,6 +1,6 @@
 from analyze.service import Analyze
 
-
+# This function registers an analysis with the provided details and returns a message along with the HTTP status code.
 def register(routeId: int, name: str, status: str, startDate: str, endDate: str, supervisor: str, operator: str,
              robotId: int) -> \
         tuple[
@@ -14,7 +14,7 @@ def register(routeId: int, name: str, status: str, startDate: str, endDate: str,
     except Exception as e:
         return {'error': str(e)}, 500
 
-
+#This function registers an analysis with the provided details and returns a message along with the HTTP status code.
 def get_all() -> tuple[list[dict[str, str]], int]:
     try:
         analyze = Analyze()
@@ -23,7 +23,7 @@ def get_all() -> tuple[list[dict[str, str]], int]:
     except Exception as e:
         return {'error': str(e)}, 500
 
-
+# This function returns all the analyses in the database along with the HTTP status code.
 def get_analyze(id: int) -> tuple[list[dict[str, str]], int]:
     try:
         analyze = Analyze(id=id)
@@ -32,7 +32,7 @@ def get_analyze(id: int) -> tuple[list[dict[str, str]], int]:
     except Exception as e:
         return {'error': str(e)}, 500
 
-
+# This function returns the analysis with the provided id along with the HTTP status code.
 def update_analyze(id: int, routeId: int, name: str, status: str, startDate: str, endDate: str, supervisor: str,
                    operator: str) -> tuple[dict[str, str], int]:
     try:
@@ -43,7 +43,7 @@ def update_analyze(id: int, routeId: int, name: str, status: str, startDate: str
     except Exception as e:
         return {'error': str(e)}, 500
 
-
+# This function updates the analysis with the provided id and returns a message along with the HTTP status code.
 def delete_analyze(id: int) -> tuple[dict[str, str], int]:
     try:
         analyze = Analyze()
@@ -52,7 +52,7 @@ def delete_analyze(id: int) -> tuple[dict[str, str], int]:
     except Exception as e:
         return {'error': str(e)}, 500
 
-
+# This function deletes the analysis with the provided id and returns a message along with the HTTP status code.
 def receive_image(frame: bytes, id: int) -> tuple[dict[str, str], int]:
     try:
         analyze = Analyze(id=id)
@@ -61,7 +61,7 @@ def receive_image(frame: bytes, id: int) -> tuple[dict[str, str], int]:
     except Exception as e:
         return {'error': str(e)}, 500
 
-
+# This function receives an image and registers it to the analysis with the provided id and returns a message along with the HTTP status code.
 def create_sensor_data(id: int, sensor_data: int) -> tuple[dict[str, str], int]:
     try:
         analyze = Analyze(id=id)
