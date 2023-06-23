@@ -45,8 +45,7 @@ class Analyze:
         except Exception as error:
             raise NameError(f'Error to create {self.name} analyze! Error: {error}')
 
-    def register_image(self, frame: bytes) -> str:
-        from analyze.routes import frame_queue
+    async def register_image(self, frame: bytes, frame_queue) -> str:
         if not str(self.id) in frame_queue:
             frame_queue[str(self.id)] = asyncio.Queue()
         try:
@@ -59,14 +58,14 @@ class Analyze:
 
             cv.imwrite('analyze/images/' + image_name, result[0].plot())
 
-            s3 = boto3.resource('s3')
-            with open('analyze/images/' + image_name, 'rb') as data:
-                s3.Bucket('bucket-analyze-images').put_object(Key=image_name, Body=data)
+            # s3 = boto3.resource('s3')
+            # with open('analyze/images/' + image_name, 'rb') as data:
+            #     s3.Bucket('bucket-analyze-images').put_object(Key=image_name, Body=data)
+            #
+            #     save_image(self.id, frame='https://bucket-analyze-images.s3.amazonaws.com/' + image_name)
+            # os.remove('analyze/images/' + image_name)
 
-                save_image(self.id, frame='https://bucket-analyze-images.s3.amazonaws.com/' + image_name)
-            os.remove('analyze/images/' + image_name)
-
-            frame_queue[str(self.id)].put(result[0].plot())
+            await frame_queue[str(self.id)].put(result[0].plot())
 
             return f"Image saved with success!"
 

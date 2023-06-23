@@ -81,8 +81,19 @@ async def handler_delete_analyze(request: Request, id: int) -> HTTPResponse:
 async def video_upload(request: Request, id: int) -> json:
     try:
         image_bytes: bytes = request.files.get('image')[1]
-        response, code = receive_image(image_bytes, id)
+        response, code = await receive_image(image_bytes, id, frame_queue)
         return json(response, code)
+    except Exception as err:
+        return json({'message': 'Error, image not sent due to this error: {err}'}, 500)
+
+
+@analyze.get("/end-livestream/<id:int>")
+@openapi.summary("End the livestream of the video")
+@openapi.description("This endpoint allows to end the livestream of the video.")
+async def end_livestream(request: Request, id: int) -> json:
+    try:
+        del frame_queue[str(id)]
+        return json({'message': 'Livestream ended'}, 200)
     except Exception as err:
         return json({'message': 'Error, image not sent due to this error: {err}'}, 500)
 
@@ -93,7 +104,7 @@ async def video_upload(request: Request, id: int) -> json:
 @openapi.definition(body={'application/json': AnalyzeTestStart.schema()}, )
 async def start_analyze_server(request: Request, id: int) -> json:
     data = request.json
-    WAITING_ANALYZE[data['ip']] = id
+    WAITING_ANALYZE[str(data['ip'])] = id
     return json({'message': 'Analyze started'}, 200)
 
 
@@ -105,23 +116,39 @@ async def video_feed(request: Request, ws: Websocket, id: int):
         clients[str(id)] = []
     clients[str(id)].append(ws)
     try:
-        if not str(id) in frame_queue:
-            raise Exception('Frame queue for this id not found')
         while True:
-            frame = await frame_queue.get()
-            if frame is not None:
-                _, buffer = cv.imencode('.jpg', frame)
-                frame_bytes = buffer.tobytes()
+            if str(id) in frame_queue:
+                try:
+                    frame = await frame_queue[str(id)].get()
+                except Exception as err:
+                    print(f'ERRO AO PEGAR FRAME DA FILA! {err}')
+                    frame = None
+                if frame is not None:
+                    _, buffer = cv.imencode('.jpg', frame)
+                    frame_bytes = buffer.tobytes()
 
-                tasks = []
-                for client in clients[str(id)]:
-                    tasks.append(asyncio.create_task(client.send(frame_bytes)))
+                    tasks = []
+                    for client in clients[str(id)]:
+                        tasks.append(asyncio.create_task(client.send(frame_bytes)))
 
-                await asyncio.gather(*tasks)
+                    await asyncio.gather(*tasks)
+                else:
+                    print(f'SEM VIDEO DISPONIVEL!')
+                    tasks = []
+                    for client in clients[str(id)]:
+                        tasks.append(asyncio.create_task(client.send("VIDEO ENDED!")))
+
+                    await asyncio.gather(*tasks)
+                    await asyncio.sleep(1)
             else:
-                break
+                # tasks = []
+                # for client in clients[str(id)]:
+                #     tasks.append(asyncio.create_task(client.send("VIDEO ENDED!")))
+                #
+                # await asyncio.gather(*tasks)
+                await asyncio.sleep(1)
     except Exception as err:
-        print(err)
+        print(f'DEU ERRO! {err}')
     finally:
         clients[str(id)].remove(ws)
 
