@@ -227,49 +227,35 @@ Dada a relação do algoritmo com a tarefa mencionada, sua escolha como método 
 
 ##### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
 
-O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, serão utilizados ROS2 (Robot Operating System 2), Gazebo, e um algoritmo personalizado escrito em JavaScript e Python, com o framework Sanic. Por meio dessa implementação, almeja-se que o robô se locomova no ambiente simulado no Gazebo de forma eficiente, considerando a melhor rota e evitando obstáculos.
+O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, será utilizado ROS2 (Robot Operating System 2) e um algoritmo personalizado escrito em JavaScript e Python, com o framework Sanic. Por meio dessa implementação, almeja-se que o robô se locomova de forma eficiente, considerando a melhor rota e evitando obstáculos.
 
 **Descrição da arquitetura do sistema**
 
 O sistema é organizado em três componentes principais que se comunicam: ROS2, Gazebo e script.js, executado em um servidor Sanic.
 
-**ROS2 e Gazebo**
+**ROS2**
 
-O ROS2 permite a comunicação entre os diferentes nós do sistema, enquanto o Gazebo é utilizado para a simulação do ambiente e do robô. O robô é controlado através de mensagens publicadas em tópicos específicos do ROS2, que são lidos pelo Gazebo para executar os comandos de movimento.
+O ROS2 permite a comunicação entre os diferentes nós do sistema e permite que o robô seja controlado através de mensagens publicadas em tópicos específicos do ROS2.
 
 **Script.js, Python e Servidor Sanic**
 
-O algoritmo de otimização de rota é implementado em um script.js e app.py, que é executado em um servidor Sanic. O servidor Sanic permite que o script.js e app.py se comunique com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e app.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Sanic.
+O algoritmo de otimização de rota é implementado em um script.js e app.py, que é executado em um servidor Sanic. O servidor Sanic permite que o script.js e app.py se comuniquem com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e app.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Sanic.
 
 **Planejamento da comunicação entre os Componentes**
 
-A arquitetura do sistema é dividida em quatro componentes principais: ROS2, Gazebo, Sanic e os scripts de algoritmo (script.js e app.py). A comunicação entre esses componentes é uma parte crucial do projeto e será implementada na sprint três do desenvolvimento. A seguir, é apresentado o papel de cada componente e como eles se comunicam entre si:
+A arquitetura do sistema é dividida em três componentes principais: ROS2, Sanic e os scripts de algoritmo (script.js e app.py). A comunicação entre esses componentes é uma parte crucial do projeto e será implementada na sprint três do desenvolvimento. A seguir, é apresentado o papel de cada componente e como eles se comunicam entre si:
 
 **1. Script.js e app.py:** O algoritmo escrito em JavaScript e Python é o ponto de partida para a otimização da rota do robô. Ele processa os dados inseridos pelo usuário através de uma interface web e calcula a rota mais eficiente para o robô. Essas informações são então enviadas para o servidor Sanic.
 
 **2. Sanic:** O servidor Sanic atua como um intermediário entre o algoritmo e o ROS2. Ele recebe a rota otimizada do script.js e app.py e a encaminha para o ROS2. Esta comunicação é realizada através de um websocket, um protocolo que permite a troca de mensagens em tempo real.
 
-**3. ROS2 (Robot Operating System 2):** O ROS2 é o componente que se comunica diretamente com a simulação do Gazebo. Ele recebe as instruções de rota do servidor Sanic e as converte em comandos de movimento para o robô na simulação. Esta comunicação é feita através do pacote gazebo_ros_pkgs, que permite a troca de mensagens e serviços entre o ROS2 e o Gazebo utilizando o método de subscribers e publishers.
-
-**4. Gazebo:** Finalmente, o Gazebo é o ambiente de simulação onde o robô é controlado. Ele recebe os comandos de movimento do ROS2, executa-os e fornece feedback sobre a posição e o status do robô. Este feedback é então enviado de volta ao ROS2, reiniciando o ciclo de comunicação.
+**3. ROS2 (Robot Operating System 2):** O ROS2 é o componente que se comunica diretamente com o robô. Ele recebe as instruções de rota do servidor Sanic e as converte em comandos de movimento para o robô.
 
 Ao seguir estas etapas, a comunicação entre os componentes do sistema será realizada de forma eficiente, permitindo que o robô navegue de acordo com a rota otimizada calculada pelo algoritmo.
 
 A arquitetura do sistema pode ser visualizada abaixo:
 
-![Arquitetura da integração do sistema](https://github.com/2023M6T2-Inteli/Grupo04/blob/backend-implementation-of-route-optimization/docs/images/diagrama%20planejamento%20de%20rotas.png)
-
-**Pacote para o Algoritmo**
-
-Para a implementação da integração do algoritmo no sistema, o script.js, app.py e o servidor Sanic serão encapsulados em um pacote de software dedicado. Este pacote será instalado no ROS2 e atuará como o principal condutor das funcionalidades do algoritmo dentro do ambiente ROS2 para comunicação com o simulador Gazebo. Abaixo estão detalhadas as etapas para implementação desse sistema.
-
-**1. Componentes do Pacote:** O pacote será composto pelo script.js e app.py, responsáveis pela lógica do algoritmo de otimização de rota. Também incluirá o código do servidor Sanic, que serve como o intermediário entre o algoritmo e o ROS2, facilitando a troca de informações.
-
-**2. Dependências:** Além dos componentes principais, o pacote também conterá todas as dependências necessárias para a execução do algoritmo. Isso pode incluir bibliotecas JavaScript e Python, pacotes ROS2, módulos Sanic, entre outros. Ao incluir todas as dependências no pacote, garante-se que o algoritmo possa ser executado em qualquer ambiente que tenha o ROS2 instalado, sem a necessidade de instalações adicionais.
-
-**3. Integração com o Gazebo:** Uma vez instalado no ROS2, o pacote permitirá a integração do algoritmo com o Gazebo. A rota otimizada, calculada pelo script.js e app.py, será transmitida ao Gazebo através do ROS2, permitindo que o robô se mova de acordo com essa rota no ambiente de simulação.
-
-**4. Instalação e Configuração:** As instruções detalhadas para a instalação e configuração do pacote serão fornecidas na documentação do pacote.
+![Arquitetura da integração do sistema](./images/diagrama-algoritmo-rotas.png)
 
 ### Frontend
 
@@ -290,11 +276,11 @@ Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 
 #### Diagrama de arquitetura
 
-![1686773016794](image/index/1686773016794.png)
+![1686773016794](./images/diagrama-arquitetura.png)
 
 #### Diagrama de blocos
 
-![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
+![Diagrama ilustrativo](./images/diagrama-de-blocos.png)
 
 ## Ideação e implementação da interface de usuário
 
