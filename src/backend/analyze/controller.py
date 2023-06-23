@@ -52,12 +52,15 @@ def delete_analyze(id: int) -> tuple[dict[str, str], int]:
     except Exception as e:
         return {'error': str(e)}, 500
 
+
+
 # This function deletes the analysis with the provided id and returns a message along with the HTTP status code.
-def receive_image(frame: bytes, id: int) -> tuple[dict[str, str], int]:
+async def receive_image(frame: bytes, id: int, frame_queue) -> tuple[dict[str, str], int]:
+
     try:
         analyze = Analyze(id=id)
-        message = analyze.register_image(frame)
-        return {'message': message}, 200
+        message = await analyze.register_image(frame, frame_queue)
+        return {'message': "Deu certo!"}, 200
     except Exception as e:
         return {'error': str(e)}, 500
 

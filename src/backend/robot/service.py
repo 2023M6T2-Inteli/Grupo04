@@ -1,4 +1,4 @@
-from robot.model import create_robot, get_robots, get_robot, delete_robot
+from robot.model import create_robot, get_robots, get_robot, delete_robot, update_robot_by_ip
 from pydantic import BaseModel, Field
 
 # Class Robot
@@ -43,7 +43,20 @@ class Robot:
         except Exception as error:
             raise NameError(f'Error to get robot! Error: {error}')
 
+    def update_robot(self, data: dict) -> dict[str, str]:
+        try:
+            robot = update_robot_by_ip(ip=self.ip, data=data)
+            robot.createdAt = robot.createdAt.strftime("%d-%m-%Y %H:%M:%S")
+            robot.updatedAt = robot.updatedAt.strftime("%d-%m-%Y %H:%M:%S")
+            for analyze in robot.Analyze:
+                analyze.createdAt = analyze.createdAt.strftime("%d-%m-%Y %H:%M:%S")
+            robot.Analyze = [analyze.__dict__ for analyze in robot.Analyze]
+            return robot.__dict__
+        except Exception as error:
+            raise NameError(f'Error to update robot! Error: {error}')
+
     # This function deletes the robot with the provided id and returns a message.
+
     def delete_robot(self, id: int) -> str:
         try:
             response = delete_robot(id)

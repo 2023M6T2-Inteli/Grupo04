@@ -28,6 +28,22 @@ export interface Robot {
   name: string;
   ip: string;
   createdAt: string;
+  updatedAt: string;
+  active: boolean;
+  Analyze: Analyze[];
+}
+
+export interface Analyze {
+  createdAt: string;
+  endDate: string;
+  id: number;
+  name: string;
+  operator: string;
+  robotId: number;
+  routeId: number;
+  startDate: string;
+  status: string;
+  supervisor: string;
 }
 
 const RobotSelectionBody: React.FC<Props> = ({

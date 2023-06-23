@@ -1,13 +1,35 @@
-import React from "react";
+import React, { use, useEffect } from "react";
 import HeaderDisplay from "../HeaderDisplay";
 import DisplayText, { DisplayContent } from "../DisplayText";
 import SetRoute from "../SetRoute";
 import LiveStream from "../LiveStream";
+import { axios } from "@/utils/axios";
 
 interface Props {}
 
-const AddAnalyze: React.FC<Props> = (props) => {
+const AddAnalyze: React.FC<Props> = () => {
   const [live, setLive] = React.useState<boolean>(false);
+
+  const [routesAPI, setRoutesAPI] = React.useState<any>([]);
+
+  const getRoutes = async () => {
+    try {
+      const res = await axios.get(`/route/get_all`);
+      if (res.status === 200) {
+        console.log("RESPOSTAAA", res.data.routes);
+        setRoutesAPI(res.data.routes);
+      } else {
+        console.log("ERROR!!!!");
+        return;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getRoutes();
+  }, []);
 
   const displayContent: DisplayContent = {
     title: "Start analyze",
@@ -18,7 +40,11 @@ const AddAnalyze: React.FC<Props> = (props) => {
     <div className="flex flex-col flex-grow overflow-y-scroll">
       <HeaderDisplay />
       <DisplayText displayContent={displayContent} />
-      {live ? <LiveStream /> : <SetRoute setLive={setLive} />}
+      {live ? (
+        <LiveStream />
+      ) : (
+        <SetRoute routesAPI={routesAPI} setLive={setLive} />
+      )}
     </div>
   );
 };
