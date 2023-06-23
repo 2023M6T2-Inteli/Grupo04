@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
               Bearer: jsonResponse.token,
             },
           });
-    
+
           if (user_response.status === 200) {
             const user = await user_response.json();
 

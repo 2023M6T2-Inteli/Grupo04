@@ -33,6 +33,14 @@ def get_robot(id: int) -> Prisma.robot:
         return robot
 
 
+def update_robot_by_ip(ip: str, data: dict) -> Prisma.robot:
+    robot = db.robot.update(where={'ip': ip}, data=data)
+    if not robot:
+        raise NameError(f'Robot not exists with this ip: {ip}!')
+    else:
+        return robot
+
+
 def delete_robot(id: int) -> str:
     robot = db.robot.find_first(where={'id': id})
     if not robot:

@@ -58,7 +58,8 @@ model analyze {
 model robot {
   id        Int       @id @default(autoincrement())
   name      String
-  ip        String
+  ip        String    @unique
+  active    Boolean   @default(false)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   Analyze   analyze[]

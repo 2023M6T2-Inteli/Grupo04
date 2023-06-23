@@ -13,8 +13,8 @@ from user.routes import user
 def create_server() -> Sanic:
     app = Sanic(__name__)
     app.config.CORS_ORIGINS = "*"
-    # app.config.WEBSOCKET_PING_TIMEOUT = 999999999999999
-    # app.config.RESPONSE_TIMEOUT = 999999999999999
+    app.config.WEBSOCKET_PING_TIMEOUT = 999999999999999
+    app.config.RESPONSE_TIMEOUT = 999999999999999
     app.config.WEBSOCKET_PING_INTERVAL = 1
     return app
 

@@ -4,7 +4,7 @@ from sanic.response import HTTPResponse, json
 from sanic_ext import cors
 from middleware.body_check import validate_body
 from robot.utils import Schema
-from robot.controller import register, get_robots, get_robot, delete_robot
+from robot.controller import register, get_robots, get_robot, delete_robot, update_robot
 from sanic_ext import openapi
 from robot.service import RobotTestCreate
 
@@ -35,6 +35,16 @@ async def handler_get_robots(request: Request) -> HTTPResponse:
 @openapi.description("This endpoint allows you to get a robot. And you need to send the id")
 async def handler_get_robot(request: Request, id) -> HTTPResponse:
     response, code = get_robot(id)
+    return json(response, code)
+
+
+@robot.put("/update_robot_with_ip/<ip:str>")
+@openapi.summary("Update a robot")
+@openapi.description("This endpoint allows you to update any robot's info from an ip. And you need to send the ip")
+@validate_body(Schema.UPDATE.value)
+async def handler_update_robot_with_ip(request: Request, ip: int) -> HTTPResponse:
+    data = request.json
+    response, code = update_robot(data=data, ip=str(ip))
     return json(response, code)
 
 

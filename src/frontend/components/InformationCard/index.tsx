@@ -35,7 +35,15 @@ const InformationCard: React.FC<Props> = ({ cardContent }) => {
           <div className="h-max w-max mx-auto pl-4">
             <div className="flex flex-row font-inter items-center">
               Status:{" "}
-              <p className="pl-1 text-green-500">{cardContent.status}</p>
+              <p
+                className={`pl-1 ${
+                  cardContent.status === "Connected"
+                    ? "text-green-500"
+                    : "text-red-600"
+                } text-green-500`}
+              >
+                {cardContent.status}
+              </p>
             </div>
             <div className="flex flex-row font-inter items-center">
               Operating:{" "}

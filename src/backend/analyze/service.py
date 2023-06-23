@@ -2,6 +2,16 @@ from analyze.model import get_analyze, get_analyzes, create_analyze, update_anal
     create_sensor_data
 from datetime import datetime, date
 from pydantic import BaseModel, Field
+import cv2 as cv
+import numpy as np
+import asyncio
+from ultralytics import YOLO
+import boto3
+import os
+
+from pydantic import BaseModel, Field
+
+MODEL = YOLO('analyze/best.pt')
 
 
 class Analyze:
@@ -35,12 +45,33 @@ class Analyze:
         except Exception as error:
             raise NameError(f'Error to create {self.name} analyze! Error: {error}')
 
-    def register_video(self, frame: str) -> str:
+    def register_image(self, frame: bytes) -> str:
+        from analyze.routes import frame_queue
+        if not str(self.id) in frame_queue:
+            frame_queue[str(self.id)] = asyncio.Queue()
         try:
-            response = save_image(self.id, frame)
-            return response
-        except Exception as error:
-            raise NameError(f'Error to save image! Error: {error}')
+            nparr = np.fromstring(frame, np.uint8)
+            img = cv.imdecode(nparr, cv.IMREAD_COLOR)
+
+            result = MODEL.predict(img, conf=0.4)
+
+            image_name = 'analyze-image-' + str(datetime.now().strftime("%m-%d-%Y-%H-%M-%S")) + '.jpg'
+
+            cv.imwrite('analyze/images/' + image_name, result[0].plot())
+
+            s3 = boto3.resource('s3')
+            with open('analyze/images/' + image_name, 'rb') as data:
+                s3.Bucket('bucket-analyze-images').put_object(Key=image_name, Body=data)
+
+                save_image(self.id, frame='https://bucket-analyze-images.s3.amazonaws.com/' + image_name)
+            os.remove('analyze/images/' + image_name)
+
+            frame_queue[str(self.id)].put(result[0].plot())
+
+            return f"Image saved with success!"
+
+        except Exception as err:
+            raise NameError(f'Error to save image due to this error: {err}')
 
     def get_all(self) -> list[dict[str, str]]:
         try:
@@ -122,3 +153,7 @@ class AnalyzeTestUpdate(BaseModel):
     endDate: date = date.today()
     supervisor: str = "Test supervisor Update"
     operator: str = "Test operator Update"
+
+
+class AnalyzeTestStart(BaseModel):
+    ip: str = Field(example="112.224.131.11")

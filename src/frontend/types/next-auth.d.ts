@@ -14,3 +14,5 @@ declare module 'next-auth/jwt' {
         accessToken?: string
     }
 }
+
+export type { AuthOptions as NextAuthOptions } from "next-auth" 

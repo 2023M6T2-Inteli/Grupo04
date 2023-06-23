@@ -21,11 +21,12 @@ interface Props {
 
 const DashBoard: React.FC<Props> = ({ robot }) => {
   const [display, setDisplay] = useState<DisplayType>(DisplayType.Dashboard);
+  console.log(robot);
 
   return (
     <div className="h-screen w-screen overflow-hidden flex">
       <NavBar robot={robot} display={display} setDisplay={setDisplay} />
-      {display === DisplayType.Dashboard && <Display />}
+      {display === DisplayType.Dashboard && <Display robot={robot} />}
       {display === DisplayType.AddAnalyze && <AddAnalyze />}
     </div>
   );
