@@ -60,12 +60,12 @@ class Analyze:
 
             cv.imwrite('analyze/images/' + image_name, result[0].plot())
 
-            s3 = boto3.resource('s3')
-            with open('analyze/images/' + image_name, 'rb') as data:
-                s3.Bucket('bucket-analyze-images').put_object(Key=image_name, Body=data)
-            
-                save_image(self.id, frame='https://bucket-analyze-images.s3.amazonaws.com/' + image_name)
-            os.remove('analyze/images/' + image_name)
+            # s3 = boto3.resource('s3')
+            # with open('analyze/images/' + image_name, 'rb') as data:
+            #     s3.Bucket('bucket-analyze-images').put_object(Key=image_name, Body=data)
+            #
+            #     save_image(self.id, frame='https://bucket-analyze-images.s3.amazonaws.com/' + image_name)
+            # os.remove('analyze/images/' + image_name)
 
             await frame_queue[str(self.id)].put(result[0].plot())
 

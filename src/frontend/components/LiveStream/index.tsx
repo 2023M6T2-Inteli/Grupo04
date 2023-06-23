@@ -15,7 +15,7 @@ const LiveStream: React.FC<Props> = (props) => {
     const id = 1;
     console.log("INICIANDO CONEXÃO COM WEBSOCKET!!!!");
     const socket = new WebSocket(
-      `ws://3.217.9.103:3001/analyze/video_feed/${id}`
+      `ws://localhost:3001/analyze/video_feed/${id}`
     );
 
     socket.onmessage = function (event) {

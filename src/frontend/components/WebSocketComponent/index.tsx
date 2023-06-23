@@ -5,7 +5,7 @@ const VideoFeed = () => {
   const videoFeedRef = useRef();
 
   useEffect(() => {
-    const socket = new WebSocket("ws://3.217.9.103:3001/analyze/video_feed");
+    const socket = new WebSocket("ws://localhost:3001/analyze/video_feed");
 
     socket.onmessage = function (event) {
       const url = URL.createObjectURL(

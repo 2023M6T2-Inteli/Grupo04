@@ -76,7 +76,7 @@ model image_analyse {
 }
 
 model sensor {
-  id Int @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   analyzeId Int
   data      Int
   Analyze   analyze  @relation(fields: [analyzeId], references: [id])

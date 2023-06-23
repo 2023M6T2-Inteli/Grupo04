@@ -756,7 +756,7 @@ Para a estruturação da documentação, testes e manual de implementação da A
 
 Por meio dele, todas as rotas possuem um título breve de explicação. Ao expandir um accordion, você encontra uma descrição mais detalhada, a maneira como pode ser utilizada e um exemplo de como os dados devem ser enviados. Além disso, nele você encontra todas as rotas construídas no backend, de forma organizada, pois todas as rotas estão atribuídas à sua respectiva entidade, como pode ser visto nos exemplos abaixo.
 
-Além disso, a documentação construída no Swagger foi disponibilizada juntamente com o backend no serviço de EC2 da AWS, que pode ser acessado [clicando aqui](http://3.217.9.103:3001/docs/swagger).
+Além disso, a documentação construída no Swagger foi disponibilizada juntamente com o backend no serviço de EC2 da AWS, que pode ser acessado [clicando aqui](http://localhost:3001/docs/swagger).
 
 **1 - Todas as rotas presentes:**
 
