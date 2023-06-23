@@ -1,13 +1,13 @@
-**yConteúdo**
+**Conteúdo**
 
+- [Proposta geral](#proposta-geral)
+    - [Componentes do TurtleBot](#componentes-do-turtlebot)
 - [Arquitetura do sistema](#arquitetura-do-sistema)
   - [Análise de Requisitos](#análise-de-requisitos)
     - [Requisitos funcionais](#requisitos-funcionais)
     - [Requisitos Não Funcionais](#requisitos-não-funcionais)
     - [Requisitos Não Funcionais Tecnologicos](#requisitos-não-funcionais-tecnologicos)
   - [Viabilidade técnica](#viabilidade-técnica)
-  - [Proposta geral](#proposta-geral)
-    - [Componentes do TurtleBot](#componentes-do-turtlebot)
     - [Banco de dados](#banco-de-dados)
       - [Diagrama do banco de dados](#diagrama-do-banco-de-dados)
     - [Backend](#backend)
@@ -52,11 +52,76 @@
   - [**Sistema de visão computacional - Análise de Rachadura nas Paredes**](#sistema-de-visão-computacional---análise-de-rachadura-nas-paredes)
     - [Implementação](#implementação)
     - [Testes e Resultados](#testes-e-resultados)
+    - [1. Desenvolvimento de implementação de testes de eficácia de detecção](#1-desenvolvimento-de-implementação-de-testes-de-eficácia-de-detecção)
+      - [1.2 Acurácia](#12-acurácia)
+      - [1.3 Curva precisão-confiabilidade](#13-curva-precisão-confiabilidade)
+      - [1.4 Curva precisão-sensibilidade](#14-curva-precisão-sensibilidade)
+      - [1.5 Curva sensibilidade-confiança](#15-curva-sensibilidade-confiança)
+      - [1.6 Curva F1-confiança](#16-curva-f1-confiança)
+    - [2. Sensoriamento de gás](#2-sensoriamento-de-gás)
+      - [2.1 Sensor](#21-sensor)
+      - [2.2 Circuito de condicionamento](#22-circuito-de-condicionamento)
+      - [2.3 Teste de detecção e quantificação de gases voláteis](#23-teste-de-detecção-e-quantificação-de-gases-voláteis)
+      - [2.4 Transmissão da leitura do sensor para o backend](#24-transmissão-da-leitura-do-sensor-para-o-backend)
   - [Sistemas de segurança](#sistemas-de-segurança)
     - [Fabricação e implementação dos dispositivos de segurança](#fabricação-e-implementação-dos-dispositivos-de-segurança)
     - [Sistema de proteção contra comandos indesejados](#sistema-de-proteção-contra-comandos-indesejados)
+    - [Sistema de segurança da bateria](#sistema-de-segurança-da-bateria)
+    - [Sistema anticolisão](#sistema-anticolisão)
     - [Mapeamento de riscos dos sistemas eletromecânicos, mecânicos e eletrônicos.](#mapeamento-de-riscos-dos-sistemas-eletromecânicos-mecânicos-e-eletrônicos)
+    - [Validação da eficiência dos sistemas de segurança](#validação-da-eficiência-dos-sistemas-de-segurança)
+- [Integração de sistemas e backend](#integração-de-sistemas-e-backend)
+  - [Arquitetura da API REST](#arquitetura-da-api-rest)
+  - [Documentação Respostas HTTP Backend](#documentação-respostas-http-backend)
+    - [Analyze](#analyze)
+      - [**Criar uma nova análise**](#criar-uma-nova-análise)
+      - [**Obter todas as análises**](#obter-todas-as-análises)
+      - [**Obter uma análise específica**](#obter-uma-análise-específica)
+      - [Atualizar uma análise](#atualizar-uma-análise)
+      - [**Excluir uma análise**](#excluir-uma-análise)
+      - [**Enviar um vídeo para análise**](#enviar-um-vídeo-para-análise)
+      - [**Receber imagem da câmera**](#receber-imagem-da-câmera)
+    - [**Point**](#point)
+      - [**Criar um ponto**](#criar-um-ponto)
+      - [**Obter todos os pontos de uma rota**](#obter-todos-os-pontos-de-uma-rota)
+      - [**Excluir todos os pontos de uma rota**](#excluir-todos-os-pontos-de-uma-rota)
+    - [**Robot**](#robot)
+      - [**Registrar um Robô**](#registrar-um-robô)
+      - [**Obter todos os Robôs**](#obter-todos-os-robôs)
+      - [**Obter um Robô**](#obter-um-robô)
+      - [**Excluir um Robô**](#excluir-um-robô)
+    - [**Route**](#route)
+      - [**Criar uma nova rota**](#criar-uma-nova-rota)
+      - [**Obter todas as rotas**](#obter-todas-as-rotas)
+      - [**Obter uma rota específica**](#obter-uma-rota-específica)
+      - [**Atualizar uma rota**](#atualizar-uma-rota)
+      - [**Excluir uma rota**](#excluir-uma-rota)
+    - [**User**](#user)
+      - [**Registrar um Usuário**](#registrar-um-usuário)
+      - [**Login de um Usuário**](#login-de-um-usuário)
+      - [**Obter um Usuário**](#obter-um-usuário)
+  - [Banco de dados relacional](#banco-de-dados-relacional)
+      - [Diagrama do banco de dados](#diagrama-do-banco-de-dados-1)
+  - [Integração de sistemas](#integração-de-sistemas)
+    - [Protocolos de comunicação](#protocolos-de-comunicação)
+    - [Detalhamento dos testes](#detalhamento-dos-testes)
+      - [Teste de carga](#teste-de-carga)
+      - [Teste de latência](#teste-de-latência)
 - [Referências](#referências)
+
+# Proposta geral
+
+Nosso projeto consiste em um sistema integrado que envolve o modelo de robô TurtleBot3, juntamente com um sistema de controle construído através de um backend e um frontend, resultando em uma interface web amigável. O TurtleBot3 é um robô de duas rodas equipado com diversos sensores e componentes essenciais para a execução de suas tarefas.
+
+### Componentes do TurtleBot
+
+O TurtleBot será equipado com os seguintes componentes:
+
+- Microcontrolador OpenCR: responsável por ler as informações do sensor de gás MQ2.
+- Sensor de gás MQ2: responsável por detectar os gases.
+- Raspberry Pi 3: responsável por processar as informações de todos os componentes e se comunica com o backend.
+- Webcam: responsável por fornecer imagens ao vivo para o Raspberry Pi 3.
+- Sensor Lidar 360º: responsável por fornecer as imagens do escaneamento para o Raspberry Pi 3.
 
 # Arquitetura do sistema
 
@@ -92,20 +157,6 @@ Diante da sua proposta, escolhemos utilizar o TurtleBot Burger, um robô que pos
 Além disso, o robô terá sensores acoplados que são responsáveis por identificar níveis de gases tóxicos no ambiente, suas capacidades serão testadas através de sensores mais simples, semelhantes aos usados na indústria. Apesar de serem mais básicos, eles conseguem captar o que é preciso, em contrapartida, não é possível captar todos os gases tóxicos, sendo limitados a apenas 5 gases. Dizendo um pouco sobre onde esses dados serão armazenados, o robô terá um sistema que realizará comunicações através do protocolo MQTT, utilizando o servidor do HiveMQ, que funciona como um broker remoto, por ele possuir dependências da rede, caso a rede caia, será armazenado informações no próprio robô até a conexão ser restabelecida.
 
 Diante do exposto, pode-se dizer que o TurtleBee é uma solução viável para análise de espaços confinados que facilita o serviço de técnicos dessa área e que promove sua segurança através das informações transmitidas pelo mesmo.
-
-## Proposta geral
-
-Nosso projeto consiste em um sistema integrado que envolve o modelo de robô TurtleBot3, juntamente com um sistema de controle construído através de um backend e um frontend, resultando em uma interface web amigável. O TurtleBot3 é um robô de duas rodas equipado com diversos sensores e componentes essenciais para a execução de suas tarefas.
-
-### Componentes do TurtleBot
-
-O TurtleBot será equipado com os seguintes componentes:
-
-- Microcontrolador OpenCR: responsável por ler as informações do sensor de gás MQ2.
-- Sensor de gás MQ2: responsável por detectar os gases.
-- Raspberry Pi 3: responsável por processar as informações de todos os componentes e se comunica com o backend.
-- Webcam: responsável por fornecer imagens ao vivo para o Raspberry Pi 3.
-- Sensor Lidar 360º: responsável por fornecer as imagens do escaneamento para o Raspberry Pi 3.
 
 ### Banco de dados
 
@@ -176,49 +227,35 @@ Dada a relação do algoritmo com a tarefa mencionada, sua escolha como método 
 
 ##### Integração e validação do sistema de otimização de rota com a movimentação da plataforma robótica
 
-O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, serão utilizados ROS2 (Robot Operating System 2), Gazebo, e um algoritmo personalizado escrito em JavaScript e Python, com o framework Sanic. Por meio dessa implementação, almeja-se que o robô se locomova no ambiente simulado no Gazebo de forma eficiente, considerando a melhor rota e evitando obstáculos.
+O sistema desenvolvido apresentará a otimização de rotas em uma interface que simula a movimentação do robô TurtleBot3 Burger. Para tal, será utilizado ROS2 (Robot Operating System 2) e um algoritmo personalizado escrito em JavaScript e Python, com o framework Sanic. Por meio dessa implementação, almeja-se que o robô se locomova de forma eficiente, considerando a melhor rota e evitando obstáculos.
 
 **Descrição da arquitetura do sistema**
 
 O sistema é organizado em três componentes principais que se comunicam: ROS2, Gazebo e script.js, executado em um servidor Sanic.
 
-**ROS2 e Gazebo**
+**ROS2**
 
-O ROS2 permite a comunicação entre os diferentes nós do sistema, enquanto o Gazebo é utilizado para a simulação do ambiente e do robô. O robô é controlado através de mensagens publicadas em tópicos específicos do ROS2, que são lidos pelo Gazebo para executar os comandos de movimento.
+O ROS2 permite a comunicação entre os diferentes nós do sistema e permite que o robô seja controlado através de mensagens publicadas em tópicos específicos do ROS2.
 
 **Script.js, Python e Servidor Sanic**
 
-O algoritmo de otimização de rota é implementado em um script.js e app.py, que é executado em um servidor Sanic. O servidor Sanic permite que o script.js e app.py se comunique com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e app.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Sanic.
+O algoritmo de otimização de rota é implementado em um script.js e app.py, que é executado em um servidor Sanic. O servidor Sanic permite que o script.js e app.py se comuniquem com o ROS2, fornecendo uma interface RESTful para a publicação de mensagens no ROS2. O script.js e app.py calculam a rota ideal e enviam os comandos de movimento para o ROS2 através do servidor Sanic.
 
 **Planejamento da comunicação entre os Componentes**
 
-A arquitetura do sistema é dividida em quatro componentes principais: ROS2, Gazebo, Sanic e os scripts de algoritmo (script.js e app.py). A comunicação entre esses componentes é uma parte crucial do projeto e será implementada na sprint três do desenvolvimento. A seguir, é apresentado o papel de cada componente e como eles se comunicam entre si:
+A arquitetura do sistema é dividida em três componentes principais: ROS2, Sanic e os scripts de algoritmo (script.js e app.py). A comunicação entre esses componentes é uma parte crucial do projeto e será implementada na sprint três do desenvolvimento. A seguir, é apresentado o papel de cada componente e como eles se comunicam entre si:
 
 **1. Script.js e app.py:** O algoritmo escrito em JavaScript e Python é o ponto de partida para a otimização da rota do robô. Ele processa os dados inseridos pelo usuário através de uma interface web e calcula a rota mais eficiente para o robô. Essas informações são então enviadas para o servidor Sanic.
 
 **2. Sanic:** O servidor Sanic atua como um intermediário entre o algoritmo e o ROS2. Ele recebe a rota otimizada do script.js e app.py e a encaminha para o ROS2. Esta comunicação é realizada através de um websocket, um protocolo que permite a troca de mensagens em tempo real.
 
-**3. ROS2 (Robot Operating System 2):** O ROS2 é o componente que se comunica diretamente com a simulação do Gazebo. Ele recebe as instruções de rota do servidor Sanic e as converte em comandos de movimento para o robô na simulação. Esta comunicação é feita através do pacote gazebo_ros_pkgs, que permite a troca de mensagens e serviços entre o ROS2 e o Gazebo utilizando o método de subscribers e publishers.
-
-**4. Gazebo:** Finalmente, o Gazebo é o ambiente de simulação onde o robô é controlado. Ele recebe os comandos de movimento do ROS2, executa-os e fornece feedback sobre a posição e o status do robô. Este feedback é então enviado de volta ao ROS2, reiniciando o ciclo de comunicação.
+**3. ROS2 (Robot Operating System 2):** O ROS2 é o componente que se comunica diretamente com o robô. Ele recebe as instruções de rota do servidor Sanic e as converte em comandos de movimento para o robô.
 
 Ao seguir estas etapas, a comunicação entre os componentes do sistema será realizada de forma eficiente, permitindo que o robô navegue de acordo com a rota otimizada calculada pelo algoritmo.
 
 A arquitetura do sistema pode ser visualizada abaixo:
 
-![Arquitetura da integração do sistema](https://github.com/2023M6T2-Inteli/Grupo04/blob/backend-implementation-of-route-optimization/docs/images/diagrama%20planejamento%20de%20rotas.png)
-
-**Pacote para o Algoritmo**
-
-Para a implementação da integração do algoritmo no sistema, o script.js, app.py e o servidor Sanic serão encapsulados em um pacote de software dedicado. Este pacote será instalado no ROS2 e atuará como o principal condutor das funcionalidades do algoritmo dentro do ambiente ROS2 para comunicação com o simulador Gazebo. Abaixo estão detalhadas as etapas para implementação desse sistema.
-
-**1. Componentes do Pacote:** O pacote será composto pelo script.js e app.py, responsáveis pela lógica do algoritmo de otimização de rota. Também incluirá o código do servidor Sanic, que serve como o intermediário entre o algoritmo e o ROS2, facilitando a troca de informações.
-
-**2. Dependências:** Além dos componentes principais, o pacote também conterá todas as dependências necessárias para a execução do algoritmo. Isso pode incluir bibliotecas JavaScript e Python, pacotes ROS2, módulos Sanic, entre outros. Ao incluir todas as dependências no pacote, garante-se que o algoritmo possa ser executado em qualquer ambiente que tenha o ROS2 instalado, sem a necessidade de instalações adicionais.
-
-**3. Integração com o Gazebo:** Uma vez instalado no ROS2, o pacote permitirá a integração do algoritmo com o Gazebo. A rota otimizada, calculada pelo script.js e app.py, será transmitida ao Gazebo através do ROS2, permitindo que o robô se mova de acordo com essa rota no ambiente de simulação.
-
-**4. Instalação e Configuração:** As instruções detalhadas para a instalação e configuração do pacote serão fornecidas na documentação do pacote.
+![Arquitetura da integração do sistema](./images/diagrama-algoritmo-rotas.png)
 
 ### Frontend
 
@@ -239,11 +276,11 @@ Aqui está dois diagramas ilustram a arquitetura e as conexões do projeto:
 
 #### Diagrama de arquitetura
 
-![1686773016794](image/index/1686773016794.png)
+![1686773016794](./images/diagrama-arquitetura.png)
 
 #### Diagrama de blocos
 
-![Diagrama ilustrativo](./images/Diagrama-em-blocos-GERDAU-M6.jpg)
+![Diagrama ilustrativo](./images/diagrama-de-blocos.png)
 
 ## Ideação e implementação da interface de usuário
 
@@ -275,7 +312,9 @@ O [Link do protótipo navegável](https://www.figma.com/proto/tat7O3wJpg7LOm2fb6
 
 ### Implementação da interface de usuário
 
-Visando uma aceleração e adiantamento do projeto, o grupo decidiu iniciar a implementação do Frontend em React.js. Para isso, foi utilizado o Next.js, que é um framework que permite a criação de aplicações React.js. Algumas telas inicias já estão 100% implementadas e funcionando de acorodo com o planejado e protipado no Figma. Para vizualização completa do que já foi emplementado basta navegar pela pastas
+![Logo Next.js](images/next-logo.png)
+
+Visando uma aceleração e adiantamento do projeto, o grupo decidiu iniciar a implementação do Frontend em React.js. Para isso, foi utilizado o Next.js, que é um framework que permite a criação de aplicações React.js. Algumas telas inicias já estão 100% implementadas e funcionando de acorodo com o planejado e protipado no Figma. Para vizualização completa do que já foi emplementado basta navegar pela pastas:
 
 `src/frontend/`
 
@@ -371,19 +410,19 @@ O [Link da planilha](https://docs.google.com/spreadsheets/d/1fdBVmryYQmFQlxbJAGa
 
 Mediante os riscos que levantamos, iremos buscar para evitá-los:
 
-Adicionar uma câmera para fazer uma primeira vistoria do local, a fim de localizar potenciais obstáculos;
+- Adicionar uma câmera para fazer uma primeira vistoria do local, a fim de localizar potenciais obstáculos;
 
-Usar os mesmos indicadores atmosféricos e de segurança que a Gerdau usa, o que irá garantir que estamos usando as medidas certas para avaliar a possibilidade uma pessoa entrar no ambiente, além de concentrar os esforços apenas nas variáveis necessárias;
+- Usar os mesmos indicadores atmosféricos e de segurança que a Gerdau usa, o que irá garantir que estamos usando as medidas certas para avaliar a possibilidade uma pessoa entrar no ambiente, além de concentrar os esforços apenas nas variáveis necessárias;
 
-Fazer um manual de erros objetivo, que será acompanhado de uma documentação, de modo que juntos informem qual o erro, qula sua possível origem e como corrigí-lo;
+- Fazer um manual de erros objetivo, que será acompanhado de uma documentação, de modo que juntos informem qual o erro, qula sua possível origem e como corrigí-lo;
 
-Gerar informações sobre o ambiente no frontend e também em um formulário, de modo que se houver problema em um, o outro pode complementar ou substituir;
+- Gerar informações sobre o ambiente no frontend e também em um formulário, de modo que se houver problema em um, o outro pode complementar ou substituir;
 
-Realizar testes nos sensores atuadores multiplas vezes antes de levar e campo e de colocá-lo no espaço confinado;
+- Realizar testes nos sensores atuadores multiplas vezes antes de levar e campo e de colocá-lo no espaço confinado;
 
-Criar um código imbuído no robô para, caso ele perca conexão ou dê erro, que ele volte automaticamente, repetindo a rota que ele fez para ir;
+- Criar um código imbuído no robô para, caso ele perca conexão ou dê erro, que ele volte automaticamente, repetindo a rota que ele fez para ir;
 
-Adicionar um controlador de tensão para monitorar a quantidade de bateria;
+- Adicionar um controlador de tensão para monitorar a quantidade de bateria;
 
 # Entendimento de metadesign
 
@@ -539,7 +578,7 @@ A análise de rachaduras em paredes é realizada usando um modelo de detecção 
 
 ### Testes e Resultados
 
-## 1.2. Desenvolvimento de implementação de testes de eficácia de detecção
+### 1. Desenvolvimento de implementação de testes de eficácia de detecção
 
 Durante a o treinamento do modelo de reconhecimento de rachaduras empregado neste projeto, várias métricas de eficácia foram coletadas. Estas métricas tem o objetivo de mensurar a habilidade do modelo treinado em reconhecer padrões de rachaduras em imagens que não participaram de seu conjunto de treinamento, com o objetivo de não enviesar sua avaliação. Abaixo, a representação gráfica dessas métricas, bem como alguns exemplos de imagens de rachaduras que foram identificadas, com seus respectivos níveis de confiança de identificação, serão exibidas.
 
@@ -553,7 +592,7 @@ Tais testes foram obtidos por meio da separação randômica de 80% das imagens 
 
 [Teste de reconhecimento de rachaduras por modelo YOLOv8 treinado e alimentado por stream de vídeo](https://github.com/2023M6T2-Inteli/Grupo04/assets/99269584/819aca70-a183-414b-a77d-eebddcd5cee0)
 
-### 1.2.1. Acurácia
+#### 1.2 Acurácia
 
 A matriz de confusão normalizada abaixo representa uma visão geral da acurácia do modelo treinado para a tarefa de detecção de rachaduras. Ela mostra a parcela de verdadeiros positivos (rachaduras que foram corretamente identificadas como tais), verdadeiros negativos (fotos onde não havia rachaduras e, portanto, nenhuma rachadura foi identificada), falsos positivos (imagens que não continham rachaduras mas que o modelo identificou como imagem que continha uma rachadura) e, por fim, falsos negativos (imagens que continham rachaduras que não foram identificadas como tal pelo modelo). A matriz de confusão normalizada foi escolhida pois permite analisar proporção de cada tipo de possibilidade de predição relativa ao número de predições possíveis.
 
@@ -563,7 +602,7 @@ A matriz de confusão normalizada abaixo representa uma visão geral da acuráci
 
 Com a análise da matriz de confusão gerada durante o treinamento do modelo apresentado, é possível notar que este foi capaz de identificar imagens com rachaduras com 80% de acurácia. Ou seja, das 820 imagens com categorização conhecida como contendo uma rachadura, 656 foram identificadas corretamente pelo modelo como contendo uma rachadura e 164 imagens contendo uma rachadura não foram identificadas pelo modelo.
 
-### 1.2.2. Curva precisão-confiabilidade
+#### 1.3 Curva precisão-confiabilidade
 
 Na curva de precisão-confiabilidade representada abaixo, temos a demonstração que um valor maior de precisão implica em uma taxa menor de falsos positivos, isto é, imagens que não contém rachaduras mas que são classificadas como tal. Desta forma, o modelo teria uma menor chance de identificar rachaduras em áreas que não as apresentam.
 
@@ -573,7 +612,7 @@ Na curva de precisão-confiabilidade representada abaixo, temos a demonstração
 
 No contexto deste projeto, o limitar entre a precisão e confiabilidade pode ser escolhido admitindo a premissa de que é mais maléfico deixar de identificar uma rachadura como tal do que não identificar uma rachadura.
 
-### 1.2.3. Curva precisão-sensibilidade
+#### 1.4 Curva precisão-sensibilidade
 
 Esta curva demonstra como o aumento do limiar de detecção afeta a precisão e a sensibilidade simultaneamente. Uma maior taxa de precisão indicaria uma taxa menor de alarmes falsos, enquanto uma maior sensibilidade, implica no aumento do sucesso do modelo na identificação de imagens que contenham rachaduras.
 
@@ -583,7 +622,7 @@ Esta curva demonstra como o aumento do limiar de detecção afeta a precisão e 
 
 Como discutido na curva de precisão e confiabilidade, o limitar entre a precisão e sensibilidade pode ser escolhido admitindo a premissa de que é mais maléfico deixar de identificar uma rachadura como tal do que não identificar uma rachadura.
 
-### 1.2.3. Curva sensibilidade-confiança
+#### 1.5 Curva sensibilidade-confiança
 
 Também conhecida como curva de recall ou revocação, a curva abaixo estabelece uma relação entre o limiar para a detecção de rachaduras e a confiabilidade, ou assertividade, que o modelo tem ao dizer que uma determinada imagem contem uma rachadura. Desta forma, é possível observar a variação na confiabilidade do modelo na detecção das rachaduras de acordo com diferentes limiares. Um valor de confiabilidade maior implicará em uma taxa reduzida de falsos negativos. Nesta configuração, o modelo treinado dificilmente deixará de classificar uma imagem como contendo uma rachadura. Por outro lado, uma sensibilidade muito grande pode aumentar a presença de falsos positivos.
 
@@ -593,7 +632,7 @@ Também conhecida como curva de recall ou revocação, a curva abaixo estabelece
 
 No caso da curva de sensibilidade para o modelo treinado, o limiar foi escolhido pelas próprias configurações do modelo. Este limitar se demostrou ser o do vértice presente na região entre 60 e 80% de sensibilidade e confiança.
 
-### 1.2.4. Curva F1-confiança
+#### 1.6 Curva F1-confiança
 
 Para a curva do Score F1, representa-se a variação do score F1 ao longo de vários limiares. O Score F1 é calculado levando em consideração a otimização entre a acurácia e a sensibilidade do modelo. A avaliação deste tipo de métrica é importante no cenário onde treinamos modelos que possuem classes desbalanceadas. Para oferecer uma métrica que considere a proporção das classes oferecidas, a Pontuação F1 combina a precisão e sensibilidade em uma média harmônica. Desta forma, a maximização desta métrica significa a maximização de ambas as métricas.
 
@@ -603,11 +642,11 @@ Para a curva do Score F1, representa-se a variação do score F1 ao longo de vá
 
 Acima, está a representação da relação entre a Pontuação F1 e confiabilidade do modelo treinado.
 
-## 1.3. Sensoriamento de gás
+### 2. Sensoriamento de gás
 
 Um dos principais requisitos especificados pela Gerdau no momento da solicitação do projeto e condução das entrevistas foi que o dispositivo desenvolvido assim o fosse com a capacidade de detectar e mensurar a presença de gases voláteis em ambientes confinados. Esta característica é tão relevante quando a navegação, pois ela dá à navegação seu propósito: Explorar as diferentes regiões das tubulações em busca da presença de gases voláteis. As estratégias adotadas para o sensoriamento, digitalização e transmissão dos dados coletados, através de protocolos de rede e middlewares serão descritas nesta seção. 
 
-### 1.3.1 Sensor
+#### 2.1 Sensor
 
 O componente responsável pela realização do sensoriamento dos gases voláteis escolhido para solução foi o Sensor de Gases Combustíveis MQ-2 (https://www.pololu.com/file/0J309/MQ2.pdf). Este sensor é baseado em Óxido de estanho, que apresenta uma condutividade relativamente baixa em contato com o ar puro, comparada a maior condutividade de adquire quando exposto a gases inflamáveis. Esta reação é esperada com os gases GLP (Gás Liquefeito do Petróleo), propano, hidrogênio, metano e outros gases combustíveis. 
 
@@ -615,7 +654,7 @@ O componente responsável pela realização do sensoriamento dos gases voláteis
 <img src="./images/mq-2.jpg">
 </p>
 
-### 1.3.2. Circuito de condicionamento
+#### 2.2 Circuito de condicionamento
 
 A transdução para a detecção de gás ocorre por meio da variação da resistência que o sensor oferece ao circuito mediante à exposição a gases inflamáveis. A forma empregada para mensurar tal variação foi a mensuração da variação da corrente elétrica no circuito. Dada que esta variação é sutil, fez-se necessário a integração do sensor em uma placa de condicionamento munida de um amplificador operacional, capaz de amplificar o sinal da variação de corrente gerado pelo sensor MQ-2. Como a variação da corrente amplificada se dá por meio de sinal analógico, foi necessário o uso de um conversor ADC (conversor analógico-digital) para que esse sinal pudesse ser registrado digitalmente. Para tanto, o ADC responsável por tal conversão foi o ADC de 10 bits integrado no microcontrolador ATmega328. Como forma de facilitar o processo de prototipagem e testagem de diferentes tipos de firmware no microcontrolador, a plataforma de prototipagem OpenSource Arduino Uno foi escolhida. O circuito responsável pelo sensoriamento e digitalização da presença de gases voláteis é descrito no diagrama abaixo.
 
@@ -625,7 +664,7 @@ A transdução para a detecção de gás ocorre por meio da variação da resist
 
 No diagrama apresentado acima é possível ver a ligação da placa de condicionamento do sensor MQ-2 a plataforma Arduino Uno. Para a alimentação da placa de condicionamento e consequente formação de seu circuito interno de medição de variação da corrente elétrica, foram ligadas a ela a fonte de tensão contínua de 5V do Arduino Uno, bem como sua ligação terra (GND). A medida da variação da corrente amplificada é feita por meio de uma das entradas analógicas do Arduino Uno. 
 
-### 1.3.3 Teste de detecção e quantificação de gases voláteis
+#### 2.3 Teste de detecção e quantificação de gases voláteis
 
 Abaixo, encontra-se uma demonstração da detecção e quantificação da presença do gás butano e vapor de álcool etílico, presente em isqueiros comuns, pelo circuito descrito:
 
@@ -633,7 +672,7 @@ https://github.com/2023M6T2-Inteli/Grupo04/assets/40524905/b31895f6-f636-4267-a7
 
 No vídeo acima, nota-se que o comportamento do gráfico responsável por representar o nível de gás proximal ao sensor reage de acordo com sua exposição a uma fonte de gás inflamável. A resposta da leitura do sensor a sua exposição as fontes de gás butano e vapor de álcool etílico aparenta ser linear. A leitura do valor do sensor no circuito da demonstração acima está sendo feita a uma frequência de amostragem de 125 KHz.
 
-### 1.3.4. Transmissão da leitura do sensor para o backend
+#### 2.4 Transmissão da leitura do sensor para o backend
 
 A leitura dos dados de variação de corrente amplificada da placa de condicionamento com o sensor MQ-2 é feita via firmware e foi transmitida para representação gráfica no último vídeo por comunicação serial. Da mesma forma, a comunicação entre a plataforma Arduino Uno e o computador Raspberry Pi 4, presente no Turblebot Burguer, se deu via interface serial USB. Para tornar possível a obtenção dos dados transmitidos via serial a partir do script Python foi utilizada a biblioteca Pyserial. A transmissão de tais dados para o servidor foi feita pelo protocolo de comunicação por websockets, usando a biblioteca de mesmo nome, em conjunto com a biblioteca asyncio, para gerenciamento assíncrono deste processo. 
 
@@ -680,7 +719,7 @@ O sistema implementado para prevenir a colisão do robô com obstáculos envolve
 Durante o processo de mapeamento de riscos, o grupo buscou estimar as chances em porcentagem e o nível de impacto, utilizando como base a matriz de riscos para poder estruturar todo o mapeamento. É válido ressaltar que, para essa parte, foram considerados fatores como o ambiente de trabalho, o tipo de trabalho, a exposição do robô, a frequência de exposição, a duração da exposição e a probabilidade de ocorrência à qual o robô está exposto. Esses fatores podem afetar diretamente as eletromecânicos, mecânicos e eletrônicos do robô.
 
 <p align="center">
-<img src="./images/Mapeamento%20de%20Riscos.png"> <br>
+<img src="./images/Mapeamento de Riscos.png"> <br>
 </p>
 
 Para acessar o [Mapeamento de riscos](https://www.figma.com/file/g6mIiYNG8k8kPIIBjerAsl/Mapeamento-de-Riscos?type=whiteboard&node-id=2%3A105&t=LA7EhRX7nE3AUjfu-1) acesse o link.
@@ -717,19 +756,19 @@ Para a estruturação da documentação, testes e manual de implementação da A
 
 Por meio dele, todas as rotas possuem um título breve de explicação. Ao expandir um accordion, você encontra uma descrição mais detalhada, a maneira como pode ser utilizada e um exemplo de como os dados devem ser enviados. Além disso, nele você encontra todas as rotas construídas no backend, de forma organizada, pois todas as rotas estão atribuídas à sua respectiva entidade, como pode ser visto nos exemplos abaixo.
 
-Além disso, a documentação construída no Swagger foi disponibilizada juntamente com o backend no serviço de EC2 da AWS, que pode ser acessado [clicando aqui](http://ec2-52-90-253-66.compute-1.amazonaws.com:3001/docs/swagger).
+Além disso, a documentação construída no Swagger foi disponibilizada juntamente com o backend no serviço de EC2 da AWS, que pode ser acessado [clicando aqui](http://3.217.9.103:3001/docs/swagger).
 
 **1 - Todas as rotas presentes:**
 
-![1686518996036](image/index/1686518996036.png)
+![Alt text](images/api-routes.png)
 
 **2 - Exemplo de consulta pelo Swagger:**
 
-![1686525233951](image/index/1686525233951.png)
+![Alt text](images/api-consult.png)
 
 **3 - Exemplo de resultado obtido pelo Swagger:**
 
-![1686525274187](image/index/1686525274187.png)
+![Alt text](images/api-result.png)
 
 Por fim, é válido ressaltar que todo o backend já está disponível em deploy na AWS, especificamente no serviço EC2, tornando-se ainda mais alinhado com as tecnologias adotadas pela empresa.
 

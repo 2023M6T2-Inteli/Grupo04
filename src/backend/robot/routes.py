@@ -18,7 +18,9 @@ robot = Blueprint('robot', __name__)
 @validate_body(Schema.REGISTER.value)
 async def handler_register(request: Request) -> HTTPResponse:
     data = request.json
-    response, code = register(name=data['name'], ip=data['ip'])
+    response, code = register(
+        name=data['name'],
+        ip=data['ip'])
     return json(response, code)
 
 

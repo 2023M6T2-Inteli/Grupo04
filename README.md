@@ -51,54 +51,33 @@ Através do robô Turtlebot Burguer, adicionamos uma interface web a seu Raspber
 3 directories, 7 files
 ```
 
-A pasta raiz contem dois arquivos que devem ser alterados:
+A pasta raiz contém:
 
-<b>README.MD</b>: Arquivo que serve como guia e explicação geral sobre seu projeto. O mesmo que você está lendo agora.
+<b>README.MD</b>: Arquivo que serve como guia e explicação geral sobre o projeto. O mesmo que você está lendo agora.
 
 Há também 4 pastas que seguem da seguinte forma:
 
-<b>docs</b>: Aqui está o arquivo index.md, que serve como o ponto principal da documentação do projeto. Note que, para este módulo, ele está vazio. Vocês tem liberdade total para definir a sua estrutura.
+<b>docs</b>: Aqui está o arquivo index.md, que serve como o ponto principal da documentação de todo o projeto desenvolvido.
 
-<b>media</b>: Algumas imagens do sistema e logos prontos para serem utilizados e visualizados.
+<b>media</b>: Algumas imagens do sistema, imagens gerais do projeto como um todo e logos prontos para serem utilizados.
 
-<b>src</b>: Nesta pasta irá todo o código fonte do sistema, pronto para para ser baixado e modificado.
+<b>src</b>: Nesta pasta irá todo o código fonte do sistema, pronto para para ser baixado e modificado conforme necessidade.
 
-## 🛠 Instalação
+## 🛠 Instalação e configuração para desenvolvimento
 
-Coloque suas instruções de instalação aqui.
+Um guia para a execução, configuração e instalação desse projeto pode ser encontrado no conteúdo do documento "Manual do Usuário", dentro da pasta "docs".
+
+Um link direto pode ser encontrado ao clicar [aqui](docs/manual%20do%20usuário).
 
 ## 📈 Exemplo de uso
 
-Alguns exemplos interessantes e úteis sobre como seu projeto pode ser utilizado.
+Alguns exemplos interessantes e úteis sobre como o projeto pode ser utilizado.
 
-Adicione blocos de códigos e, se necessário, screenshots.
+* O robô pode ser enviado para dentro de dutos industriais para detectar vazamentos de gases tóxicos ou inflamáveis. Além disso, ele pode utilizar a câmera para identificar rachaduras ou danos nas paredes do duto, permitindo ações preventivas antes de ocorrerem problemas mais graves;
 
-Este modelo pode ser copiado e utilizado à vontade.
+* Exploração de espaços confinados em minas ou túneis: O robô pode ser enviado para explorar áreas de minas subterrâneas ou túneis, onde a entrada de seres humanos é arriscada. Ele pode detectar gases perigosos e identificar rachaduras nas paredes ou tetos que possam indicar instabilidade estrutural;
 
-Através da cópia/clone/ download do repositório, altere os dados do readme.md e carregue os arquivos de seu projeto.
-
-## 💻 Configuração para Desenvolvimento
-
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
-
-Para abrir este projeto você necessita das seguintes ferramentas:
-
-## 🗃 Histórico de lançamentos
-
-A cada atualização os detalhes devem ser lançados aqui.
-
-* 0.2.1 - 25/01/2022
-    * MUDANÇA: Atualização de docs (código do módulo permanece inalterado)
-* 0.2.0 - 15/01/2022
-    * MUDANÇA: Remove `setDefaultXYZ()`
-    * ADD: Adiciona `init()`
-* 0.1.1 - 11/01/2022
-    * CONSERTADO: Crash quando chama `baz()` (Obrigado @NomeDoContribuidorGeneroso!)
-* 0.1.0 - 10/01/2022
-    * O primeiro lançamento adequado
-    * MUDANÇA: Renomeia `foo()` para `bar()`
-* 0.0.1 - 01/01/2022
-    * Trabalho em andamento
+* Resgate em desastres naturais: Em situações de desastres naturais, como terremotos ou desabamentos, o robô pode ser utilizado para entrar em espaços confinados, como edifícios desabados, e realizar buscas por sobreviventes. Ele pode detectar gases tóxicos ou inflamáveis, bem como identificar rachaduras nas estruturas, ajudando nas operações de resgate.
 
 ## 📋 Licença/License
 

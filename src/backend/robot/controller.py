@@ -1,6 +1,7 @@
 from robot.service import Robot
 
 
+# This function registers a robot with the provided details and returns a message.
 def register(name: str, ip: str) -> tuple[dict[str, str], int]:
     try:
         robot = Robot(name=name, ip=ip)
@@ -9,7 +10,8 @@ def register(name: str, ip: str) -> tuple[dict[str, str], int]:
     except Exception as e:
         return {'error': str(e)}, 500
 
-
+    
+# This function gets all the robots in the database and returns a list of robots.
 def get_robots() -> tuple[list[dict[str, str]], int]:
     try:
         robot = Robot()
@@ -19,7 +21,9 @@ def get_robots() -> tuple[list[dict[str, str]], int]:
         return {'error': str(e)}, 500
 
 
-def get_robot(id) -> tuple[list[dict[str, str]], int]:
+# This function gets a robot with the provided id and returns a robot.  
+def get_robot(id)-> tuple[list[dict[str, str]], int]:
+
     try:
         robot = Robot()
         robot = robot.get_robot(id=id)
@@ -37,6 +41,8 @@ def update_robot(data: dict, ip: str = "") -> tuple[list[dict[str, str]], int]:
         return {'error': str(e)}, 500
 
 
+
+# This function deletes the robot with the provided id and returns a message. 
 def delete_robot(id) -> tuple[dict[str, str], int]:
     try:
         robot = Robot()

@@ -10,4 +10,17 @@
 
 # Organização do diretório de arquivos fonte
 
-Este diretório é destinado para o armazenamento e versionamento dos arquivos fonte relacionados à aplicação desenvolvida pelos alunos. Preencha aqui explicando como está organizado seu diretório e resumindo o que faz cada um dos arquivos principais.
+Este diretório é destinado para o armazenamento e versionamento dos arquivos fonte relacionados à aplicação desenvolvida pelos alunos. Aqui o diretório se subdivide em frontend, backend e embedded. Onde cada subdiretório, quando necessário, possui seu próprio `README.md` com as informações necessárias sobre a execução e funcionamento do projeto.
+
+
+```bash
+.
+├── README.md
+├── backend
+│   ├── README.md
+│   ├── requirements.txt
+├── embedded
+│   └── 
+└── frontend
+    └── README.md
+```

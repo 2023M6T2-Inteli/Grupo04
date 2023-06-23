@@ -5,7 +5,7 @@ datasource db {
 
 generator erd {
   provider                  = "prisma-erd-generator"
-  output                    = "ERD5.svg"
+  output                    = "ERD.svg"
   includeRelationFromFields = true
   theme                     = "default"
 }

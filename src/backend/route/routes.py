@@ -43,7 +43,10 @@ async def handler_get(request: Request, id: int) -> HTTPResponse:
 @validate_body(Schema.UPDATE.value)
 async def handler_update(request: Request) -> HTTPResponse:
       data = request.json
-      response, code = update_route(id=data['id'], name=data['name'], createdAt=data['createdAt'])
+      response, code = update_route(
+            id=data['id'], 
+            name=data['name'], 
+            createdAt=data['createdAt'])
       return json(response, code)
 
 @route.delete("/delete_route/<id:int>")

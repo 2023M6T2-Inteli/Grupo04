@@ -13,8 +13,9 @@ from pydantic import BaseModel, Field
 
 MODEL = YOLO('analyze/best.pt')
 
-
+# Class Analyze
 class Analyze:
+    # Constructor
     def __init__(self, id: int = "", routeId: int = "", name: str = "", status: str = "", startDate: str = "",
                  endDate: str = "", supervisor: str = "", operator: str = "", createdAt: date = "",
                  robotId: int = None) -> None:
@@ -29,6 +30,7 @@ class Analyze:
         self.robotId = robotId
         self.createdAt = createdAt
 
+    # This function registers an analysis with the provided details and returns an analyze.
     def register(self) -> dict[str, str]:
         try:
             analyze = create_analyze(
@@ -58,12 +60,12 @@ class Analyze:
 
             cv.imwrite('analyze/images/' + image_name, result[0].plot())
 
-            # s3 = boto3.resource('s3')
-            # with open('analyze/images/' + image_name, 'rb') as data:
-            #     s3.Bucket('bucket-analyze-images').put_object(Key=image_name, Body=data)
-            #
-            #     save_image(self.id, frame='https://bucket-analyze-images.s3.amazonaws.com/' + image_name)
-            # os.remove('analyze/images/' + image_name)
+            s3 = boto3.resource('s3')
+            with open('analyze/images/' + image_name, 'rb') as data:
+                s3.Bucket('bucket-analyze-images').put_object(Key=image_name, Body=data)
+            
+                save_image(self.id, frame='https://bucket-analyze-images.s3.amazonaws.com/' + image_name)
+            os.remove('analyze/images/' + image_name)
 
             await frame_queue[str(self.id)].put(result[0].plot())
 
@@ -72,6 +74,16 @@ class Analyze:
         except Exception as err:
             raise NameError(f'Error to save image due to this error: {err}')
 
+        
+    # This function register an image to the analysis with the provided id and returns a message.
+    def register_video(self, frame: str) -> str:
+        try:
+            response = save_image(self.id, frame)
+            return response
+        except Exception as error:
+            raise NameError(f'Error to save image! Error: {error}')
+        
+    # This function gets all the analyses in the database and returns a list of analyzes.
     def get_all(self) -> list[dict[str, str]]:
         try:
             analyzes = get_analyzes()
@@ -86,7 +98,8 @@ class Analyze:
                 return response
         except Exception as error:
             raise NameError(f'Error to get analyzes! Error: {error}')
-
+        
+    # This function gets an analysis with the provided id and returns an analyze.
     def get_analyze(self) -> dict[str, str]:
         try:
             analyze = get_analyze(id=self.id)
@@ -99,7 +112,7 @@ class Analyze:
             return analyze
         except Exception as error:
             raise NameError(f'Error to get analyze with this id: {self.id}! Error: {error}')
-
+    # This function updates an analysis with the provided details and returns a message.
     def update_analyze(self) -> str:
         try:
             response = update_analyze(
@@ -115,6 +128,7 @@ class Analyze:
         except Exception as error:
             raise NameError(f'Error to update analyze with this id: {self.id}! Error: {error}')
 
+    # This function deletes an analysis with the provided id and returns a message.
     def delete_analyze(self, id: int) -> str:
         try:
             response = delete_analyze(id)
@@ -122,6 +136,7 @@ class Analyze:
         except Exception as error:
             raise NameError(f'Error to delete analyze with this id: {id}! Error: {error}')
 
+    # This function creates a sensor data with the provided details and returns a message.
     def create_sensor_data(self, sensor_data: int) -> str:
         try:
             response = create_sensor_data(
@@ -131,7 +146,7 @@ class Analyze:
         except Exception as error:
             raise NameError(f'Error to update sensor data! Error: {error}')
 
-
+# Class AnalyzeCreate Test
 class AnalyzeTestCreate(BaseModel):
     routeId: int = Field(description="Id of route", example=1)
     name: str = "Test"
@@ -143,6 +158,7 @@ class AnalyzeTestCreate(BaseModel):
     operator: str = "Test operator"
 
 
+# Class AnalyzeUpdate Test
 class AnalyzeTestUpdate(BaseModel):
     id: int = Field(example=1)
     routeId: int = Field(example=1)

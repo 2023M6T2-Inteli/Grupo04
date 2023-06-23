@@ -1,12 +1,14 @@
 from robot.model import create_robot, get_robots, get_robot, delete_robot, update_robot_by_ip
 from pydantic import BaseModel, Field
 
-
+# Class Robot
 class Robot:
+    # Constructor
     def __init__(self, name: str = "", ip: str = "") -> None:
         self.name = name.upper()
         self.ip = ip.upper()
 
+    # This function registers a robot with the provided details and returns a message.
     def register(self) -> str:
         try:
             create_robot(ip=self.ip, name=self.name)
@@ -14,6 +16,7 @@ class Robot:
         except Exception as error:
             raise NameError(f'Error to create point! Error: {error}')
 
+    # This function gets all the robots in the database and returns a list of robots.
     def get_all(self) -> list[dict[str, str]]:
         try:
             robots = get_robots()
@@ -27,6 +30,7 @@ class Robot:
         except Exception as error:
             raise NameError(f'Error to get all robots! Error: {error}')
 
+    # This function gets the robot with the provided id and returns a robot.
     def get_robot(self, id: int) -> dict[str, str]:
         try:
             robot = get_robot(id)
@@ -51,6 +55,8 @@ class Robot:
         except Exception as error:
             raise NameError(f'Error to update robot! Error: {error}')
 
+    # This function deletes the robot with the provided id and returns a message.
+
     def delete_robot(self, id: int) -> str:
         try:
             response = delete_robot(id)
@@ -58,7 +64,7 @@ class Robot:
         except Exception as error:
             raise NameError(f'Error to delete robot! Error: {error}')
 
-
+# Class RobotCreate
 class RobotTestCreate(BaseModel):
     name: str = "Robot Test"
     ip: str = "112.224.131.11"

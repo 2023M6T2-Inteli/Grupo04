@@ -2,6 +2,7 @@ import NavBar from "@/components/NavBar";
 import Display from "@/components/Display";
 import React, { useState } from "react";
 import AddAnalyze from "@/components/AddAnalyze";
+import History from "@/components/History";
 import { WithAuth } from "@/HOC/WithAuth";
 import { GetServerSideProps } from "next";
 import { axios } from "@/utils/axios";
@@ -28,6 +29,7 @@ const DashBoard: React.FC<Props> = ({ robot }) => {
       <NavBar robot={robot} display={display} setDisplay={setDisplay} />
       {display === DisplayType.Dashboard && <Display robot={robot} />}
       {display === DisplayType.AddAnalyze && <AddAnalyze />}
+      {display === DisplayType.History && <History />}
     </div>
   );
 };
