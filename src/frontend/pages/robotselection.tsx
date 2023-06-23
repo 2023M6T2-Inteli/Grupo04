@@ -11,7 +11,7 @@ interface Props {
   robots: Robot[];
 }
 
-const robotSelection: React.FC<Props> = ({ robots }) => {
+const RobotSelection: React.FC<Props> = ({ robots }) => {
   const [linkRedirect, setLinkRedirect] = React.useState<string>("/dashboard");
 
   return (
@@ -36,4 +36,4 @@ export const getServerSideProps = async (ctx: any) => {
   return await WithAuth(ctx, myGetServerSideProps);
 };
 
-export default robotSelection;
+export default RobotSelection;

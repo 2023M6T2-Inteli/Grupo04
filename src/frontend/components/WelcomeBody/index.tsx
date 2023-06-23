@@ -17,7 +17,7 @@ const WelcomeBody: React.FC<Props> = ({}) => {
         />
 
         <p className="font-mont  text-blue-gerdau-init font-bold text-lg md:text-3xl flex items-center select-none">
-          You're back!!
+          {"You're back!!"}
         </p>
       </div>
       <p className="font-inter text-base text-center lg:text-lg">

@@ -87,7 +87,7 @@ const RobotSelectionBody: React.FC<Props> = ({
     <>
       <div className="flex items-center justify-center gap-2">
         <p className="font-mont  text-blue-gerdau-init font-bold text-lg md:text-3xl flex items-center select-none">
-          Let's Start
+          {"Let's Start"}
         </p>
       </div>
       <p className="block font-mont text-black-zero font-medium text-xl select-none">
@@ -112,8 +112,9 @@ const RobotSelectionBody: React.FC<Props> = ({
               Add a robot before
             </p>
           ) : (
-            robots.map((robot) => (
+            robots.map((robot, key) => (
               <RobotChoice
+                key={key}
                 onClick={() => setSelectedChoice(robot.id)}
                 isActive={selectedChoice === robot.id}
                 name={robot.name}

@@ -50,8 +50,8 @@ export const NavBarOptions: React.FC<Props> = ({
         isHover ? "gap-10" : "gap-6"
       }`}
     >
-      {fields.map((field) => (
-        <AnimatePresence>
+      {fields.map((field, key) => (
+        <AnimatePresence key={key}>
           {isHover ? (
             <motion.div variants={item}>
               <Button

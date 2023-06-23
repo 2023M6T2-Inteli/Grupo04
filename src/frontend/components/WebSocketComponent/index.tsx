@@ -5,10 +5,13 @@ const VideoFeed = () => {
   const videoFeedRef = useRef();
 
   useEffect(() => {
-    const socket = new WebSocket('ws://localhost:3001/analyze/video_feed');
+    const socket = new WebSocket("ws://3.217.9.103:3001/analyze/video_feed");
 
     socket.onmessage = function (event) {
-      const url = URL.createObjectURL(new Blob(([event.data]), { type: 'image/jpeg' }));
+      const url = URL.createObjectURL(
+        new Blob([event.data], { type: "image/jpeg" })
+      );
+      // @ts-ignore
       videoFeedRef.current.src = url;
     };
 
@@ -22,6 +25,7 @@ const VideoFeed = () => {
     };
   }, []);
 
+  // @ts-ignore
   return <img id="videoFeed" src="" alt="Video Feed" ref={videoFeedRef} />;
 };
 

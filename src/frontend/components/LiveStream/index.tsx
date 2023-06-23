@@ -15,12 +15,13 @@ const LiveStream: React.FC<Props> = (props) => {
     const id = 1;
     console.log("INICIANDO CONEXÃO COM WEBSOCKET!!!!");
     const socket = new WebSocket(
-      `ws://localhost:3001/analyze/video_feed/${id}`
+      `ws://3.217.9.103:3001/analyze/video_feed/${id}`
     );
 
     socket.onmessage = function (event) {
       console.log("MESSAGE RECEIVED! ", event.data);
       if (event.data === "VIDEO ENDED!") {
+        setVideoAvaiability(false);
       } else {
         setVideoAvaiability(true);
         const url = URL.createObjectURL(

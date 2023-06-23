@@ -33,8 +33,8 @@ const FixedRoutes: React.FC<Props> = ({ routes, setFile, setStepsCompleted }) =>
           _active={{ bg: "white" }}
           leftIcon={arrowBack}
         />
-        {routes.map((route) => (
-          <RouteCard route={route} />
+        {routes.map((route, key) => (
+          <RouteCard key={key} route={route} />
         ))}
         <Button
           className="my-auto"

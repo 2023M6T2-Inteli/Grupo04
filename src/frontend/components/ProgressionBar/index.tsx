@@ -34,8 +34,9 @@ const ProgressionBar: React.FC<Props> = ({ stepsCompleted }) => {
   ];
   return (
     <div className="flex justify-center pt-5 h-auto w-auto">
-      {steps.map((step) => (
+      {steps.map((step, key) => (
         <StepAnalyze
+          key={key}
           step={step.name}
           next={step.next}
           completed={step.completed}

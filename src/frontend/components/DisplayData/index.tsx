@@ -40,8 +40,8 @@ const DisplayData: React.FC<Props> = ({ cardsContent, title }) => {
         variants={container}
         className="flex gap-3 px-[5%] pt-10 w-full justify-between h-full"
       >
-        {cardsContent.map((card) => (
-          <InformationCard cardContent={card} />
+        {cardsContent.map((card, key) => (
+          <InformationCard key={key} cardContent={card} />
         ))}
       </motion.div>
     </div>

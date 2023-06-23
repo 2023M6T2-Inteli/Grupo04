@@ -57,8 +57,8 @@ const ModalHome: React.FC<Props> = ({ fields, onClose, isOpen, setRobots }) => {
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
-          {fields.inputs.map((input) => (
-            <FormControl mt={4}>
+          {fields.inputs.map((input, key) => (
+            <FormControl key={key} mt={4}>
               <FormLabel>{input.name}</FormLabel>
               <Input
                 onChange={(e) => input.setValue(e.target.value)}

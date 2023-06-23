@@ -62,9 +62,9 @@ const HistoryDisplayData: React.FC<Props> = ({ cardsContent }) => {
                     variants={container}
                     className="flex flex-wrap gap-3 px-[5%] pt-10 w-full justify-center h-full"
                 >
-                    {cardsContent.map((card) => {
+                    {cardsContent.map((card, key) => {
                         allCards += 1;
-                        return <HistoryInformationCard cardContent={card} />;
+                        return <HistoryInformationCard key={key} cardContent={card} />;
                     })}
                 </motion.div>
                 </TabPanel>
@@ -75,10 +75,10 @@ const HistoryDisplayData: React.FC<Props> = ({ cardsContent }) => {
                     variants={container}
                     className="flex gap-3 px-[5%] pt-10 w-full justify-center h-full"
                 >
-                    {cardsContent.map((card) => {
+                    {cardsContent.map((card, key) => {
                         if (card.status === "Completed") {
                             finishedCards += 1;
-                            return <HistoryInformationCard cardContent={card} />;
+                            return <HistoryInformationCard key={key} cardContent={card} />;
                         } else {
                             return null;
                         }
@@ -92,10 +92,10 @@ const HistoryDisplayData: React.FC<Props> = ({ cardsContent }) => {
                     variants={container}
                     className="flex gap-3 px-[5%] pt-10 w-full justify-center h-full"
                 >
-                    {cardsContent.map((card) => {
+                    {cardsContent.map((card, key) => {
                         if (card.status === "In Progress") {
                             notFinishedCards += 1;
-                            return <HistoryInformationCard cardContent={card} />;
+                            return <HistoryInformationCard key={key} cardContent={card} />;
                         } else {
                             return null;
                         }
