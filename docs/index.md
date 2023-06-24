@@ -107,6 +107,7 @@
     - [Detalhamento dos testes](#detalhamento-dos-testes)
       - [Teste de carga](#teste-de-carga)
       - [Teste de latência](#teste-de-latência)
+- [Validação da eficácia do sistema.](#validação-da-eficácia-do-sistema)
 - [Referências](#referências)
 
 # Proposta geral
@@ -1020,6 +1021,18 @@ Os estágios selecionados para a realização deste teste envolvem uma progress�
 #### Teste de latência
 
 No decorrer deste teste, estamos simulando a execução de uma único usuário realizando a requisição, considerando diferentes estágios de latência. No primeiro estágio, a latência é de 500ms, e posteriormente, no segundo estágio, a latência aumenta para 1000ms, emulando uma situação de rede mais lenta. Em ambos os métodos de requisição, os resultados obtidos nos estágios foram considerados aceitáveis, uma vez que se mantiveram abaixo de 1500ms. Esses resultados indicam que o tempo de resposta foi mantido em um nível adequado, mesmo diante de uma condição de rede desfavorável. Assim, é possível afirmar que a experiência do usuário não foi prejudicada, mesmo em uma situação em que a qualidade da rede não é ideal.
+
+# Validação da eficácia do sistema.
+O processo de gravação de vídeos para validar a eficácia do sistema não pôde ser concluído devido a complicações finais no projeto que surgiram no último dia da Sprint 5. Essas complicações foram causadas por uma thread que resultou em travamentos no sistema (TurtleController), tanto no ambiente de implantação na AWS quanto no ambiente de teste local. O problema inicial identificado foi que o robô estava bloqueando o banco de dados na tabela "Robot", que é o primeiro passo essencial no roadmap de funcionalidades para começar a utilizar o nosso sistema. Após identificar e corrigir esse problema, o sistema continuou a travar na mesma etapa, tornando impossível identificar a causa real do problema.
+
+No entanto, ao longo da construção, o sistema foi testado e validado usando um robô TurtleBot 3, capaz de gravar e capturar os gases presentes na atmosfera, enviando os dados para o servidor. Além disso, o sistema foi integrado com a maioria das funcionalidades propostas, o que pode ser verificado nos detalhes das entregas realizadas ao longo das sprints, disponíveis nos tópicos anteriores. Nos detalhamentos, é possível observar o seguinte:
+
+1. O Backend foi construído corretamente com a arquitetura MVC e a documentação da API foi realizada.
+2. A interface do usuário foi prototipada no Figma e implementada com fidelidade usando React.js, Next.js e Tailwind.
+3. Foi implementado um sistema de visão computacional, com um modelo preditivo integrado na rota da API e imagens sendo salvas no Bucket da S3, um serviço da AWS.
+4. Foram mapeados os riscos e implementados sistemas de segurança capazes de lidar com obstáculos, comandos indesejados e outros riscos identificados durante o processo de desenvolvimento.
+   
+Dessa forma, podemos afirmar que o sistema foi validado pela equipe, parceiros de projeto, professores e orientadores ao alcançar cada resultado esperado ao longo das sprints. O sistema está pronto para ser utilizado em um ambiente real, com o objetivo de monitorar rachaduras e capturar gases presentes na atmosfera, evitando acidentes de trabalho e preservando a saúde dos trabalhadores.
 
 # Referências
 
